@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SurveyManagementModelStoreContainer" CdmEntityContainer="SurveyManagementEntities">
+    <EntitySetMapping Name="Options">
+      <EntityTypeMapping TypeName="SurveyManagementModel.Option">
+        <MappingFragment StoreEntitySet="Options">
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+          <ScalarProperty Name="OptionTypeId" ColumnName="OptionTypeId" />
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OptionTypes">
+      <EntityTypeMapping TypeName="SurveyManagementModel.OptionType">
+        <MappingFragment StoreEntitySet="OptionType">
+          <ScalarProperty Name="OptionTypeId" ColumnName="OptionTypeId" />
+          <ScalarProperty Name="OptionTypeName" ColumnName="OptionTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="SurveyManagementModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+          <ScalarProperty Name="QuestionName" ColumnName="QuestionName" />
+          <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questionnaires">
+      <EntityTypeMapping TypeName="SurveyManagementModel.Questionnaire">
+        <MappingFragment StoreEntitySet="Questionnaire">
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+          <ScalarProperty Name="QuestionnaireDesc" ColumnName="QuestionnaireDesc" />
+          <ScalarProperty Name="QuestionnaireStatus" ColumnName="QuestionnaireStatus" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+          <ScalarProperty Name="MaxResponse" ColumnName="MaxResponse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RespondentAnswers">
+      <EntityTypeMapping TypeName="SurveyManagementModel.RespondentAnswer">
+        <MappingFragment StoreEntitySet="RespondentAnswer">
+          <ScalarProperty Name="RespondentAnswerId" ColumnName="RespondentAnswerId" />
+          <ScalarProperty Name="RespondentAnswerValue" ColumnName="RespondentAnswerValue" />
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="RespondentId" ColumnName="RespondentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sections">
+      <EntityTypeMapping TypeName="SurveyManagementModel.Section">
+        <MappingFragment StoreEntitySet="Section">
+          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyPages">
+      <EntityTypeMapping TypeName="SurveyManagementModel.SurveyPage">
+        <MappingFragment StoreEntitySet="SurveyPage">
+          <ScalarProperty Name="PageId" ColumnName="PageId" />
+          <ScalarProperty Name="PageName" ColumnName="PageName" />
+          <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+          <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyRespondents">
+      <EntityTypeMapping TypeName="SurveyManagementModel.SurveyRespondent">
+        <MappingFragment StoreEntitySet="SurveyRespondent">
+          <ScalarProperty Name="RespondentId" ColumnName="RespondentId" />
+          <ScalarProperty Name="RespondentName" ColumnName="RespondentName" />
+          <ScalarProperty Name="RespondentAge" ColumnName="RespondentAge" />
+          <ScalarProperty Name="RespodentEmail" ColumnName="RespodentEmail" />
+          <ScalarProperty Name="RespondentContact" ColumnName="RespondentContact" />
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserInfoes">
+      <EntityTypeMapping TypeName="SurveyManagementModel.UserInfo">
+        <MappingFragment StoreEntitySet="UserInfo">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="Cnic" ColumnName="Cnic" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Organization" ColumnName="Organization" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="SurveyManagementModel.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

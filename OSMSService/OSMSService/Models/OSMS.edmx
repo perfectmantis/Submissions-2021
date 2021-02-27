@@ -1,0 +1,707 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SurveyManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Options">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="bigint" Nullable="false" />
+          <Property Name="OptionName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OptionTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="QuestionId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OptionType">
+          <Key>
+            <PropertyRef Name="OptionTypeId" />
+          </Key>
+          <Property Name="OptionTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="OptionTypeName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="bigint" Nullable="false" />
+          <Property Name="QuestionName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SequenceNumber" Type="int" Nullable="false" />
+          <Property Name="PageId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questionnaire">
+          <Key>
+            <PropertyRef Name="QuestionnaireId" />
+          </Key>
+          <Property Name="QuestionnaireId" Type="bigint" Nullable="false" />
+          <Property Name="QuestionnaireDesc" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="QuestionnaireStatus" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="Expiry" Type="datetime" />
+          <Property Name="MaxResponse" Type="bigint" />
+        </EntityType>
+        <EntityType Name="RespondentAnswer">
+          <Key>
+            <PropertyRef Name="RespondentAnswerId" />
+          </Key>
+          <Property Name="RespondentAnswerId" Type="bigint" Nullable="false" />
+          <Property Name="RespondentAnswerValue" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="OptionId" Type="bigint" Nullable="false" />
+          <Property Name="RespondentId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="SectionId" />
+          </Key>
+          <Property Name="SectionId" Type="bigint" Nullable="false" />
+          <Property Name="SectionName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SequenceNumber" Type="int" Nullable="false" />
+          <Property Name="QuestionnaireId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SurveyPage">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="bigint" Nullable="false" />
+          <Property Name="PageName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SequenceNumber" Type="int" Nullable="false" />
+          <Property Name="SectionId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SurveyRespondent">
+          <Key>
+            <PropertyRef Name="RespondentId" />
+          </Key>
+          <Property Name="RespondentId" Type="bigint" Nullable="false" />
+          <Property Name="RespondentName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RespondentAge" Type="tinyint" Nullable="false" />
+          <Property Name="RespodentEmail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="RespondentContact" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="QuestionnaireId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="LoginPassword" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FatherName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Cnic" Type="varchar" MaxLength="13" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserAddress" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Department" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Organization" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="UserTypeName" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Options__OptionT__22AA2996">
+          <End Role="OptionType" Type="Self.OptionType" Multiplicity="1" />
+          <End Role="Options" Type="Self.Options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OptionType">
+              <PropertyRef Name="OptionTypeId" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="OptionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Options__Questio__239E4DCF">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Options" Type="Self.Options" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Question__PageId__1DE57479">
+          <End Role="SurveyPage" Type="Self.SurveyPage" Multiplicity="1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SurveyPage">
+              <PropertyRef Name="PageId" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="PageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Questionn__UserI__15502E78">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Responden__Optio__29572725">
+          <End Role="Options" Type="Self.Options" Multiplicity="1" />
+          <End Role="RespondentAnswer" Type="Self.RespondentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="OptionId" />
+            </Principal>
+            <Dependent Role="RespondentAnswer">
+              <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Responden__Respo__2A4B4B5E">
+          <End Role="SurveyRespondent" Type="Self.SurveyRespondent" Multiplicity="1" />
+          <End Role="RespondentAnswer" Type="Self.RespondentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SurveyRespondent">
+              <PropertyRef Name="RespondentId" />
+            </Principal>
+            <Dependent Role="RespondentAnswer">
+              <PropertyRef Name="RespondentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Section__Questio__182C9B23">
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="1" />
+          <End Role="Section" Type="Self.Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="QuestionnaireId" />
+            </Principal>
+            <Dependent Role="Section">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SurveyPag__Secti__1B0907CE">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="SurveyPage" Type="Self.SurveyPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="SectionId" />
+            </Principal>
+            <Dependent Role="SurveyPage">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SurveyRes__Quest__267ABA7A">
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="1" />
+          <End Role="SurveyRespondent" Type="Self.SurveyRespondent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="QuestionnaireId" />
+            </Principal>
+            <Dependent Role="SurveyRespondent">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserInfo__UserTy__1273C1CD">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SurveyManagementModelStoreContainer">
+          <EntitySet Name="Options" EntityType="Self.Options" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OptionType" EntityType="Self.OptionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Questionnaire" EntityType="Self.Questionnaire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RespondentAnswer" EntityType="Self.RespondentAnswer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SurveyPage" EntityType="Self.SurveyPage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SurveyRespondent" EntityType="Self.SurveyRespondent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Options__OptionT__22AA2996" Association="Self.FK__Options__OptionT__22AA2996">
+            <End Role="OptionType" EntitySet="OptionType" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Options__Questio__239E4DCF" Association="Self.FK__Options__Questio__239E4DCF">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Question__PageId__1DE57479" Association="Self.FK__Question__PageId__1DE57479">
+            <End Role="SurveyPage" EntitySet="SurveyPage" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Questionn__UserI__15502E78" Association="Self.FK__Questionn__UserI__15502E78">
+            <End Role="UserInfo" EntitySet="UserInfo" />
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Responden__Optio__29572725" Association="Self.FK__Responden__Optio__29572725">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="RespondentAnswer" EntitySet="RespondentAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Responden__Respo__2A4B4B5E" Association="Self.FK__Responden__Respo__2A4B4B5E">
+            <End Role="SurveyRespondent" EntitySet="SurveyRespondent" />
+            <End Role="RespondentAnswer" EntitySet="RespondentAnswer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Section__Questio__182C9B23" Association="Self.FK__Section__Questio__182C9B23">
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+            <End Role="Section" EntitySet="Section" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SurveyPag__Secti__1B0907CE" Association="Self.FK__SurveyPag__Secti__1B0907CE">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="SurveyPage" EntitySet="SurveyPage" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SurveyRes__Quest__267ABA7A" Association="Self.FK__SurveyRes__Quest__267ABA7A">
+            <End Role="Questionnaire" EntitySet="Questionnaire" />
+            <End Role="SurveyRespondent" EntitySet="SurveyRespondent" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserInfo__UserTy__1273C1CD" Association="Self.FK__UserInfo__UserTy__1273C1CD">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="UserInfo" EntitySet="UserInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SurveyManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Option">
+          <Key>
+            <PropertyRef Name="OptionId" />
+          </Key>
+          <Property Name="OptionId" Type="Int64" Nullable="false" />
+          <Property Name="OptionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OptionTypeId" Type="Byte" Nullable="false" />
+          <Property Name="QuestionId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="OptionType" Relationship="Self.FK__Options__OptionT__22AA2996" FromRole="Options" ToRole="OptionType" />
+          <NavigationProperty Name="Question" Relationship="Self.FK__Options__Questio__239E4DCF" FromRole="Options" ToRole="Question" />
+          <NavigationProperty Name="RespondentAnswers" Relationship="Self.FK__Responden__Optio__29572725" FromRole="Options" ToRole="RespondentAnswer" />
+        </EntityType>
+        <EntityType Name="OptionType">
+          <Key>
+            <PropertyRef Name="OptionTypeId" />
+          </Key>
+          <Property Name="OptionTypeId" Type="Byte" Nullable="false" />
+          <Property Name="OptionTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Options" Relationship="Self.FK__Options__OptionT__22AA2996" FromRole="OptionType" ToRole="Options" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionId" />
+          </Key>
+          <Property Name="QuestionId" Type="Int64" Nullable="false" />
+          <Property Name="QuestionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+          <Property Name="PageId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Options" Relationship="Self.FK__Options__Questio__239E4DCF" FromRole="Question" ToRole="Options" />
+          <NavigationProperty Name="SurveyPage" Relationship="Self.FK__Question__PageId__1DE57479" FromRole="Question" ToRole="SurveyPage" />
+        </EntityType>
+        <EntityType Name="Questionnaire">
+          <Key>
+            <PropertyRef Name="QuestionnaireId" />
+          </Key>
+          <Property Name="QuestionnaireId" Type="Int64" Nullable="false" />
+          <Property Name="QuestionnaireDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuestionnaireStatus" Type="Boolean" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="Expiry" Type="DateTime" Precision="3" />
+          <Property Name="MaxResponse" Type="Int64" />
+          <NavigationProperty Name="UserInfo" Relationship="Self.FK__Questionn__UserI__15502E78" FromRole="Questionnaire" ToRole="UserInfo" />
+          <NavigationProperty Name="Sections" Relationship="Self.FK__Section__Questio__182C9B23" FromRole="Questionnaire" ToRole="Section" />
+          <NavigationProperty Name="SurveyRespondents" Relationship="Self.FK__SurveyRes__Quest__267ABA7A" FromRole="Questionnaire" ToRole="SurveyRespondent" />
+        </EntityType>
+        <EntityType Name="RespondentAnswer">
+          <Key>
+            <PropertyRef Name="RespondentAnswerId" />
+          </Key>
+          <Property Name="RespondentAnswerId" Type="Int64" Nullable="false" />
+          <Property Name="RespondentAnswerValue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OptionId" Type="Int64" Nullable="false" />
+          <Property Name="RespondentId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Option" Relationship="Self.FK__Responden__Optio__29572725" FromRole="RespondentAnswer" ToRole="Options" />
+          <NavigationProperty Name="SurveyRespondent" Relationship="Self.FK__Responden__Respo__2A4B4B5E" FromRole="RespondentAnswer" ToRole="SurveyRespondent" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="SectionId" />
+          </Key>
+          <Property Name="SectionId" Type="Int64" Nullable="false" />
+          <Property Name="SectionName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+          <Property Name="QuestionnaireId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Questionnaire" Relationship="Self.FK__Section__Questio__182C9B23" FromRole="Section" ToRole="Questionnaire" />
+          <NavigationProperty Name="SurveyPages" Relationship="Self.FK__SurveyPag__Secti__1B0907CE" FromRole="Section" ToRole="SurveyPage" />
+        </EntityType>
+        <EntityType Name="SurveyPage">
+          <Key>
+            <PropertyRef Name="PageId" />
+          </Key>
+          <Property Name="PageId" Type="Int64" Nullable="false" />
+          <Property Name="PageName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SequenceNumber" Type="Int32" Nullable="false" />
+          <Property Name="SectionId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK__Question__PageId__1DE57479" FromRole="SurveyPage" ToRole="Question" />
+          <NavigationProperty Name="Section" Relationship="Self.FK__SurveyPag__Secti__1B0907CE" FromRole="SurveyPage" ToRole="Section" />
+        </EntityType>
+        <EntityType Name="SurveyRespondent">
+          <Key>
+            <PropertyRef Name="RespondentId" />
+          </Key>
+          <Property Name="RespondentId" Type="Int64" Nullable="false" />
+          <Property Name="RespondentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RespondentAge" Type="Byte" Nullable="false" />
+          <Property Name="RespodentEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RespondentContact" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuestionnaireId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Questionnaire" Relationship="Self.FK__SurveyRes__Quest__267ABA7A" FromRole="SurveyRespondent" ToRole="Questionnaire" />
+          <NavigationProperty Name="RespondentAnswers" Relationship="Self.FK__Responden__Respo__2A4B4B5E" FromRole="SurveyRespondent" ToRole="RespondentAnswer" />
+        </EntityType>
+        <EntityType Name="UserInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LoginPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FatherName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cnic" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Department" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Organization" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserType" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Questionnaires" Relationship="Self.FK__Questionn__UserI__15502E78" FromRole="UserInfo" ToRole="Questionnaire" />
+          <NavigationProperty Name="UserType1" Relationship="Self.FK__UserInfo__UserTy__1273C1CD" FromRole="UserInfo" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Byte" Nullable="false" />
+          <Property Name="UserTypeName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserInfoes" Relationship="Self.FK__UserInfo__UserTy__1273C1CD" FromRole="UserType" ToRole="UserInfo" />
+        </EntityType>
+        <Association Name="FK__Options__OptionT__22AA2996">
+          <End Role="OptionType" Type="Self.OptionType" Multiplicity="1" />
+          <End Role="Options" Type="Self.Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OptionType">
+              <PropertyRef Name="OptionTypeId" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="OptionTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Options__Questio__239E4DCF">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Options" Type="Self.Option" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionId" />
+            </Principal>
+            <Dependent Role="Options">
+              <PropertyRef Name="QuestionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Responden__Optio__29572725">
+          <End Role="Options" Type="Self.Option" Multiplicity="1" />
+          <End Role="RespondentAnswer" Type="Self.RespondentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Options">
+              <PropertyRef Name="OptionId" />
+            </Principal>
+            <Dependent Role="RespondentAnswer">
+              <PropertyRef Name="OptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Question__PageId__1DE57479">
+          <End Role="SurveyPage" Type="Self.SurveyPage" Multiplicity="1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SurveyPage">
+              <PropertyRef Name="PageId" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="PageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Questionn__UserI__15502E78">
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="1" />
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInfo">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Questionnaire">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Section__Questio__182C9B23">
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="1" />
+          <End Role="Section" Type="Self.Section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="QuestionnaireId" />
+            </Principal>
+            <Dependent Role="Section">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SurveyRes__Quest__267ABA7A">
+          <End Role="Questionnaire" Type="Self.Questionnaire" Multiplicity="1" />
+          <End Role="SurveyRespondent" Type="Self.SurveyRespondent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questionnaire">
+              <PropertyRef Name="QuestionnaireId" />
+            </Principal>
+            <Dependent Role="SurveyRespondent">
+              <PropertyRef Name="QuestionnaireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Responden__Respo__2A4B4B5E">
+          <End Role="SurveyRespondent" Type="Self.SurveyRespondent" Multiplicity="1" />
+          <End Role="RespondentAnswer" Type="Self.RespondentAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SurveyRespondent">
+              <PropertyRef Name="RespondentId" />
+            </Principal>
+            <Dependent Role="RespondentAnswer">
+              <PropertyRef Name="RespondentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SurveyPag__Secti__1B0907CE">
+          <End Role="Section" Type="Self.Section" Multiplicity="1" />
+          <End Role="SurveyPage" Type="Self.SurveyPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="SectionId" />
+            </Principal>
+            <Dependent Role="SurveyPage">
+              <PropertyRef Name="SectionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserInfo__UserTy__1273C1CD">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="UserInfo">
+              <PropertyRef Name="UserType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SurveyManagementEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Options" EntityType="Self.Option" />
+          <EntitySet Name="OptionTypes" EntityType="Self.OptionType" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="Questionnaires" EntityType="Self.Questionnaire" />
+          <EntitySet Name="RespondentAnswers" EntityType="Self.RespondentAnswer" />
+          <EntitySet Name="Sections" EntityType="Self.Section" />
+          <EntitySet Name="SurveyPages" EntityType="Self.SurveyPage" />
+          <EntitySet Name="SurveyRespondents" EntityType="Self.SurveyRespondent" />
+          <EntitySet Name="UserInfoes" EntityType="Self.UserInfo" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <AssociationSet Name="FK__Options__OptionT__22AA2996" Association="Self.FK__Options__OptionT__22AA2996">
+            <End Role="OptionType" EntitySet="OptionTypes" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Options__Questio__239E4DCF" Association="Self.FK__Options__Questio__239E4DCF">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Options" EntitySet="Options" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Responden__Optio__29572725" Association="Self.FK__Responden__Optio__29572725">
+            <End Role="Options" EntitySet="Options" />
+            <End Role="RespondentAnswer" EntitySet="RespondentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Question__PageId__1DE57479" Association="Self.FK__Question__PageId__1DE57479">
+            <End Role="SurveyPage" EntitySet="SurveyPages" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Questionn__UserI__15502E78" Association="Self.FK__Questionn__UserI__15502E78">
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Section__Questio__182C9B23" Association="Self.FK__Section__Questio__182C9B23">
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+            <End Role="Section" EntitySet="Sections" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SurveyRes__Quest__267ABA7A" Association="Self.FK__SurveyRes__Quest__267ABA7A">
+            <End Role="Questionnaire" EntitySet="Questionnaires" />
+            <End Role="SurveyRespondent" EntitySet="SurveyRespondents" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Responden__Respo__2A4B4B5E" Association="Self.FK__Responden__Respo__2A4B4B5E">
+            <End Role="SurveyRespondent" EntitySet="SurveyRespondents" />
+            <End Role="RespondentAnswer" EntitySet="RespondentAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SurveyPag__Secti__1B0907CE" Association="Self.FK__SurveyPag__Secti__1B0907CE">
+            <End Role="Section" EntitySet="Sections" />
+            <End Role="SurveyPage" EntitySet="SurveyPages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserInfo__UserTy__1273C1CD" Association="Self.FK__UserInfo__UserTy__1273C1CD">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="UserInfo" EntitySet="UserInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SurveyManagementModelStoreContainer" CdmEntityContainer="SurveyManagementEntities">
+          <EntitySetMapping Name="Options">
+            <EntityTypeMapping TypeName="SurveyManagementModel.Option">
+              <MappingFragment StoreEntitySet="Options">
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+                <ScalarProperty Name="OptionTypeId" ColumnName="OptionTypeId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OptionTypes">
+            <EntityTypeMapping TypeName="SurveyManagementModel.OptionType">
+              <MappingFragment StoreEntitySet="OptionType">
+                <ScalarProperty Name="OptionTypeId" ColumnName="OptionTypeId" />
+                <ScalarProperty Name="OptionTypeName" ColumnName="OptionTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="SurveyManagementModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="QuestionName" ColumnName="QuestionName" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questionnaires">
+            <EntityTypeMapping TypeName="SurveyManagementModel.Questionnaire">
+              <MappingFragment StoreEntitySet="Questionnaire">
+                <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+                <ScalarProperty Name="QuestionnaireDesc" ColumnName="QuestionnaireDesc" />
+                <ScalarProperty Name="QuestionnaireStatus" ColumnName="QuestionnaireStatus" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Expiry" ColumnName="Expiry" />
+                <ScalarProperty Name="MaxResponse" ColumnName="MaxResponse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RespondentAnswers">
+            <EntityTypeMapping TypeName="SurveyManagementModel.RespondentAnswer">
+              <MappingFragment StoreEntitySet="RespondentAnswer">
+                <ScalarProperty Name="RespondentAnswerId" ColumnName="RespondentAnswerId" />
+                <ScalarProperty Name="RespondentAnswerValue" ColumnName="RespondentAnswerValue" />
+                <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+                <ScalarProperty Name="RespondentId" ColumnName="RespondentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sections">
+            <EntityTypeMapping TypeName="SurveyManagementModel.Section">
+              <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+                <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyPages">
+            <EntityTypeMapping TypeName="SurveyManagementModel.SurveyPage">
+              <MappingFragment StoreEntitySet="SurveyPage">
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="PageName" ColumnName="PageName" />
+                <ScalarProperty Name="SequenceNumber" ColumnName="SequenceNumber" />
+                <ScalarProperty Name="SectionId" ColumnName="SectionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyRespondents">
+            <EntityTypeMapping TypeName="SurveyManagementModel.SurveyRespondent">
+              <MappingFragment StoreEntitySet="SurveyRespondent">
+                <ScalarProperty Name="RespondentId" ColumnName="RespondentId" />
+                <ScalarProperty Name="RespondentName" ColumnName="RespondentName" />
+                <ScalarProperty Name="RespondentAge" ColumnName="RespondentAge" />
+                <ScalarProperty Name="RespodentEmail" ColumnName="RespodentEmail" />
+                <ScalarProperty Name="RespondentContact" ColumnName="RespondentContact" />
+                <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInfoes">
+            <EntityTypeMapping TypeName="SurveyManagementModel.UserInfo">
+              <MappingFragment StoreEntitySet="UserInfo">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LoginPassword" ColumnName="LoginPassword" />
+                <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+                <ScalarProperty Name="Cnic" ColumnName="Cnic" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserAddress" ColumnName="UserAddress" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="Organization" ColumnName="Organization" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="SurveyManagementModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="UserTypeName" ColumnName="UserTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

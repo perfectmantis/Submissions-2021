@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "PreviewQuestionnaire";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+
+            OSMS.Models.callAPI db = new OSMS.Models.callAPI();
+            string QuestionnaireID = Request.QueryString["QuestionnaireID"].ToString();
+            string  questionnaireURL = "api/QuestionnaireManagement/Questionnaire/GetQuestionnaireByQuestionnaireId?QuestionnaireId="; 
+            var questionnaireData = db.GetEntityById<OSMS.Areas.QuestionnaireManagement.Models.QuestionnaireModelClass>(questionnaireURL, QuestionnaireID);
+
+            string sectionURL = "api/QuestionnaireManagement/Questionnaire/GetAllSectionByQuestionnaireId?QuestionnaireId="; 
+            var sectionData = db.GetEntityListById<OSMS.Areas.QuestionnaireManagement.Models.SectionModelClass>(sectionURL, Convert.ToInt64(QuestionnaireID));
+}
+@if (questionnaireData != null)
+{
+    <h2>@questionnaireData.QuestionnaireDesc</h2>
+    if (sectionData.Count() > 0)
+    {
+        foreach (var SectionItem in sectionData)
+        {
+            <h3>@SectionItem.SectionName (@SectionItem.SequenceNumber of @sectionData.Count())</h3>
+
+            string PageURL = "api/QuestionnaireManagement/Questionnaire/GetPagesBySectionId?SectionId=";
+            var PageData = db.GetEntityListById<OSMS.Areas.QuestionnaireManagement.Models.PageModelClass>(PageURL, SectionItem.SectionId);
+
+            if (PageData.Count() > 0)
+            {
+                foreach (var Pageitem in PageData)
+                {
+                    <h4>@Pageitem.PageName (@Pageitem.SequenceNumber of @PageData.Count())</h4>
+
+                    string QuestionURL = "api/QuestionnaireManagement/Questionnaire/GetQuestionsByPageId?PageId="; //ttp://localhost:11781/QuestionnaireManagement/Questionnaire/GetAllSectionByQuestionnaireId?QuestionnaireID=7
+                    var QuestionData = db.GetEntityListById<OSMS.Areas.QuestionnaireManagement.Models.QuestionModelClass>(QuestionURL, Pageitem.PageId);
+
+                    if (QuestionData.Count() > 0)
+                    {
+                        foreach (var Questionitem in QuestionData)
+                        {
+                            <p>@Questionitem.QuestionName</p>
+                            <textarea></textarea>
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
