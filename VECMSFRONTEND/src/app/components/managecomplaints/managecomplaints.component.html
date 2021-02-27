@@ -1,0 +1,147 @@
+<div class="main-cntr">
+
+    <div>
+        <h4 style="padding: 13px;padding-left: 2px;"> Manage Complaints </h4>
+    </div>
+
+    <mat-card>
+
+        <mat-card-content style="height: auto">
+
+            <mat-tab-group color="primary" (selectedTabChange)="TabChange($event)">
+
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Completed Complaints
+
+                        <div matBadge={{totalApprovedComplaint}} class="c-badge"></div>
+                    </ng-template>
+                    <div class="col-md-12" style="margin-top: 10px;">
+                        <dx-data-grid id="gridContainer" [dataSource]="ComplaintApprovedData" [remoteOperations]="false"
+                            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
+                            (onCellPrepared)="onCellPrepared($event)" style="height: 450px;width: 100%;">
+
+
+
+                            <dxo-sorting mode="multiple"></dxo-sorting>
+
+                            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                            <dxo-group-panel [visible]="true"></dxo-group-panel>
+                            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+
+                            <!-- <dxi-column caption="Complaint no1"  dataField="complaintNo"  cellTemplate="cellTemplate3" [width]="150" ></dxi-column> -->
+                            <dxi-column caption="Complaint no" dataField="complaintNo" [width]="100"></dxi-column>
+                            <dxi-column caption="Complainant Name" dataField="fullName" [width]="200"></dxi-column>
+                            <dxi-column caption="Reg Date" dataField="registrationDate" [width]="200"></dxi-column>
+                           
+                            <dxi-column caption="Completed By" dataField="completedBy" [width]="120"></dxi-column>
+                            <dxi-column caption="Status" dataField="complaintStatus" [width]="150"></dxi-column>
+                            <dxi-column caption="Action" [width]="60" [allowFiltering]="false"
+                                 [allowSorting]="false"
+                                cellTemplate="cellTemplate"></dxi-column>
+                            <div *dxTemplate="let data of 'cellTemplate'">
+                                <button mat-flat-button color="primary" class="w-100"
+                                    (click)="NavigateDetail(data)">View Details
+                                </button>
+
+                            </div>
+
+                            <!-- <div *dxTemplate="let data of 'cellTemplate3'" >
+                               
+                            {{data.row.data.fullName}} <br/> {{data.row.data.complaintNo}}
+                            </div> -->
+
+
+                        </dx-data-grid>
+                    </div>
+                </mat-tab>
+
+
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Pending Complaints
+
+                        <div matBadge={{totalPendingComplaint}} class="c-badge" matBadgeColor="accent"></div>
+                    </ng-template>
+                    <dx-data-grid id="gridContainer" [dataSource]="ComplaintPendingData" [remoteOperations]="false"
+                        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
+                        (onCellPrepared)="onCellPrepared($event)" style="height: 450px;width: 100%;">
+
+
+
+                        <dxo-sorting mode="multiple"></dxo-sorting>
+
+                        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                        <dxo-group-panel [visible]="true"></dxo-group-panel>
+                        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+
+
+                        <dxi-column caption="Complaint no" dataField="complaintNo" [width]="200"></dxi-column>
+                        <dxi-column caption="Complainant Name" dataField="fullName" [width]="200"></dxi-column>
+                        <dxi-column caption="Reg Date" dataField="registrationDate" [width]="200"></dxi-column>
+                       
+                      
+                        <dxi-column caption="Status" dataField="complaintStatus" [width]="200"></dxi-column>
+                        <dxi-column caption="Action" [width]="60" [allowFiltering]="false"
+                             [allowSorting]="false" cellTemplate="cellTemplate">
+                        </dxi-column>
+                        <div *dxTemplate="let data of 'cellTemplate'">
+                            <button mat-flat-button color="primary" class="w-100" (click)="NavigateDetail(data)">View
+                                Details
+                            </button>
+
+                        </div>
+                    </dx-data-grid>
+                </mat-tab>
+
+
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        Rejected Complaints
+
+                        <div matBadge={{totalRejectedComplaint}} class="c-badge" matBadgeColor="warn"></div>
+                    </ng-template>
+                    <dx-data-grid id="gridContainer" [dataSource]="ComplaintRejectedData" [remoteOperations]="false"
+                        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
+                        (onCellPrepared)="onCellPrepared($event)"  style="height: 450px;width: 100%;">
+
+
+
+                        <dxo-sorting mode="multiple"></dxo-sorting>
+
+                        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                        <dxo-group-panel [visible]="true"></dxo-group-panel>
+                        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+
+
+                        <dxi-column caption="Complaint no" dataField="complaintNo" [width]="100"></dxi-column>
+                        <dxi-column caption="Complainant Name" dataField="fullName" [width]="200"></dxi-column>
+                        <dxi-column caption="Reg Date" dataField="registrationDate" [width]="200"></dxi-column>
+                        <dxi-column caption="Rejected By" dataField="completedBy" [width]="120"></dxi-column>
+                        <dxi-column caption="Status" dataField="complaintStatus" [width]="150"></dxi-column>
+                        
+                        <dxi-column caption="Action" [width]="60" [allowFiltering]="false"
+                             [allowSorting]="false" cellTemplate="cellTemplate">
+                        </dxi-column>
+                        <div *dxTemplate="let data of 'cellTemplate'">
+                            <button mat-flat-button color="primary" class="w-100" (click)="NavigateDetail(data)">View
+                                Details
+                            </button>
+
+                        </div>
+                    </dx-data-grid>
+                </mat-tab>
+
+            </mat-tab-group>
+
+
+        </mat-card-content>
+    </mat-card>
+
+
+  
+
+</div>

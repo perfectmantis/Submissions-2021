@@ -1,0 +1,67 @@
+<!-- ============================================================== -->
+<!-- sidebar -->
+<!-- ============================================================== -->
+<div class="user-profile" style="display: none;  background: url(assets/images/background/user-info.jpg) no-repeat;">
+    <!-- User profile image -->
+    <div class="profile-img"> <img src="assets/images/users/profile.png" alt="user"> </div>
+    <!-- User profile text-->
+    <!-- ============================================================== -->
+    <!-- Profile - style you can find in header.scss -->
+    <!-- ============================================================== -->
+    <div class="profile-text"><a [matMenuTriggerFor]="sdprofile" class=""> ITS Solution <i
+                class="ti-angle-down font-12 m-l-5"></i></a></div>
+    <mat-menu #sdprofile="matMenu" class="mymegamenu">
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon> Settings
+        </button>
+        <button mat-menu-item>
+            <mat-icon>account_box</mat-icon> Profile
+        </button>
+        <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon> Disable notifications
+        </button>
+        <button mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon> Sign Out
+        </button>
+    </mat-menu>
+
+</div>
+
+
+<mat-nav-list appAccordion class="mat-nav-list mat-list-base" style="overflow-y: hidden;" >
+    <!-- <mat-list-item appAccordionLink *ngFor="let menuitem of menuItems.getMenuitem()" routerLinkActive="selected" 
+        group="{{menuitem.state}}"> -->
+        <mat-list-item appAccordionLink *ngFor="let menuitem of MENUITEMS" routerLinkActive="selected" 
+        group="{{menuitem.state}}">
+        <!-- <div *ngIf="menuitem.checkid == usertypeid"> -->
+            <a class="" appAccordionToggle [routerLink]="['/', menuitem.state]" *ngIf="menuitem.type === 'link'">
+               
+                <mat-icon>{{ menuitem.icon }}</mat-icon>
+                <!-- <ng-template #thencondition>
+                <div *ngIf="menuitem.icontype == 'mat'; then :thencondition; else :elsecase"> </div>     
+                </ng-template>
+
+                <ng-template #elsecase>
+                    <img src="assets/images/list.png">
+                </ng-template> -->
+                <span>{{ menuitem.name }}</span>
+                <span fxFlex></span>
+                <span class="label label-{{ badge.type }}" *ngFor="let badge of menuitem.badge">{{ badge.value }}</span>
+            </a>
+        <!-- </div> -->
+
+    </mat-list-item>
+
+
+
+</mat-nav-list>
+
+
+
+
+
+<!-- ///tedt
+ -->
+
+
+<!-- page-wrapper -->

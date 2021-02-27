@@ -1,0 +1,112 @@
+<div class="main-cntr">
+
+    <div>
+        <h4 style="padding: 13px;padding-left: 2px;"> {{'Complaint Details'}} </h4>
+    </div>
+
+
+    <mat-card >
+
+        <mat-card-content >
+            <form [formGroup]="Complaintdetail" class="row">
+
+                <mat-form-field class="col-md-4">
+                    <input matInput placeholder="Complaint Number" formControlName="complaintNo" type=text readonly>
+                </mat-form-field>
+
+
+                <mat-form-field class="col-md-4">
+                    <input matInput placeholder="Registration Date" formControlName="registrationDate" type=text
+                        readonly>
+                </mat-form-field>
+
+
+                <mat-form-field class="col-md-4">
+                    <input matInput placeholder="Category" formControlName="categoryName" type=text readonly>
+                </mat-form-field>
+
+                <div class="col-md-12">
+                    <hr>
+                </div>
+                <mat-form-field class="col-md-4">
+                    <input matInput placeholder="Sub Category" formControlName="subCategoryName" type=text readonly>
+                </mat-form-field>
+
+
+                <mat-form-field class="col-md-4">
+                    <input matInput placeholder="Complaint Type" formControlName="complaintType" type=text readonly>
+                </mat-form-field>
+
+
+                <mat-form-field class="col-md-4">
+                    <input matInput placeholder="State" formControlName="stateName" type=text readonly>
+                </mat-form-field>
+
+                <div class="col-md-12">
+                    <hr>
+                </div>
+
+                <mat-form-field class="col-md-4">
+                    <input matInput placeholder="Nature of Complaint" formControlName="complaintNature" type=text
+                        readonly>
+                </mat-form-field>
+
+
+                <mat-form-field class="col-md-4">
+                    <input [ngStyle]="CheckStatus()" matInput placeholder="Final Status"
+                        formControlName="complaintStatus" type=text readonly>
+                </mat-form-field>
+
+
+                <div class="col-md-3">
+                    <!-- <label>File : </label>
+                    <a style="cursor:pointer;color:blue" (click)="DownloadFile()">{{complaintDocName}} </a> -->
+                    <!-- <label> View File : </label> -->
+                    <button [disabled]="!complaintDocName" mat-raised-button (click)="DownloadFile()" color="primary"
+                        style="
+                    float: right;
+                    border-radius: 4em;font-weight: bold;width: 100%;
+               outline: none;">
+                        <mat-icon style="color:white;">vertical_align_bottom</mat-icon>
+                        DOWNLOAD FILE
+                    </button>
+                </div>
+
+                <div class="col-md-12">
+                    <hr>
+                </div>
+
+                <mat-form-field class="col-md-6">
+                    <textarea style="height: 150px;" matInput placeholder="Complaint Details"
+                        formControlName="complaintWord" type=text readonly></textarea>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6">
+                    <textarea style="height: 150px;" matInput placeholder="Completed/Rejected Remarks"
+                        formControlName="complaintRemarks" type=text readonly></textarea>
+                </mat-form-field>
+
+
+
+                
+
+
+
+
+
+
+
+                <!-- <button type="button" class="btn btn-primary" (click)="printDiv('content')">Download</button> -->
+
+
+
+
+
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+
+
+</div>

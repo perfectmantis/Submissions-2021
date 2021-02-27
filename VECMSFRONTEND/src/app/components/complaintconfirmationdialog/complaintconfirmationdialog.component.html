@@ -1,0 +1,172 @@
+<!-- <div>
+    <h4 style="padding: 13px;padding-left: 2px;"> {{header}} </h4>
+</div>
+
+
+
+<div class=" col-md-12" style="width: 600px;">
+
+    <form [formGroup]="ComplaintConfirmForm">
+
+
+        <mat-form-field class="col-md-12">
+            <input required matInput placeholder="Complaint No" formControlName="complaintNo" type="text" readonly>
+
+        </mat-form-field>
+
+        <mat-form-field class="col-md-12">
+            <mat-select required placeholder="Status" formControlName="complaintStatusId" type="text">
+                <mat-option *ngFor="let item of ConfirmStatusData" [value]="item.id">{{item.name}}
+
+                </mat-option>
+
+            </mat-select>
+            <mat-error *ngIf="ComplaintConfirmForm.controls['complaintStatusId'].hasError('required')">
+                This is required
+                <strong>Field</strong>
+            </mat-error>
+        </mat-form-field>
+        <label style="margin-left: 15px;">Remarks</label>
+        <div class="col-md-12">
+
+            <textarea class="col-md-12" rows="10" cols="50" class="formcontrol" formControlName="complaintRemarks"></textarea>
+        </div>
+
+
+
+
+
+    </form>
+
+    <div class="ml-auto float-right" style="margin-top: 8px">
+        <button style="margin-right: 5px;width:100px" mat-raised-button color="warn" (click)="Close()">
+            <mat-icon>clear</mat-icon>
+
+            <span>Close</span>
+        </button>
+        <button style="margin-right: 5px;width:100px" mat-raised-button color="primary"
+            (click)="SubmitUserRegistration()">
+            <mat-icon>save</mat-icon>
+
+            <span>Submit</span>
+        </button>
+    </div>
+</div> -->
+
+<h2 mat-dialog-title>Complaint Action</h2>
+<mat-dialog-content>
+    <ng-template #target>
+        <div class=" col-md-12" style="width: 600px;">
+
+            <form [formGroup]="ComplaintConfirmForm">
+
+
+                <mat-form-field class="col-md-12">
+                    <input required matInput placeholder="Complaint No" formControlName="complaintNo" type="text"
+                        readonly>
+
+                </mat-form-field>
+
+                <mat-form-field class="col-md-12">
+                    <mat-select required placeholder="Status" formControlName="complaintStatusId" type="text">
+                        <mat-option *ngFor="let item of ConfirmStatusData" [value]="item.id">{{item.name}}
+
+                        </mat-option>
+
+                    </mat-select>
+                    <mat-error *ngIf="ComplaintConfirmForm.controls['complaintStatusId'].hasError('required')">
+                        This is required
+                        <strong>Field</strong>
+                    </mat-error>
+                </mat-form-field>
+                <label style="margin-left: 15px;">Remarks</label>
+                <div class="col-md-12">
+
+                    <textarea class="col-md-12" rows="10" cols="50" class="formcontrol"
+                        formControlName="complaintRemarks"></textarea>
+                </div>
+
+
+
+
+
+            </form>
+
+            <!-- <div class="ml-auto float-right" style="margin-top: 8px">
+                <button style="margin-right: 5px;width:100px" mat-raised-button color="warn" (click)="Close()">
+                    <mat-icon>clear</mat-icon>
+        
+                    <span>Close</span>
+                </button>
+                <button style="margin-right: 5px;width:100px" mat-raised-button color="primary"
+                    (click)="SubmitUserRegistration()">
+                    <mat-icon>save</mat-icon>
+        
+                    <span>Submit</span>
+                </button>
+            </div> -->
+        </div>
+    </ng-template>
+    <div class=" col-md-12" style="width: 600px;">
+
+        <form [formGroup]="ComplaintConfirmForm">
+
+
+            <mat-form-field class="col-md-12">
+                <input required matInput placeholder="Complaint No" formControlName="complaintNo" type="text"
+                    readonly>
+
+            </mat-form-field>
+
+            <mat-form-field class="col-md-12">
+                <mat-select required placeholder="Status" formControlName="complaintStatusId" type="text">
+                    <mat-option *ngFor="let item of ConfirmStatusData" [value]="item.id">{{item.name}}
+
+                    </mat-option>
+
+                </mat-select>
+                <mat-error *ngIf="ComplaintConfirmForm.controls['complaintStatusId'].hasError('required')">
+                    This is required
+                    <strong>Field</strong>
+                </mat-error>
+            </mat-form-field>
+            <label style="margin-left: 15px;">Remarks</label>
+            <div class="col-md-12">
+
+                <textarea style="width: 100%;" rows="10" cols="50" class="formcontrol"
+                    formControlName="complaintRemarks"></textarea>
+            </div>
+
+
+
+
+
+        </form>
+
+        <div class="ml-auto float-right" style="margin-top: 8px">
+            <button style="margin-right: 5px;width:100px" mat-raised-button color="warn" (click)="Close()">
+                <mat-icon>clear</mat-icon>
+    
+                <span>Close</span>
+            </button>
+            <button style="margin-right: 5px;width:100px" mat-raised-button color="primary"
+                (click)="SubmitRegisterComplaint()">
+                <mat-icon>save</mat-icon>
+    
+                <span>Submit</span>
+            </button>
+        </div>
+    </div>
+</mat-dialog-content>
+<!-- <mat-dialog-actions class="ml-aut">
+    <button style="margin-right: 5px;width:100px" mat-raised-button color="warn" (click)="Close()">
+        <mat-icon>clear</mat-icon>
+
+        <span>Close</span>
+    </button>
+    <button style="margin-right: 5px;width:100px" mat-raised-button color="primary" (click)="SubmitUserRegistration()">
+        <mat-icon>save</mat-icon>
+
+        <span>Submit</span>
+    </button> -->
+<!-- </mat-dialog-actions> -->

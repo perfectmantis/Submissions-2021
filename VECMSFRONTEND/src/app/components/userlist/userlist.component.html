@@ -1,0 +1,67 @@
+<div class="main-cntr">
+
+
+    <div>
+        <h4 style="padding: 13px;padding-left: 2px;"> {{'Users'}} </h4>
+    </div>
+
+    <mat-card>
+        <mat-card-content style="height: 500px;">
+
+            <!-- <div class="float-right" > -->
+            <div class="row  bg-light" style="border-radius: 8px;">
+                <div class="col-sm-8">
+                    <h3 style=" font-family: 'Open Sans', sans-serif;;">User <b>Management</b></h3>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" style="margin-right: 10px;margin-top: 4px;" class="btn btn-info add-new"
+                        (click)="AddNewUser()"><i class="fa fa-plus"></i> Add New</button>
+                </div>
+            </div>
+
+
+            <div class="col-md-12" style="margin-top: 10px;">
+                <dx-data-grid id="gridContainer" [dataSource]="UserData" [remoteOperations]="false"
+                    [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
+                     style="height: 400px;width: 100%;">
+
+
+
+                    <dxo-sorting mode="multiple"></dxo-sorting>
+
+                    <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                    <dxo-group-panel [visible]="true"></dxo-group-panel>
+                    <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+
+
+                    <dxi-column caption="User Name" dataField="fullName"></dxi-column>
+                    <dxi-column caption="Email" dataField="email"></dxi-column>
+                    <dxi-column caption="Contact No" dataField="contactNo"></dxi-column>
+                    <dxi-column caption="User Type" dataField="userType"></dxi-column>
+                    <dxi-column caption="State" dataField="stateName"></dxi-column>
+                    <dxi-column caption="Approved" dataField="isApproved"></dxi-column>
+                    <!-- <dxi-column caption="User Type" dataField="userType" ></dxi-column> -->
+                    <dxi-column caption="Actions" [width]="100" [allowFiltering]="false"
+                         [allowSorting]="false" cellTemplate="cellTemplate">
+                    </dxi-column>
+                    <div *dxTemplate="let data of 'cellTemplate'">
+
+                        <a class="edit" title="Edit" style="margin-right: 5px;cursor: pointer;" data-toggle="tooltip"><i
+                                class="material-icons" (click)="EditUser(data)"></i></a>
+                        <a class="delete" title="Delete" data-toggle="tooltip" style="cursor: pointer;"
+                            (click)="DeleteUserRegistrationData(data)"><i class="material-icons"></i></a>
+
+                    </div>
+                </dx-data-grid>
+            </div>
+
+            <!-- <mat-tab-group [color]="accent" [backgroundColor]="primary">
+                <mat-tab label="First"> Content 1 </mat-tab>
+                <mat-tab label="Second"> Content 2 </mat-tab>
+                <mat-tab label="Third"> Content 3 </mat-tab>
+              </mat-tab-group> -->
+            
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files
+.mat-drawer-inner-container
+{
+    overflow-y: hidden !important;
+} */
+
+
+.dx-datagrid-headers {
+    background-color: #0480a5;
+    color: white;
+    }

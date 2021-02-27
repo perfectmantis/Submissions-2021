@@ -1,0 +1,65 @@
+<div class="main-cntr">
+
+
+  <div>
+    <h4 style="padding: 13px;padding-left: 2px;"> {{'Category'}} </h4>
+</div>
+  
+    <mat-card>
+      <mat-card-content style="height: 170px;">
+        <form [formGroup]="Category">
+
+          <mat-form-field class="col-md-4">
+            <input required matInput placeholder="Category Name" formControlName="categoryName" type="text">
+            <mat-error *ngIf="Category.controls['categoryName'].hasError('required')">
+              This is required
+              <strong>Field</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="col-md-6">
+            <textarea matInput placeholder="Description" formControlName="description" type="text"></textarea>
+          </mat-form-field>
+
+
+          <div class="float-right" style="margin-top: 10px;">
+
+            <button style="margin-right: 5px;width:100px" mat-raised-button color="primary" (click)="Addnew()">
+              <mat-icon>note_add</mat-icon> New
+            </button>
+            <button style="margin-right: 5px;width:100px" mat-raised-button color="primary" (click)="SubmitCategory()">
+              <mat-icon>save</mat-icon> <span *ngIf="Category.get('id').value"> Update</span> <span *ngIf="!Category.get('id').value">
+                Save</span>
+            </button>
+            <button style="width:100px;" mat-raised-button type="button" aria-label="Close" color="warn"
+              (click)="DeleteStateData()">
+              <mat-icon>cancel</mat-icon> Delete
+            </button>
+
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <div class="col-md-12">
+      <dx-data-grid id="gridContainer" [dataSource]="CategoryData" [remoteOperations]="false"
+        [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
+        [focusedRowEnabled]="true" keyExpr="id" (onRowClick)="SelectedRow($event.data)" style="height: 450px;width: 100%;">
+
+
+
+        <dxo-sorting mode="multiple"></dxo-sorting>
+
+        <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+
+
+        <dxi-column caption="Category" dataField="categoryName" [width]="300"></dxi-column>
+        <dxi-column caption="Description" dataField="description" [width]="300"></dxi-column>
+
+      </dx-data-grid>
+    </div>
+  </div>

@@ -1,0 +1,24 @@
+<mat-card class="card1">
+    <mat-card-content class="content">
+        <div>
+            <p class="header">Alert</p>
+        </div>
+        <div class="float-right icon">
+            <mat-icon class="" (click)="Close('no')">close</mat-icon>
+        </div>
+        <h5  style="
+        margin-top: 20px;
+        margin-left: -15px;
+        font-weight: bolder;
+        color:black !important">
+       Are You sure You want to delete this?</h5>
+    </mat-card-content>
+
+    <!-- <div> -->
+      
+    <!-- </div> -->
+    <mat-card-actions class="float-right">
+        <button class="mt-2" mat-button (click)="Close('yes')">Yes</button>
+        <button mat-button (click)="Close('no')">No</button>
+    </mat-card-actions>
+</mat-card>

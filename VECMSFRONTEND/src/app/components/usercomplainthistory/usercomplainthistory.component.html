@@ -1,0 +1,41 @@
+<div class="main-cntr">
+
+
+    <div>
+        <h4 style="padding: 13px;padding-left: 2px;"> {{'Your Complaint Info'}} </h4>
+    </div>
+
+    <mat-card>
+        <mat-card-content style="height: 500px;">
+            <div class="col-md-12" style="margin-top: 10px;">
+                <dx-data-grid id="gridContainer" [dataSource]="ComplaintTypeData" [remoteOperations]="false" [allowColumnReordering]="true"
+                  [rowAlternationEnabled]="true" [showBorders]="true"
+                  (onCellPrepared)="onCellPrepared($event)"  style="height: 450px;width: 100%;">
+            
+            
+            
+                  <dxo-sorting mode="multiple"></dxo-sorting>
+            
+                  <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                  <dxo-group-panel [visible]="true"></dxo-group-panel>
+                  <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+            
+            
+            
+                  <dxi-column caption="Complaint no" dataField="complaintNo" [width]="200"></dxi-column>
+                  <dxi-column caption="Reg Date" dataField="registrationDate" [width]="200"></dxi-column>
+                  <dxi-column caption="Last Updation Date" dataField="modifiedDate" [width]="200"></dxi-column>
+                  <dxi-column caption="Status" dataField="complaintStatus" [width]="200"></dxi-column>
+                  <dxi-column caption="Action" [width]="60" [allowFiltering]="false"  [allowSorting]="false"
+                  cellTemplate="cellTemplate"></dxi-column>
+                  <div *dxTemplate="let data of 'cellTemplate'">
+                    <button mat-flat-button color="primary"  class="w-100"
+                   (click)="NavigateDetail(data)" >View Details
+                    </button>
+                   
+                  </div>
+                </dx-data-grid>
+              </div>
+        </mat-card-content>
+    </mat-card>
+</div>
