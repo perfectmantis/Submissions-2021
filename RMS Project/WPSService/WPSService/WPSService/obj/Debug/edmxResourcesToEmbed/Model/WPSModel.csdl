@@ -1,0 +1,2009 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WPSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WPSEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_GetPAF" ReturnType="Collection(WPSModel.sp_GetPAF_Result)">
+      <Parameter Name="currentDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getPAFSummaryByDate" ReturnType="Collection(WPSModel.sp_getPAFSummaryByDate_Result)">
+      <Parameter Name="currentDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getPayrollAmountByDate" ReturnType="Collection(WPSModel.sp_getPayrollAmountByDate_Result)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="PayrollDate" Mode="In" Type="String" />
+      <Parameter Name="PersonelNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetPayrollDates" ReturnType="Collection(String)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getPayrollProcessEmp" ReturnType="Collection(String)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="payrollDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_InsertRFRDetail" ReturnType="Collection(WPSModel.sp_InsertRFRDetail_Result)">
+      <Parameter Name="RefundDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="EstbId" Mode="In" Type="String" />
+      <Parameter Name="RoutingCode" Mode="In" Type="String" />
+      <Parameter Name="EmployeeNo" Mode="In" Type="String" />
+      <Parameter Name="AmountToRefund" Mode="In" Type="Decimal" />
+      <Parameter Name="Pan" Mode="In" Type="String" />
+      <Parameter Name="CreateBy" Mode="In" Type="Int32" />
+      <Parameter Name="CreateOn" Mode="In" Type="DateTime" />
+      <Parameter Name="Reason" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RptGetUserActivityLog" ReturnType="Collection(WPSModel.sp_RptGetUserActivityLog_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UserId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RptCompanyCreation" ReturnType="Collection(WPSModel.sp_RptCompanyCreation_Result)">
+      <Parameter Name="Fromdate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_RptEmpInfo" ReturnType="Collection(WPSModel.Sp_RptEmpInfo_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="EstId" Mode="In" Type="String" />
+      <Parameter Name="PersonalNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_RptRFRId" ReturnType="Collection(WPSModel.Sp_RptRFRId_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_RptSalesAccount" ReturnType="Collection(WPSModel.Sp_RptSalesAccount_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_SifMstDtl" ReturnType="Collection(WPSModel.Sp_SifMstDtl_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="EstId" Mode="In" Type="String" />
+      <Parameter Name="PersonalNo" Mode="In" Type="String" />
+      <Parameter Name="ProcessType" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GenerateRFA" />
+    <EntitySet Name="SMAM_ReviewSiteTypes_ST" EntityType="WPSModel.SMAM_ReviewSiteTypes_ST" />
+    <EntitySet Name="SMIM_ReviewAccounts_ST" EntityType="WPSModel.SMIM_ReviewAccounts_ST" />
+    <EntitySet Name="SMIM_ReviewAccountSite_ST" EntityType="WPSModel.SMIM_ReviewAccountSite_ST" />
+    <EntitySet Name="SMSA_CompanyMst_ST" EntityType="WPSModel.SMSA_CompanyMst_ST" />
+    <EntitySet Name="SMSA_Organization_ST" EntityType="WPSModel.SMSA_Organization_ST" />
+    <EntitySet Name="SRCC_ReviewStatusTypes_ST" EntityType="WPSModel.SRCC_ReviewStatusTypes_ST" />
+    <EntitySet Name="SRCC_SalesAccount_ST" EntityType="WPSModel.SRCC_SalesAccount_ST" />
+    <AssociationSet Name="FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSiteTypes_ST" Association="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSiteTypes_ST">
+      <End Role="SMAM_ReviewSiteTypes_ST" EntitySet="SMAM_ReviewSiteTypes_ST" />
+      <End Role="SMIM_ReviewAccountSite_ST" EntitySet="SMIM_ReviewAccountSite_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_ReviewAccounts_ST_SMSA_CompanyMst_ST" Association="WPSModel.FK_SMIM_ReviewAccounts_ST_SMSA_CompanyMst_ST">
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+      <End Role="SMIM_ReviewAccounts_ST" EntitySet="SMIM_ReviewAccounts_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_ReviewAccountSite_ST_SMIM_ReviewAccounts_ST" Association="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMIM_ReviewAccounts_ST">
+      <End Role="SMIM_ReviewAccounts_ST" EntitySet="SMIM_ReviewAccounts_ST" />
+      <End Role="SMIM_ReviewAccountSite_ST" EntitySet="SMIM_ReviewAccountSite_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_CompanyMst_SMSA_Organization" Association="WPSModel.FK_SMSA_CompanyMst_SMSA_Organization">
+      <End Role="SMSA_Organization_ST" EntitySet="SMSA_Organization_ST" />
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_CompanyMst_SRCC_SalesAccount" Association="WPSModel.FK_SMSA_CompanyMst_SRCC_SalesAccount">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRMS_Organization_ST_SRCC_SalesAccount_ST" Association="WPSModel.FK_HRMS_Organization_ST_SRCC_SalesAccount_ST">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SMSA_Organization_ST" EntitySet="SMSA_Organization_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRCC_SalesAccount_SRCC_SalesAccount" Association="WPSModel.FK_SRCC_SalesAccount_SRCC_SalesAccount">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SRCC_SalesAccount_ST1" EntitySet="SRCC_SalesAccount_ST" />
+    </AssociationSet>
+    <EntitySet Name="SMIM_AccountType_ST" EntityType="WPSModel.SMIM_AccountType_ST" />
+    <EntitySet Name="SMSA_Logs_HI" EntityType="WPSModel.SMSA_Logs_HI" />
+    <AssociationSet Name="FK_SMIM_ReviewAccounts_ST_SMIM_AccountType_ST" Association="WPSModel.FK_SMIM_ReviewAccounts_ST_SMIM_AccountType_ST">
+      <End Role="SMIM_AccountType_ST" EntitySet="SMIM_AccountType_ST" />
+      <End Role="SMIM_ReviewAccounts_ST" EntitySet="SMIM_ReviewAccounts_ST" />
+    </AssociationSet>
+    <EntitySet Name="aspnet_Applications" EntityType="WPSModel.aspnet_Applications" />
+    <EntitySet Name="aspnet_Membership" EntityType="WPSModel.aspnet_Membership" />
+    <EntitySet Name="aspnet_Paths" EntityType="WPSModel.aspnet_Paths" />
+    <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="WPSModel.aspnet_PersonalizationAllUsers" />
+    <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="WPSModel.aspnet_PersonalizationPerUser" />
+    <EntitySet Name="aspnet_Profile" EntityType="WPSModel.aspnet_Profile" />
+    <EntitySet Name="aspnet_Roles" EntityType="WPSModel.aspnet_Roles" />
+    <EntitySet Name="aspnet_SchemaVersions" EntityType="WPSModel.aspnet_SchemaVersions" />
+    <EntitySet Name="aspnet_Users" EntityType="WPSModel.aspnet_Users" />
+    <EntitySet Name="aspnet_WebEvent_Events" EntityType="WPSModel.aspnet_WebEvent_Events" />
+    <EntitySet Name="SMAM_Menu_ST" EntityType="WPSModel.SMAM_Menu_ST" />
+    <EntitySet Name="SMAM_SystemService_ST" EntityType="WPSModel.SMAM_SystemService_ST" />
+    <EntitySet Name="SMIM_UserAccess_ST" EntityType="WPSModel.SMIM_UserAccess_ST" />
+    <EntitySet Name="SMIM_UserMst_ST" EntityType="WPSModel.SMIM_UserMst_ST" />
+    <EntitySet Name="SMIM_UserType_ST" EntityType="WPSModel.SMIM_UserType_ST" />
+    <EntitySet Name="SMIM_UserTypeAccess_ST" EntityType="WPSModel.SMIM_UserTypeAccess_ST" />
+    <EntitySet Name="SMSA_Areas_ST" EntityType="WPSModel.SMSA_Areas_ST" />
+    <EntitySet Name="SMSA_City_ST" EntityType="WPSModel.SMSA_City_ST" />
+    <EntitySet Name="SMSA_Country_ST" EntityType="WPSModel.SMSA_Country_ST" />
+    <EntitySet Name="SMSA_Roles_ST" EntityType="WPSModel.SMSA_Roles_ST" />
+    <EntitySet Name="SMSA_States_ST" EntityType="WPSModel.SMSA_States_ST" />
+    <EntitySet Name="SRCC_GooglePlus_TR" EntityType="WPSModel.SRCC_GooglePlus_TR" />
+    <EntitySet Name="SRCC_GooglePlusReviews_TR" EntityType="WPSModel.SRCC_GooglePlusReviews_TR" />
+    <EntitySet Name="Vw_AccountToScrape" EntityType="WPSModel.Vw_AccountToScrape" />
+    <AssociationSet Name="FK__aspnet_Me__Appli__45F365D3" Association="WPSModel.FK__aspnet_Me__Appli__45F365D3">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pa__Appli__47DBAE45" Association="WPSModel.FK__aspnet_Pa__Appli__47DBAE45">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Ro__Appli__4CA06362" Association="WPSModel.FK__aspnet_Ro__Appli__4CA06362">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Us__Appli__4D94879B" Association="WPSModel.FK__aspnet_Us__Appli__4D94879B">
+      <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Me__UserI__46E78A0C" Association="WPSModel.FK__aspnet_Me__UserI__46E78A0C">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__PathI__48CFD27E" Association="WPSModel.FK__aspnet_Pe__PathI__48CFD27E">
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+      <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__PathI__49C3F6B7" Association="WPSModel.FK__aspnet_Pe__PathI__49C3F6B7">
+      <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+      <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pe__UserI__4AB81AF0" Association="WPSModel.FK__aspnet_Pe__UserI__4AB81AF0">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__aspnet_Pr__UserI__4BAC3F29" Association="WPSModel.FK__aspnet_Pr__UserI__4BAC3F29">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_UserTypeAccess_ST_aspnet_Roles" Association="WPSModel.FK_SMIM_UserTypeAccess_ST_aspnet_Roles">
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+      <End Role="SMIM_UserTypeAccess_ST" EntitySet="SMIM_UserTypeAccess_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_Roles_ST_aspnet_Roles" Association="WPSModel.FK_SMSA_Roles_ST_aspnet_Roles">
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+      <End Role="SMSA_Roles_ST" EntitySet="SMSA_Roles_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRCC_GooglePlus_SMIM_ReviewAccountSite" Association="WPSModel.FK_SRCC_GooglePlus_SMIM_ReviewAccountSite">
+      <End Role="SMIM_ReviewAccountSite_ST" EntitySet="SMIM_ReviewAccountSite_ST" />
+      <End Role="SRCC_GooglePlus_TR" EntitySet="SRCC_GooglePlus_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_UserAcc_UserMst_UserId" Association="WPSModel.FK_SMIM_UserAcc_UserMst_UserId">
+      <End Role="SMIM_UserMst_ST" EntitySet="SMIM_UserMst_ST" />
+      <End Role="SMIM_UserAccess_ST" EntitySet="SMIM_UserAccess_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_UserAcc_UserType_UserTypeId" Association="WPSModel.FK_SMIM_UserAcc_UserType_UserTypeId">
+      <End Role="SMIM_UserType_ST" EntitySet="SMIM_UserType_ST" />
+      <End Role="SMIM_UserAccess_ST" EntitySet="SMIM_UserAccess_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_UserMst_ST_SMIM_UserType_ST" Association="WPSModel.FK_SMIM_UserMst_ST_SMIM_UserType_ST">
+      <End Role="SMIM_UserType_ST" EntitySet="SMIM_UserType_ST" />
+      <End Role="SMIM_UserMst_ST" EntitySet="SMIM_UserMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_UserMst_ST_SMSA_CompanyMst_ST" Association="WPSModel.FK_SMIM_UserMst_ST_SMSA_CompanyMst_ST">
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+      <End Role="SMIM_UserMst_ST" EntitySet="SMIM_UserMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_UserMst_ST_SMSA_Organization_ST" Association="WPSModel.FK_SMIM_UserMst_ST_SMSA_Organization_ST">
+      <End Role="SMSA_Organization_ST" EntitySet="SMSA_Organization_ST" />
+      <End Role="SMIM_UserMst_ST" EntitySet="SMIM_UserMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_UserMst_ST_SRCC_SalesAccount_ST" Association="WPSModel.FK_SMIM_UserMst_ST_SRCC_SalesAccount_ST">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SMIM_UserMst_ST" EntitySet="SMIM_UserMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMIM_UserTypeAccess_UserType" Association="WPSModel.FK_SMIM_UserTypeAccess_UserType">
+      <End Role="SMIM_UserType_ST" EntitySet="SMIM_UserType_ST" />
+      <End Role="SMIM_UserTypeAccess_ST" EntitySet="SMIM_UserTypeAccess_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_Areas_ST_SMSA_Country_ST" Association="WPSModel.FK_SMSA_Areas_ST_SMSA_Country_ST">
+      <End Role="SMSA_Country_ST" EntitySet="SMSA_Country_ST" />
+      <End Role="SMSA_Areas_ST" EntitySet="SMSA_Areas_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_Areas_ST_SMSA_States_ST" Association="WPSModel.FK_SMSA_Areas_ST_SMSA_States_ST">
+      <End Role="SMSA_States_ST" EntitySet="SMSA_States_ST" />
+      <End Role="SMSA_Areas_ST" EntitySet="SMSA_Areas_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_City_ST_SMSA_Area_ST" Association="WPSModel.FK_SMSA_City_ST_SMSA_Area_ST">
+      <End Role="SMSA_City_ST" EntitySet="SMSA_City_ST" />
+      <End Role="SMSA_Areas_ST" EntitySet="SMSA_Areas_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_City_ST_SMSA_Areas_ST" Association="WPSModel.FK_SMSA_City_ST_SMSA_Areas_ST">
+      <End Role="SMSA_City_ST" EntitySet="SMSA_City_ST" />
+      <End Role="SMSA_Areas_ST" EntitySet="SMSA_Areas_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_City_ST_SMSA_States_ST" Association="WPSModel.FK_SMSA_City_ST_SMSA_States_ST">
+      <End Role="SMSA_States_ST" EntitySet="SMSA_States_ST" />
+      <End Role="SMSA_City_ST" EntitySet="SMSA_City_ST" />
+    </AssociationSet>
+    <AssociationSet Name="Relationship13" Association="WPSModel.Relationship13">
+      <End Role="SMSA_Country_ST" EntitySet="SMSA_Country_ST" />
+      <End Role="SMSA_City_ST" EntitySet="SMSA_City_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_Country_SMSA_States" Association="WPSModel.FK_SMSA_Country_SMSA_States">
+      <End Role="SMSA_Country_ST" EntitySet="SMSA_Country_ST" />
+      <End Role="SMSA_States_ST" EntitySet="SMSA_States_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRCC_GooglePlusReviews_GooglePlus" Association="WPSModel.FK_SRCC_GooglePlusReviews_GooglePlus">
+      <End Role="SRCC_GooglePlus_TR" EntitySet="SRCC_GooglePlus_TR" />
+      <End Role="SRCC_GooglePlusReviews_TR" EntitySet="SRCC_GooglePlusReviews_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRCC_GooglePlusReviews_SRCC_ReviewStatusTypes" Association="WPSModel.FK_SRCC_GooglePlusReviews_SRCC_ReviewStatusTypes">
+      <End Role="SRCC_ReviewStatusTypes_ST" EntitySet="SRCC_ReviewStatusTypes_ST" />
+      <End Role="SRCC_GooglePlusReviews_TR" EntitySet="SRCC_GooglePlusReviews_TR" />
+    </AssociationSet>
+    <AssociationSet Name="aspnet_UsersInRoles" Association="WPSModel.aspnet_UsersInRoles">
+      <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+    </AssociationSet>
+    <FunctionImport Name="AddGooglePlusReviews" />
+    <FunctionImport Name="AddYelpReviews" />
+    <FunctionImport Name="aspnet_AnyDataInTables" ReturnType="Collection(String)">
+      <Parameter Name="TablesToCheck" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Applications_CreateApplication">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ApplicationId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_CheckSchemaVersion">
+      <Parameter Name="Feature" Mode="In" Type="String" />
+      <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_ChangePasswordQuestionAndAnswer">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="NewPasswordQuestion" Mode="In" Type="String" />
+      <Parameter Name="NewPasswordAnswer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_CreateUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="PasswordQuestion" Mode="In" Type="String" />
+      <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+      <Parameter Name="IsApproved" Mode="In" Type="Boolean" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="CreateDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UniqueEmail" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+      <Parameter Name="UserId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_FindUsersByEmail">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="EmailToMatch" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_FindUsersByName">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetAllUsers">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetNumberOfUsersOnline">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="MinutesSinceLastInActive" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetPassword" ReturnType="Collection(WPSModel.aspnet_Membership_GetPassword_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetPasswordWithFormat" ReturnType="Collection(WPSModel.aspnet_Membership_GetPasswordWithFormat_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="UpdateLastLoginActivityDate" Mode="In" Type="Boolean" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetUserByEmail" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetUserByName" ReturnType="Collection(WPSModel.aspnet_Membership_GetUserByName_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="UpdateLastActivity" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_GetUserByUserId" ReturnType="Collection(WPSModel.aspnet_Membership_GetUserByUserId_Result)">
+      <Parameter Name="UserId" Mode="In" Type="Guid" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="UpdateLastActivity" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_ResetPassword">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="NewPassword" Mode="In" Type="String" />
+      <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAnswer" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_SetPassword">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="NewPassword" Mode="In" Type="String" />
+      <Parameter Name="PasswordSalt" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="PasswordFormat" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_UnlockUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_UpdateUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Comment" Mode="In" Type="String" />
+      <Parameter Name="IsApproved" Mode="In" Type="Boolean" />
+      <Parameter Name="LastLoginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UniqueEmail" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Membership_UpdateUserInfo">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsPasswordCorrect" Mode="In" Type="Boolean" />
+      <Parameter Name="UpdateLastLoginActivityDate" Mode="In" Type="Boolean" />
+      <Parameter Name="MaxInvalidPasswordAttempts" Mode="In" Type="Int32" />
+      <Parameter Name="PasswordAttemptWindow" Mode="In" Type="Int32" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="LastLoginDate" Mode="In" Type="DateTime" />
+      <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Paths_CreatePath">
+      <Parameter Name="ApplicationId" Mode="In" Type="Guid" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="PathId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Personalization_GetApplicationId">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ApplicationId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_DeleteAllState">
+      <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_FindState">
+      <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_GetCountOfState">
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+      <Parameter Name="AllUsersScope" Mode="In" Type="Boolean" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_ResetSharedState">
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAdministration_ResetUserState">
+      <Parameter Name="Count" Mode="InOut" Type="Int32" />
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAllUsers_GetPageSettings" ReturnType="Collection(Binary)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAllUsers_ResetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationAllUsers_SetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="PageSettings" Mode="In" Type="Binary" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationPerUser_GetPageSettings" ReturnType="Collection(Binary)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationPerUser_ResetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_PersonalizationPerUser_SetPageSettings">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Path" Mode="In" Type="String" />
+      <Parameter Name="PageSettings" Mode="In" Type="Binary" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_DeleteInactiveProfiles" ReturnType="Collection(Int32)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_DeleteProfiles" ReturnType="Collection(Int32)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNames" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_GetNumberOfInactiveProfiles" ReturnType="Collection(Int32)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_GetProfiles">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="ProfileAuthOptions" Mode="In" Type="Int32" />
+      <Parameter Name="PageIndex" Mode="In" Type="Int32" />
+      <Parameter Name="PageSize" Mode="In" Type="Int32" />
+      <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+      <Parameter Name="InactiveSinceDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_GetProperties" ReturnType="Collection(WPSModel.aspnet_Profile_GetProperties_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Profile_SetProperties">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="PropertyNames" Mode="In" Type="String" />
+      <Parameter Name="PropertyValuesString" Mode="In" Type="String" />
+      <Parameter Name="PropertyValuesBinary" Mode="In" Type="Binary" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsUserAnonymous" Mode="In" Type="Boolean" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_RegisterSchemaVersion">
+      <Parameter Name="Feature" Mode="In" Type="String" />
+      <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+      <Parameter Name="IsCurrentVersion" Mode="In" Type="Boolean" />
+      <Parameter Name="RemoveIncompatibleSchema" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_CreateRole">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_DeleteRole">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+      <Parameter Name="DeleteOnlyIfRoleIsEmpty" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_GetAllRoles" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Roles_RoleExists">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Setup_RemoveAllRoleMembers">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Setup_RestorePermissions">
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UnRegisterSchemaVersion">
+      <Parameter Name="Feature" Mode="In" Type="String" />
+      <Parameter Name="CompatibleSchemaVersion" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Users_CreateUser">
+      <Parameter Name="ApplicationId" Mode="In" Type="Guid" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="IsUserAnonymous" Mode="In" Type="Boolean" />
+      <Parameter Name="LastActivityDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UserId" Mode="InOut" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_Users_DeleteUser">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="TablesToDeleteFrom" Mode="In" Type="Int32" />
+      <Parameter Name="NumTablesDeletedFrom" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_AddUsersToRoles" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNames" Mode="In" Type="String" />
+      <Parameter Name="RoleNames" Mode="In" Type="String" />
+      <Parameter Name="CurrentTimeUtc" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_FindUsersInRole" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+      <Parameter Name="UserNameToMatch" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_GetRolesForUser" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_GetUsersInRoles" ReturnType="Collection(String)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_IsUserInRole">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="RoleName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_UsersInRoles_RemoveUsersFromRoles" ReturnType="Collection(WPSModel.aspnet_UsersInRoles_RemoveUsersFromRoles_Result)">
+      <Parameter Name="ApplicationName" Mode="In" Type="String" />
+      <Parameter Name="UserNames" Mode="In" Type="String" />
+      <Parameter Name="RoleNames" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="aspnet_WebEvent_LogEvent">
+      <Parameter Name="EventId" Mode="In" Type="String" />
+      <Parameter Name="EventTimeUtc" Mode="In" Type="DateTime" />
+      <Parameter Name="EventTime" Mode="In" Type="DateTime" />
+      <Parameter Name="EventType" Mode="In" Type="String" />
+      <Parameter Name="EventSequence" Mode="In" Type="Decimal" />
+      <Parameter Name="EventOccurrence" Mode="In" Type="Decimal" />
+      <Parameter Name="EventCode" Mode="In" Type="Int32" />
+      <Parameter Name="EventDetailCode" Mode="In" Type="Int32" />
+      <Parameter Name="Message" Mode="In" Type="String" />
+      <Parameter Name="ApplicationPath" Mode="In" Type="String" />
+      <Parameter Name="ApplicationVirtualPath" Mode="In" Type="String" />
+      <Parameter Name="MachineName" Mode="In" Type="String" />
+      <Parameter Name="RequestUrl" Mode="In" Type="String" />
+      <Parameter Name="ExceptionType" Mode="In" Type="String" />
+      <Parameter Name="Details" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetDashboard">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateGooglePlusAccount">
+      <Parameter Name="GooglePlusID" Mode="InOut" Type="Int32" />
+      <Parameter Name="SiteAccountID" Mode="In" Type="Int32" />
+      <Parameter Name="AccountID" Mode="In" Type="Int32" />
+      <Parameter Name="Rating" Mode="In" Type="Decimal" />
+      <Parameter Name="ReviewCount" Mode="In" Type="Int32" />
+      <Parameter Name="LogID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateYelpAccount">
+      <Parameter Name="YelpID" Mode="InOut" Type="Int32" />
+      <Parameter Name="SiteAccountID" Mode="In" Type="Int32" />
+      <Parameter Name="OverallRating" Mode="In" Type="Decimal" />
+      <Parameter Name="ReviewCount" Mode="In" Type="Int32" />
+      <Parameter Name="LogID" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ReviewsSiteInfo" ReturnType="Collection(WPSModel.Sp_ReviewsSiteInfo_Result)">
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="String" />
+      <Parameter Name="AcctountType" Mode="In" Type="String" />
+      <Parameter Name="Rating" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_ReviewsSitesList" ReturnType="Collection(WPSModel.Sp_ReviewsSitesList_Result)">
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="String" />
+      <Parameter Name="AcctountType" Mode="In" Type="String" />
+      <Parameter Name="Rating" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_ReviewsListFor_Dashboard_TR" ReturnType="Collection(WPSModel.SP_ReviewsListFor_Dashboard_TR_Result)">
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="String" />
+      <Parameter Name="AcctountType" Mode="In" Type="String" />
+      <Parameter Name="Review" Mode="In" Type="String" />
+      <Parameter Name="Rating" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reviews_Chart_Dashboard_TR" ReturnType="Collection(WPSModel.SP_Reviews_Chart_Dashboard_TR_Result)">
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="String" />
+      <Parameter Name="AcctountType" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reviews_LineChart_Dashboard_TR" ReturnType="Collection(WPSModel.SP_Reviews_LineChart_Dashboard_TR_Result)">
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="Int32" />
+      <Parameter Name="AcctountType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetCompanies_By_Organization" ReturnType="Collection(WPSModel.SP_GetCompanies_By_Organization_Result)">
+      <Parameter Name="OrgName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reviews_CompanyWise_Dashboard" ReturnType="Collection(WPSModel.SP_Reviews_CompanyWise_Dashboard_Result)">
+      <Parameter Name="CompnayID" Mode="In" Type="String" />
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="String" />
+      <Parameter Name="AcctountType" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Get_Account_By_Company" ReturnType="Collection(WPSModel.SP_Get_Account_By_Company_Result)">
+      <Parameter Name="CompanyID" Mode="In" Type="String" />
+      <Parameter Name="OrgID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Review_WordCount_Dashboard_HI" ReturnType="Collection(WPSModel.SP_Review_WordCount_Dashboard_HI_Result)">
+      <Parameter Name="WrdTypeId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WordType_Desc_PieChart_Dashboard_HI" ReturnType="Collection(WPSModel.SP_WordType_Desc_PieChart_Dashboard_HI_Result)">
+      <Parameter Name="CompnayID" Mode="In" Type="String" />
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="String" />
+      <Parameter Name="AcctountType" Mode="In" Type="String" />
+      <Parameter Name="WrdTypeId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WordDesc_MonthWise_BarChart_Dashboard_HI" ReturnType="Collection(WPSModel.SP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result)">
+      <Parameter Name="CompnayID" Mode="In" Type="String" />
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="Int32" />
+      <Parameter Name="AcctountTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="WrdTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_WordCount_Desc_CloudChart_Dashboard_HI" ReturnType="Collection(WPSModel.SP_WordCount_Desc_CloudChart_Dashboard_HI_Result)">
+      <Parameter Name="CompanyID" Mode="In" Type="String" />
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="Int32" />
+      <Parameter Name="AcctountTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reviews_Line_CompanyWise_Dashboard" ReturnType="Collection(WPSModel.SP_Reviews_Line_CompanyWise_Dashboard_Result)">
+      <Parameter Name="CompnayID" Mode="In" Type="String" />
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="Int32" />
+      <Parameter Name="AcctountType" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Reviews_Rating_Summary_Dashboard" ReturnType="Collection(WPSModel.SP_Reviews_Rating_Summary_Dashboard_Result)">
+      <Parameter Name="CompnayID" Mode="In" Type="String" />
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="Int32" />
+      <Parameter Name="AcctountType" Mode="In" Type="Int32" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+      <Parameter Name="SqlQry" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="SMAM_ReviewSites_ST" EntityType="WPSModel.SMAM_ReviewSites_ST" />
+    <AssociationSet Name="FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSites_ST" Association="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSites_ST">
+      <End Role="SMAM_ReviewSites_ST" EntitySet="SMAM_ReviewSites_ST" />
+      <End Role="SMIM_ReviewAccountSite_ST" EntitySet="SMIM_ReviewAccountSite_ST" />
+    </AssociationSet>
+    <FunctionImport Name="SP_IsAccount_Benchmark_Dashboard" ReturnType="Collection(WPSModel.SP_IsAccount_Benchmark_Dashboard_Result)">
+      <Parameter Name="CompnayID" Mode="In" Type="String" />
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="String" />
+      <Parameter Name="AcctountType" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="SP_IsBenAccount_Benchmark_Dashboard" ReturnType="Collection(WPSModel.SP_IsBenAccount_Benchmark_Dashboard_Result)">
+      <Parameter Name="CompnayID" Mode="In" Type="String" />
+      <Parameter Name="SiteID" Mode="In" Type="String" />
+      <Parameter Name="AccountID" Mode="In" Type="String" />
+      <Parameter Name="AcctountType" Mode="In" Type="String" />
+      <Parameter Name="Date" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_GetPAF_Result">
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="10" Scale="0" />
+    <Property Type="Decimal" Name="uploadid" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="String" Name="paffilename" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="numberofrecords" Nullable="true" />
+    <Property Type="DateTime" Name="uploaddate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="BatchID" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="Decimal" Name="status" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="String" Name="Status2" Nullable="true" MaxLength="18" />
+    <Property Type="String" Name="pafStatus" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_getPAFSummaryByDate_Result">
+    <Property Type="Decimal" Name="PafId" Nullable="false" Precision="10" Scale="0" />
+    <Property Type="Decimal" Name="uploadid" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="String" Name="pafactualname" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="numberofrecords" Nullable="true" />
+    <Property Type="String" Name="personalnumber" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="accountnumber" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="fixedamount" Nullable="true" />
+    <Property Type="Double" Name="variableamount" Nullable="true" />
+    <Property Type="Double" Name="netpay" Nullable="true" />
+    <Property Type="Int32" Name="EmpId" Nullable="false" />
+    <Property Type="String" Name="IsRFAGenerated" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="RFATimestamp" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_getPayrollAmountByDate_Result">
+    <Property Type="Int32" Name="Value" Nullable="false" />
+    <Property Type="Double" Name="Text" Nullable="true" />
+    <Property Type="Decimal" Name="status" Nullable="true" Precision="10" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="sp_InsertRFRDetail_Result">
+    <Property Type="String" Name="RecordType" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SIFRef" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ACKRef" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RountingCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmployeeNo" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="AmountToRefund" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="RequestCode" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="PAN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Future" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Last" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_RptGetUserActivityLog_Result">
+    <Property Type="Int64" Name="LogId" Nullable="false" />
+    <Property Type="String" Name="ActivityBy" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ActivityDesc" Nullable="true" MaxLength="1000" />
+    <Property Type="DateTime" Name="ActivityOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_RptCompanyCreation_Result">
+    <Property Type="Int32" Name="CompanyID" Nullable="false" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EstID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="String" Name="CreatedUserName" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="String" Name="SaleAccount" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="AgentType" Nullable="true" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="Sp_RptEmpInfo_Result">
+    <Property Type="Int32" Name="EmpId" Nullable="false" />
+    <Property Type="String" Name="PersonalNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmpCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DOE" Nullable="true" Precision="23" />
+    <Property Type="String" Name="IBAN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="BasicSalary" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Company" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EstID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BankName" Nullable="true" MaxLength="80" />
+    <Property Type="String" Name="RoutingCode" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sp_RptRFRId_Result">
+    <Property Type="Int32" Name="RFRId" Nullable="false" />
+    <Property Type="DateTime" Name="RefundDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="RecordType" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="EmployeeNo" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="AmountToRefund" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="RequestCode" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="PAN" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RecordCount" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="SIFRef" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ACKRef" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sp_RptSalesAccount_Result">
+    <Property Type="Int32" Name="SaleAccId" Nullable="false" />
+    <Property Type="String" Name="SaleAccount" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="AccountCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="AccountType" Nullable="true" MaxLength="9" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Area" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_SifMstDtl_Result">
+    <Property Type="Int32" Name="SifDtlId" Nullable="false" />
+    <Property Type="Int32" Name="SifId" Nullable="true" />
+    <Property Type="Int32" Name="CompanyID" Nullable="true" />
+    <Property Type="Int32" Name="EmpId" Nullable="true" />
+    <Property Type="Int32" Name="BankId" Nullable="true" />
+    <Property Type="DateTime" Name="SifDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Month" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Year" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="TotalEmployees" Nullable="true" />
+    <Property Type="String" Name="EstId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PersonalNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="BankName" Nullable="true" MaxLength="80" />
+    <Property Type="String" Name="RoutingCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IBAN" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Basic" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="Allowances" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="NetSalary" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Int32" Name="LeavesPeriod" Nullable="true" />
+    <Property Type="Decimal" Name="TotalSalary" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="String" Name="WPSRefNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WPSDepositSlip" Nullable="true" />
+    <Property Type="String" Name="ChargesRefNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ChargesDepositSlip" Nullable="true" />
+    <Property Type="String" Name="ProcessType" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="Reason" Nullable="true" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="SND_CBUAE" Nullable="false" />
+    <Property Type="DateTime" Name="SND_CBUAE_DATE" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ACK_NAK" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="ACT_NAK_DATE" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="DeletedBy" Nullable="true" />
+    <Property Type="DateTime" Name="DeletedOn" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DeleteRemarks" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <EntityType Name="SMAM_ReviewSiteTypes_ST">
+    <Key>
+      <PropertyRef Name="SiteTypeID" />
+    </Key>
+    <Property Name="SiteTypeID" Type="Int32" Nullable="false" />
+    <Property Name="SiteTypeName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SMIM_ReviewAccountSite_ST" Relationship="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSiteTypes_ST" FromRole="SMAM_ReviewSiteTypes_ST" ToRole="SMIM_ReviewAccountSite_ST" />
+  </EntityType>
+  <EntityType Name="SMIM_ReviewAccounts_ST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Inactive" Type="Boolean" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="State" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Zip" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Credentials" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NPI" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Specialty" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="StoreCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ReviewPullType" Type="Int32" />
+    <Property Name="ProfilePullType" Type="Int32" />
+    <Property Name="IsBenchmarkAccount" Type="Boolean" />
+    <Property Name="Comments" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SMSA_CompanyMst_ST" Relationship="WPSModel.FK_SMIM_ReviewAccounts_ST_SMSA_CompanyMst_ST" FromRole="SMIM_ReviewAccounts_ST" ToRole="SMSA_CompanyMst_ST" />
+    <NavigationProperty Name="SMIM_ReviewAccountSite_ST" Relationship="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMIM_ReviewAccounts_ST" FromRole="SMIM_ReviewAccounts_ST" ToRole="SMIM_ReviewAccountSite_ST" />
+    <NavigationProperty Name="SMIM_AccountType_ST" Relationship="WPSModel.FK_SMIM_ReviewAccounts_ST_SMIM_AccountType_ST" FromRole="SMIM_ReviewAccounts_ST" ToRole="SMIM_AccountType_ST" />
+  </EntityType>
+  <EntityType Name="SMIM_ReviewAccountSite_ST">
+    <Key>
+      <PropertyRef Name="AccountSiteID" />
+    </Key>
+    <Property Name="AccountSiteID" Type="Int32" Nullable="false" />
+    <Property Name="AccountID" Type="Int32" />
+    <Property Name="ReviewSiteID" Type="Int32" />
+    <Property Name="ReviewSiteTypeID" Type="Int32" />
+    <Property Name="ReviewURL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="LastScrapeOn" Type="DateTime" Precision="3" />
+    <Property Name="SetInActive" Type="DateTime" Precision="3" />
+    <Property Name="EnableProfile" Type="Boolean" />
+    <NavigationProperty Name="SMAM_ReviewSiteTypes_ST" Relationship="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSiteTypes_ST" FromRole="SMIM_ReviewAccountSite_ST" ToRole="SMAM_ReviewSiteTypes_ST" />
+    <NavigationProperty Name="SMIM_ReviewAccounts_ST" Relationship="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMIM_ReviewAccounts_ST" FromRole="SMIM_ReviewAccountSite_ST" ToRole="SMIM_ReviewAccounts_ST" />
+    <NavigationProperty Name="SRCC_GooglePlus_TR" Relationship="WPSModel.FK_SRCC_GooglePlus_SMIM_ReviewAccountSite" FromRole="SMIM_ReviewAccountSite_ST" ToRole="SRCC_GooglePlus_TR" />
+    <NavigationProperty Name="SMAM_ReviewSites_ST" Relationship="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSites_ST" FromRole="SMIM_ReviewAccountSite_ST" ToRole="SMAM_ReviewSites_ST" />
+  </EntityType>
+  <EntityType Name="SMSA_CompanyMst_ST">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="OrgID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="logoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EstID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalEmp" Type="Int32" />
+    <Property Name="Activity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Salutation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CityID" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VerifyEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SaleAccId" Type="Int32" />
+    <Property Name="IsActive" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IsApproved" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Terms" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SifCharges" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WPSUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifyOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <NavigationProperty Name="SMIM_ReviewAccounts_ST" Relationship="WPSModel.FK_SMIM_ReviewAccounts_ST_SMSA_CompanyMst_ST" FromRole="SMSA_CompanyMst_ST" ToRole="SMIM_ReviewAccounts_ST" />
+    <NavigationProperty Name="SMSA_Organization_ST" Relationship="WPSModel.FK_SMSA_CompanyMst_SMSA_Organization" FromRole="SMSA_CompanyMst_ST" ToRole="SMSA_Organization_ST" />
+    <NavigationProperty Name="SRCC_SalesAccount_ST" Relationship="WPSModel.FK_SMSA_CompanyMst_SRCC_SalesAccount" FromRole="SMSA_CompanyMst_ST" ToRole="SRCC_SalesAccount_ST" />
+    <NavigationProperty Name="SMIM_UserMst_ST" Relationship="WPSModel.FK_SMIM_UserMst_ST_SMSA_CompanyMst_ST" FromRole="SMSA_CompanyMst_ST" ToRole="SMIM_UserMst_ST" />
+  </EntityType>
+  <EntityType Name="SMSA_Organization_ST">
+    <Key>
+      <PropertyRef Name="OrgID" />
+    </Key>
+    <Property Name="OrgID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SaleAccId" Type="Int32" />
+    <Property Name="Reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrgType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SMSA_CompanyMst_ST" Relationship="WPSModel.FK_SMSA_CompanyMst_SMSA_Organization" FromRole="SMSA_Organization_ST" ToRole="SMSA_CompanyMst_ST" />
+    <NavigationProperty Name="SRCC_SalesAccount_ST" Relationship="WPSModel.FK_HRMS_Organization_ST_SRCC_SalesAccount_ST" FromRole="SMSA_Organization_ST" ToRole="SRCC_SalesAccount_ST" />
+    <NavigationProperty Name="SMIM_UserMst_ST" Relationship="WPSModel.FK_SMIM_UserMst_ST_SMSA_Organization_ST" FromRole="SMSA_Organization_ST" ToRole="SMIM_UserMst_ST" />
+  </EntityType>
+  <EntityType Name="SRCC_ReviewStatusTypes_ST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SRCC_GooglePlusReviews_TR" Relationship="WPSModel.FK_SRCC_GooglePlusReviews_SRCC_ReviewStatusTypes" FromRole="SRCC_ReviewStatusTypes_ST" ToRole="SRCC_GooglePlusReviews_TR" />
+  </EntityType>
+  <EntityType Name="SRCC_SalesAccount_ST">
+    <Key>
+      <PropertyRef Name="SaleAccId" />
+    </Key>
+    <Property Name="SaleAccId" Type="Int32" Nullable="false" />
+    <Property Name="SaleAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="AccountType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ParentSaleId" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SMSA_CompanyMst_ST" Relationship="WPSModel.FK_SMSA_CompanyMst_SRCC_SalesAccount" FromRole="SRCC_SalesAccount_ST" ToRole="SMSA_CompanyMst_ST" />
+    <NavigationProperty Name="SMSA_Organization_ST" Relationship="WPSModel.FK_HRMS_Organization_ST_SRCC_SalesAccount_ST" FromRole="SRCC_SalesAccount_ST" ToRole="SMSA_Organization_ST" />
+    <NavigationProperty Name="SRCC_SalesAccount_ST1" Relationship="WPSModel.FK_SRCC_SalesAccount_SRCC_SalesAccount" FromRole="SRCC_SalesAccount_ST" ToRole="SRCC_SalesAccount_ST1" />
+    <NavigationProperty Name="SRCC_SalesAccount_ST2" Relationship="WPSModel.FK_SRCC_SalesAccount_SRCC_SalesAccount" FromRole="SRCC_SalesAccount_ST1" ToRole="SRCC_SalesAccount_ST" />
+    <NavigationProperty Name="SMIM_UserMst_ST" Relationship="WPSModel.FK_SMIM_UserMst_ST_SRCC_SalesAccount_ST" FromRole="SRCC_SalesAccount_ST" ToRole="SMIM_UserMst_ST" />
+  </EntityType>
+  <Association Name="FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSiteTypes_ST">
+    <End Type="WPSModel.SMAM_ReviewSiteTypes_ST" Role="SMAM_ReviewSiteTypes_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMIM_ReviewAccountSite_ST" Role="SMIM_ReviewAccountSite_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMAM_ReviewSiteTypes_ST">
+        <PropertyRef Name="SiteTypeID" />
+      </Principal>
+      <Dependent Role="SMIM_ReviewAccountSite_ST">
+        <PropertyRef Name="ReviewSiteTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_ReviewAccounts_ST_SMSA_CompanyMst_ST">
+    <End Type="WPSModel.SMSA_CompanyMst_ST" Role="SMSA_CompanyMst_ST" Multiplicity="1" />
+    <End Type="WPSModel.SMIM_ReviewAccounts_ST" Role="SMIM_ReviewAccounts_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="SMIM_ReviewAccounts_ST">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_ReviewAccountSite_ST_SMIM_ReviewAccounts_ST">
+    <End Type="WPSModel.SMIM_ReviewAccounts_ST" Role="SMIM_ReviewAccounts_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMIM_ReviewAccountSite_ST" Role="SMIM_ReviewAccountSite_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMIM_ReviewAccounts_ST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SMIM_ReviewAccountSite_ST">
+        <PropertyRef Name="AccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_CompanyMst_SMSA_Organization">
+    <End Type="WPSModel.SMSA_Organization_ST" Role="SMSA_Organization_ST" Multiplicity="1" />
+    <End Type="WPSModel.SMSA_CompanyMst_ST" Role="SMSA_CompanyMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Organization_ST">
+        <PropertyRef Name="OrgID" />
+      </Principal>
+      <Dependent Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="OrgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_CompanyMst_SRCC_SalesAccount">
+    <End Type="WPSModel.SRCC_SalesAccount_ST" Role="SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMSA_CompanyMst_ST" Role="SMSA_CompanyMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRMS_Organization_ST_SRCC_SalesAccount_ST">
+    <End Type="WPSModel.SRCC_SalesAccount_ST" Role="SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMSA_Organization_ST" Role="SMSA_Organization_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SMSA_Organization_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRCC_SalesAccount_SRCC_SalesAccount">
+    <End Type="WPSModel.SRCC_SalesAccount_ST" Role="SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SRCC_SalesAccount_ST" Role="SRCC_SalesAccount_ST1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SRCC_SalesAccount_ST1">
+        <PropertyRef Name="ParentSaleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SMIM_AccountType_ST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SMIM_ReviewAccounts_ST" Relationship="WPSModel.FK_SMIM_ReviewAccounts_ST_SMIM_AccountType_ST" FromRole="SMIM_AccountType_ST" ToRole="SMIM_ReviewAccounts_ST" />
+  </EntityType>
+  <EntityType Name="SMSA_Logs_HI">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ColumnId" Type="Int32" />
+    <Property Name="ActivityType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ActivityDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="ActivityOn" Type="DateTime" Precision="3" />
+    <Property Name="ActivityBy" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_SMIM_ReviewAccounts_ST_SMIM_AccountType_ST">
+    <End Type="WPSModel.SMIM_AccountType_ST" Role="SMIM_AccountType_ST" Multiplicity="1" />
+    <End Type="WPSModel.SMIM_ReviewAccounts_ST" Role="SMIM_ReviewAccounts_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMIM_AccountType_ST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SMIM_ReviewAccounts_ST">
+        <PropertyRef Name="AccountTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="aspnet_Applications">
+    <Key>
+      <PropertyRef Name="ApplicationId" />
+    </Key>
+    <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LoweredApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Membership" Relationship="WPSModel.FK__aspnet_Me__Appli__45F365D3" FromRole="aspnet_Applications" ToRole="aspnet_Membership" />
+    <NavigationProperty Name="aspnet_Paths" Relationship="WPSModel.FK__aspnet_Pa__Appli__47DBAE45" FromRole="aspnet_Applications" ToRole="aspnet_Paths" />
+    <NavigationProperty Name="aspnet_Roles" Relationship="WPSModel.FK__aspnet_Ro__Appli__4CA06362" FromRole="aspnet_Applications" ToRole="aspnet_Roles" />
+    <NavigationProperty Name="aspnet_Users" Relationship="WPSModel.FK__aspnet_Us__Appli__4D94879B" FromRole="aspnet_Applications" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Membership">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+    <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="MobilePIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+    <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="WPSModel.FK__aspnet_Me__Appli__45F365D3" FromRole="aspnet_Membership" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_Users" Relationship="WPSModel.FK__aspnet_Me__UserI__46E78A0C" FromRole="aspnet_Membership" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Paths">
+    <Key>
+      <PropertyRef Name="PathId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="PathId" Type="Guid" Nullable="false" />
+    <Property Name="Path" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LoweredPath" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="WPSModel.FK__aspnet_Pa__Appli__47DBAE45" FromRole="aspnet_Paths" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_PersonalizationAllUsers" Relationship="WPSModel.FK__aspnet_Pe__PathI__48CFD27E" FromRole="aspnet_Paths" ToRole="aspnet_PersonalizationAllUsers" />
+    <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="WPSModel.FK__aspnet_Pe__PathI__49C3F6B7" FromRole="aspnet_Paths" ToRole="aspnet_PersonalizationPerUser" />
+  </EntityType>
+  <EntityType Name="aspnet_PersonalizationAllUsers">
+    <Key>
+      <PropertyRef Name="PathId" />
+    </Key>
+    <Property Name="PathId" Type="Guid" Nullable="false" />
+    <Property Name="PageSettings" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Paths" Relationship="WPSModel.FK__aspnet_Pe__PathI__48CFD27E" FromRole="aspnet_PersonalizationAllUsers" ToRole="aspnet_Paths" />
+  </EntityType>
+  <EntityType Name="aspnet_PersonalizationPerUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="PathId" Type="Guid" />
+    <Property Name="UserId" Type="Guid" />
+    <Property Name="PageSettings" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Paths" Relationship="WPSModel.FK__aspnet_Pe__PathI__49C3F6B7" FromRole="aspnet_PersonalizationPerUser" ToRole="aspnet_Paths" />
+    <NavigationProperty Name="aspnet_Users" Relationship="WPSModel.FK__aspnet_Pe__UserI__4AB81AF0" FromRole="aspnet_PersonalizationPerUser" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Profile">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="PropertyNames" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PropertyValuesString" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PropertyValuesBinary" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Users" Relationship="WPSModel.FK__aspnet_Pr__UserI__4BAC3F29" FromRole="aspnet_Profile" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LoweredRoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="WPSModel.FK__aspnet_Ro__Appli__4CA06362" FromRole="aspnet_Roles" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="SMIM_UserTypeAccess_ST" Relationship="WPSModel.FK_SMIM_UserTypeAccess_ST_aspnet_Roles" FromRole="aspnet_Roles" ToRole="SMIM_UserTypeAccess_ST" />
+    <NavigationProperty Name="SMSA_Roles_ST" Relationship="WPSModel.FK_SMSA_Roles_ST_aspnet_Roles" FromRole="aspnet_Roles" ToRole="SMSA_Roles_ST" />
+    <NavigationProperty Name="aspnet_Users" Relationship="WPSModel.aspnet_UsersInRoles" FromRole="aspnet_Roles" ToRole="aspnet_Users" />
+  </EntityType>
+  <EntityType Name="aspnet_SchemaVersions">
+    <Key>
+      <PropertyRef Name="Feature" />
+      <PropertyRef Name="CompatibleSchemaVersion" />
+    </Key>
+    <Property Name="Feature" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CompatibleSchemaVersion" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IsCurrentVersion" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+    <Property Name="UserId" Type="Guid" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+    <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="aspnet_Applications" Relationship="WPSModel.FK__aspnet_Us__Appli__4D94879B" FromRole="aspnet_Users" ToRole="aspnet_Applications" />
+    <NavigationProperty Name="aspnet_Membership" Relationship="WPSModel.FK__aspnet_Me__UserI__46E78A0C" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
+    <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="WPSModel.FK__aspnet_Pe__UserI__4AB81AF0" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
+    <NavigationProperty Name="aspnet_Profile" Relationship="WPSModel.FK__aspnet_Pr__UserI__4BAC3F29" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
+    <NavigationProperty Name="aspnet_Roles" Relationship="WPSModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
+  </EntityType>
+  <EntityType Name="aspnet_WebEvent_Events">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Name="EventTimeUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EventType" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EventSequence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
+    <Property Name="EventOccurrence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
+    <Property Name="EventCode" Type="Int32" Nullable="false" />
+    <Property Name="EventDetailCode" Type="Int32" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ApplicationVirtualPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MachineName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="RequestUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="ExceptionType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SMAM_Menu_ST">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Int32" Nullable="false" />
+    <Property Name="ParentMenuId" Type="Int32" />
+    <Property Name="MenuType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="MenuDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IconPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MenuSeq" Type="Int32" />
+    <Property Name="urlPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DefaultValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocalizeId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SMAM_SystemService_ST">
+    <Key>
+      <PropertyRef Name="ServiceId" />
+    </Key>
+    <Property Name="ServiceId" Type="Int32" Nullable="false" />
+    <Property Name="ServiceName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="SMIM_UserAccess_ST">
+    <Key>
+      <PropertyRef Name="CoAccId" />
+    </Key>
+    <Property Name="CoAccId" Type="Int32" Nullable="false" />
+    <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Allow" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="SMIM_UserMst_ST" Relationship="WPSModel.FK_SMIM_UserAcc_UserMst_UserId" FromRole="SMIM_UserAccess_ST" ToRole="SMIM_UserMst_ST" />
+    <NavigationProperty Name="SMIM_UserType_ST" Relationship="WPSModel.FK_SMIM_UserAcc_UserType_UserTypeId" FromRole="SMIM_UserAccess_ST" ToRole="SMIM_UserType_ST" />
+  </EntityType>
+  <EntityType Name="SMIM_UserMst_ST">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="UserTypeId" Type="Int32" />
+    <Property Name="OrgId" Type="Int32" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Salutation" Type="Int32" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ZipCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LoginDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="SACId" Type="Int32" />
+    <NavigationProperty Name="SMIM_UserAccess_ST" Relationship="WPSModel.FK_SMIM_UserAcc_UserMst_UserId" FromRole="SMIM_UserMst_ST" ToRole="SMIM_UserAccess_ST" />
+    <NavigationProperty Name="SMIM_UserType_ST" Relationship="WPSModel.FK_SMIM_UserMst_ST_SMIM_UserType_ST" FromRole="SMIM_UserMst_ST" ToRole="SMIM_UserType_ST" />
+    <NavigationProperty Name="SMSA_CompanyMst_ST" Relationship="WPSModel.FK_SMIM_UserMst_ST_SMSA_CompanyMst_ST" FromRole="SMIM_UserMst_ST" ToRole="SMSA_CompanyMst_ST" />
+    <NavigationProperty Name="SMSA_Organization_ST" Relationship="WPSModel.FK_SMIM_UserMst_ST_SMSA_Organization_ST" FromRole="SMIM_UserMst_ST" ToRole="SMSA_Organization_ST" />
+    <NavigationProperty Name="SRCC_SalesAccount_ST" Relationship="WPSModel.FK_SMIM_UserMst_ST_SRCC_SalesAccount_ST" FromRole="SMIM_UserMst_ST" ToRole="SRCC_SalesAccount_ST" />
+  </EntityType>
+  <EntityType Name="SMIM_UserType_ST">
+    <Key>
+      <PropertyRef Name="UserTypeId" />
+    </Key>
+    <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SMIM_UserAccess_ST" Relationship="WPSModel.FK_SMIM_UserAcc_UserType_UserTypeId" FromRole="SMIM_UserType_ST" ToRole="SMIM_UserAccess_ST" />
+    <NavigationProperty Name="SMIM_UserMst_ST" Relationship="WPSModel.FK_SMIM_UserMst_ST_SMIM_UserType_ST" FromRole="SMIM_UserType_ST" ToRole="SMIM_UserMst_ST" />
+    <NavigationProperty Name="SMIM_UserTypeAccess_ST" Relationship="WPSModel.FK_SMIM_UserTypeAccess_UserType" FromRole="SMIM_UserType_ST" ToRole="SMIM_UserTypeAccess_ST" />
+  </EntityType>
+  <EntityType Name="SMIM_UserTypeAccess_ST">
+    <Key>
+      <PropertyRef Name="AccessId" />
+    </Key>
+    <Property Name="AccessId" Type="Int32" Nullable="false" />
+    <Property Name="UserTypeId" Type="Int32" />
+    <Property Name="AccessType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Allow" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="RoleId" Type="Guid" />
+    <NavigationProperty Name="aspnet_Roles" Relationship="WPSModel.FK_SMIM_UserTypeAccess_ST_aspnet_Roles" FromRole="SMIM_UserTypeAccess_ST" ToRole="aspnet_Roles" />
+    <NavigationProperty Name="SMIM_UserType_ST" Relationship="WPSModel.FK_SMIM_UserTypeAccess_UserType" FromRole="SMIM_UserTypeAccess_ST" ToRole="SMIM_UserType_ST" />
+  </EntityType>
+  <EntityType Name="SMSA_Areas_ST">
+    <Key>
+      <PropertyRef Name="AreaID" />
+    </Key>
+    <Property Name="AreaID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <Property Name="CreateBy" Type="Int32" />
+    <Property Name="CreateOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SMSA_Country_ST" Relationship="WPSModel.FK_SMSA_Areas_ST_SMSA_Country_ST" FromRole="SMSA_Areas_ST" ToRole="SMSA_Country_ST" />
+    <NavigationProperty Name="SMSA_States_ST" Relationship="WPSModel.FK_SMSA_Areas_ST_SMSA_States_ST" FromRole="SMSA_Areas_ST" ToRole="SMSA_States_ST" />
+    <NavigationProperty Name="SMSA_City_ST" Relationship="WPSModel.FK_SMSA_City_ST_SMSA_Area_ST" FromRole="SMSA_Areas_ST" ToRole="SMSA_City_ST" />
+    <NavigationProperty Name="SMSA_City_ST1" Relationship="WPSModel.FK_SMSA_City_ST_SMSA_Areas_ST" FromRole="SMSA_Areas_ST" ToRole="SMSA_City_ST" />
+  </EntityType>
+  <EntityType Name="SMSA_City_ST">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CreateBy" Type="Int32" />
+    <Property Name="CreateOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SMSA_Areas_ST" Relationship="WPSModel.FK_SMSA_City_ST_SMSA_Area_ST" FromRole="SMSA_City_ST" ToRole="SMSA_Areas_ST" />
+    <NavigationProperty Name="SMSA_Areas_ST1" Relationship="WPSModel.FK_SMSA_City_ST_SMSA_Areas_ST" FromRole="SMSA_City_ST" ToRole="SMSA_Areas_ST" />
+    <NavigationProperty Name="SMSA_States_ST" Relationship="WPSModel.FK_SMSA_City_ST_SMSA_States_ST" FromRole="SMSA_City_ST" ToRole="SMSA_States_ST" />
+    <NavigationProperty Name="SMSA_Country_ST" Relationship="WPSModel.Relationship13" FromRole="SMSA_City_ST" ToRole="SMSA_Country_ST" />
+  </EntityType>
+  <EntityType Name="SMSA_Country_ST">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="5" FixedLength="true" Unicode="true" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SMSA_Areas_ST" Relationship="WPSModel.FK_SMSA_Areas_ST_SMSA_Country_ST" FromRole="SMSA_Country_ST" ToRole="SMSA_Areas_ST" />
+    <NavigationProperty Name="SMSA_City_ST" Relationship="WPSModel.Relationship13" FromRole="SMSA_Country_ST" ToRole="SMSA_City_ST" />
+    <NavigationProperty Name="SMSA_States_ST" Relationship="WPSModel.FK_SMSA_Country_SMSA_States" FromRole="SMSA_Country_ST" ToRole="SMSA_States_ST" />
+  </EntityType>
+  <EntityType Name="SMSA_Roles_ST">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Guid" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="Header" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FormName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aspnet_Roles" Relationship="WPSModel.FK_SMSA_Roles_ST_aspnet_Roles" FromRole="SMSA_Roles_ST" ToRole="aspnet_Roles" />
+  </EntityType>
+  <EntityType Name="SMSA_States_ST">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" />
+    <Property Name="CreateBy" Type="Int32" />
+    <Property Name="CreateOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SMSA_Areas_ST" Relationship="WPSModel.FK_SMSA_Areas_ST_SMSA_States_ST" FromRole="SMSA_States_ST" ToRole="SMSA_Areas_ST" />
+    <NavigationProperty Name="SMSA_City_ST" Relationship="WPSModel.FK_SMSA_City_ST_SMSA_States_ST" FromRole="SMSA_States_ST" ToRole="SMSA_City_ST" />
+    <NavigationProperty Name="SMSA_Country_ST" Relationship="WPSModel.FK_SMSA_Country_SMSA_States" FromRole="SMSA_States_ST" ToRole="SMSA_Country_ST" />
+  </EntityType>
+  <EntityType Name="SRCC_GooglePlus_TR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SiteAccountID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OverallRating" Type="Decimal" Precision="2" Scale="1" />
+    <Property Name="ReviewCount" Type="Int32" Nullable="false" />
+    <Property Name="APIReference" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SMIM_ReviewAccountSite_ST" Relationship="WPSModel.FK_SRCC_GooglePlus_SMIM_ReviewAccountSite" FromRole="SRCC_GooglePlus_TR" ToRole="SMIM_ReviewAccountSite_ST" />
+    <NavigationProperty Name="SRCC_GooglePlusReviews_TR" Relationship="WPSModel.FK_SRCC_GooglePlusReviews_GooglePlus" FromRole="SRCC_GooglePlus_TR" ToRole="SRCC_GooglePlusReviews_TR" />
+  </EntityType>
+  <EntityType Name="SRCC_GooglePlusReviews_TR">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GoogleID" Type="Int32" Nullable="false" />
+    <Property Name="GoogleReviewID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Author" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OverallRating" Type="Decimal" Precision="2" Scale="1" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Entered" Type="DateTime" Precision="3" />
+    <Property Name="AlertDate" Type="DateTime" Precision="3" />
+    <Property Name="ReviewStatusID" Type="Int32" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SRCC_GooglePlus_TR" Relationship="WPSModel.FK_SRCC_GooglePlusReviews_GooglePlus" FromRole="SRCC_GooglePlusReviews_TR" ToRole="SRCC_GooglePlus_TR" />
+    <NavigationProperty Name="SRCC_ReviewStatusTypes_ST" Relationship="WPSModel.FK_SRCC_GooglePlusReviews_SRCC_ReviewStatusTypes" FromRole="SRCC_GooglePlusReviews_TR" ToRole="SRCC_ReviewStatusTypes_ST" />
+  </EntityType>
+  <EntityType Name="Vw_AccountToScrape">
+    <Key>
+      <PropertyRef Name="SiteAccountID" />
+      <PropertyRef Name="SubTypeID" />
+      <PropertyRef Name="SubTypeName" />
+      <PropertyRef Name="AccountName" />
+      <PropertyRef Name="LoadDelayMillSeconds" />
+      <PropertyRef Name="AccountTypeID" />
+      <PropertyRef Name="CompanyID" />
+      <PropertyRef Name="OrgID" />
+    </Key>
+    <Property Name="SiteID" Type="Int32" />
+    <Property Name="SiteAccountID" Type="Int32" Nullable="false" />
+    <Property Name="TypeID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="AccountID" Type="Int32" />
+    <Property Name="URL" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="LastPullDate" Type="DateTime" Precision="3" />
+    <Property Name="ReviewTableCount" Type="Int32" />
+    <Property Name="SubTypeID" Type="Int32" Nullable="false" />
+    <Property Name="SubTypeName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="AccountName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Client" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LoadDelayMillSeconds" Type="Int32" Nullable="false" />
+    <Property Name="AccountTypeID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="OrgID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__aspnet_Me__Appli__45F365D3">
+    <End Type="WPSModel.aspnet_Applications" Role="aspnet_Applications" Multiplicity="1" />
+    <End Type="WPSModel.aspnet_Membership" Role="aspnet_Membership" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Membership">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pa__Appli__47DBAE45">
+    <End Type="WPSModel.aspnet_Applications" Role="aspnet_Applications" Multiplicity="1" />
+    <End Type="WPSModel.aspnet_Paths" Role="aspnet_Paths" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Paths">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Ro__Appli__4CA06362">
+    <End Type="WPSModel.aspnet_Applications" Role="aspnet_Applications" Multiplicity="1" />
+    <End Type="WPSModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Roles">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Us__Appli__4D94879B">
+    <End Type="WPSModel.aspnet_Applications" Role="aspnet_Applications" Multiplicity="1" />
+    <End Type="WPSModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Applications">
+        <PropertyRef Name="ApplicationId" />
+      </Principal>
+      <Dependent Role="aspnet_Users">
+        <PropertyRef Name="ApplicationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Me__UserI__46E78A0C">
+    <End Type="WPSModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+    <End Type="WPSModel.aspnet_Membership" Role="aspnet_Membership" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_Membership">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__PathI__48CFD27E">
+    <End Type="WPSModel.aspnet_Paths" Role="aspnet_Paths" Multiplicity="1" />
+    <End Type="WPSModel.aspnet_PersonalizationAllUsers" Role="aspnet_PersonalizationAllUsers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Paths">
+        <PropertyRef Name="PathId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationAllUsers">
+        <PropertyRef Name="PathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__PathI__49C3F6B7">
+    <End Type="WPSModel.aspnet_Paths" Role="aspnet_Paths" Multiplicity="0..1" />
+    <End Type="WPSModel.aspnet_PersonalizationPerUser" Role="aspnet_PersonalizationPerUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Paths">
+        <PropertyRef Name="PathId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationPerUser">
+        <PropertyRef Name="PathId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pe__UserI__4AB81AF0">
+    <End Type="WPSModel.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
+    <End Type="WPSModel.aspnet_PersonalizationPerUser" Role="aspnet_PersonalizationPerUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_PersonalizationPerUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__aspnet_Pr__UserI__4BAC3F29">
+    <End Type="WPSModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+    <End Type="WPSModel.aspnet_Profile" Role="aspnet_Profile" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="aspnet_Profile">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_UserTypeAccess_ST_aspnet_Roles">
+    <End Type="WPSModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="0..1" />
+    <End Type="WPSModel.SMIM_UserTypeAccess_ST" Role="SMIM_UserTypeAccess_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="SMIM_UserTypeAccess_ST">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_Roles_ST_aspnet_Roles">
+    <End Type="WPSModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="1" />
+    <End Type="WPSModel.SMSA_Roles_ST" Role="SMSA_Roles_ST" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Roles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="SMSA_Roles_ST">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRCC_GooglePlus_SMIM_ReviewAccountSite">
+    <End Type="WPSModel.SMIM_ReviewAccountSite_ST" Role="SMIM_ReviewAccountSite_ST" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="WPSModel.SRCC_GooglePlus_TR" Role="SRCC_GooglePlus_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMIM_ReviewAccountSite_ST">
+        <PropertyRef Name="AccountSiteID" />
+      </Principal>
+      <Dependent Role="SRCC_GooglePlus_TR">
+        <PropertyRef Name="SiteAccountID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_UserAcc_UserMst_UserId">
+    <End Type="WPSModel.SMIM_UserMst_ST" Role="SMIM_UserMst_ST" Multiplicity="1" />
+    <End Type="WPSModel.SMIM_UserAccess_ST" Role="SMIM_UserAccess_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMIM_UserMst_ST">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="SMIM_UserAccess_ST">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_UserAcc_UserType_UserTypeId">
+    <End Type="WPSModel.SMIM_UserType_ST" Role="SMIM_UserType_ST" Multiplicity="1" />
+    <End Type="WPSModel.SMIM_UserAccess_ST" Role="SMIM_UserAccess_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMIM_UserType_ST">
+        <PropertyRef Name="UserTypeId" />
+      </Principal>
+      <Dependent Role="SMIM_UserAccess_ST">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_UserMst_ST_SMIM_UserType_ST">
+    <End Type="WPSModel.SMIM_UserType_ST" Role="SMIM_UserType_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMIM_UserMst_ST" Role="SMIM_UserMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMIM_UserType_ST">
+        <PropertyRef Name="UserTypeId" />
+      </Principal>
+      <Dependent Role="SMIM_UserMst_ST">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_UserMst_ST_SMSA_CompanyMst_ST">
+    <End Type="WPSModel.SMSA_CompanyMst_ST" Role="SMSA_CompanyMst_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMIM_UserMst_ST" Role="SMIM_UserMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="SMIM_UserMst_ST">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_UserMst_ST_SMSA_Organization_ST">
+    <End Type="WPSModel.SMSA_Organization_ST" Role="SMSA_Organization_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMIM_UserMst_ST" Role="SMIM_UserMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Organization_ST">
+        <PropertyRef Name="OrgID" />
+      </Principal>
+      <Dependent Role="SMIM_UserMst_ST">
+        <PropertyRef Name="OrgId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_UserMst_ST_SRCC_SalesAccount_ST">
+    <End Type="WPSModel.SRCC_SalesAccount_ST" Role="SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMIM_UserMst_ST" Role="SMIM_UserMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SMIM_UserMst_ST">
+        <PropertyRef Name="SACId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMIM_UserTypeAccess_UserType">
+    <End Type="WPSModel.SMIM_UserType_ST" Role="SMIM_UserType_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMIM_UserTypeAccess_ST" Role="SMIM_UserTypeAccess_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMIM_UserType_ST">
+        <PropertyRef Name="UserTypeId" />
+      </Principal>
+      <Dependent Role="SMIM_UserTypeAccess_ST">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_Areas_ST_SMSA_Country_ST">
+    <End Type="WPSModel.SMSA_Country_ST" Role="SMSA_Country_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMSA_Areas_ST" Role="SMSA_Areas_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Country_ST">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="SMSA_Areas_ST">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_Areas_ST_SMSA_States_ST">
+    <End Type="WPSModel.SMSA_States_ST" Role="SMSA_States_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMSA_Areas_ST" Role="SMSA_Areas_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_States_ST">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="SMSA_Areas_ST">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_City_ST_SMSA_Area_ST">
+    <End Type="WPSModel.SMSA_City_ST" Role="SMSA_City_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMSA_Areas_ST" Role="SMSA_Areas_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_City_ST">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="SMSA_Areas_ST">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_City_ST_SMSA_Areas_ST">
+    <End Type="WPSModel.SMSA_City_ST" Role="SMSA_City_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMSA_Areas_ST" Role="SMSA_Areas_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_City_ST">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="SMSA_Areas_ST">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_City_ST_SMSA_States_ST">
+    <End Type="WPSModel.SMSA_States_ST" Role="SMSA_States_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMSA_City_ST" Role="SMSA_City_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_States_ST">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="SMSA_City_ST">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Relationship13">
+    <End Type="WPSModel.SMSA_Country_ST" Role="SMSA_Country_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMSA_City_ST" Role="SMSA_City_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Country_ST">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="SMSA_City_ST">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_Country_SMSA_States">
+    <End Type="WPSModel.SMSA_Country_ST" Role="SMSA_Country_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMSA_States_ST" Role="SMSA_States_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Country_ST">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="SMSA_States_ST">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRCC_GooglePlusReviews_GooglePlus">
+    <End Type="WPSModel.SRCC_GooglePlus_TR" Role="SRCC_GooglePlus_TR" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="WPSModel.SRCC_GooglePlusReviews_TR" Role="SRCC_GooglePlusReviews_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_GooglePlus_TR">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SRCC_GooglePlusReviews_TR">
+        <PropertyRef Name="GoogleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRCC_GooglePlusReviews_SRCC_ReviewStatusTypes">
+    <End Type="WPSModel.SRCC_ReviewStatusTypes_ST" Role="SRCC_ReviewStatusTypes_ST" Multiplicity="1" />
+    <End Type="WPSModel.SRCC_GooglePlusReviews_TR" Role="SRCC_GooglePlusReviews_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_ReviewStatusTypes_ST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SRCC_GooglePlusReviews_TR">
+        <PropertyRef Name="ReviewStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="aspnet_UsersInRoles">
+    <End Type="WPSModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
+    <End Type="WPSModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="aspnet_Membership_GetPassword_Result">
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="Column2" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Membership_GetPasswordWithFormat_Result">
+    <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="Column2" Nullable="true" />
+    <Property Type="String" Name="Column3" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="Column4" Nullable="true" />
+    <Property Type="Int32" Name="Column5" Nullable="true" />
+    <Property Type="Boolean" Name="Column6" Nullable="true" />
+    <Property Type="DateTime" Name="Column7" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="Column8" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Membership_GetUserByName_Result">
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+    <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Membership_GetUserByUserId_Result">
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+    <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+    <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+    <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="aspnet_Profile_GetProperties_Result">
+    <Property Type="String" Name="PropertyNames" Nullable="false" MaxLength="Max" />
+    <Property Type="String" Name="PropertyValuesString" Nullable="false" MaxLength="Max" />
+    <Property Type="Binary" Name="PropertyValuesBinary" Nullable="false" MaxLength="Max" />
+  </ComplexType>
+  <ComplexType Name="aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
+    <Property Type="String" Name="Column1" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+  </ComplexType>
+  <ComplexType Name="Sp_ReviewsSiteInfo_Result">
+    <Property Type="Int32" Name="SiteID" Nullable="false" />
+    <Property Type="String" Name="SiteName" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="AccountName" Nullable="true" MaxLength="302" />
+    <Property Type="String" Name="SitesURL" Nullable="true" MaxLength="1000" />
+    <Property Type="String" Name="AccountType" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="Rating" Nullable="true" Precision="2" Scale="1" />
+    <Property Type="String" Name="Author" Nullable="true" MaxLength="256" />
+    <Property Type="DateTime" Name="ReviewDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Reviews" Nullable="true" />
+    <Property Type="Decimal" Name="Overall" Nullable="true" Precision="2" Scale="1" />
+  </ComplexType>
+  <ComplexType Name="Sp_ReviewsSitesList_Result">
+    <Property Type="String" Name="SiteName" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="TotalReview" Nullable="true" />
+    <Property Type="Decimal" Name="Rating" Nullable="true" Precision="38" Scale="6" />
+  </ComplexType>
+  <ComplexType Name="SP_ReviewsListFor_Dashboard_TR_Result">
+    <Property Type="Int32" Name="SiteID" Nullable="false" />
+    <Property Type="String" Name="SiteName" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="GoogleReview" Nullable="true" />
+    <Property Type="Decimal" Name="GoogleRating" Nullable="true" Precision="6" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SP_Reviews_Chart_Dashboard_TR_Result">
+    <Property Type="Int32" Name="SiteID" Nullable="false" />
+    <Property Type="String" Name="SiteName" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="ReviewsCount" Nullable="true" />
+    <Property Type="Decimal" Name="Rating" Nullable="true" Precision="6" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SP_Reviews_LineChart_Dashboard_TR_Result">
+    <Property Type="Int32" Name="MonthNo" Nullable="true" />
+    <Property Type="String" Name="MonthNam" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="MonthYr" Nullable="true" MaxLength="4" />
+    <Property Type="Int32" Name="AccountType" Nullable="true" />
+    <Property Type="Int32" Name="AccountId" Nullable="true" />
+    <Property Type="Int32" Name="GoogleReviews" Nullable="true" />
+    <Property Type="Int32" Name="YelpReviews" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_GetCompanies_By_Organization_Result">
+    <Property Type="Int32" Name="OrgID" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="CompanyCount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Reviews_CompanyWise_Dashboard_Result">
+    <Property Type="Int32" Name="SiteID" Nullable="false" />
+    <Property Type="String" Name="SiteName" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="ReviewsCount" Nullable="true" />
+    <Property Type="Decimal" Name="Rating" Nullable="true" Precision="6" Scale="1" />
+  </ComplexType>
+  <ComplexType Name="SP_Get_Account_By_Company_Result">
+    <Property Type="Int32" Name="CompanyID" Nullable="false" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="AccountCount" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SP_Review_WordCount_Dashboard_HI_Result">
+    <Property Type="Int32" Name="WrdTypeCount" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="16" />
+  </ComplexType>
+  <ComplexType Name="SP_WordType_Desc_PieChart_Dashboard_HI_Result">
+    <Property Type="Int32" Name="SiteId" Nullable="true" />
+    <Property Type="String" Name="SiteName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Color" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="Good" Nullable="true" />
+    <Property Type="Int32" Name="Bad" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result">
+    <Property Type="Int32" Name="MonthNo" Nullable="true" />
+    <Property Type="String" Name="MonthNam" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="MonthYr" Nullable="true" MaxLength="4" />
+    <Property Type="Int32" Name="Good" Nullable="true" />
+    <Property Type="Int32" Name="Bad" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_WordCount_Desc_CloudChart_Dashboard_HI_Result">
+    <Property Type="String" Name="Word" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="WordCount" Nullable="true" />
+    <Property Type="String" Name="WorType" Nullable="true" MaxLength="16" />
+  </ComplexType>
+  <ComplexType Name="SP_Reviews_Line_CompanyWise_Dashboard_Result">
+    <Property Type="Int32" Name="MonthNo" Nullable="true" />
+    <Property Type="String" Name="MonthNam" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="MonthYr" Nullable="true" MaxLength="4" />
+    <Property Type="Int32" Name="AccountType" Nullable="true" />
+    <Property Type="Int32" Name="AccountId" Nullable="true" />
+    <Property Type="Int32" Name="GoogleReviews" Nullable="true" />
+    <Property Type="Int32" Name="YelpReviews" Nullable="true" />
+    <Property Type="Int32" Name="GoogleRating" Nullable="true" />
+    <Property Type="Int32" Name="YelpRating" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="SP_Reviews_Rating_Summary_Dashboard_Result">
+    <Property Type="Int32" Name="AccountID" Nullable="true" />
+    <Property Type="String" Name="AccountName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Google" Nullable="false" />
+    <Property Type="Decimal" Name="GoogleRating" Nullable="false" Precision="9" Scale="1" />
+    <Property Type="Int32" Name="Yelp" Nullable="false" />
+    <Property Type="Decimal" Name="YelpRating" Nullable="false" Precision="9" Scale="1" />
+    <Property Type="Int32" Name="Vitals" Nullable="false" />
+    <Property Type="Decimal" Name="VitalsRating" Nullable="false" Precision="9" Scale="1" />
+    <Property Type="Int32" Name="Healthgrades" Nullable="false" />
+    <Property Type="Decimal" Name="HealthgradesRating" Nullable="false" Precision="9" Scale="1" />
+    <Property Type="Int32" Name="RateMDs" Nullable="false" />
+    <Property Type="Decimal" Name="RateMDsRating" Nullable="false" Precision="9" Scale="1" />
+    <Property Type="Int32" Name="YellowPages" Nullable="false" />
+    <Property Type="Decimal" Name="YellowPagesRating" Nullable="false" Precision="9" Scale="1" />
+    <Property Type="Int32" Name="Facebook" Nullable="false" />
+    <Property Type="Decimal" Name="FacebookRating" Nullable="false" Precision="9" Scale="1" />
+  </ComplexType>
+  <EntityType Name="SMAM_ReviewSites_ST">
+    <Key>
+      <PropertyRef Name="SiteID" />
+    </Key>
+    <Property Name="SiteID" Type="Int32" Nullable="false" />
+    <Property Name="SiteName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="ShortName" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TimerValue" Type="Int32" />
+    <Property Name="LastScrapeOn" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Color" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ImageURL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SMIM_ReviewAccountSite_ST" Relationship="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSites_ST" FromRole="SMAM_ReviewSites_ST" ToRole="SMIM_ReviewAccountSite_ST" />
+  </EntityType>
+  <Association Name="FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSites_ST">
+    <End Type="WPSModel.SMAM_ReviewSites_ST" Role="SMAM_ReviewSites_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.SMIM_ReviewAccountSite_ST" Role="SMIM_ReviewAccountSite_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMAM_ReviewSites_ST">
+        <PropertyRef Name="SiteID" />
+      </Principal>
+      <Dependent Role="SMIM_ReviewAccountSite_ST">
+        <PropertyRef Name="ReviewSiteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="SP_IsAccount_Benchmark_Dashboard_Result">
+    <Property Type="Int32" Name="SiteID" Nullable="true" />
+    <Property Type="String" Name="SiteName" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="ReviewsCount" Nullable="true" />
+    <Property Type="Decimal" Name="Rating" Nullable="true" Precision="38" Scale="6" />
+  </ComplexType>
+  <ComplexType Name="SP_IsBenAccount_Benchmark_Dashboard_Result">
+    <Property Type="Int32" Name="SiteID" Nullable="true" />
+    <Property Type="String" Name="SiteName" Nullable="true" MaxLength="40" />
+    <Property Type="Int32" Name="ReviewsCount" Nullable="true" />
+    <Property Type="Decimal" Name="Rating" Nullable="true" Precision="38" Scale="6" />
+  </ComplexType>
+</Schema>

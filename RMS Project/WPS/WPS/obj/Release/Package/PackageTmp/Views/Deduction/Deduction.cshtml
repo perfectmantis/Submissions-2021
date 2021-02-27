@@ -1,0 +1,208 @@
+﻿@model WPS.WPSService.HRPR_Deduction_TR
+@{
+    ViewBag.Title = "Deduction";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Payment
+                </div>
+                <form class="form-horizontal" role="form" id="frmDeduction">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Payment</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => model.DedId)
+
+                        <div class="row form-group">
+                            <div class="col-3"></div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Company</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("CompanyID", null, "Select Company",
+                                new { @class = "form-control js-example-basic-single", style = "width: 95%", maxlength = "50", onchange= "fillEmployeesByCompany($(this).val())" })
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3"></div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Employee</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("EmpID", null, "Select Employee",
+                                new { @class = "form-control js-example-basic-single", style = "width: 95%", maxlength = "50", onchange="GetBalance($(this).val())" })
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3"></div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Balance</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="number" id="tbx_Balance" class="form-control" style="width:100%" placeholder="Balance" />
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-2"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Pay Amount</label>
+                            </div>
+                            <div class="col-4">
+                               
+                                @Html.TextBoxFor(model => model.Amount, new { id = "tbx_Amount", @class = "form-control disabled input", style = "width:100%", placeholder = "Pay Amount", onblur= "CalculateBalance($(this).val(), $('#tbx_Balance').val())" })
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-3">
+                                <label for="cc-payment" class="control-label">Balance After Payment</label>
+                            </div>
+                            <div class="col-4">
+
+                                <input type="number" id="tbx_Net" class="form-control" style="width:100%" placeholder="Balance After Payment" />
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+                       
+
+                       
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        @*<button type="reset" class="btn btn-primary btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>*@
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $('#frmDeduction').validate({
+        submitHandler: function (form) {
+            $.ajax({
+                url: '@Url.Action("Deduction", "Deduction", new { q = Request.QueryString["q"].ToString() })',
+                type: "POST",
+                data: $(form).serialize(),
+                success: function (response) {
+                    if (response.success === true) {
+                        goBack(response.response);
+                    }
+                    else {
+                        $('#lblMessage').text(response.response);
+                        $('#divMessage').show();
+                    }
+                }
+            });
+        }
+    });
+
+    function goBack(message) {
+        window.location = '/Deduction/DeductionIndex?q=@Request.QueryString["q"].ToString()&message=' + message;
+    }
+
+    function fillEmployeesByCompany(companyId) {
+        if (companyId == '') {
+            companyId = '0';
+        }
+        $.ajax({
+            url: '@Url.Action("GetEmployeesByCompanyId", "Common", new { q = Request.QueryString["q"].ToString() })',
+            type: 'post',
+            data: { companyId: companyId, PersonalNo: '' },
+            //datatype: 'json',
+            success: function (data) {
+                var items = [];
+                items.push("<option value='0'>" + "-- Select Employee --" + "</option>"); //first item
+                if (data.active != null) {
+                    for (var i = 0; i < data.active.length; i++) {
+                        items.push("<option value=" + data.active[i].EmpId + ">" + data.active[i].FullName + "</option>");
+                    }
+
+                    $("#EmpID").html(items.join(' '));
+
+                    //$('#EmpId').trigger("chosen:updated");
+                }
+
+            }, error: function (ex) {
+                //hideAjaxLoader();
+                //myAlert.Alert("Error", ex.responseText);
+                alert(ex);
+            }
+        });
+    }
+
+    function GetBalance(tEmpId) {
+        //if (tEmpId = '') {
+        //    tEmpId = 0;
+        //}
+
+        $.ajax({
+            url: '@Url.Action("GetEmployeeBalance", "Common", new { q = Request.QueryString["q"].ToString() })',
+            type: 'get',
+            data: { "EmpId": tEmpId },
+            //datatype: 'json',
+            success: function (data) {
+                $('#tbx_Balance').val(data.Balance);
+
+            }, error: function (ex) {
+                //hideAjaxLoader();
+                //myAlert.Alert("Error", ex.responseText);
+                console.log(ex);
+            }
+        });
+    }
+
+    function CalculateBalance(payAmount, PreviousBalance) {
+        if (payAmount === "0") {
+            alert("Amount must be greater than zero");
+            $('#tbx_Amount').focus();
+            return false;
+        }
+
+        if (PreviousBalance === "0") {
+            alert("Sorry! No balance available.");
+            $('#EmpID').focus();
+            return false;
+        }
+
+        var total = parseFloat(PreviousBalance) - parseFloat(payAmount);
+        if (total >= 0) {
+            $('#tbx_Net').val(total.toFixed(2));
+        }
+        
+    }
+</script>

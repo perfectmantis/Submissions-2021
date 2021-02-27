@@ -1,0 +1,767 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
+    <!-- Title Page-->
+    <title>Online Review Management - FYP</title>
+    <!-- Fontfaces CSS-->
+    <link href="~/Content/css/font-face.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <!-- Bootstrap CSS-->
+    <link href="~/Content/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <!-- Vendor CSS-->
+    <link href="~/Content/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="~/Content/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/vendor/datepicker/dist/css/datepicker.min.css" rel="stylesheet" />   
+    <link href="~/Content/vendor/datepicker/css/pikaday.css" rel="stylesheet" />
+    <link href="~/Content/css/chosen.min.css" rel="stylesheet" /> 
+    <!-- Main CSS-->
+    <link href="~/Content/css/theme.css" rel="stylesheet" media="all">
+    <link href="~/Content/css/jquery-ui.css" rel="stylesheet" />
+    <!-- Jquery JS-->
+    <script src="~/Content/vendor/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/vendor/jquery-ui.min.js"></script>
+    <!-- Jquery JS Canvas-->
+    <script src="~/Scripts/Canvasjs.min.js"></script>
+    <script src="~/Scripts/Chart.min.js"></script>
+    <!-- Jquery JS Any-Chart-->
+    <script src="~/Content/vendor/chartjs/anychart-core.min.js"></script>
+    <script src="~/Content/vendor/chartjs/anychart-tag-cloud.min.js"></script>
+    <!-- Jquery JS Chosen-->
+    <script src="~/Content/vendor/chosen/chosen.jquery.min.js"></script>
+</head>
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        @*<a class="logo" href="https://www.sirajfinance.com">
+                                <img src="~/Content/images/icon/logo.svg" alt="Siraj Finance"  />
+                            </a>*@
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            @*@Html.Action("_MobileMenu", "Common")*@
+
+        </header>
+        <!-- END HEADER MOBILE-->
+        <!-- MENU SIDEBAR-->
+        @Html.Action("_Menu", "Common")
+
+        <!-- END MENU SIDEBAR-->
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <a href="#">
+                            @*<img src="~/Content/images/icon/logo.svg" alt="Siraj Finance" style="height: 75px !important;" />*@
+                            <img src="~/Content/Images/SIT Tek Logo.gif" alt="Project" style="height: 67px !important" />
+                        </a>
+                        <div class="header-wrap pull-right" style="margin-top: 15px;">
+                            @*<form class="form-header" action="" method="POST">
+                                    <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                    <button class="au-btn--submit" type="submit">
+                                        <i class="zmdi zmdi-search"></i>
+                                    </button>
+                                </form>*@
+                            <div class="header-button">
+                                <div class="noti-wrap">
+                                    @*<div class="noti__item js-item-menu">
+                                            <i class="zmdi zmdi-comment-more"></i>
+                                            <span class="quantity">1</span>
+                                            <div class="mess-dropdown js-dropdown">
+                                                <div class="mess__title">
+                                                    <p>You have 2 news message</p>
+                                                </div>
+                                                <div class="mess__item">
+                                                    <div class="image img-cir img-40">
+                                                        <img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
+                                                    </div>
+                                                    <div class="content">
+                                                        <h6>Michelle Moreno</h6>
+                                                        <p>Have sent a photo</p>
+                                                        <span class="time">3 min ago</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mess__item">
+                                                    <div class="image img-cir img-40">
+                                                        <img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
+                                                    </div>
+                                                    <div class="content">
+                                                        <h6>Diane Myers</h6>
+                                                        <p>You are now connected on message</p>
+                                                        <span class="time">Yesterday</span>
+                                                    </div>
+                                                </div>
+                                                <div class="mess__footer">
+                                                    <a href="#">View all messages</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="noti__item js-item-menu">
+                                            <i class="zmdi zmdi-email"></i>
+                                            <span class="quantity">1</span>
+                                            <div class="email-dropdown js-dropdown">
+                                                <div class="email__title">
+                                                    <p>You have 3 New Emails</p>
+                                                </div>
+                                                <div class="email__item">
+                                                    <div class="image img-cir img-40">
+                                                        <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
+                                                    </div>
+                                                    <div class="content">
+                                                        <p>Meeting about new dashboard...</p>
+                                                        <span>Cynthia Harvey, 3 min ago</span>
+                                                    </div>
+                                                </div>
+                                                <div class="email__item">
+                                                    <div class="image img-cir img-40">
+                                                        <img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
+                                                    </div>
+                                                    <div class="content">
+                                                        <p>Meeting about new dashboard...</p>
+                                                        <span>Cynthia Harvey, Yesterday</span>
+                                                    </div>
+                                                </div>
+                                                <div class="email__item">
+                                                    <div class="image img-cir img-40">
+                                                        <img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
+                                                    </div>
+                                                    <div class="content">
+                                                        <p>Meeting about new dashboard...</p>
+                                                        <span>Cynthia Harvey, April 12,,2018</span>
+                                                    </div>
+                                                </div>
+                                                <div class="email__footer">
+                                                    <a href="#">See all emails</a>
+                                                </div>
+                                            </div>
+                                        </div>*@
+                                    <div class="noti__item js-item-menu">
+                                        <i class="zmdi zmdi-notifications"></i>
+                                        <span class="quantity">3</span>
+                                        <div class="notifi-dropdown js-dropdown">
+                                            <div class="notifi__title">
+                                                <p>You have 3 Notifications</p>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c1 img-cir img-40">
+                                                    <i class="zmdi zmdi-email-open"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>You got a email notification</p>
+                                                    <span class="date">April 12, 2018 06:50</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c2 img-cir img-40">
+                                                    <i class="zmdi zmdi-account-box"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>Your account has been blocked</p>
+                                                    <span class="date">April 12, 2018 06:50</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c3 img-cir img-40">
+                                                    <i class="zmdi zmdi-file-text"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>You got a new file</p>
+                                                    <span class="date">April 12, 2018 06:50</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__footer">
+                                                <a href="#">All notifications</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="account-wrap">
+                                    @if (Request.QueryString["q"].ToString() != "")
+                                    {
+                                        string urlParams = decryptURL.decryptURLstring(Request.QueryString["q"].ToString());
+                                        string[] arrQryStr = urlParams.Split('?');
+
+                                        int userID = Convert.ToInt32(arrQryStr[0].Split('=')[1]);
+                                        WPS.Models.UserServiceModel dbUser = new WPS.Models.UserServiceModel();
+                                        var user = dbUser.GetUserById(userID);
+                                        //string userName = "admin"; string email = "admin";
+                                        string userName = user.UserName; string email = user.Email;
+
+                                    <div class="account-item clearfix js-item-menu">
+                                        <div class="image">
+                                            <img src="~/Content/images/icon/photo_not_available.png" alt="User Name" />
+                                        </div>
+                                        <div class="content">
+                                            <a class="js-acc-btn" href="#">@userName</a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="image">
+                                                    <a href="#">
+                                                        <img src="~/Content/images/icon/photo_not_available.png" alt="John Doe" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        <a href="#">@userName</a>
+                                                    </h5>
+                                                    <span class="email">@email</span>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                @*<div class="account-dropdown__item">
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-account"></i>Account
+                                                        </a>
+                                                    </div>
+                                                    <div class="account-dropdown__item">
+                                                        <a href="#">
+                                                            <i class="zmdi zmdi-settings"></i>Setting
+                                                        </a>
+                                                    </div>*@
+                                                <div class="account-dropdown__item">
+                                                    <a href="~/Login/ChangePassword?q=@Request.QueryString["q"].ToString()">
+                                                        <i class="zmdi zmdi-money-box"></i>Change Password
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__footer">
+                                                <a href="/Login/Logout">
+                                                    <i class="zmdi zmdi-power"></i>Logout
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    @RenderBody()
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3 style="float:left !important;">Confirmation</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this record?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary" id="delete" data-dismiss="modal">Delete Record</a>
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sif Confirmation-->
+    <div id="myModalSifConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">SIF Generate Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to generate a SIF?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="GenerateSif()">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sif Confirmation-->
+    <div id="myModalSifApprovalConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">SIF Approval Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure to approve SIF?</h3>
+                    <div class="row form-group">
+                        <div class="col-4">
+                            <label for="cc-payment" class="control-label">Available Balance</label>
+                        </div>
+                        <div class="col-4">
+                            <label for="cc-payment" class="control-label" id="lblcompBalance">0.00</label>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-4">
+                            <label for="cc-payment" class="control-label">Deposit Amount</label>
+                        </div>
+                        <div class="col-4">
+                            <input type="number" class="form-control" value="0.00" id="txtcompDeposit" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="ApproveSif()">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sif Summary -->
+    <div id="mySifSummaryModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sif Summary</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger" id="ErrorSummary" style="display:none">
+                        <label id="lblErrorSummary"></label>
+                    </div>
+                    <div class="alert alert-info" id="SuccessSummary" style="display:none">
+                        <label id="lblSuccessSummary"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Company Upload Confirmation-->
+    <div id="myModalCompanyUploadConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">Upload File Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to upload file?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="UploadCompany();">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Company Delete Confirmation-->
+    <div id="myModalCompanyDeleteConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">Delete Upload Company Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to delete?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="DeleteCompany();">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Company Upload Confirmation-->
+    <div id="myModalCompanyApproveConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">Approve Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to approve?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="approveCompany();">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Employee Upload Confirmation-->
+    <div id="myModalEmpUploadConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">Upload File Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to upload file?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="UploadEmployee();">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sif Upload Confirmation-->
+    <div id="myModalSifUploadConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">Upload File Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to upload file?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="UploadSif();">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Employee Upload Confirmation-->
+    <div id="myModalEmpApproveConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">Approve Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to approve?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="ApprovePendingEmployee();">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Employee Temp Delete  Confirmation-->
+    <div id="myModalEmpTmpDeleteConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">Delete Confirmation</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to delete?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="DeletePendingEmployee();">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sif Verify  Confirmation-->
+    <div id="myModalSifVerifyConfirmation" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">SIF Verification</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to verify?</h3>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="VerifySif();">Proceed</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Sif Delete Confirmation-->
+    <div id="myDeleteSifModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" style="float:left !important;">Confirmation Sif Delete</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to delete?</h3>
+                    <div class="row form-group">
+                        <div class="col-3">
+                            <label for="cc-payment" class="control-label">Remarks</label>
+                        </div>
+                        <div class="col-9">
+                            <input type="text" class="form-control" id="txtSidDeleteRemarks" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="DeleteSif();">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS-->
+    <script src="~/Content/vendor/bootstrap-4.1/popper.min.js"></script>
+    <script src="~/Content/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <!-- Vendor JS       -->
+    <script src="~/Content/vendor/slick/slick.min.js">
+    </script>
+    <script src="~/Content/vendor/wow/wow.min.js"></script>
+    <script src="~/Content/vendor/animsition/animsition.min.js"></script>
+    <script src="~/Content/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    </script>
+    <script src="~/Content/vendor/counter-up/jquery.waypoints.min.js"></script>
+    <script src="~/Content/vendor/counter-up/jquery.counterup.min.js">
+    </script>
+    <script src="~/Content/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="~/Content/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="~/Content/vendor/chartjs/Chart.bundle.min.js"></script>
+    <script src="~/Content/vendor/select2/select2.min.js"></script>
+    <script src="~/Content/vendor/datepicker/dist/js/datepicker.min.js"></script>
+    <script src="~/Content/vendor/datepicker/dist/js/i18n/datepicker.en.js"></script>
+
+    <!-- datatables.net JS -->
+    <script src="~/Content/js/datatable/buttons.flash.min.js"></script>
+    <script src="~/Content/js/datatable/buttons.html5.min.js"></script>
+    <script src="~/Content/js/datatable/buttons.print.min.js"></script>
+    <script src="~/Content/js/datatable/dataTables.buttons.min.js"></script>
+    <script src="~/Content/js/datatable/jquery.dataTables.min.js"></script>
+    <script src="~/Content/js/datatable/jszip.min.js"></script>
+
+    <!-- datatables.net JS With https-->
+    @*<script src="~/Content/vendor/datepicker/js/pikaday.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>*@
+
+    @*<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+      <script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>*@
+
+    <!-- Main JS-->
+    <script src="~/Content/js/main.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".chosen").chosen();
+            var url = '';
+            $(".table").dataTable({
+                "bStateSave": true,
+                "fnStateSave": function (oSettings, oData) {
+                    localStorage.setItem('DataTables', JSON.stringify(oData));
+                },
+                "fnStateLoad": function (oSettings) {
+                    return JSON.parse(localStorage.getItem('DataTables'));
+                },
+                //"pagingType": "full_numbers",
+                "paging": true,
+                "lengthMenu": [[-1, 10, 25, 50, 100, 250], ["All", 10, 25, 50, 100, 250]],
+                dom: 'Blfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+            $(".table").on('page.dt', function () { url = window.location; })
+            $('.js-example-basic-single').select2();
+            $('.js-example-basic-single').css("height", "35px");
+            $('.js-example-basic-single').css("width", "95%");
+
+            //$('.datepicker-here').datepicker({
+            //    dateFormat: 'mm/dd/yy',
+            //    language: 'en',
+            //    autoclose: true,
+            //    todayBtn: true,
+            //    changeYear: true,
+            //    changeMonth:true,
+            //});
+            $('.datepicker-here').datepicker({
+                dateFormat: 'mm/dd/yyyy',
+                language: 'en',
+                autoclose: true,
+                todayBtn: true,
+            })
+            $(".modal-header").css("display", "inline");
+        });
+
+        function dtConvFromJSON(data) {
+            if (data == null) return '-';
+            var r = /\/Date\(([0-9]+)\)\//gi
+            var matches = data.match(r);
+            if (matches == null) return '-';
+            var result = matches.toString().substring(6, 19);
+            var epochMilliseconds = result.replace(
+            /^\/Date\(([0-9]+)([+-][0-9]{4})?\)\/$/,
+            '$1');
+            var b = new Date(parseInt(epochMilliseconds));
+            var c = new Date(b.toString());
+            var curr_date = c.getDate();
+            var curr_month = c.getMonth() + 1;
+            var curr_year = c.getFullYear();
+            var hours = c.getHours();
+            var minutes = c.getMinutes();
+            var sec = c.getSeconds();
+
+            var curr_offset = c.getTimezoneOffset() / 60
+
+            var d = curr_month.toString() + '/' + curr_date + '/' + curr_year + ' ' + hours + ':' + minutes + ':' + sec;
+
+            return d;
+        }
+
+        function dtConvFromJSONWithoutSecond(data) {
+            if (data == null) return '-';
+            var r = /\/Date\(([0-9]+)\)\//gi
+            var matches = data.match(r);
+            if (matches == null) return '-';
+            var result = matches.toString().substring(6, 19);
+            var epochMilliseconds = result.replace(
+            /^\/Date\(([0-9]+)([+-][0-9]{4})?\)\/$/,
+            '$1');
+            var b = new Date(parseInt(epochMilliseconds));
+            var c = new Date(b.toString());
+            var curr_date = c.getDate();
+            var curr_month = c.getMonth() + 1;
+            var curr_year = c.getFullYear();
+            var hours = c.getHours();
+            var minutes = c.getMinutes();
+            var sec = c.getSeconds();
+
+            var curr_offset = c.getTimezoneOffset() / 60;
+
+            var d = curr_month.toString() + '/' + curr_date + '/' + curr_year + ' ' + hours + ':' + minutes;//+ ':' + sec;
+
+            return d;
+        }
+
+        function dtConvFromJSONDateonly(data) {
+            if (data == null) return '-';
+            var r = /\/Date\(([0-9]+)\)\//gi
+            var matches = data.match(r);
+            if (matches == null) return '-';
+            var result = matches.toString().substring(6, 19);
+            var epochMilliseconds = result.replace(
+            /^\/Date\(([0-9]+)([+-][0-9]{4})?\)\/$/,
+            '$1');
+            var b = new Date(parseInt(epochMilliseconds));
+            var c = new Date(b.toString());
+            var curr_date = c.getDate();
+            var curr_month = c.getMonth() + 1;
+            var curr_year = c.getFullYear();
+            var hours = c.getHours();
+            var minutes = c.getMinutes();
+            var sec = c.getSeconds();
+
+            var curr_offset = c.getTimezoneOffset() / 60;
+
+            var d = curr_month.toString() + '/' + curr_date + '/' + curr_year;// + ' ' + hours + ':' + minutes;//+ ':' + sec;
+
+            return d;
+        }
+
+        function dateFormatdt(dateValue) {
+            var dateString = dateValue;
+            var currentTime = new Date(parseInt(dateString));
+            var month = currentTime.getMonth() + 1;
+            var day = currentTime.getDate();
+            var year = currentTime.getFullYear();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var sec = currentTime.getSeconds();
+            var datecol = day + "/" + month + "/" + year + ' ' + hours + ':' + minutes + ':' + sec;
+            return datecol;
+        }
+
+        function closeDiv() {
+            $('#lblMessage').text('');
+            $('#divMessage').hide();
+
+            $('#lblerrorMessage').text('');
+            $('#diverrorMessage').hide();
+        }
+
+        var months = [
+            'January', 'February', 'March', 'April', 'May',
+            'June', 'July', 'August', 'September',
+            'October', 'November', 'December'
+        ];
+
+        function monthNumToName(monthnum) {
+            return months[monthnum - 1] || '';
+        }
+
+        
+    </script>
+</body>
+</html>
+<!-- end document-->

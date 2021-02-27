@@ -1,0 +1,99 @@
+﻿@model WPS.WPSService.SMAM_ReviewSites_ST
+@{
+    ViewBag.Title = "ReviewSites";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Review Sites
+                </div>
+                <form class="form-horizontal" role="form" id="frmReviewSites">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Review Sites</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => model.SiteID)
+
+                        <div class="row form-group">
+                            <div class="col-3"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Site Name</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.SiteName, new { id = "tbx_SiteName", @class = "form-control", style = "width:95%", placeholder = "Site Name" })
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Short Name</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.ShortName, new { id = "tbx_ShortName", @class = "form-control", style = "width:95%", placeholder = "Short Name" })
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        @*<button type="reset" class="btn btn-primary btn-sm">
+                                <i class="fa fa-ban"></i> Reset
+                            </button>*@
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $('#frmReviewSites').validate({
+        submitHandler: function (form) {
+            $.ajax({
+                url: '@Url.Action("ReviewSites", "ReviewSites", new { q = Request.QueryString["q"].ToString() })',
+                type: "POST",
+                data: $(form).serialize(),
+                success: function (response) {
+                    if (response.success === true) {
+                        goBack(response.response);
+                    }
+                    else {
+                        $('#lblMessage').text(response.response);
+                        $('#divMessage').show();
+                    }
+                }
+            });
+        }
+    });
+
+    function goBack(message) {
+        window.location = '/ReviewSites/ReviewSitesIndex?q=@Request.QueryString["q"].ToString()&message=' + message;
+    }
+</script>
+

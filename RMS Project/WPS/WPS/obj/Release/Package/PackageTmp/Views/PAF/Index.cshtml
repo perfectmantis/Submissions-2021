@@ -1,0 +1,390 @@
+﻿@model WPS.Models.PAFModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / PAF Process
+                </div>
+
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-left title-2">PAF Process</h3>
+                    </div>
+                    <hr>
+                    <div class="box-content alerts">
+                        <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                            <button type="button" class="close" onclick="closeDiv();">×</button>
+                            <label id="lblerrorMessage" style="float:left !important"></label>
+                        </div>
+                        <div class="alert alert-success" id="divMessage" style="display:none;">
+                            <button type="button" class="close" onclick="closeDiv();">×</button>
+                            <label id="lblMessage" style="float:left !important"></label>
+                        </div>
+                    </div>
+
+
+                    <form class="form-horizontal" role="form" id="frmSif">
+                        <div class="row form-group">
+                            <div class="col-4">
+                                <label for="cc-payment" class="control-label">Company</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("CompanyId", null, "Select Company",
+                                new { @class = "form-control js-example-basic-single", style = "width: 95%", maxlength = "50" })
+                            </div>
+
+                            @*<div class="col-6">
+                            <button type="button" class="btn btn-primary btn-sm" onclick="getPendingSif();">
+                            <i class="fa fa-dot-circle-o"></i> Get Pending SIF(s)
+                            </button>
+
+
+                            </div>*@
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-4">
+                                <label for="cc-payment" class="control-label">Date</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBox("txtDate", Model.date.ToString("MM/dd/yyyy"), new {id="dtPicker", @class = "form-control datepicker-here", style = "width: 100%", required = "required", maxLength = "50", type = "text", placeholder = "Date" })
+                            </div>
+
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-4"></div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="getPAF();">
+                                    <i class="fa fa-dot-circle-o"></i> Get PAF(s)
+                                </button>
+
+
+                            </div>
+
+
+                        </div>
+                    </form>
+                    <hr />
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">PAF Received</a>
+                            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">PAF from System</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">PAF from Manual</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <br />
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 style="display: inline">Total PAF Recieved</h5>
+                                </div>
+                                <hr />
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block; font-weight: bold;">
+                                        No of files:
+                                    </span>
+                                </div>
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block; font-weight: bold;">
+                                        No of Records:
+
+                                    </span>
+                                </div>
+                                <div class="col-4">
+                                    <span style="text-align: center; display: block; font-weight: bold;">
+                                        Total Amount:
+                                    </span>
+                                </div>
+
+                                <div class="col-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block">
+                                        @Model.PafSummary.Select(x => x.uploadid).Distinct().Count()
+                                    </span>
+                                </div>
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block">
+                                        @Model.PafSummary.Select(x => x.numberofrecords).Count()
+                                    </span>
+                                </div>
+                                <div class="col-4">
+                                    <span style="text-align: center; display: block">
+                                        @Model.PafSummary.Select(x => x.netpay).Sum()
+                                    </span>
+                                </div>
+
+                                <div class="col-2">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <br />
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 style="display: inline">Total PAF Recieved</h5>
+                                </div>
+                                <hr />
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block; font-weight: bold;">
+                                        No of files:
+                                    </span>
+                                </div>
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block; font-weight: bold;">
+                                        No of Records:
+
+                                    </span>
+                                </div>
+                                <div class="col-4">
+                                    <span style="text-align: center; display: block; font-weight: bold;">
+                                        Total Amount:
+                                    </span>
+                                </div>
+
+                                <div class="col-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block">
+                                        @Model.PafSummary.Where(x => x.EmpId > 0).Select(x => x.uploadid).Distinct().Count()
+                                    </span>
+                                </div>
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block">
+                                        @Model.PafSummary.Where(x => x.EmpId > 0).Select(x => x.numberofrecords).Count()
+                                    </span>
+                                </div>
+                                <div class="col-4">
+                                    <span style="text-align: center; display: block">
+                                        @Model.PafSummary.Where(x => x.EmpId > 0).Select(x => x.netpay).Sum()
+                                    </span>
+                                </div>
+
+                                <div class="col-2">
+                                </div>
+                            </div>
+                            <hr />
+                            <table class="table table-borderless table-striped table-earning" cellspacing="0" >
+                                <thead>
+                                    <tr>
+                                        <th>File Name</th>
+                                        <th>Personal No</th>
+                                        <th>IBAN</th>
+                                        <th>Fixed</th>
+                                        <th>Variable</th>
+                                        <th>Net Pay</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ string _lastFileName = ""; }
+                                    @foreach (var item in Model.PafSummary.Where(x => x.EmpId > 0).OrderBy(x => x.pafactualname))
+                                    {
+                                    if (_lastFileName != item.pafactualname)
+                                    {
+                                    <tr style="font-weight:bold; font-size:12px; background-color:#d3d7da;">
+                                        <td colspan="6"> @item.pafactualname</td>
+                                        <td style="display:none;"></td>
+                                        <td style="display:none;"></td>
+                                        <td style="display:none;"></td>
+                                        <td style="display:none;"></td>
+                                        <td style="display:none;"></td>
+
+                                    </tr>
+                                    }
+                                    <tr>
+                                        <td> @item.pafactualname</td>
+                                        <td>@item.personalnumber</td>
+                                        <td>@item.accountnumber</td>
+                                        <td>@item.fixedamount</td>
+                                        <td>@item.variableamount</td>
+                                        <td>@item.netpay</td>
+                                    </tr>
+                                    _lastFileName = item.pafactualname;
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <br />
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5 style="display: inline">Total PAF Recieved</h5>
+                                </div>
+                                <hr />
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block; font-weight: bold;">
+                                        No of files:
+                                    </span>
+                                </div>
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block; font-weight: bold;">
+                                        No of Records:
+
+                                    </span>
+                                </div>
+                                <div class="col-4">
+                                    <span style="text-align: center; display: block; font-weight: bold;">
+                                        Total Amount:
+                                    </span>
+                                </div>
+
+                                <div class="col-2">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block">
+                                        @Model.PafSummary.Where(x => x.EmpId == 0).Select(x => x.uploadid).Distinct().Count()
+                                    </span>
+                                </div>
+                                <div class="col-3">
+                                    <span style="text-align: center; display: block">
+                                        @Model.PafSummary.Where(x => x.EmpId == 0).Select(x => x.numberofrecords).Count()
+                                    </span>
+                                </div>
+                                <div class="col-4">
+                                    <span style="text-align: center; display: block">
+                                        @Model.PafSummary.Where(x => x.EmpId == 0).Select(x => x.netpay).Sum()
+                                    </span>
+                                </div>
+
+                                <div class="col-2">
+                                    @*<button type="button" class="btn btn-primary btn-sm" onclick="generateRFA();">
+                                        <i class="fa fa-dot-circle-o"></i> Process RFA
+                                    </button>*@
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="table-responsive table--no-card m-b-30">
+                                <table class="table table-borderless table-striped table-earning" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>File Name</th>
+                                            <th>Personal No</th>
+                                            <th>IBAN</th>
+                                            <th>Fixed</th>
+                                            <th>Variable</th>
+                                            <th>Net Pay</th>
+                                            <th>RFA Generated</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ string _rlastFileName = ""; }
+                                        @foreach (var item in Model.PafSummary.Where(x => x.EmpId == 0).OrderBy(x => x.pafactualname))
+                                        {
+                                            if (_rlastFileName != item.pafactualname)
+                                            {
+                                                string rfaStatus = "";
+                                                rfaStatus = item.IsRFAGenerated == "Y" ? "Yes - " + Convert.ToDateTime(item.RFATimestamp).ToString("dd-MMM-yyyy") : "No";
+                                                <tr style="font-weight:bold; font-size:12px; background-color:#d3d7da;">
+                                                    <td colspan="6"> @item.pafactualname</td>
+                                                    <td style="display:none;"></td>
+                                                    <td style="display:none;"></td>
+                                                    <td style="display:none;"></td>
+                                                    <td style="display:none;"></td>
+                                                    <td style="display:none;"></td>
+                                                    <td>@rfaStatus</td>
+
+                                                </tr>
+                                            }
+                                        <tr>
+                                            <td>@item.pafactualname</td>
+                                            <td>@item.personalnumber</td>
+                                            <td>@item.accountnumber</td>
+                                            <td>@item.fixedamount</td>
+                                            <td>@item.variableamount</td>
+                                            <td>@item.netpay</td>
+                                            <td></td>
+                                        </tr>
+                                        _rlastFileName = item.pafactualname;
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalSifApprovalConfirmation">
+                        <i class="fa fa-dot-circle-o"></i> Approve SIF
+                    </button>
+                    <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                        <i class="fa fa-dot-circle-o"></i> Back
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    function getPAF() {
+        //showAjaxLoader();
+        var date = $("#txtDate").val();
+        var userCheck;
+        userCheck = $("#CompanyId").val();
+
+        if (userCheck == "undefined") {
+            userCheck = 0;
+        }
+
+        var url = '@Url.Action("GetPafSummary", "PAF", new { q = Request.QueryString["q"].ToString() })&currentDate=' + date + '&val=' + userCheck + '';
+        window.location = url;
+    }
+
+    function generateRFA() {
+        var date = $("#txtDate").val();
+        var userCheck;
+        userCheck = $("#CompanyId").val();
+
+        if (userCheck == "undefined") {
+            userCheck = 0;
+        }
+
+        $.ajax({
+            url: '@Url.Action("GenerateRFA", "PAF", new { q = Request.QueryString["q"].ToString() })',
+            type: "POST",
+            traditional: true,
+            data: { "val": userCheck, "currentDate": date },
+            success: function (response) {
+                if (response.status == true) {
+                    @*var url = '@Url.Action("GetPafSummary", "PAF", new { q = Request.QueryString["q"].ToString() })&currentDate=' + date + '&val=' + userCheck + '';
+                    window.location = url;*@
+                }
+                else {
+
+                }
+            }
+        });
+    }
+
+
+</script>

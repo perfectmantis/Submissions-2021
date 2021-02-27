@@ -1,0 +1,60 @@
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\bin\ApplicationService.dll.config
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\bin\ApplicationService.dll
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\bin\ApplicationService.pdb
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.dll
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.SqlServer.dll
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.xml
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.SqlServer.xml
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\obj\Debug\ApplicationService.dll
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\obj\Debug\ApplicationService.pdb
+D:\Irfan Working Folder\Wetek\Siraj Finance\UserService\ApplicationService\obj\Debug\ApplicationService.csprojResolveAssemblyReference.cache
+G:\Siraj Finance\UserService\ApplicationService\bin\ApplicationService.dll.config
+G:\Siraj Finance\UserService\ApplicationService\bin\ApplicationService.dll
+G:\Siraj Finance\UserService\ApplicationService\bin\ApplicationService.pdb
+G:\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.dll
+G:\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.SqlServer.dll
+G:\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.xml
+G:\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.SqlServer.xml
+G:\Siraj Finance\UserService\ApplicationService\obj\Debug\ApplicationService.csprojResolveAssemblyReference.cache
+G:\Siraj Finance\UserService\ApplicationService\obj\Debug\ApplicationService.dll
+G:\Siraj Finance\UserService\ApplicationService\obj\Debug\ApplicationService.pdb
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\bin\ApplicationService.dll.config
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\bin\ApplicationService.dll
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\bin\ApplicationService.pdb
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\bin\EntityFramework.dll
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\bin\EntityFramework.SqlServer.dll
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\bin\EntityFramework.xml
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\bin\EntityFramework.SqlServer.xml
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\obj\Debug\ApplicationService.csprojResolveAssemblyReference.cache
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\obj\Debug\ApplicationService.dll
+D:\Raza Working Folder\Review Finance\UserService\ApplicationService\obj\Debug\ApplicationService.pdb
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\bin\ApplicationService.dll.config
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\bin\ApplicationService.dll
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\bin\ApplicationService.pdb
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\bin\EntityFramework.dll
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\bin\EntityFramework.SqlServer.dll
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\bin\EntityFramework.xml
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\bin\EntityFramework.SqlServer.xml
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\obj\Debug\ApplicationService.csprojResolveAssemblyReference.cache
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\obj\Debug\ApplicationService.dll
+D:\Irfan Working Folder\SIT\Review Management System\UserService\ApplicationService\obj\Debug\ApplicationService.pdb
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\bin\ApplicationService.dll.config
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\bin\ApplicationService.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\bin\ApplicationService.pdb
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\bin\EntityFramework.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\bin\EntityFramework.SqlServer.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\bin\EntityFramework.xml
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\bin\EntityFramework.SqlServer.xml
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\obj\Debug\ApplicationService.csprojResolveAssemblyReference.cache
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\obj\Debug\ApplicationService.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\UserService\ApplicationService\obj\Debug\ApplicationService.pdb
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\bin\ApplicationService.dll.config
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\bin\ApplicationService.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\bin\ApplicationService.pdb
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\bin\EntityFramework.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\bin\EntityFramework.SqlServer.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\bin\EntityFramework.xml
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\bin\EntityFramework.SqlServer.xml
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\obj\Debug\ApplicationService.csprojResolveAssemblyReference.cache
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\obj\Debug\ApplicationService.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\UserService\ApplicationService\obj\Debug\ApplicationService.pdb

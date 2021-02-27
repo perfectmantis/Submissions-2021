@@ -1,0 +1,12 @@
+============================ Start Error ========================================================
+Time : 12:12:47 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.SifController.GenerateSif(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 selectedCompanyId, String Month, String Year, Int32[] EmpID, String[] PersonalNo, String[] RoutingCode, String[] IBAN, Decimal[] Basic, Decimal[] Housing, Decimal[] Conveyance, Decimal[] Medical, Decimal[] Annual, Decimal[] Overtime, Decimal[] Others, Decimal[] Encashment, Int32[] LeaveDays) in G:\Siraj Finance\WPS\WPS\Controllers\SifController.cs:line 113
+
+TargetSite   : System.Web.Mvc.ActionResult GenerateSif(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32, System.String, System.String, Int32[], System.String[], System.String[], System.String[], System.Decimal[], System.Decimal[], System.Decimal[], System.Decimal[], System.Decimal[], System.Decimal[], System.Decimal[], System.Decimal[], Int32[])
+Line No.  :Sif Generation
+============================= End Error =========================================================
+
+

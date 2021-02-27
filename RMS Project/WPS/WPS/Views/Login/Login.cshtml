@@ -1,0 +1,87 @@
+﻿@model WPS.Models.Login
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/Login.css" rel="stylesheet" />
+    <script src="~/Content/vendor/jquery-3.2.1.min.js"></script>
+    <script src="~/Content/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+            <!-- Tabs Titles -->
+            <!-- Icon -->
+            <div class="fadeIn first">
+                
+                <img src="~/Content/Images/SIT Tek Logo.gif" id="icon" alt="User Icon" />
+                
+            </div>
+            <hr style="background:white; width:94%;" />
+            <div style="width:95%; margin-left: 15px;">
+                <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                    <button type="button" class="close" onclick="closeDiv();">×</button>
+                    <label id="lblerrorMessage"></label>
+                </div>
+                <div class="alert alert-success" id="divMessage" style="display:none;">
+                    <button type="button" class="close" onclick="closeDiv();">×</button>
+                    <label id="lblMessage"></label>
+                </div>
+            </div>
+            <!-- Login Form -->
+            <form id="formLogin">
+                @Html.TextBoxFor(model => model.id, new { id = "id", @class = "fadeIn second", placeholder = "Username" })
+                @Html.TextBoxFor(model => model.password, new { id = "password", @class = "fadeIn third", placeholder = "Username", type="password" })
+                @*@Html.TextBoxFor(model => model.password, new { id = "password", type="password", @class = "fadeIn third", placeholder = "Password" })*@
+                @*<input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
+                <input type="password" id="password" class="fadeIn third" name="login"  placeholder="password">*@
+                <a href="/Login/ForgotPassword" style="color: #249bcd !important; width:100%">Forgot your password?</a>
+                <input type="submit" class="fadeIn fourth" value="Log In">
+            </form>
+            <!-- Remind Passowrd -->
+            @*<div id="formFooter">
+                <a class="underlineHover" href="#">Go to the Site</a>
+            </div>*@
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script>
+    $('#formLogin').validate({
+        submitHandler: function (form) {
+            $.ajax({
+                url: '@Url.Action("Verification", "Login")',
+                type: "POST",
+                data: $(form).serialize(),
+                success: function (response) {
+                    if (response.success == false) {
+                        $('#lblerrorMessage').html(response.response);
+                        $('#diverrorMessage').show();
+                    }
+                    else {
+                        window.location.href = response.response;
+                    }
+                },
+                error: function (response) {
+                    $('#lblerrorMessage').html(response.response);
+                    $('#diverrorMessage').show();
+                }
+            });
+
+        }
+    });
+
+    function closeDiv() {
+        $('#lblerrorMessage').html('');
+        $('#diverrorMessage').hide();
+    }
+</script>

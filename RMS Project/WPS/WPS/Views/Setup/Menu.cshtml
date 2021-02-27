@@ -1,0 +1,167 @@
+﻿@model WPS.UserServiceClass.SMAM_Menu_ST
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Menu Description
+                </div>
+                <form class="form-horizontal" role="form" id="frmMenu">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Menu Description</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();"  >×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();"  >×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => model.MenuId)
+
+
+
+
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Menu Description</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.MenuDescription, new { id = "tbx_Description", @class = "form-control", style = "width:95%", placeholder = "Description" })
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Parent Menu</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("ParentMenuId", null, "Select Parent Menu",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50" })
+
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Menu Type</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("MenuType", null, "Select Menu Type",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50" })
+                               
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">IconPath</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.IconPath, new { id = "tbx_IconPath", @class = "form-control", style = "width:95%", placeholder = "IconPath", required= "required" })
+
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Menu Seq</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.MenuSeq, new { id = "tbx_MenuSeq", @class = "form-control", style = "width:95%", placeholder = "MenuSeq" })
+
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">UrlPath</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.urlPath, new { id = "tbx_UrlPath", @class = "form-control", style = "width:95%", placeholder = "UrlPath" })
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Defaul Value</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.DefaultValue, new { id = "tbx_DefaulValue", @class = "form-control", style = "width:95%", placeholder = "DefaulValue" })
+
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Role Name</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.RoleName, new { id = "tbx_RoleName", @class = "form-control", style = "width:95%", placeholder = "RoleName" })
+
+
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+
+                        
+                        
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        <button type="reset" class="btn btn-primary btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $('#frmMenu').validate({
+        submitHandler: function (form) {
+            $.ajax({
+                url: '@Url.Action("Menu", "Setup", new { q = Request.QueryString["q"].ToString() })',
+                type: "POST",
+                data: $(form).serialize(),
+                success: function (response) {
+                    if (response.success === true) {
+                        goBack(response.response);
+                    }
+                    else {
+                        $('#lblMessage').text(response.response);
+                        $('#divMessage').show();
+                    }
+                }
+            });
+        }
+    });
+
+    function goBack(message) {
+        window.location = '/Setup/MenuIndex?q=@Request.QueryString["q"].ToString()&message=' + message;
+    }
+</script>

@@ -1,0 +1,478 @@
+﻿@model WPS.Models.ImportCompanyExcel
+@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Upload Company(s)
+                </div>
+
+                @using (Html.BeginForm("UploadFile", "Company", new { q = Request.QueryString["q"].ToString() }, FormMethod.Post, new { @id = "frmCompanyUpload", enctype = "multipart/form-data", @class = "form-horizontal" }))
+                {
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Upload Company(s)</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Browse File</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.AntiForgeryToken()
+                                @Html.TextBoxFor(x => x.MyExcelFile, new { @class = "form-control", required = "required", type = "file", @multiple = "multiple" })
+                            </div>
+                            <div class="col-6"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalCompanyUploadConfirmation">
+                            <i class="fa fa-dot-circle-o"></i> Upload
+                        </button>
+                        <button type="reset" class="btn btn-primary btn-sm" onclick="getPending();">
+                            <i class="fa fa-ban"></i> Get Pending(s)
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalCompanyApproveConfirmation">
+                            <i class="fa fa-dot-circle-o"></i> Approved
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalCompanyDeleteConfirmation">
+                            <i class="fa fa-dot-circle-o"></i> Delete
+                        </button>
+                    </div>
+                }
+                <div class="card-body">
+                    <div class="default-tab">
+                        <nav>
+                            <div class="nav nav-tabs" id="tabHeader" role="tablist">
+                                <a data-toggle="tab" href="#ValidEmployee" id="Uploaded" class="nav-item nav-link active">Uploaded Companies</a>
+                                <a data-toggle="tab" href="#PendingEmployee" id="Pending" class="nav-item nav-link">Pending Approval</a>
+                                <a data-toggle="tab" href="#ErrorEmployee" id="error" class="nav-item nav-link">Error Companies</a>
+                            </div>
+                            <div class="tab-content" id="nav-tabConent">
+                                
+                                <div class="tab-pane fade show active" id="ValidEmployee">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-borderless table-striped table-earning" id="tblEmployee" role="grid" style="width: 100% !important">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 11%">Agent</th>
+                                                        <th style="width: 11%">Sub Agent</th>
+                                                        <th style="width: 22%">Parent Company</th>
+                                                        <th style="width: 24%">Company</th>
+                                                        <th style="width: 9%">Est. ID</th>
+                                                        <th style="width: 10%">User Name</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="PendingEmployee">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-borderless table-striped table-earning" id="tblPendingEmployee" role="grid" style="width: 100% !important">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 11%">Select</th>
+                                                        <th style="width: 11%">Agent</th>
+                                                        <th style="width: 11%">Sub Agent</th>
+                                                        <th style="width: 22%">Parent Company</th>
+                                                        <th style="width: 24%">Company</th>
+                                                        <th style="width: 9%">Est. ID</th>
+                                                        <th style="width: 10%">User Name</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="ErrorEmployee">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-borderless table-striped table-earning" id="tblErrorEmployee" role="grid" style="width: 100% !important">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 11%">Agent</th>
+                                                        <th style="width: 11%">Sub Agent</th>
+                                                        <th style="width: 22%">Parent Company</th>
+                                                        <th style="width: 24%">Company</th>
+                                                        <th style="width: 9%">Est. ID</th>
+                                                        <th style="width: 10%">Message</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                @*<ul class="nav nav-tabs" id="tabHeader">
+                        <li>
+
+                        </li>
+                        <li>
+
+                        </li>
+
+                    </ul>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script src="~/Content/vendor/jquery.form.min.js"></script>
+
+<script>
+    function UploadCompany() {
+        $("#frmCompanyUpload").submit();
+    }
+
+    $('form').ajaxForm({
+        beforeSubmit: function () {
+        },
+        success: function (data) {
+            console.log(data);
+            if (data.success == false) {
+                $('#lblMessage').text('');
+                $('#divMessage').hide();
+
+                $('#lblerrorMessage').text(data.response);
+                $('#diverrorMessage').show();
+                return false;
+            }
+
+            $('#lblerrorMessage').text('');
+            $('#diverrorMessage').hide();
+
+            
+           
+
+            $('#tblErrorEmployee').dataTable({
+                paging: true,
+                sort: true,
+                searching: true,
+                bDestroy: true,
+                bRetreive: true,
+                data: data.ErrorEmployee,
+                aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                columns: [
+
+                   { 'data': "AgentCode" },
+                        { 'data': "SubAgentCode" },
+                        { 'data': "ParentCompanyEstID" },
+                        { 'data': "CompanyName" },
+                        { 'data': "EstID" },
+                    { 'data': "ErrorMessage" },
+                ]
+               ,
+                dom: 'Blfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+            $('#tblEmployee').dataTable({
+                paging: true,
+                sort: true,
+                searching: true,
+                bDestroy: true,
+                bRetreive: true,
+                data: data.Employees,
+                aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                columns: [
+                     { 'data': "AgentCode" },
+                        { 'data': "SubAgentCode" },
+                        { 'data': "ParentCompanyEstID" },
+                        { 'data': "CompanyName" },
+                        { 'data': "EstID" },
+                        { 'data': "UserName" },
+                ]
+              ,
+                dom: 'Blfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+            $('#Uploaded').attr("class", "nav-item nav-link active");
+            $('#Pending').attr("class", "nav-item nav-link");
+            $('#error').attr("class", "nav-item nav-link");
+
+            $("#PendingEmployee").attr("class", "tab-pane fade");
+            $("#ValidEmployee").attr("class", "tab-pane fade show active");
+            $("#ErrorEmployee").attr("class", "tab-pane fade");
+
+            if (data.Employees.length > 0) {
+                $('#lblMessage').html('File uploaded successfully, waiting for approval. Please check error(s) ');
+                $('#divMessage').show();
+            } else {
+                $('#lblMessage').html('No File uploaded, please check error(s) ');
+                $('#divMessage').show();
+
+                $('#Uploaded').attr("class", "nav-item nav-link");
+                $('#Pending').attr("class", "nav-item nav-link");
+                $('#error').attr("class", "nav-item nav-link active");
+
+                $("#PendingEmployee").attr("class", "tab-pane fade");
+                $("#ValidEmployee").attr("class", "tab-pane fade");
+                $("#ErrorEmployee").attr("class", "tab-pane fade show active");
+            }
+        }
+
+
+    });
+
+    function getPending() {
+        $.ajax({
+            url: '@Url.Action("GetPending", "Company", new { q = Request.QueryString["q"].ToString() })',
+            dataType: 'json',
+            success: function (data) {
+
+                $('#tblPendingEmployee').dataTable({
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    data: data.Employees,
+                    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                    columns: [
+                        {
+                            'data': "TempId",
+                            'render': function (TempId) {
+                                return '<input id="chk" type="checkbox" value=' + TempId + '>';
+                            }
+                        },
+                        { 'data': "AgentCode" },
+                        { 'data': "SubAgentCode" },
+                        { 'data': "ParentCompanyEstID" },
+                        { 'data': "CompanyName" },
+                        { 'data': "EstID" },
+                        { 'data': "UserName" },
+                    ]
+              ,
+                    dom: 'Blfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+
+                $('#Uploaded').attr("class", "nav-item nav-link");
+                $('#Pending').attr("class", "nav-item nav-link active");
+                $('#error').attr("class", "nav-item nav-link");
+
+                $("#PendingEmployee").attr("class", "tab-pane fade show active");
+                $("#ValidEmployee").attr("class", "tab-pane fade");
+                $("#ErrorEmployee").attr("class", "tab-pane fade");
+            }
+        });
+    }
+
+    function approveCompany() {
+        var idsArray = Array();
+
+        $("#tblPendingEmployee input:checkbox:checked").each(function () {
+            console.log($(this));
+            if ($(this).attr('id') == 'chkAll') {
+            }
+            else {
+                var status = $(this).val();
+                idsArray.push(status);
+            }
+
+            console.log(idsArray);
+
+        });
+
+        $.ajax({
+            url: '@Url.Action("ApproveCompany", "Company", new { q = Request.QueryString["q"].ToString() })',
+            type: "POST",
+            data: { 'Ids': idsArray },
+            success: function (data) {
+                if (data.success == false) {
+                    $('#lblMessage').text('');
+                    $('#divMessage').hide();
+
+                    $('#lblerrorMessage').text(data.response);
+                    $('#diverrorMessage').show();
+                    return false;
+                }
+
+                $('#lblerrorMessage').text('');
+                $('#diverrorMessage').hide();
+
+                $('#lblMessage').html('Validated companies are approved successfully, please check error companies.');
+                $('#divMessage').show();
+                
+                $('#tblErrorEmployee').dataTable({
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    data: data.ErrorEmployees,
+                    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                    columns: [
+
+                       { 'data': "AgentCode" },
+                            { 'data': "SubAgentCode" },
+                            { 'data': "ParentCompanyEstID" },
+                            { 'data': "CompanyName" },
+                            { 'data': "EstID" },
+                        { 'data': "ErrorMessage" },
+                    ]
+               ,
+                    dom: 'Blfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+
+                $('#tblPendingEmployee').dataTable({
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    data: data.Employees,
+                    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                    columns: [
+                        {
+                            'data': "TempId",
+                            'render': function (TempId) {
+                                return '<input id="chk" type="checkbox" value=' + TempId + '>';
+                            }
+                        },
+                        { 'data': "AgentCode" },
+                        { 'data': "SubAgentCode" },
+                        { 'data': "ParentCompanyEstID" },
+                        { 'data': "CompanyName" },
+                        { 'data': "EstID" },
+                        { 'data': "UserName" },
+                    ]
+              ,
+                    dom: 'Blfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+
+                $('#Uploaded').attr("class", "nav-item nav-link");
+                $('#Pending').attr("class", "nav-item nav-link active");
+                $('#error').attr("class", "nav-item nav-link");
+
+                $("#ValidEmployee").attr("class", "tab-pane fade");
+                $("#PendingEmployee").attr("class", "tab-pane fade show active");
+                $("#ErrorEmployee").attr("class", "tab-pane fade");
+            }
+        });
+    }
+
+    function DeleteCompany() {
+        var idsArray = Array();
+
+        $("#tblPendingEmployee input:checkbox:checked").each(function () {
+            console.log($(this));
+            if ($(this).attr('id') == 'chkAll') {
+            }
+            else {
+                var status = $(this).val();
+                idsArray.push(status);
+            }
+
+            console.log(idsArray);
+
+        });
+        $.ajax({
+            url: '@Url.Action("DeleteCompany", "Company", new { q = Request.QueryString["q"].ToString() })',
+            type: "POST",
+            data: { 'Ids': idsArray },
+            success: function (data) {
+                if (data.success == false) {
+                    $('#lblMessage').text('');
+                    $('#divMessage').hide();
+
+                    $('#lblerrorMessage').text(data.response);
+                    $('#diverrorMessage').show();
+                    return false;
+                }
+
+                $('#lblerrorMessage').text('');
+                $('#diverrorMessage').hide();
+
+                $('#lblMessage').html('Companies are deleted successfully.');
+                $('#divMessage').show();
+
+                
+                $('#tblPendingEmployee').dataTable({
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    data: data.Employees,
+                    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                    columns: [
+                        {
+                            'data': "TempId",
+                            'render': function (TempId) {
+                                return '<input id="chk" type="checkbox" value=' + TempId + '>';
+                            }
+                        },
+                        { 'data': "AgentCode" },
+                        { 'data': "SubAgentCode" },
+                        { 'data': "ParentCompanyEstID" },
+                        { 'data': "CompanyName" },
+                        { 'data': "EstID" },
+                        { 'data': "UserName" },
+                    ]
+              ,
+                    dom: 'Blfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+
+
+                $('#Uploaded').attr("class", "nav-item nav-link");
+                $('#Pending').attr("class", "nav-item nav-link active");
+                $('#error').attr("class", "nav-item nav-link");
+
+                $("#ValidEmployee").attr("class", "tab-pane fade");
+                $("#PendingEmployee").attr("class", "tab-pane fade show active");
+                $("#ErrorEmployee").attr("class", "tab-pane fade");
+            }
+        });
+    }
+</script>

@@ -1,0 +1,979 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/WPSService.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WPSService.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52150/WPSService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfSP_Get_Account_By_Company_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_Get_Account_By_Company_Result" nillable="true" type="tns:SP_Get_Account_By_Company_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_Get_Account_By_Company_Result" nillable="true" type="tns:ArrayOfSP_Get_Account_By_Company_Result" />
+  <xs:complexType name="SP_Get_Account_By_Company_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCount" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Get_Account_By_Company_Result" nillable="true" type="tns:SP_Get_Account_By_Company_Result" />
+  <xs:complexType name="ArrayOfSP_Reviews_CompanyWise_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_Reviews_CompanyWise_Dashboard_Result" nillable="true" type="tns:SP_Reviews_CompanyWise_Dashboard_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_Reviews_CompanyWise_Dashboard_Result" nillable="true" type="tns:ArrayOfSP_Reviews_CompanyWise_Dashboard_Result" />
+  <xs:complexType name="SP_Reviews_CompanyWise_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Rating" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReviewsCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteID" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Reviews_CompanyWise_Dashboard_Result" nillable="true" type="tns:SP_Reviews_CompanyWise_Dashboard_Result" />
+  <xs:complexType name="ArrayOfSP_Reviews_Line_CompanyWise_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_Reviews_Line_CompanyWise_Dashboard_Result" nillable="true" type="tns:SP_Reviews_Line_CompanyWise_Dashboard_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_Reviews_Line_CompanyWise_Dashboard_Result" nillable="true" type="tns:ArrayOfSP_Reviews_Line_CompanyWise_Dashboard_Result" />
+  <xs:complexType name="SP_Reviews_Line_CompanyWise_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="GoogleRating" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="GoogleReviews" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MonthNam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MonthNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MonthYr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="YelpRating" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="YelpReviews" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Reviews_Line_CompanyWise_Dashboard_Result" nillable="true" type="tns:SP_Reviews_Line_CompanyWise_Dashboard_Result" />
+  <xs:complexType name="ArrayOfSP_Review_WordCount_Dashboard_HI_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_Review_WordCount_Dashboard_HI_Result" nillable="true" type="tns:SP_Review_WordCount_Dashboard_HI_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_Review_WordCount_Dashboard_HI_Result" nillable="true" type="tns:ArrayOfSP_Review_WordCount_Dashboard_HI_Result" />
+  <xs:complexType name="SP_Review_WordCount_Dashboard_HI_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WrdTypeCount" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Review_WordCount_Dashboard_HI_Result" nillable="true" type="tns:SP_Review_WordCount_Dashboard_HI_Result" />
+  <xs:complexType name="ArrayOfSP_WordType_Desc_PieChart_Dashboard_HI_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_WordType_Desc_PieChart_Dashboard_HI_Result" nillable="true" type="tns:SP_WordType_Desc_PieChart_Dashboard_HI_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_WordType_Desc_PieChart_Dashboard_HI_Result" nillable="true" type="tns:ArrayOfSP_WordType_Desc_PieChart_Dashboard_HI_Result" />
+  <xs:complexType name="SP_WordType_Desc_PieChart_Dashboard_HI_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bad" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Good" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_WordType_Desc_PieChart_Dashboard_HI_Result" nillable="true" type="tns:SP_WordType_Desc_PieChart_Dashboard_HI_Result" />
+  <xs:complexType name="ArrayOfSP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result" nillable="true" type="tns:SP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result" nillable="true" type="tns:ArrayOfSP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result" />
+  <xs:complexType name="SP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bad" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Good" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MonthNam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MonthNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MonthYr" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result" nillable="true" type="tns:SP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result" />
+  <xs:complexType name="ArrayOfSP_WordCount_Desc_CloudChart_Dashboard_HI_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_WordCount_Desc_CloudChart_Dashboard_HI_Result" nillable="true" type="tns:SP_WordCount_Desc_CloudChart_Dashboard_HI_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_WordCount_Desc_CloudChart_Dashboard_HI_Result" nillable="true" type="tns:ArrayOfSP_WordCount_Desc_CloudChart_Dashboard_HI_Result" />
+  <xs:complexType name="SP_WordCount_Desc_CloudChart_Dashboard_HI_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="WorType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Word" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WordCount" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_WordCount_Desc_CloudChart_Dashboard_HI_Result" nillable="true" type="tns:SP_WordCount_Desc_CloudChart_Dashboard_HI_Result" />
+  <xs:complexType name="ArrayOfSP_Reviews_Rating_Summary_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_Reviews_Rating_Summary_Dashboard_Result" nillable="true" type="tns:SP_Reviews_Rating_Summary_Dashboard_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_Reviews_Rating_Summary_Dashboard_Result" nillable="true" type="tns:ArrayOfSP_Reviews_Rating_Summary_Dashboard_Result" />
+  <xs:complexType name="SP_Reviews_Rating_Summary_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AccountName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Facebook" type="xs:int" />
+      <xs:element minOccurs="0" name="FacebookRating" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Google" type="xs:int" />
+      <xs:element minOccurs="0" name="GoogleRating" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Healthgrades" type="xs:int" />
+      <xs:element minOccurs="0" name="HealthgradesRating" type="xs:decimal" />
+      <xs:element minOccurs="0" name="RateMDs" type="xs:int" />
+      <xs:element minOccurs="0" name="RateMDsRating" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Vitals" type="xs:int" />
+      <xs:element minOccurs="0" name="VitalsRating" type="xs:decimal" />
+      <xs:element minOccurs="0" name="YellowPages" type="xs:int" />
+      <xs:element minOccurs="0" name="YellowPagesRating" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Yelp" type="xs:int" />
+      <xs:element minOccurs="0" name="YelpRating" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Reviews_Rating_Summary_Dashboard_Result" nillable="true" type="tns:SP_Reviews_Rating_Summary_Dashboard_Result" />
+  <xs:complexType name="ArrayOfSP_IsAccount_Benchmark_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_IsAccount_Benchmark_Dashboard_Result" nillable="true" type="tns:SP_IsAccount_Benchmark_Dashboard_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_IsAccount_Benchmark_Dashboard_Result" nillable="true" type="tns:ArrayOfSP_IsAccount_Benchmark_Dashboard_Result" />
+  <xs:complexType name="SP_IsAccount_Benchmark_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Rating" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReviewsCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_IsAccount_Benchmark_Dashboard_Result" nillable="true" type="tns:SP_IsAccount_Benchmark_Dashboard_Result" />
+  <xs:complexType name="ArrayOfSP_IsBenAccount_Benchmark_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_IsBenAccount_Benchmark_Dashboard_Result" nillable="true" type="tns:SP_IsBenAccount_Benchmark_Dashboard_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_IsBenAccount_Benchmark_Dashboard_Result" nillable="true" type="tns:ArrayOfSP_IsBenAccount_Benchmark_Dashboard_Result" />
+  <xs:complexType name="SP_IsBenAccount_Benchmark_Dashboard_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Rating" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReviewsCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_IsBenAccount_Benchmark_Dashboard_Result" nillable="true" type="tns:SP_IsBenAccount_Benchmark_Dashboard_Result" />
+  <xs:complexType name="SMSA_Logs_HI">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ActivityDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ActivityType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ColumnId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LogId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMSA_Logs_HI" nillable="true" type="tns:SMSA_Logs_HI" />
+  <xs:complexType name="ArrayOfsp_RptGetUserActivityLog_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="sp_RptGetUserActivityLog_Result" nillable="true" type="tns:sp_RptGetUserActivityLog_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfsp_RptGetUserActivityLog_Result" nillable="true" type="tns:ArrayOfsp_RptGetUserActivityLog_Result" />
+  <xs:complexType name="sp_RptGetUserActivityLog_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActivityBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ActivityOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LogId" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="sp_RptGetUserActivityLog_Result" nillable="true" type="tns:sp_RptGetUserActivityLog_Result" />
+  <xs:complexType name="ArrayOfsp_RptCompanyCreation_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="sp_RptCompanyCreation_Result" nillable="true" type="tns:sp_RptCompanyCreation_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfsp_RptCompanyCreation_Result" nillable="true" type="tns:ArrayOfsp_RptCompanyCreation_Result" />
+  <xs:complexType name="sp_RptCompanyCreation_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AgentType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SaleAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="sp_RptCompanyCreation_Result" nillable="true" type="tns:sp_RptCompanyCreation_Result" />
+  <xs:complexType name="ArrayOfSp_RptSalesAccount_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sp_RptSalesAccount_Result" nillable="true" type="tns:Sp_RptSalesAccount_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSp_RptSalesAccount_Result" nillable="true" type="tns:ArrayOfSp_RptSalesAccount_Result" />
+  <xs:complexType name="Sp_RptSalesAccount_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SaleAccId" type="xs:int" />
+      <xs:element minOccurs="0" name="SaleAccount" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sp_RptSalesAccount_Result" nillable="true" type="tns:Sp_RptSalesAccount_Result" />
+  <xs:complexType name="ArrayOfSp_RptRFRId_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sp_RptRFRId_Result" nillable="true" type="tns:Sp_RptRFRId_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSp_RptRFRId_Result" nillable="true" type="tns:ArrayOfSp_RptRFRId_Result" />
+  <xs:complexType name="Sp_RptRFRId_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACKRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AmountToRefund" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmployeeNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PAN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RFRId" type="xs:int" />
+      <xs:element minOccurs="0" name="RecordCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RecordType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RefundDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RequestCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SIFRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sp_RptRFRId_Result" nillable="true" type="tns:Sp_RptRFRId_Result" />
+  <xs:complexType name="ArrayOfSp_RptEmpInfo_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sp_RptEmpInfo_Result" nillable="true" type="tns:Sp_RptEmpInfo_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSp_RptEmpInfo_Result" nillable="true" type="tns:ArrayOfSp_RptEmpInfo_Result" />
+  <xs:complexType name="Sp_RptEmpInfo_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BankName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BasicSalary" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOB" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DOJ" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmpId" type="xs:int" />
+      <xs:element minOccurs="0" name="EstID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IBAN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PersonalNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoutingCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sp_RptEmpInfo_Result" nillable="true" type="tns:Sp_RptEmpInfo_Result" />
+  <xs:complexType name="ArrayOfSp_SifMstDtl_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sp_SifMstDtl_Result" nillable="true" type="tns:Sp_SifMstDtl_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSp_SifMstDtl_Result" nillable="true" type="tns:ArrayOfSp_SifMstDtl_Result" />
+  <xs:complexType name="Sp_SifMstDtl_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ACK_NAK" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ACT_NAK_DATE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Allowances" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="BankId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="BankName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Basic" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ChargesDepositSlip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChargesRefNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DeleteRemarks" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeletedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="DeletedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EmpId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="EstId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IBAN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LeavesPeriod" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Month" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NetSalary" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PersonalNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoutingCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SND_CBUAE" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SND_CBUAE_DATE" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SifDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SifDtlId" type="xs:int" />
+      <xs:element minOccurs="0" name="SifId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalEmployees" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalSalary" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="WPSDepositSlip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WPSRefNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Year" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sp_SifMstDtl_Result" nillable="true" type="tns:Sp_SifMstDtl_Result" />
+  <xs:complexType name="ArrayOfSMSA_Organization_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMSA_Organization_ST" nillable="true" type="tns:SMSA_Organization_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMSA_Organization_ST" nillable="true" type="tns:ArrayOfSMSA_Organization_ST" />
+  <xs:complexType name="SMSA_Organization_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrgID" type="xs:int" />
+      <xs:element minOccurs="0" name="OrgType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reason" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reference" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SMIM_UserMst_ST" nillable="true" type="tns:ArrayOfSMIM_UserMst_ST" />
+      <xs:element minOccurs="0" name="SMSA_CompanyMst_ST" nillable="true" type="tns:ArrayOfSMSA_CompanyMst_ST" />
+      <xs:element minOccurs="0" name="SRCC_SalesAccount_ST" nillable="true" type="tns:SRCC_SalesAccount_ST" />
+      <xs:element minOccurs="0" name="SaleAccId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMSA_Organization_ST" nillable="true" type="tns:SMSA_Organization_ST" />
+  <xs:complexType name="ArrayOfSMIM_UserMst_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_UserMst_ST" nillable="true" type="tns:SMIM_UserMst_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_UserMst_ST" nillable="true" type="tns:ArrayOfSMIM_UserMst_ST" />
+  <xs:complexType name="SMIM_UserMst_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreateOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrgId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SACId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SMIM_UserAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserAccess_ST" />
+      <xs:element minOccurs="0" name="SMIM_UserType_ST" nillable="true" type="tns:SMIM_UserType_ST" />
+      <xs:element minOccurs="0" name="SMSA_CompanyMst_ST" nillable="true" type="tns:SMSA_CompanyMst_ST" />
+      <xs:element minOccurs="0" name="SMSA_Organization_ST" nillable="true" type="tns:SMSA_Organization_ST" />
+      <xs:element minOccurs="0" name="SRCC_SalesAccount_ST" nillable="true" type="tns:SRCC_SalesAccount_ST" />
+      <xs:element minOccurs="0" name="Salutation" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserTypeId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_UserMst_ST" nillable="true" type="tns:SMIM_UserMst_ST" />
+  <xs:complexType name="ArrayOfSMIM_UserAccess_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_UserAccess_ST" nillable="true" type="tns:SMIM_UserAccess_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_UserAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserAccess_ST" />
+  <xs:complexType name="SMIM_UserAccess_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Allow" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CoAccId" type="xs:int" />
+      <xs:element minOccurs="0" name="SMIM_UserMst_ST" nillable="true" type="tns:SMIM_UserMst_ST" />
+      <xs:element minOccurs="0" name="SMIM_UserType_ST" nillable="true" type="tns:SMIM_UserType_ST" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTypeId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_UserAccess_ST" nillable="true" type="tns:SMIM_UserAccess_ST" />
+  <xs:complexType name="SMIM_UserType_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SMIM_UserAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserAccess_ST" />
+      <xs:element minOccurs="0" name="SMIM_UserMst_ST" nillable="true" type="tns:ArrayOfSMIM_UserMst_ST" />
+      <xs:element minOccurs="0" name="SMIM_UserTypeAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserTypeAccess_ST" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserTypeId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_UserType_ST" nillable="true" type="tns:SMIM_UserType_ST" />
+  <xs:complexType name="ArrayOfSMIM_UserTypeAccess_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_UserTypeAccess_ST" nillable="true" type="tns:SMIM_UserTypeAccess_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_UserTypeAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserTypeAccess_ST" />
+  <xs:complexType name="SMIM_UserTypeAccess_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessId" type="xs:int" />
+      <xs:element minOccurs="0" name="AccessType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Allow" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SMIM_UserType_ST" nillable="true" type="tns:SMIM_UserType_ST" />
+      <xs:element minOccurs="0" name="UserTypeId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="aspnet_Roles" nillable="true" type="tns:aspnet_Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_UserTypeAccess_ST" nillable="true" type="tns:SMIM_UserTypeAccess_ST" />
+  <xs:complexType name="aspnet_Roles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoweredRoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleId" type="ser:guid" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SMIM_UserTypeAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserTypeAccess_ST" />
+      <xs:element minOccurs="0" name="SMSA_Roles_ST" nillable="true" type="tns:SMSA_Roles_ST" />
+      <xs:element minOccurs="0" name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:ArrayOfaspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Roles" nillable="true" type="tns:aspnet_Roles" />
+  <xs:complexType name="SMSA_Roles_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FormName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Header" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleId" type="ser:guid" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="aspnet_Roles" nillable="true" type="tns:aspnet_Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMSA_Roles_ST" nillable="true" type="tns:SMSA_Roles_ST" />
+  <xs:complexType name="aspnet_Applications">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="ApplicationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoweredApplicationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="aspnet_Membership" nillable="true" type="tns:ArrayOfaspnet_Membership" />
+      <xs:element minOccurs="0" name="aspnet_Paths" nillable="true" type="tns:ArrayOfaspnet_Paths" />
+      <xs:element minOccurs="0" name="aspnet_Roles" nillable="true" type="tns:ArrayOfaspnet_Roles" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:ArrayOfaspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+  <xs:complexType name="ArrayOfaspnet_Membership">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_Membership" nillable="true" type="tns:aspnet_Membership" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_Membership" nillable="true" type="tns:ArrayOfaspnet_Membership" />
+  <xs:complexType name="aspnet_Membership">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FailedPasswordAnswerAttemptCount" type="xs:int" />
+      <xs:element minOccurs="0" name="FailedPasswordAnswerAttemptWindowStart" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FailedPasswordAttemptCount" type="xs:int" />
+      <xs:element minOccurs="0" name="FailedPasswordAttemptWindowStart" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsApproved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLockedOut" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastLockoutDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastLoginDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastPasswordChangedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LoweredEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobilePIN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordAnswer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordFormat" type="xs:int" />
+      <xs:element minOccurs="0" name="PasswordQuestion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordSalt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Membership" nillable="true" type="tns:aspnet_Membership" />
+  <xs:complexType name="aspnet_Users">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsAnonymous" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastActivityDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LoweredUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileAlias" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+      <xs:element minOccurs="0" name="aspnet_Membership" nillable="true" type="tns:aspnet_Membership" />
+      <xs:element minOccurs="0" name="aspnet_PersonalizationPerUser" nillable="true" type="tns:ArrayOfaspnet_PersonalizationPerUser" />
+      <xs:element minOccurs="0" name="aspnet_Profile" nillable="true" type="tns:aspnet_Profile" />
+      <xs:element minOccurs="0" name="aspnet_Roles" nillable="true" type="tns:ArrayOfaspnet_Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+  <xs:complexType name="ArrayOfaspnet_PersonalizationPerUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_PersonalizationPerUser" nillable="true" type="tns:aspnet_PersonalizationPerUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_PersonalizationPerUser" nillable="true" type="tns:ArrayOfaspnet_PersonalizationPerUser" />
+  <xs:complexType name="aspnet_PersonalizationPerUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="LastUpdatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PageSettings" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PathId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Paths" nillable="true" type="tns:aspnet_Paths" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_PersonalizationPerUser" nillable="true" type="tns:aspnet_PersonalizationPerUser" />
+  <xs:complexType name="aspnet_Paths">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="LoweredPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PathId" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+      <xs:element minOccurs="0" name="aspnet_PersonalizationAllUsers" nillable="true" type="tns:aspnet_PersonalizationAllUsers" />
+      <xs:element minOccurs="0" name="aspnet_PersonalizationPerUser" nillable="true" type="tns:ArrayOfaspnet_PersonalizationPerUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Paths" nillable="true" type="tns:aspnet_Paths" />
+  <xs:complexType name="aspnet_PersonalizationAllUsers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LastUpdatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PageSettings" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PathId" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Paths" nillable="true" type="tns:aspnet_Paths" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_PersonalizationAllUsers" nillable="true" type="tns:aspnet_PersonalizationAllUsers" />
+  <xs:complexType name="aspnet_Profile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LastUpdatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PropertyNames" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyValuesBinary" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PropertyValuesString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Profile" nillable="true" type="tns:aspnet_Profile" />
+  <xs:complexType name="ArrayOfaspnet_Roles">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_Roles" nillable="true" type="tns:aspnet_Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_Roles" nillable="true" type="tns:ArrayOfaspnet_Roles" />
+  <xs:complexType name="ArrayOfaspnet_Paths">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_Paths" nillable="true" type="tns:aspnet_Paths" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_Paths" nillable="true" type="tns:ArrayOfaspnet_Paths" />
+  <xs:complexType name="ArrayOfaspnet_Users">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_Users" nillable="true" type="tns:ArrayOfaspnet_Users" />
+  <xs:complexType name="SMSA_CompanyMst_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Activity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Balance" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CityID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContactPerson" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsApproved" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ModifyBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ModifyOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrgID" type="xs:int" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SMIM_ReviewAccounts_ST" nillable="true" type="tns:ArrayOfSMIM_ReviewAccounts_ST" />
+      <xs:element minOccurs="0" name="SMIM_UserMst_ST" nillable="true" type="tns:ArrayOfSMIM_UserMst_ST" />
+      <xs:element minOccurs="0" name="SMSA_Organization_ST" nillable="true" type="tns:SMSA_Organization_ST" />
+      <xs:element minOccurs="0" name="SRCC_SalesAccount_ST" nillable="true" type="tns:SRCC_SalesAccount_ST" />
+      <xs:element minOccurs="0" name="SaleAccId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Salutation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SifCharges" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Terms" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalEmp" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerifyEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WPSUserId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="logoPath" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMSA_CompanyMst_ST" nillable="true" type="tns:SMSA_CompanyMst_ST" />
+  <xs:complexType name="ArrayOfSMIM_ReviewAccounts_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_ReviewAccounts_ST" nillable="true" type="tns:SMIM_ReviewAccounts_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_ReviewAccounts_ST" nillable="true" type="tns:ArrayOfSMIM_ReviewAccounts_ST" />
+  <xs:complexType name="SMIM_ReviewAccounts_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Comments" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyID" type="xs:int" />
+      <xs:element minOccurs="0" name="Credentials" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Inactive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsBenchmarkAccount" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NPI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProfilePullType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ReviewPullType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SMIM_AccountType_ST" nillable="true" type="tns:SMIM_AccountType_ST" />
+      <xs:element minOccurs="0" name="SMIM_ReviewAccountSite_ST" nillable="true" type="tns:ArrayOfSMIM_ReviewAccountSite_ST" />
+      <xs:element minOccurs="0" name="SMSA_CompanyMst_ST" nillable="true" type="tns:SMSA_CompanyMst_ST" />
+      <xs:element minOccurs="0" name="Specialty" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StoreCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Website" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zip" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_ReviewAccounts_ST" nillable="true" type="tns:SMIM_ReviewAccounts_ST" />
+  <xs:complexType name="SMIM_AccountType_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SMIM_ReviewAccounts_ST" nillable="true" type="tns:ArrayOfSMIM_ReviewAccounts_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_AccountType_ST" nillable="true" type="tns:SMIM_AccountType_ST" />
+  <xs:complexType name="ArrayOfSMIM_ReviewAccountSite_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_ReviewAccountSite_ST" nillable="true" type="tns:SMIM_ReviewAccountSite_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_ReviewAccountSite_ST" nillable="true" type="tns:ArrayOfSMIM_ReviewAccountSite_ST" />
+  <xs:complexType name="SMIM_ReviewAccountSite_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AccountSiteID" type="xs:int" />
+      <xs:element minOccurs="0" name="EnableProfile" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastScrapeOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReviewSiteID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ReviewSiteTypeID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ReviewURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SMAM_ReviewSiteTypes_ST" nillable="true" type="tns:SMAM_ReviewSiteTypes_ST" />
+      <xs:element minOccurs="0" name="SMAM_ReviewSites_ST" nillable="true" type="tns:SMAM_ReviewSites_ST" />
+      <xs:element minOccurs="0" name="SMIM_ReviewAccounts_ST" nillable="true" type="tns:SMIM_ReviewAccounts_ST" />
+      <xs:element minOccurs="0" name="SRCC_GooglePlus_TR" nillable="true" type="tns:ArrayOfSRCC_GooglePlus_TR" />
+      <xs:element minOccurs="0" name="SetInActive" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_ReviewAccountSite_ST" nillable="true" type="tns:SMIM_ReviewAccountSite_ST" />
+  <xs:complexType name="SMAM_ReviewSiteTypes_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SMIM_ReviewAccountSite_ST" nillable="true" type="tns:ArrayOfSMIM_ReviewAccountSite_ST" />
+      <xs:element minOccurs="0" name="SiteTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteTypeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMAM_ReviewSiteTypes_ST" nillable="true" type="tns:SMAM_ReviewSiteTypes_ST" />
+  <xs:complexType name="SMAM_ReviewSites_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ImageURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastScrapeOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SMIM_ReviewAccountSite_ST" nillable="true" type="tns:ArrayOfSMIM_ReviewAccountSite_ST" />
+      <xs:element minOccurs="0" name="ShortName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SiteID" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimerValue" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMAM_ReviewSites_ST" nillable="true" type="tns:SMAM_ReviewSites_ST" />
+  <xs:complexType name="ArrayOfSRCC_GooglePlus_TR">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SRCC_GooglePlus_TR" nillable="true" type="tns:SRCC_GooglePlus_TR" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSRCC_GooglePlus_TR" nillable="true" type="tns:ArrayOfSRCC_GooglePlus_TR" />
+  <xs:complexType name="SRCC_GooglePlus_TR">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="APIReference" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OverallRating" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReviewCount" type="xs:int" />
+      <xs:element minOccurs="0" name="SMIM_ReviewAccountSite_ST" nillable="true" type="tns:SMIM_ReviewAccountSite_ST" />
+      <xs:element minOccurs="0" name="SRCC_GooglePlusReviews_TR" nillable="true" type="tns:ArrayOfSRCC_GooglePlusReviews_TR" />
+      <xs:element minOccurs="0" name="SiteAccountID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SRCC_GooglePlus_TR" nillable="true" type="tns:SRCC_GooglePlus_TR" />
+  <xs:complexType name="ArrayOfSRCC_GooglePlusReviews_TR">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SRCC_GooglePlusReviews_TR" nillable="true" type="tns:SRCC_GooglePlusReviews_TR" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSRCC_GooglePlusReviews_TR" nillable="true" type="tns:ArrayOfSRCC_GooglePlusReviews_TR" />
+  <xs:complexType name="SRCC_GooglePlusReviews_TR">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AlertDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Entered" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GoogleID" type="xs:int" />
+      <xs:element minOccurs="0" name="GoogleReviewID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OverallRating" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReviewStatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="SRCC_GooglePlus_TR" nillable="true" type="tns:SRCC_GooglePlus_TR" />
+      <xs:element minOccurs="0" name="SRCC_ReviewStatusTypes_ST" nillable="true" type="tns:SRCC_ReviewStatusTypes_ST" />
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SRCC_GooglePlusReviews_TR" nillable="true" type="tns:SRCC_GooglePlusReviews_TR" />
+  <xs:complexType name="SRCC_ReviewStatusTypes_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="SRCC_GooglePlusReviews_TR" nillable="true" type="tns:ArrayOfSRCC_GooglePlusReviews_TR" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SRCC_ReviewStatusTypes_ST" nillable="true" type="tns:SRCC_ReviewStatusTypes_ST" />
+  <xs:complexType name="SRCC_SalesAccount_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Area" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentSaleId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SMIM_UserMst_ST" nillable="true" type="tns:ArrayOfSMIM_UserMst_ST" />
+      <xs:element minOccurs="0" name="SMSA_CompanyMst_ST" nillable="true" type="tns:ArrayOfSMSA_CompanyMst_ST" />
+      <xs:element minOccurs="0" name="SMSA_Organization_ST" nillable="true" type="tns:ArrayOfSMSA_Organization_ST" />
+      <xs:element minOccurs="0" name="SRCC_SalesAccount_ST1" nillable="true" type="tns:ArrayOfSRCC_SalesAccount_ST" />
+      <xs:element minOccurs="0" name="SRCC_SalesAccount_ST2" nillable="true" type="tns:SRCC_SalesAccount_ST" />
+      <xs:element minOccurs="0" name="SaleAccId" type="xs:int" />
+      <xs:element minOccurs="0" name="SaleAccount" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SRCC_SalesAccount_ST" nillable="true" type="tns:SRCC_SalesAccount_ST" />
+  <xs:complexType name="ArrayOfSMSA_CompanyMst_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMSA_CompanyMst_ST" nillable="true" type="tns:SMSA_CompanyMst_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMSA_CompanyMst_ST" nillable="true" type="tns:ArrayOfSMSA_CompanyMst_ST" />
+  <xs:complexType name="ArrayOfSRCC_SalesAccount_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SRCC_SalesAccount_ST" nillable="true" type="tns:SRCC_SalesAccount_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSRCC_SalesAccount_ST" nillable="true" type="tns:ArrayOfSRCC_SalesAccount_ST" />
+  <xs:complexType name="ArrayOfSMIM_AccountType_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_AccountType_ST" nillable="true" type="tns:SMIM_AccountType_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_AccountType_ST" nillable="true" type="tns:ArrayOfSMIM_AccountType_ST" />
+  <xs:complexType name="ArrayOfSMIM_ReviewAccountName_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_ReviewAccountName_ST" nillable="true" type="tns:SMIM_ReviewAccountName_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_ReviewAccountName_ST" nillable="true" type="tns:ArrayOfSMIM_ReviewAccountName_ST" />
+  <xs:complexType name="SMIM_ReviewAccountName_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountID" type="xs:int" />
+      <xs:element minOccurs="0" name="AccountName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BenchmarkID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsBenchmarkAccount" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_ReviewAccountName_ST" nillable="true" type="tns:SMIM_ReviewAccountName_ST" />
+  <xs:complexType name="ArrayOfSMIM_BenchAccountName_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_BenchAccountName_ST" nillable="true" type="tns:SMIM_BenchAccountName_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_BenchAccountName_ST" nillable="true" type="tns:ArrayOfSMIM_BenchAccountName_ST" />
+  <xs:complexType name="SMIM_BenchAccountName_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BenchmarkID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsBenchmarkAccount" nillable="true" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_BenchAccountName_ST" nillable="true" type="tns:SMIM_BenchAccountName_ST" />
+  <xs:complexType name="ReviewCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ReviewActsites" nillable="true" type="tns:ArrayOfReviewAccountSite" />
+      <xs:element minOccurs="0" name="Reviewsites" nillable="true" type="tns:ArrayOfSMAM_ReviewSites_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReviewCollection" nillable="true" type="tns:ReviewCollection" />
+  <xs:complexType name="ArrayOfReviewAccountSite">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReviewAccountSite" nillable="true" type="tns:ReviewAccountSite" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReviewAccountSite" nillable="true" type="tns:ArrayOfReviewAccountSite" />
+  <xs:complexType name="ReviewAccountSite">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AccountSiteID" type="xs:int" />
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ReviewSiteID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ReviewURL" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReviewAccountSite" nillable="true" type="tns:ReviewAccountSite" />
+  <xs:complexType name="ArrayOfSMAM_ReviewSites_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMAM_ReviewSites_ST" nillable="true" type="tns:SMAM_ReviewSites_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMAM_ReviewSites_ST" nillable="true" type="tns:ArrayOfSMAM_ReviewSites_ST" />
+  <xs:complexType name="ArrayOfSp_ReviewsSiteInfo_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sp_ReviewsSiteInfo_Result" nillable="true" type="tns:Sp_ReviewsSiteInfo_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSp_ReviewsSiteInfo_Result" nillable="true" type="tns:ArrayOfSp_ReviewsSiteInfo_Result" />
+  <xs:complexType name="Sp_ReviewsSiteInfo_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Author" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Overall" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Rating" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReviewDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Reviews" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SiteID" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SitesURL" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sp_ReviewsSiteInfo_Result" nillable="true" type="tns:Sp_ReviewsSiteInfo_Result" />
+  <xs:complexType name="Dashboard">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Dashboard" nillable="true" type="tns:Dashboard" />
+  <xs:complexType name="ArrayOfSp_ReviewsSitesList_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sp_ReviewsSitesList_Result" nillable="true" type="tns:Sp_ReviewsSitesList_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSp_ReviewsSitesList_Result" nillable="true" type="tns:ArrayOfSp_ReviewsSitesList_Result" />
+  <xs:complexType name="Sp_ReviewsSitesList_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Rating" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="SiteName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalReview" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sp_ReviewsSitesList_Result" nillable="true" type="tns:Sp_ReviewsSitesList_Result" />
+  <xs:complexType name="ArrayOfSP_ReviewsListFor_Dashboard_TR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_ReviewsListFor_Dashboard_TR_Result" nillable="true" type="tns:SP_ReviewsListFor_Dashboard_TR_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_ReviewsListFor_Dashboard_TR_Result" nillable="true" type="tns:ArrayOfSP_ReviewsListFor_Dashboard_TR_Result" />
+  <xs:complexType name="SP_ReviewsListFor_Dashboard_TR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GoogleRating" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="GoogleReview" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteID" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_ReviewsListFor_Dashboard_TR_Result" nillable="true" type="tns:SP_ReviewsListFor_Dashboard_TR_Result" />
+  <xs:complexType name="ArrayOfSP_Reviews_Chart_Dashboard_TR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_Reviews_Chart_Dashboard_TR_Result" nillable="true" type="tns:SP_Reviews_Chart_Dashboard_TR_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_Reviews_Chart_Dashboard_TR_Result" nillable="true" type="tns:ArrayOfSP_Reviews_Chart_Dashboard_TR_Result" />
+  <xs:complexType name="SP_Reviews_Chart_Dashboard_TR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Rating" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReviewsCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteID" type="xs:int" />
+      <xs:element minOccurs="0" name="SiteName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Reviews_Chart_Dashboard_TR_Result" nillable="true" type="tns:SP_Reviews_Chart_Dashboard_TR_Result" />
+  <xs:complexType name="ArrayOfSP_Reviews_LineChart_Dashboard_TR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_Reviews_LineChart_Dashboard_TR_Result" nillable="true" type="tns:SP_Reviews_LineChart_Dashboard_TR_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_Reviews_LineChart_Dashboard_TR_Result" nillable="true" type="tns:ArrayOfSP_Reviews_LineChart_Dashboard_TR_Result" />
+  <xs:complexType name="SP_Reviews_LineChart_Dashboard_TR_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="AccountType" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="GoogleReviews" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MonthNam" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MonthNo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MonthYr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="YelpReviews" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_Reviews_LineChart_Dashboard_TR_Result" nillable="true" type="tns:SP_Reviews_LineChart_Dashboard_TR_Result" />
+  <xs:complexType name="ArrayOfSP_GetCompanies_By_Organization_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SP_GetCompanies_By_Organization_Result" nillable="true" type="tns:SP_GetCompanies_By_Organization_Result" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSP_GetCompanies_By_Organization_Result" nillable="true" type="tns:ArrayOfSP_GetCompanies_By_Organization_Result" />
+  <xs:complexType name="SP_GetCompanies_By_Organization_Result">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrgID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SP_GetCompanies_By_Organization_Result" nillable="true" type="tns:SP_GetCompanies_By_Organization_Result" />
+</xs:schema>

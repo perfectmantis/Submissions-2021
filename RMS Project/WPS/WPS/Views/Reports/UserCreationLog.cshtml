@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "UserCreationLog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / User Creation Log
+                </div>
+                <form class="form-horizontal" role="form" id="frmSif">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">User Creation Log</h3>
+                        </div>
+                        <hr>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">From Date</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBox("txtFrom", "", "{0:MM/dd/yyy}", new { id = "txtFrom", @class = "form-control datepicker-here", style = "width:95%", placeholder = "MM/dd/yyyy" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">To Date</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBox("txtTo", "", "{0:MM/dd/yyy}", new { id = "txtTo", @class = "form-control datepicker-here", style = "width:95%", placeholder = "MM/dd/yyyy" })
+                            </div>
+
+
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">User</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("UserId", null, "Select User",
+                                new { @class = "form-control js-example-basic-single", style = "width: 95% !important", maxlength = "50" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Activity</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("Activity", null, null,
+                                new { @class = "form-control js-example-basic-single", style = "width: 95% !important", maxlength = "50" })
+                            </div>
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="getUserCreationLog('PDF');">
+                                    <i class="fa fa-dot-circle-o"></i> Export to PDF
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="getUserCreationLog('EXCEL');">
+                                    <i class="fa fa-dot-circle-o"></i> Export to Excel
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function getUserCreationLog(FileType) {
+        var UserId, FromDate, ToDate = "", Activity="";
+
+        UserId = $('#UserId').val();
+        FromDate = $('#txtFrom').val();
+        ToDate = $('#txtTo').val();
+        Activity = $('#Activity').val();
+
+        if (UserId == '') {
+            UserId = 0;
+        }
+
+        var URL = 'GetUserCreationLog?FileType=' + FileType + '&q=@Request.QueryString["q"].ToString()&UserId=' + UserId + '&FromDate=' + FromDate + '&ToDate=' + ToDate + '&Activity=' + Activity;
+        window.open(URL, '_blank');
+    }
+</script>
+

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="83b213b2db814500b409cb541e9be9c1" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="WPSModel.SMAM_ReviewSiteTypes_ST" Width="1.5" PointX="7.5" PointY="4.75" />
+        <EntityTypeShape EntityType="WPSModel.SMIM_ReviewAccounts_ST" Width="1.5" PointX="7.5" PointY="8" />
+        <EntityTypeShape EntityType="WPSModel.SMIM_ReviewAccountSite_ST" Width="1.5" PointX="9.75" PointY="9.125" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_CompanyMst_ST" Width="1.5" PointX="5.25" PointY="7.25" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_Organization_ST" Width="1.5" PointX="3" PointY="13" />
+        <EntityTypeShape EntityType="WPSModel.SRCC_ReviewStatusTypes_ST" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WPSModel.SRCC_SalesAccount_ST" Width="1.5" PointX="0.75" PointY="5" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSiteTypes_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_ReviewAccounts_ST_SMSA_CompanyMst_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMIM_ReviewAccounts_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_CompanyMst_SMSA_Organization" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_CompanyMst_SRCC_SalesAccount" />
+        <AssociationConnector Association="WPSModel.FK_HRMS_Organization_ST_SRCC_SalesAccount_ST" />
+        <AssociationConnector Association="WPSModel.FK_SRCC_SalesAccount_SRCC_SalesAccount" />
+        <EntityTypeShape EntityType="WPSModel.SMIM_AccountType_ST" Width="1.5" PointX="5.25" PointY="15.125" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_Logs_HI" Width="1.5" PointX="3.375" PointY="3.75" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_ReviewAccounts_ST_SMIM_AccountType_ST" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_Applications" Width="1.5" PointX="10.5" PointY="6.625" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_Membership" Width="1.5" PointX="20.25" PointY="5.125" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_Paths" Width="1.5" PointX="12.75" PointY="20.625" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="15" PointY="24" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="20.25" PointY="13.375" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_Profile" Width="1.5" PointX="20.25" PointY="16.75" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_Roles" Width="1.5" PointX="12.75" PointY="6.5" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_SchemaVersions" Width="1.5" PointX="14.75" PointY="20.625" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_Users" Width="1.5" PointX="18" PointY="6.25" />
+        <EntityTypeShape EntityType="WPSModel.aspnet_WebEvent_Events" Width="1.5" PointX="17.75" PointY="20.625" />
+        <EntityTypeShape EntityType="WPSModel.SMAM_Menu_ST" Width="1.5" PointX="0.75" PointY="22.625" />
+        <EntityTypeShape EntityType="WPSModel.SMAM_SystemService_ST" Width="1.5" PointX="6.75" PointY="23.625" />
+        <EntityTypeShape EntityType="WPSModel.SMIM_UserAccess_ST" Width="1.5" PointX="18" PointY="10.75" />
+        <EntityTypeShape EntityType="WPSModel.SMIM_UserMst_ST" Width="1.5" PointX="15" PointY="14.25" />
+        <EntityTypeShape EntityType="WPSModel.SMIM_UserType_ST" Width="1.5" PointX="12.75" PointY="10.75" />
+        <EntityTypeShape EntityType="WPSModel.SMIM_UserTypeAccess_ST" Width="1.5" PointX="15" PointY="10.625" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_Areas_ST" Width="1.5" PointX="5.25" PointY="30.875" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_City_ST" Width="1.5" PointX="8.25" PointY="31" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_Country_ST" Width="1.5" PointX="0.75" PointY="27.25" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_Roles_ST" Width="1.5" PointX="15" PointY="6.75" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_States_ST" Width="1.5" PointX="3" PointY="35.125" />
+        <EntityTypeShape EntityType="WPSModel.SRCC_GooglePlus_TR" Width="1.5" PointX="4.125" PointY="22.875" />
+        <EntityTypeShape EntityType="WPSModel.SRCC_GooglePlusReviews_TR" Width="1.5" PointX="6.375" PointY="4.75" />
+        <EntityTypeShape EntityType="WPSModel.Vw_AccountToScrape" Width="1.5" PointX="8.75" PointY="23.625" />
+        <AssociationConnector Association="WPSModel.FK__aspnet_Me__Appli__45F365D3" />
+        <AssociationConnector Association="WPSModel.FK__aspnet_Pa__Appli__47DBAE45" />
+        <AssociationConnector Association="WPSModel.FK__aspnet_Ro__Appli__4CA06362" />
+        <AssociationConnector Association="WPSModel.FK__aspnet_Us__Appli__4D94879B" />
+        <AssociationConnector Association="WPSModel.FK__aspnet_Me__UserI__46E78A0C" />
+        <AssociationConnector Association="WPSModel.FK__aspnet_Pe__PathI__48CFD27E" />
+        <AssociationConnector Association="WPSModel.FK__aspnet_Pe__PathI__49C3F6B7" />
+        <AssociationConnector Association="WPSModel.FK__aspnet_Pe__UserI__4AB81AF0" />
+        <AssociationConnector Association="WPSModel.FK__aspnet_Pr__UserI__4BAC3F29" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_UserTypeAccess_ST_aspnet_Roles" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_Roles_ST_aspnet_Roles" />
+        <AssociationConnector Association="WPSModel.FK_SRCC_GooglePlus_SMIM_ReviewAccountSite" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_UserAcc_UserMst_UserId" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_UserAcc_UserType_UserTypeId" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_UserMst_ST_SMIM_UserType_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_UserMst_ST_SMSA_CompanyMst_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_UserMst_ST_SMSA_Organization_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_UserMst_ST_SRCC_SalesAccount_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_UserTypeAccess_UserType" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_Areas_ST_SMSA_Country_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_Areas_ST_SMSA_States_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_City_ST_SMSA_Area_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_City_ST_SMSA_Areas_ST" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_City_ST_SMSA_States_ST" />
+        <AssociationConnector Association="WPSModel.Relationship13" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_Country_SMSA_States" />
+        <AssociationConnector Association="WPSModel.FK_SRCC_GooglePlusReviews_GooglePlus" />
+        <AssociationConnector Association="WPSModel.FK_SRCC_GooglePlusReviews_SRCC_ReviewStatusTypes" />
+        <AssociationConnector Association="WPSModel.aspnet_UsersInRoles" />
+        <EntityTypeShape EntityType="WPSModel.SMAM_ReviewSites_ST" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="WPSModel.FK_SMIM_ReviewAccountSite_ST_SMAM_ReviewSites_ST" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

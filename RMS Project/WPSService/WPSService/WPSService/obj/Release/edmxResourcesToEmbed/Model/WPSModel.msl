@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WPSModelStoreContainer" CdmEntityContainer="WPSEntities">
+    <EntitySetMapping Name="HRPR_SifAllowances_TR">
+      <EntityTypeMapping TypeName="WPSModel.HRPR_SifAllowances_TR">
+        <MappingFragment StoreEntitySet="HRPR_SifAllowances_TR">
+          <ScalarProperty Name="SifAllId" ColumnName="SifAllId" />
+          <ScalarProperty Name="SifDtlId" ColumnName="SifDtlId" />
+          <ScalarProperty Name="SifId" ColumnName="SifId" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="Housing" ColumnName="Housing" />
+          <ScalarProperty Name="Convenyance" ColumnName="Convenyance" />
+          <ScalarProperty Name="Medical" ColumnName="Medical" />
+          <ScalarProperty Name="AnnualPassage" ColumnName="AnnualPassage" />
+          <ScalarProperty Name="Overtime" ColumnName="Overtime" />
+          <ScalarProperty Name="Others" ColumnName="Others" />
+          <ScalarProperty Name="LeaveEncashment" ColumnName="LeaveEncashment" />
+          <ScalarProperty Name="NetAllowances" ColumnName="NetAllowances" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPR_SifDetail_TR">
+      <EntityTypeMapping TypeName="WPSModel.HRPR_SifDetail_TR">
+        <MappingFragment StoreEntitySet="HRPR_SifDetail_TR">
+          <ScalarProperty Name="SifDtlId" ColumnName="SifDtlId" />
+          <ScalarProperty Name="SifId" ColumnName="SifId" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="EstId" ColumnName="EstId" />
+          <ScalarProperty Name="PersonalNo" ColumnName="PersonalNo" />
+          <ScalarProperty Name="RoutingCode" ColumnName="RoutingCode" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="Basic" ColumnName="Basic" />
+          <ScalarProperty Name="Allowances" ColumnName="Allowances" />
+          <ScalarProperty Name="NetSalary" ColumnName="NetSalary" />
+          <ScalarProperty Name="LeavesPeriod" ColumnName="LeavesPeriod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPR_SifMaster_TR">
+      <EntityTypeMapping TypeName="WPSModel.HRPR_SifMaster_TR">
+        <MappingFragment StoreEntitySet="HRPR_SifMaster_TR">
+          <ScalarProperty Name="DeleteRemarks" ColumnName="DeleteRemarks" />
+          <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="ACT_NAK_DATE" ColumnName="ACT_NAK_DATE" />
+          <ScalarProperty Name="ACK_NAK" ColumnName="ACK_NAK" />
+          <ScalarProperty Name="SND_CBUAE_DATE" ColumnName="SND_CBUAE_DATE" />
+          <ScalarProperty Name="SND_CBUAE" ColumnName="SND_CBUAE" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="SifId" ColumnName="SifId" />
+          <ScalarProperty Name="EstID" ColumnName="EstID" />
+          <ScalarProperty Name="SifDate" ColumnName="SifDate" />
+          <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="TotalEmployees" ColumnName="TotalEmployees" />
+          <ScalarProperty Name="TotalSalary" ColumnName="TotalSalary" />
+          <ScalarProperty Name="WPSRefNo" ColumnName="WPSRefNo" />
+          <ScalarProperty Name="WPSDepositSlip" ColumnName="WPSDepositSlip" />
+          <ScalarProperty Name="ChargesRefNo" ColumnName="ChargesRefNo" />
+          <ScalarProperty Name="ChargesDepositSlip" ColumnName="ChargesDepositSlip" />
+          <ScalarProperty Name="ProcessType" ColumnName="ProcessType" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_Bank_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_Bank_ST">
+        <MappingFragment StoreEntitySet="SMSA_Bank_ST">
+          <ScalarProperty Name="Agent_id" ColumnName="Agent_id" />
+          <ScalarProperty Name="IsMaster" ColumnName="IsMaster" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="RoutingCode" ColumnName="RoutingCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_CompanyMst_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_CompanyMst_ST">
+        <MappingFragment StoreEntitySet="SMSA_CompanyMst_ST">
+          <ScalarProperty Name="WPSUserId" ColumnName="WPSUserId" />
+          <ScalarProperty Name="SifCharges" ColumnName="SifCharges" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="logoPath" ColumnName="logoPath" />
+          <ScalarProperty Name="EstID" ColumnName="EstID" />
+          <ScalarProperty Name="TotalEmp" ColumnName="TotalEmp" />
+          <ScalarProperty Name="Activity" ColumnName="Activity" />
+          <ScalarProperty Name="Salutation" ColumnName="Salutation" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="VerifyEmail" ColumnName="VerifyEmail" />
+          <ScalarProperty Name="SaleAccId" ColumnName="SaleAccId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="Terms" ColumnName="Terms" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifyOn" ColumnName="ModifyOn" />
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_Organization_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_Organization_ST">
+        <MappingFragment StoreEntitySet="SMSA_Organization_ST">
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="SaleAccId" ColumnName="SaleAccId" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="OrgType" ColumnName="OrgType" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SRCC_SalesAccount_ST">
+      <EntityTypeMapping TypeName="WPSModel.SRCC_SalesAccount_ST">
+        <MappingFragment StoreEntitySet="SRCC_SalesAccount_ST">
+          <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+          <ScalarProperty Name="SaleAccId" ColumnName="SaleAccId" />
+          <ScalarProperty Name="SaleAccount" ColumnName="SaleAccount" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="ParentSaleId" ColumnName="ParentSaleId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetPAF" FunctionName="WPSModel.Store.sp_GetPAF">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.sp_GetPAF_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="uploadid" ColumnName="uploadid" />
+          <ScalarProperty Name="paffilename" ColumnName="paffilename" />
+          <ScalarProperty Name="numberofrecords" ColumnName="numberofrecords" />
+          <ScalarProperty Name="uploaddate" ColumnName="uploaddate" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Status2" ColumnName="Status2" />
+          <ScalarProperty Name="pafStatus" ColumnName="pafStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getPAFSummaryByDate" FunctionName="WPSModel.Store.sp_getPAFSummaryByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.sp_getPAFSummaryByDate_Result">
+          <ScalarProperty Name="PafId" ColumnName="PafId" />
+          <ScalarProperty Name="uploadid" ColumnName="uploadid" />
+          <ScalarProperty Name="pafactualname" ColumnName="pafactualname" />
+          <ScalarProperty Name="numberofrecords" ColumnName="numberofrecords" />
+          <ScalarProperty Name="personalnumber" ColumnName="personalnumber" />
+          <ScalarProperty Name="accountnumber" ColumnName="accountnumber" />
+          <ScalarProperty Name="fixedamount" ColumnName="fixedamount" />
+          <ScalarProperty Name="variableamount" ColumnName="variableamount" />
+          <ScalarProperty Name="netpay" ColumnName="netpay" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="IsRFAGenerated" ColumnName="IsRFAGenerated" />
+          <ScalarProperty Name="RFATimestamp" ColumnName="RFATimestamp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="HRPR_RFADetail_TR">
+      <EntityTypeMapping TypeName="WPSModel.HRPR_RFADetail_TR">
+        <MappingFragment StoreEntitySet="HRPR_RFADetail_TR">
+          <ScalarProperty Name="ExportedFileName" ColumnName="ExportedFileName" />
+          <ScalarProperty Name="ExportedOn" ColumnName="ExportedOn" />
+          <ScalarProperty Name="IsExported" ColumnName="IsExported" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="ReturnReasonCode" ColumnName="ReturnReasonCode" />
+          <ScalarProperty Name="RefundAmount" ColumnName="RefundAmount" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="PersonalNo" ColumnName="PersonalNo" />
+          <ScalarProperty Name="RoutingCode" ColumnName="RoutingCode" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="PafActualName" ColumnName="PafActualName" />
+          <ScalarProperty Name="PafId" ColumnName="PafId" />
+          <ScalarProperty Name="RFAId" ColumnName="RFAId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPR_Deduction_TR">
+      <EntityTypeMapping TypeName="WPSModel.HRPR_Deduction_TR">
+        <MappingFragment StoreEntitySet="HRPR_Deduction_TR">
+          <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ReceiptNo" ColumnName="ReceiptNo" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="DedId" ColumnName="DedId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPR_ReasonCode_ST">
+      <EntityTypeMapping TypeName="WPSModel.HRPR_ReasonCode_ST">
+        <MappingFragment StoreEntitySet="HRPR_ReasonCode_ST">
+          <ScalarProperty Name="FileType" ColumnName="FileType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPR_Dif_TR">
+      <EntityTypeMapping TypeName="WPSModel.HRPR_Dif_TR">
+        <MappingFragment StoreEntitySet="HRPR_Dif_TR">
+          <ScalarProperty Name="ExportedFileName" ColumnName="ExportedFileName" />
+          <ScalarProperty Name="ExportedDt" ColumnName="ExportedDt" />
+          <ScalarProperty Name="IsExported" ColumnName="IsExported" />
+          <ScalarProperty Name="GenerateBy" ColumnName="GenerateBy" />
+          <ScalarProperty Name="GenerateOn" ColumnName="GenerateOn" />
+          <ScalarProperty Name="RefNo" ColumnName="RefNo" />
+          <ScalarProperty Name="PafBatchNo" ColumnName="PafBatchNo" />
+          <ScalarProperty Name="ATMTerminalId" ColumnName="ATMTerminalId" />
+          <ScalarProperty Name="RemittAmount" ColumnName="RemittAmount" />
+          <ScalarProperty Name="DispendAmount" ColumnName="DispendAmount" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="PersonalNo" ColumnName="PersonalNo" />
+          <ScalarProperty Name="AgentCode" ColumnName="AgentCode" />
+          <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="PafdtlId" ColumnName="PafdtlId" />
+          <ScalarProperty Name="uploadId" ColumnName="uploadId" />
+          <ScalarProperty Name="DedId" ColumnName="DedId" />
+          <ScalarProperty Name="DifDate" ColumnName="DifDate" />
+          <ScalarProperty Name="DifRef" ColumnName="DifRef" />
+          <ScalarProperty Name="DifId" ColumnName="DifId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPR_SifNAK_Detail_TR">
+      <EntityTypeMapping TypeName="WPSModel.HRPR_SifNAK_Detail_TR">
+        <MappingFragment StoreEntitySet="HRPR_SifNAK_Detail_TR">
+          <ScalarProperty Name="NACK_FILE_NAME" ColumnName="NACK_FILE_NAME" />
+          <ScalarProperty Name="ErrorReason" ColumnName="ErrorReason" />
+          <ScalarProperty Name="PersonalNo" ColumnName="PersonalNo" />
+          <ScalarProperty Name="ErrorCode" ColumnName="ErrorCode" />
+          <ScalarProperty Name="Line_Number" ColumnName="Line_Number" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="SifDtlId" ColumnName="SifDtlId" />
+          <ScalarProperty Name="SIFid" ColumnName="SIFid" />
+          <ScalarProperty Name="SIFNAK_ID" ColumnName="SIFNAK_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRPR_RFRDetail_HI">
+      <EntityTypeMapping TypeName="WPSModel.HRPR_RFRDetail_HI">
+        <MappingFragment StoreEntitySet="HRPR_RFRDetail_HI">
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="FutureCol3" ColumnName="FutureCol3" />
+          <ScalarProperty Name="FutureCol2" ColumnName="FutureCol2" />
+          <ScalarProperty Name="FutureCol1" ColumnName="FutureCol1" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RecordCount" ColumnName="RecordCount" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="RequestCode" ColumnName="RequestCode" />
+          <ScalarProperty Name="AmountToRefund" ColumnName="AmountToRefund" />
+          <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+          <ScalarProperty Name="RountingCode" ColumnName="RountingCode" />
+          <ScalarProperty Name="ACKRef" ColumnName="ACKRef" />
+          <ScalarProperty Name="SIFRef" ColumnName="SIFRef" />
+          <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+          <ScalarProperty Name="uploadId" ColumnName="uploadId" />
+          <ScalarProperty Name="RefundDate" ColumnName="RefundDate" />
+          <ScalarProperty Name="RFRId" ColumnName="RFRId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_getPayrollAmountByDate" FunctionName="WPSModel.Store.sp_getPayrollAmountByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.sp_getPayrollAmountByDate_Result">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetPayrollDates" FunctionName="WPSModel.Store.SP_GetPayrollDates" />
+    <FunctionImportMapping FunctionImportName="sp_getPayrollProcessEmp" FunctionName="WPSModel.Store.sp_getPayrollProcessEmp" />
+    <EntitySetMapping Name="TBL_PRC">
+      <EntityTypeMapping TypeName="WPSModel.TBL_PRC">
+        <MappingFragment StoreEntitySet="TBL_PRC">
+          <ScalarProperty Name="ACK_NACK_DATE" ColumnName="ACK_NACK_DATE" />
+          <ScalarProperty Name="ACK_NACK_FILENAME" ColumnName="ACK_NACK_FILENAME" />
+          <ScalarProperty Name="SND_CBUAE_DATE" ColumnName="SND_CBUAE_DATE" />
+          <ScalarProperty Name="SND_CBUAE" ColumnName="SND_CBUAE" />
+          <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+          <ScalarProperty Name="FUT_USE4" ColumnName="FUT_USE4" />
+          <ScalarProperty Name="FUT_USE3" ColumnName="FUT_USE3" />
+          <ScalarProperty Name="FUT_USE2" ColumnName="FUT_USE2" />
+          <ScalarProperty Name="FUT_USE1" ColumnName="FUT_USE1" />
+          <ScalarProperty Name="REC_COUNT" ColumnName="REC_COUNT" />
+          <ScalarProperty Name="NET_TOTAL" ColumnName="NET_TOTAL" />
+          <ScalarProperty Name="VARIABLE_TOTAL" ColumnName="VARIABLE_TOTAL" />
+          <ScalarProperty Name="FIXED_TOTAL" ColumnName="FIXED_TOTAL" />
+          <ScalarProperty Name="PAF_ACTUAL_NAME" ColumnName="PAF_ACTUAL_NAME" />
+          <ScalarProperty Name="Header" ColumnName="Header" />
+          <ScalarProperty Name="Uploadid" ColumnName="Uploadid" />
+          <ScalarProperty Name="PRC_LINE_NO" ColumnName="PRC_LINE_NO" />
+          <ScalarProperty Name="PRC_FILE_ID" ColumnName="PRC_FILE_ID" />
+          <ScalarProperty Name="PRCID" ColumnName="PRCID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_RFA">
+      <EntityTypeMapping TypeName="WPSModel.TBL_RFA">
+        <MappingFragment StoreEntitySet="TBL_RFA">
+          <ScalarProperty Name="ACK_NACK_DATE" ColumnName="ACK_NACK_DATE" />
+          <ScalarProperty Name="ACK_NACK_FILENAME" ColumnName="ACK_NACK_FILENAME" />
+          <ScalarProperty Name="SND_CBUAE_DATE" ColumnName="SND_CBUAE_DATE" />
+          <ScalarProperty Name="SND_CBUAE" ColumnName="SND_CBUAE" />
+          <ScalarProperty Name="Created_date" ColumnName="Created_date" />
+          <ScalarProperty Name="FUT_USE4" ColumnName="FUT_USE4" />
+          <ScalarProperty Name="FUT_USE3" ColumnName="FUT_USE3" />
+          <ScalarProperty Name="FUT_USE2" ColumnName="FUT_USE2" />
+          <ScalarProperty Name="FUT_USE1" ColumnName="FUT_USE1" />
+          <ScalarProperty Name="RFA_REASON_CODE" ColumnName="RFA_REASON_CODE" />
+          <ScalarProperty Name="NET_PAY" ColumnName="NET_PAY" />
+          <ScalarProperty Name="PERSONAL_NUMBER" ColumnName="PERSONAL_NUMBER" />
+          <ScalarProperty Name="EST_ID" ColumnName="EST_ID" />
+          <ScalarProperty Name="PAF_REF" ColumnName="PAF_REF" />
+          <ScalarProperty Name="Header" ColumnName="Header" />
+          <ScalarProperty Name="Uploadid" ColumnName="Uploadid" />
+          <ScalarProperty Name="RFA_LINE_NO" ColumnName="RFA_LINE_NO" />
+          <ScalarProperty Name="RFA_FILE_ID" ColumnName="RFA_FILE_ID" />
+          <ScalarProperty Name="RFAID" ColumnName="RFAID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAF_Status">
+      <EntityTypeMapping TypeName="WPSModel.PAF_Status">
+        <MappingFragment StoreEntitySet="PAF_Status">
+          <ScalarProperty Name="Status_description" ColumnName="Status_description" />
+          <ScalarProperty Name="Status_name" ColumnName="Status_name" />
+          <ScalarProperty Name="Status_id" ColumnName="Status_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PAF">
+      <EntityTypeMapping TypeName="WPSModel.TBL_PAF">
+        <MappingFragment StoreEntitySet="TBL_PAF">
+          <ScalarProperty Name="R8Timestatmp" ColumnName="R8Timestatmp" />
+          <ScalarProperty Name="IsR8Generated" ColumnName="IsR8Generated" />
+          <ScalarProperty Name="PafStatus" ColumnName="PafStatus" />
+          <ScalarProperty Name="PrevStatus" ColumnName="PrevStatus" />
+          <ScalarProperty Name="checked" ColumnName="checked" />
+          <ScalarProperty Name="PRCgenerated" ColumnName="PRCgenerated" />
+          <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+          <ScalarProperty Name="uploaddatenumber" ColumnName="uploaddatenumber" />
+          <ScalarProperty Name="BatchRef" ColumnName="BatchRef" />
+          <ScalarProperty Name="Done" ColumnName="Done" />
+          <ScalarProperty Name="estname" ColumnName="estname" />
+          <ScalarProperty Name="estid" ColumnName="estid" />
+          <ScalarProperty Name="pafactualname" ColumnName="pafactualname" />
+          <ScalarProperty Name="uploaddatetext" ColumnName="uploaddatetext" />
+          <ScalarProperty Name="companyid" ColumnName="companyid" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="uploaddate" ColumnName="uploaddate" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="uploadid" ColumnName="uploadid" />
+          <ScalarProperty Name="numberofrecords" ColumnName="numberofrecords" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBL_PAF_DETAILS">
+      <EntityTypeMapping TypeName="WPSModel.TBL_PAF_DETAILS">
+        <MappingFragment StoreEntitySet="TBL_PAF_DETAILS">
+          <ScalarProperty Name="RFATimestamp" ColumnName="RFATimestamp" />
+          <ScalarProperty Name="RFAGenerated" ColumnName="RFAGenerated" />
+          <ScalarProperty Name="RFAMarked" ColumnName="RFAMarked" />
+          <ScalarProperty Name="RFRTimestamp" ColumnName="RFRTimestamp" />
+          <ScalarProperty Name="RFRGenerated" ColumnName="RFRGenerated" />
+          <ScalarProperty Name="DCRTimestamp" ColumnName="DCRTimestamp" />
+          <ScalarProperty Name="DCRGenerated" ColumnName="DCRGenerated" />
+          <ScalarProperty Name="DIFTimestamp" ColumnName="DIFTimestamp" />
+          <ScalarProperty Name="DIFGenerated" ColumnName="DIFGenerated" />
+          <ScalarProperty Name="pafdetailstimestamp" ColumnName="pafdetailstimestamp" />
+          <ScalarProperty Name="paid" ColumnName="paid" />
+          <ScalarProperty Name="companyid" ColumnName="companyid" />
+          <ScalarProperty Name="done" ColumnName="done" />
+          <ScalarProperty Name="remainingamount" ColumnName="remainingamount" />
+          <ScalarProperty Name="Payrolldate" ColumnName="Payrolldate" />
+          <ScalarProperty Name="netpay" ColumnName="netpay" />
+          <ScalarProperty Name="Days_leave" ColumnName="Days_leave" />
+          <ScalarProperty Name="variableamount" ColumnName="variableamount" />
+          <ScalarProperty Name="fixedamount" ColumnName="fixedamount" />
+          <ScalarProperty Name="Days" ColumnName="Days" />
+          <ScalarProperty Name="End_date" ColumnName="End_date" />
+          <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+          <ScalarProperty Name="accountnumber" ColumnName="accountnumber" />
+          <ScalarProperty Name="agentcode" ColumnName="agentcode" />
+          <ScalarProperty Name="personalnumber" ColumnName="personalnumber" />
+          <ScalarProperty Name="edr" ColumnName="edr" />
+          <ScalarProperty Name="uploadid" ColumnName="uploadid" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_InsertRFRDetail" FunctionName="WPSModel.Store.sp_InsertRFRDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.sp_InsertRFRDetail_Result">
+          <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+          <ScalarProperty Name="SIFRef" ColumnName="SIFRef" />
+          <ScalarProperty Name="ACKRef" ColumnName="ACKRef" />
+          <ScalarProperty Name="RountingCode" ColumnName="RountingCode" />
+          <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+          <ScalarProperty Name="AmountToRefund" ColumnName="AmountToRefund" />
+          <ScalarProperty Name="RequestCode" ColumnName="RequestCode" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="Future" ColumnName="Future" />
+          <ScalarProperty Name="Last" ColumnName="Last" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="HRMS_EmployeeMst_TR">
+      <EntityTypeMapping TypeName="WPSModel.HRMS_EmployeeMst_TR">
+        <MappingFragment StoreEntitySet="HRMS_EmployeeMst_TR">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="Allowance" ColumnName="Allowance" />
+          <ScalarProperty Name="Housing" ColumnName="Housing" />
+          <ScalarProperty Name="Travel" ColumnName="Travel" />
+          <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="PerAddress" ColumnName="PerAddress" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="RoutingCode" ColumnName="RoutingCode" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="DOE" ColumnName="DOE" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+          <ScalarProperty Name="PersonalNo" ColumnName="PersonalNo" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_TempCompany_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_TempCompany_ST">
+        <MappingFragment StoreEntitySet="SMSA_TempCompany_ST">
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="EstID" ColumnName="EstID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="ParentCompanyEstID" ColumnName="ParentCompanyEstID" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="SubAgentCode" ColumnName="SubAgentCode" />
+          <ScalarProperty Name="AgentCode" ColumnName="AgentCode" />
+          <ScalarProperty Name="TempCompanyId" ColumnName="TempCompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HRMS_TempEmployeeMst_TR">
+      <EntityTypeMapping TypeName="WPSModel.HRMS_TempEmployeeMst_TR">
+        <MappingFragment StoreEntitySet="HRMS_TempEmployeeMst_TR">
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Approved" ColumnName="Approved" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="Allowance" ColumnName="Allowance" />
+          <ScalarProperty Name="Housing" ColumnName="Housing" />
+          <ScalarProperty Name="Travel" ColumnName="Travel" />
+          <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="PerAddress" ColumnName="PerAddress" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="RoutingCode" ColumnName="RoutingCode" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="DOE" ColumnName="DOE" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="First_Name" ColumnName="First Name" />
+          <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+          <ScalarProperty Name="PersonalNo" ColumnName="PersonalNo" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_Logs_HI">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_Logs_HI">
+        <MappingFragment StoreEntitySet="SMSA_Logs_HI">
+          <ScalarProperty Name="ActivityBy" ColumnName="ActivityBy" />
+          <ScalarProperty Name="ActivityOn" ColumnName="ActivityOn" />
+          <ScalarProperty Name="ActivityDesc" ColumnName="ActivityDesc" />
+          <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
+          <ScalarProperty Name="ColumnId" ColumnName="ColumnId" />
+          <ScalarProperty Name="LogId" ColumnName="LogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_RptGetUserActivityLog" FunctionName="WPSModel.Store.sp_RptGetUserActivityLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.sp_RptGetUserActivityLog_Result">
+          <ScalarProperty Name="LogId" ColumnName="LogId" />
+          <ScalarProperty Name="ActivityBy" ColumnName="ActivityBy" />
+          <ScalarProperty Name="ActivityDesc" ColumnName="ActivityDesc" />
+          <ScalarProperty Name="ActivityOn" ColumnName="ActivityOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_RptCompanyCreation" FunctionName="WPSModel.Store.sp_RptCompanyCreation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.sp_RptCompanyCreation_Result">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="EstID" ColumnName="EstID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedUserName" ColumnName="CreatedUserName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="SaleAccount" ColumnName="SaleAccount" />
+          <ScalarProperty Name="AgentType" ColumnName="AgentType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_RptEmpInfo" FunctionName="WPSModel.Store.Sp_RptEmpInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.Sp_RptEmpInfo_Result">
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="PersonalNo" ColumnName="PersonalNo" />
+          <ScalarProperty Name="EmpCode" ColumnName="EmpCode" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="DOJ" ColumnName="DOJ" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="DOE" ColumnName="DOE" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="BasicSalary" ColumnName="BasicSalary" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="EstID" ColumnName="EstID" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="RoutingCode" ColumnName="RoutingCode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_RptRFRId" FunctionName="WPSModel.Store.Sp_RptRFRId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.Sp_RptRFRId_Result">
+          <ScalarProperty Name="RFRId" ColumnName="RFRId" />
+          <ScalarProperty Name="RefundDate" ColumnName="RefundDate" />
+          <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+          <ScalarProperty Name="EmployeeNo" ColumnName="EmployeeNo" />
+          <ScalarProperty Name="AmountToRefund" ColumnName="AmountToRefund" />
+          <ScalarProperty Name="RequestCode" ColumnName="RequestCode" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="RecordCount" ColumnName="RecordCount" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="SIFRef" ColumnName="SIFRef" />
+          <ScalarProperty Name="ACKRef" ColumnName="ACKRef" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_RptSalesAccount" FunctionName="WPSModel.Store.Sp_RptSalesAccount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.Sp_RptSalesAccount_Result">
+          <ScalarProperty Name="SaleAccId" ColumnName="SaleAccId" />
+          <ScalarProperty Name="SaleAccount" ColumnName="SaleAccount" />
+          <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_SifMstDtl" FunctionName="WPSModel.Store.Sp_SifMstDtl">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.Sp_SifMstDtl_Result">
+          <ScalarProperty Name="SifDtlId" ColumnName="SifDtlId" />
+          <ScalarProperty Name="SifId" ColumnName="SifId" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+          <ScalarProperty Name="BankId" ColumnName="BankId" />
+          <ScalarProperty Name="SifDate" ColumnName="SifDate" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="TotalEmployees" ColumnName="TotalEmployees" />
+          <ScalarProperty Name="EstId" ColumnName="EstId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="PersonalNo" ColumnName="PersonalNo" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="RoutingCode" ColumnName="RoutingCode" />
+          <ScalarProperty Name="IBAN" ColumnName="IBAN" />
+          <ScalarProperty Name="Basic" ColumnName="Basic" />
+          <ScalarProperty Name="Allowances" ColumnName="Allowances" />
+          <ScalarProperty Name="NetSalary" ColumnName="NetSalary" />
+          <ScalarProperty Name="LeavesPeriod" ColumnName="LeavesPeriod" />
+          <ScalarProperty Name="TotalSalary" ColumnName="TotalSalary" />
+          <ScalarProperty Name="WPSRefNo" ColumnName="WPSRefNo" />
+          <ScalarProperty Name="WPSDepositSlip" ColumnName="WPSDepositSlip" />
+          <ScalarProperty Name="ChargesRefNo" ColumnName="ChargesRefNo" />
+          <ScalarProperty Name="ChargesDepositSlip" ColumnName="ChargesDepositSlip" />
+          <ScalarProperty Name="ProcessType" ColumnName="ProcessType" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="SND_CBUAE" ColumnName="SND_CBUAE" />
+          <ScalarProperty Name="SND_CBUAE_DATE" ColumnName="SND_CBUAE_DATE" />
+          <ScalarProperty Name="ACK_NAK" ColumnName="ACK_NAK" />
+          <ScalarProperty Name="ACT_NAK_DATE" ColumnName="ACT_NAK_DATE" />
+          <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+          <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+          <ScalarProperty Name="DeleteRemarks" ColumnName="DeleteRemarks" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

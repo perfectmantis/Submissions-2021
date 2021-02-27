@@ -1,0 +1,385 @@
+﻿@model WPS.Models.ImportSifExcel
+@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Upload Salary(s)
+                </div>
+
+                @using (Html.BeginForm("UploadFile", "Sif", new { q = Request.QueryString["q"].ToString() }, FormMethod.Post, new { @id = "frmUpload", enctype = "multipart/form-data", @class = "form-horizontal" }))
+                {
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Upload Company(s)</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();"  >×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();"  >×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Year</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("Year", null, "Select Year",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Month</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("Month", null, "Select Month",
+                                new { @class = "form-control", style = "width: 95%;", maxlength = "50" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Agent</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("AgentId", null, "Select Agent",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50", onchange = "fillSubAgents($(this).val())" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Sub Agent</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("SubAgentId", null, "Select Sub Agent",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50", onchange = "fillCompanies($(this).val())" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("SelectedCompanyID", null, "Select Company",
+                                new { id="SelectedCompanyID", @class = "form-control js-example-basic-single", style = "width: 95% !important", maxlength = "50", required = "required" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Browse File</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.AntiForgeryToken()
+                                @Html.TextBoxFor(x => x.MyExcelFile, new { @class = "form-control", required = "required", type = "file", @multiple = "multiple" })
+                                <a href="~/ExcelFormat/SalaryBatch1.xlsx" target="_blank">Download Format</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-sm"  data-toggle="modal" data-target="#myModalSifUploadConfirmation">
+                            <i class="fa fa-dot-circle-o"></i> Upload
+                        </button>
+                        
+                    </div>
+                }
+                <div class="card-body">
+                    <div class="default-tab">
+                        <nav>
+                            <div class="nav nav-tabs" id="tabHeader" role="tablist">
+                                <a data-toggle="tab" href="#ValidEmployee" class="nav-item nav-link active">Uploaded Salary</a>
+                                <a data-toggle="tab" href="#ErrorEmployee" class="nav-item nav-link">Error(s)</a>
+                            </div>
+                            <div class="tab-content" id="nav-tabConent">
+                                <div class="tab-pane fade show active" id="ValidEmployee">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-borderless table-striped table-earning" id="tblEmployee" role="grid" style="width: 100% !important">
+                                                <thead>
+                                                    <tr>
+                                                        @*<th style="width: 3%">Month</th>
+                                                        <th style="width: 3%">Year</th>*@
+                                                        <th style="width: 10%">Personal No</th>
+                                                        <th style="width: 8%">IBAN</th>
+                                                        <th style="width: 6%">Basic</th>
+                                                        <th style="width: 6%">Housing</th>
+                                                        <th style="width: 6%">Conveyance</th>
+                                                        <th style="width: 6%">Medical</th>
+                                                        <th style="width: 8%">Annual Passage</th>
+                                                        <th style="width: 6%">Overtime</th>
+                                                        <th style="width: 6%">Others</th>
+                                                        <th style="width: 8%">Leave Encash.</th>
+                                                        <th style="width: 6%">Leave Days</th>
+                                                        <th style="width: 8%">Total</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+                                                <tfoot id="SifEmployeeFooter">
+                                                    <tr>
+                                                        <th>Total</th>
+                                                        <th id="totalCount"></th>
+                                                        <th id="totalBasic"></th>
+                                                        <th id="totalHousing"></th>
+                                                        <th id="totalConveyance"></th>
+                                                        <th id="totalMedical"></th>
+                                                        <th id="totalAnnual"></th>
+                                                        <th id="totalOvertime"></th>
+                                                        <th id="totalOthers"></th>
+                                                        <th id="totalEncash"></th>
+                                                        <th></th>
+                                                        <th id="totalEmployeeAmount"></th>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-12">
+                                                <label for="cc-payment" class="control-label" id="lblGrandTotal" style="font-size:24pt !important;"></label>
+                                            </div>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="ErrorEmployee">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-borderless table-striped table-earning" id="tblErrorEmployee" role="grid" style="width: 100% !important">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 5%">Month</th>
+                                                        <th style="width: 5%">Year</th>
+                                                        <th style="width: 10%">Personal No</th>
+                                                        <th style="width: 10%">Routing Code</th>
+                                                        <th style="width: 10%">IBAN</th>
+                                                        <th style="width: 8%">Basic</th>
+                                                        <th style="width: 8%">Housing</th>
+                                                        <th style="width: 8%">Leave Periods</th>
+                                                        <th style="width: 20%">Message</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                @*<ul class="nav nav-tabs" id="tabHeader">
+                        <li>
+
+                        </li>
+                        <li>
+
+                        </li>
+
+                    </ul>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script src="~/Content/vendor/jquery.form.min.js"></script>
+
+<script>
+    function UploadSif() {
+        $("#frmUpload").submit();
+    }
+
+    $('form').ajaxForm({
+        beforeSubmit: function () {
+        },
+        success: function (data) {
+            console.log(data);
+            $('#lblMessage').html('File uploaded successfully, waiting for approval.');
+            $('#divMessage').show();
+
+            $('#tblErrorEmployee').dataTable({
+                paging: true,
+                sort: true,
+                searching: true,
+                bDestroy: true,
+                bRetreive: true,
+                data: data.ErrorEmployees,
+                aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                columns: [
+
+                    { 'data': "Month" },
+                    { 'data': "Year" },
+                    { 'data': "PersonalNo" },
+                    { 'data': "RoutingCode" },
+                    { 'data': "IBAN" },
+                    { 'data': "BasicSalary" },
+                    { 'data': "Housing" },
+                    { 'data': "LeaveDays" },
+                    
+                    { 'data': "ErrorMessage" },
+                ]
+               ,
+                dom: 'Blfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+            $('#tblEmployee').dataTable({
+                paging: true,
+                sort: true,
+                searching: true,
+                bDestroy: true,
+                bRetreive: true,
+                data: data.Employees,
+                aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                columns: [
+                    //{ 'data': "Month" },
+                    //{ 'data': "Year" },
+                    { 'data': "PersonalNo" },
+                    { 'data': "IBAN" },
+                    { 'data': "BasicSalary" },
+                    { 'data': "Housing" },
+                     { 'data': "Conveyance" },
+                      { 'data': "Medical" },
+                       { 'data': "AnnualPassage" },
+                        { 'data': "Overtime" },
+                         { 'data': "Others" },
+                          { 'data': "LeaveEncashment" },
+                    { 'data': "LeaveDays" },
+                    { 'data': "Total" },
+                ]
+              ,
+                dom: 'Blfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+            $('#tabHeader li:nth-child(1)').attr("class", "active");
+            $('#tabHeader li:nth-child(2)').attr("class", "");
+           
+
+            $("#ValidEmployee").attr("class", "tab-pane fade show active");
+            $("#ErrorEmployee").attr("class", "tab-pane fade");
+            sumFooterValues();
+        }
+
+
+    });
+
+    function fillSubAgents(agentId) {
+        if (agentId == '') {
+            agentId = '0';
+        }
+        $.ajax({
+            url: '@Url.Action("FillSubAgent", "Common", new { q = Request.QueryString["q"].ToString() })',
+            type: 'post',
+            data: { AgentId: agentId },
+            //datatype: 'json',
+            success: function (data) {
+                var items = [];
+                items.push("<option value='0'>" + "-- Select Sub Agent --" + "</option>"); //first item
+                if (data.SubAgent != null) {
+                    for (var i = 0; i < data.SubAgent.length; i++) {
+                        items.push("<option value=" + data.SubAgent[i].Value + ">" + data.SubAgent[i].Text + "</option>");
+                    }
+
+                    $("#SubAgentId").html(items.join(' '));
+
+                    $('#SubAgentId').trigger("chosen:updated");
+                }
+                fillCompanies(agentId);
+            }, error: function (ex) {
+                //hideAjaxLoader();
+                //myAlert.Alert("Error", ex.responseText);
+                alert(ex);
+            }
+        });
+    }
+
+    function fillCompanies(agentId) {
+        if (agentId == '') {
+            agentId = '0';
+        }
+        $.ajax({
+            url: '@Url.Action("FillCompany", "Common", new { q = Request.QueryString["q"].ToString() })',
+            type: 'post',
+            data: { AgentId: agentId },
+            //datatype: 'json',
+            success: function (data) {
+                var items = [];
+                items.push("<option value='0'>" + "-- Select Company --" + "</option>"); //first item
+                if (data.Company != null) {
+                    for (var i = 0; i < data.Company.length; i++) {
+                        items.push("<option value=" + data.Company[i].Value + ">" + data.Company[i].Text + "</option>");
+                    }
+
+                    $("#SelectedCompanyID").html(items.join(' '));
+
+                    $('#SelectedCompanyID').trigger("chosen:updated");
+                }
+
+            }, error: function (ex) {
+                //hideAjaxLoader();
+                //myAlert.Alert("Error", ex.responseText);
+                alert(ex);
+            }
+        });
+    }
+
+
+    function sumFooterValues() {
+        var totalBasic = 0, totalHousing = 0, totalConveyance = 0, totalMedical = 0;
+        var totalAnnual = 0, totalOvertime = 0, totalOthers = 0, totalEncash = 0;
+        var totalCount = 0;
+        $('#tblEmployee tr').each(function () {
+            var t = 0;
+            var basic = $(this).closest('tr').find('td').eq(2).text();
+            var housing = $(this).closest('tr').find('td').eq(3).text();
+            var conveyance = $(this).closest('tr').find('td').eq(4).text();
+            var medical = $(this).closest('tr').find('td').eq(5).text();
+            var annual = $(this).closest('tr').find('td').eq(6).text();
+            var overtime = $(this).closest('tr').find('td').eq(7).text();
+            var others = $(this).closest('tr').find('td').eq(8).text();
+            var encash = $(this).closest('tr').find('td').eq(9).text();
+
+            if (basic > 0) {
+                t = t + parseFloat(basic);
+                totalBasic = parseFloat(totalBasic) + parseFloat(basic);
+                totalCount = totalCount + 1;
+            }
+            if (housing > 0) { totalHousing = parseFloat(totalHousing) + parseFloat(housing); t = t + parseFloat(housing); }
+            if (conveyance > 0) { totalConveyance = parseFloat(totalConveyance) + parseFloat(conveyance); t = t + parseFloat(conveyance); }
+            if (medical > 0) { totalMedical = parseFloat(totalMedical) + parseFloat(medical); t = t + parseFloat(medical); }
+            if (annual > 0) { totalAnnual = parseFloat(totalAnnual) + parseFloat(annual); t = t + parseFloat(annual); }
+            if (overtime > 0) { totalOvertime = parseFloat(totalOvertime) + parseFloat(overtime); t = t + parseFloat(overtime); }
+            if (others > 0) { totalOthers = parseFloat(totalOthers) + parseFloat(others); t = t + parseFloat(others); }
+            if (encash > 0) { totalEncash = parseFloat(totalEncash) + parseFloat(encash); t = t + parseFloat(encash); }
+
+
+        });
+
+        $("#totalCount").html(totalCount);
+
+        $("#totalBasic").html(totalBasic);
+        $("#totalHousing").html(totalHousing);
+        $("#totalConveyance").html(totalConveyance);
+        $("#totalMedical").html(totalMedical);
+        $("#totalAnnual").html(totalAnnual);
+        $("#totalOvertime").html(totalOvertime);
+        $("#totalOthers").html(totalOthers);
+        $("#totalEncash").html(totalEncash);
+        var gTotal = totalBasic + totalHousing + totalConveyance + totalMedical + totalAnnual + totalOvertime + totalOthers + totalEncash;
+        $('#lblGrandTotal').html("Grand Total : " + gTotal);
+        $("#totalEmployeeAmount").html(gTotal);
+    }
+</script>

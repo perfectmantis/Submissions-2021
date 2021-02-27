@@ -1,0 +1,1316 @@
+﻿@model WPS.Models.mDashboard
+@{
+
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@*<h2>Dashboard</h2>
+        <h1>Work In Progress!!!</h1>*@
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="overview-wrap">
+                    <h2 class="title-1">Reviews Dashboard</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row m-b-20"></div>
+
+        <div class="card-header">
+            <a href="#"><i class="fas fa-home"></i></a> / <a href="#"><i class="fas fa-user-circle"></i></a> / DEMO CHARTS || <span id="reviewclient" class="label label-default">ALL REVIEWS</span> <label for="cc-site" class="control-label" style="float:inherit !important;"></label>
+        </div>
+
+        <div class="content-box border">
+            <div class="row m-b-20"></div>
+            <div class="row">
+                <div class="col-md-2">
+                    <label for="cc-payment" class="control-label">Site</label>
+                </div>
+                <div class="col-lg-2">
+                    @Html.DropDownList("SiteID", null, "---- Select ----",
+                                    new { id = "ddl_SiteID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+                </div>
+                <div class="col-md-1">
+                    <label for="cc-payment" class="control-label">Account</label>
+                </div>
+                <div class="col-lg-2">
+                    @Html.DropDownList("AccountID", null, "---- Select ----",
+                                    new { id = "ddl_AccountID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+                </div>
+                <div class="col-md-1">
+                    <label for="cc-payment" class="control-label">Type</label>
+                </div>
+                <div class="col-lg-2">
+                    @Html.DropDownList("AccountType", null, "---- Select ----",
+                                    new { id = "ddl_AccountType", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-5">
+                    Review
+                    <input id="IsReview" name="Review" type="radio" value="1" onchange="ChkMethodIsReview($(this),'@Request.QueryString["CompanyId"].ToString()', $('#ddl_SiteID').val(), $('#ddl_AccountID').val(), $('#ddl_AccountType').val(), '', '')" checked="checked" />
+                    Rating
+                    <input id="IsRating" name="Rating" type="radio" value="0" onchange="ChkMethodIsRating($(this),'@Request.QueryString["CompanyId"].ToString()', $('#ddl_SiteID').val(), $('#ddl_AccountID').val(), $('#ddl_AccountType').val(), '', '')" />
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="getSearchReviewsCharts('@Request.QueryString["CompanyId"].ToString()', $('#ddl_SiteID').val(), $('#ddl_AccountID').val(), $('#ddl_AccountType').val(), '', '')">
+                        <i class="fa fa-search-plus"></i> Search
+                    </button>
+                </div>
+            </div>
+            <div class="row m-b-10"></div>
+        </div>
+
+        <div class="row m-t-25">
+            <div class="col-sm-6 col-lg-3">
+                <div class="overview-item overview-item--c2">
+                    <div class="overview__inner">
+                        <div class="overview-box clearfix">
+                            <div class="icon">
+                                <i class="zmdi zmdi-shopping-cart"></i>
+                            </div>
+                            <div class="text">
+                                <h2>@Model.ActCount</h2>
+                                <span># Account</span>
+                            </div>
+                        </div>
+                        <div class="overview-chart">
+                            <canvas id="widgetChart2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="overview-item overview-item--c1">
+                    <div class="overview__inner">
+                        <div class="overview-box clearfix">
+                            <div class="icon">
+                                <i class="zmdi zmdi-account-o"></i>
+                            </div>
+                            <div class="text">
+                                <h2>@Model.RevCount</h2>
+                                <span># Reviews</span>
+                            </div>
+                        </div>
+                        <div class="overview-chart">
+                            <canvas id="widgetChart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="overview-item overview-item--c4">
+                    <div class="overview__inner">
+                        <div class="overview-box clearfix">
+                            <div class="icon">
+                                <i class="zmdi zmdi-money"></i>
+                            </div>
+                            <div class="text">
+                                <h2>@Model.GoodCount</h2>
+                                <span># Good Words</span>
+                            </div>
+                        </div>
+                        <div class="overview-chart">
+                            <canvas id="widgetChart4"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="overview-item overview-item--c3">
+                    <div class="overview__inner">
+                        <div class="overview-box clearfix">
+                            <div class="icon">
+                                <i class="zmdi zmdi-calendar-note"></i>
+                            </div>
+                            <div class="text">
+                                <h2>@Model.BadCount</h2>
+                                <span># Bad Words</span>
+                            </div>
+                        </div>
+                        <div class="overview-chart">
+                            <canvas id="widgetChart3"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-6">
+                <h2 class="title-1 m-b-25" id="hedchart">Review(s) Distribution</h2>
+                <div class="table--no-card m-b-40">
+                    <div class="row">
+                        <div class="col-md-8" id="divpiecanvas">
+                            <canvas id="reviewSummaryChartPie" width="378" height="189"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <h2 class="title-1 m-b-25">Review(s) Status</h2>
+                <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" style="padding:28px !important;">
+                    <div class="au-card-inner">
+                        <div class="table-responsive">
+                            <table id="DataTables_Charts_0" class="table table-borderless table-striped table-earning">
+                                <thead>
+                                    <tr>
+                                        <th style="width:3%">Site</th>
+                                        <th style="width:3%">Reviews</th>
+                                        <th style="width:3%">Avg Rating</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+
+        <div class="card-header">
+            <h4 class="title">MONTHLY TRAFFIC</h4>
+        </div>
+        <div class="content-box border">
+            <div class="row m-b-20"></div>
+            <div class="table--no-card m-b-40">
+                <div class="col-md-12" id="divlinecanvas">
+                    <canvas id="reviewSummaryChartLine"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            var comid = @Request.QueryString["CompanyId"].ToString();
+            if (comid > 0) {
+                //getReviewsCharts(comid,'', '', '', '');
+            }
+            else {
+                //getReviewsCharts('','', '', '', '');
+            }
+
+        });
+
+        function ChkMethodIsReview(checkInput, companyID, siteID, accountID, accountType, rating) {
+            //console.log(checkInput.val());
+            if (checkInput.val() == 0) {
+                $('#IsRating').prop("checked",false);
+                $('#IsRating').val(0);
+                $('#IsReview').val(1);
+            }
+            else {
+                $('#IsRating').prop("checked",true);
+            }
+
+            var CompanyID, SiteID, AccountID, AccountType, Rating, WrdTypeID = "", qStr = '@Request.QueryString["q"].ToString()';
+            CompanyID = companyID; SiteID = siteID; AccountID = accountID; AccountType = accountType; Rating = rating;
+
+            $.ajax({
+                url: '@Url.Action("ReviewCompanyPieChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    ReviewPieChart(data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard, 'pie');
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("ReviewCompanyLineChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    ReviewLineChart(data.reviewsCompanyLineChart.SP_Reviews_Line_CompanyWise_Dashboard, 'line');
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+        }
+
+        function ChkMethodIsRating(checkInput, companyID, siteID, accountID, accountType, rating) {
+            //console.log(checkInput.val());
+            if (checkInput.val() == 0) {
+                $('#IsReview').prop("checked",false);
+                $('#IsReview').val(0);
+                $('#IsRating').val(1);
+            }
+            else {
+                $('#IsReview').prop("checked",true);
+            }
+
+            var CompanyID, SiteID, AccountID, AccountType, Rating, WrdTypeID = "", qStr = '@Request.QueryString["q"].ToString()';
+            CompanyID = companyID; SiteID = siteID; AccountID = accountID; AccountType = accountType; Rating = rating;
+
+            $.ajax({
+                url: '@Url.Action("ReviewCompanyPieChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    RatingPieChart(data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard, 'pie');
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("ReviewCompanyLineChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    RatingLineChart(data.reviewsCompanyLineChart.SP_Reviews_Line_CompanyWise_Dashboard, 'line');
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+
+        }
+
+        function getReviewsCharts(companyID, siteID, accountID, accountType, rating) {
+            var CompanyID, SiteID, AccountID, AccountType, Rating, WrdTypeID = "", qStr = '@Request.QueryString["q"].ToString()';
+            CompanyID = companyID; SiteID = siteID; AccountID = accountID; AccountType = accountType; Rating = rating;
+            var datacountarray1 = [];
+            //alert(SiteID + AccountID + AccountType);
+            $.ajax({
+                url: '@Url.Action("ReviewCompanyPieChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+
+                    if (SiteID != "" && SiteID != null) {
+                        var datareviews = data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard;
+                        for (var i = 0; i < datareviews.length; i++) {
+                            datacountarray1.push(datareviews[i].SiteName)
+                        }
+                        $("label[for='cc-site']").text(" " + datacountarray1);
+                    }
+                    else
+                    {
+                        $("label[for='cc-site']").text("");
+                    }
+
+                    ReviewPieChart(data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard, 'pie');
+                    $('#DataTables_Charts_0').DataTable({
+                        processing: true,
+                        paging: false,
+                        sort: true,
+                        bDestroy: true,
+                        bRetreive: true,
+                        bFilter: false,
+                        info: false,
+                        data: data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard,
+                        columns: [
+
+                        { 'data': 'SiteName' },
+
+                        {
+                            'data': 'ReviewsCount',
+                            render: function (data, type, full) {
+                                var a = '<a href="/ReviewsSiteInfo/ReviewsSiteInfo?q=' + qStr + '&SiteID=' + full.SiteID + '&AccountID=' + AccountID + '&AccountType=' + AccountType + '&Rating=" target="_blank"><i class="fa fa-link" aria-hidden="true"></i>' + "&nbsp" + full.ReviewsCount + '</a>'; // row object contains the row data
+                                return a;
+
+                            }
+                        },
+
+                        {
+                            'data': 'Rating',
+                            render: function (data, type, full) {
+                                var text = "";
+                                var k = full.Rating;
+
+                                if (k <= '1.5' || k <= '2.5' || k <= '3.5' || k <= '4.5' || k <= '5.5' || k <= '6.5') {
+
+                                    var l = Math.round(k);
+                                    var s = k - l;
+
+                                    if (s < 0) {
+                                        var m = l - 1;
+                                        for (var i = 0; i < m; i++) {
+                                            text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                        }
+                                        text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                    else {
+                                        for (var i = 0; i < l; i++) {
+                                            text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                        }
+                                    }
+
+                                    var j = 5 - l;
+                                    for (var i = 0; i < j; i++) {
+                                        text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+
+                                }
+                                else {
+                                    for (var i = 0; i < k; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+
+                                    var j = 5 - k;
+                                    for (var i = 0; i < j; i++) {
+                                        text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                }
+
+                                return text;
+
+                            }, searchable: false, sortable: false
+
+                        },
+
+                        ],
+                        //dom: 'Blfrtip',
+                        //buttons: [
+                        // 'copy', 'csv', 'excel', 'pdf', 'print'
+                        //],
+                    });
+
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("ReviewCompanyLineChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    ReviewLineChart(data.reviewsCompanyLineChart.SP_Reviews_Line_CompanyWise_Dashboard, 'line');
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("GetwordTypePieChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType + '&WrdTypeID=' + WrdTypeID,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    //console.log(data);
+                    $('#DataTables_Words_0').DataTable({
+                        processing: true,
+                        paging: false,
+                        sort: true,
+                        bDestroy: true,
+                        bRetreive: true,
+                        bFilter: false,
+                        info: false,
+                        data: data.wordtypedesc.SP_WordType_Desc_PieChart_Dashboard_HI,
+                        columns: [
+
+                        { 'data': 'SiteName' },
+
+                        { 'data': 'Good' },
+
+                        { 'data': 'Bad' },
+
+                        ],
+                    });
+
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("GetwordDescBarChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType + '&WrdTypeID=' + WrdTypeID,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    WordTypeBarChart(data.worddescbar.SP_WordDesc_MonthWise_BarChart_Dashboard_HI, 'line');
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("GetwordCountCloudCharts", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    anychart.onDocumentReady(function(){
+                        var chart = anychart.tagCloud(data.wordcloudcount.wordCloudData);
+                        var stage = anychart.graphics.create('wordSummaryCloudChart');
+                        chart.angles([0]);
+                        chart.container(stage);
+                        //chart.angles([-45,45]);
+                        //chart.normal().fill("#03a9f4"); //#1fadad //f7464a
+                        //chart.hovered().fill("#ff6e40"); //#93bfec
+                        //chart.selected().fill("#101010"); //#1f66ad
+                        //chart.normal().fontSize(10);
+                        chart.normal().fontWeight(600);
+                        chart.normal().fontFamily('Verdana, Helvetica, Arial, sans-serif');
+                        var customColorScale = anychart.scales.ordinalColor();
+                        customColorScale.colors(["#03a9f4", "#ff6e40", "#ffd600", "#1ac5a4", "#828282", "#17a78b", "#3578E5"]);
+                        chart.colorScale(customColorScale);
+                        chart.colorRange().enabled(true);
+                        chart.draw();
+                    });
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+        }
+
+        function getReviewsLineCharts(companyID, siteID, accountID, accountType) {
+            var CompanyID, SiteID, AccountID, AccountType = "";
+            CompanyID = companyID; SiteID = siteID; AccountID = accountID; AccountType = accountType;
+            $.ajax({
+                url: '@Url.Action("ReviewCompanyLineChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    //console.log(data.reviewsLineChart.ReviewsLineChartDashboardTR);
+                    ReviewLineChart(data.reviewsCompanyLineChart.SP_Reviews_Line_CompanyWise_Dashboard, 'line');
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+        }
+
+        function getSearchReviewsCharts(companyID, siteID, accountID, accountType, rating, wrdTypeID) {
+            var CompanyID, SiteID, AccountID, AccountType, Rating = "", WrdTypeID = "", qStr = '@Request.QueryString["q"].ToString()';
+            CompanyID = companyID; SiteID = siteID; AccountID = accountID; AccountType = accountType; Rating = rating; WrdTypeID = wrdTypeID;
+            var datacountarray1 = [];
+            $.ajax({
+                url: '@Url.Action("ReviewCompanyPieChartList", "Home")?CompanyID=' + CompanyID + '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+
+                    if (SiteID != "" && SiteID != null) {
+                        var datareviews = data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard
+                        for (var i = 0; i < datareviews.length; i++) {
+                            datacountarray1.push(datareviews[i].SiteName)
+                        }
+                        $("label[for='cc-site']").text(" " + datacountarray1);
+                    }
+                    else {
+                        $("label[for='cc-site']").text("");
+                    }
+
+                    if ($('#IsReview').val() == 1) {
+                        ReviewPieChart(data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard, 'pie');
+                    } else {
+                        RatingPieChart(data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard, 'pie');
+                    }
+
+                    $('#DataTables_Charts_0').DataTable({
+                        processing: true,
+                        paging: false,
+                        sort: true,
+                        bDestroy: true,
+                        bRetreive: true,
+                        bFilter: false,
+                        info: false,
+                        data: data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard,
+                        columns: [
+
+                        { 'data': 'SiteName' },
+
+                        {
+                            'data': 'ReviewsCount',
+                            render: function (data, type, full) {
+                                var a = '<a href="/ReviewsSiteInfo/ReviewsSiteInfo?q=' + qStr + '&SiteID=' + full.SiteID + '&AccountID=' + AccountID + '&AccountType=' + AccountType + '&Rating=" target="_blank"><i class="fa fa-link" aria-hidden="true"></i>' + "&nbsp" + full.ReviewsCount + '</a>'; // row object contains the row data
+                                return a;
+
+                            }
+                        },
+
+                        {
+                            'data': 'Rating',
+                            render: function (data, type, full) {
+                                var text = "";
+                                var k = full.Rating;
+
+                                if (k <= '1.5' || k <= '2.5' || k <= '3.5' || k <= '4.5' || k <= '5.5' || k <= '6.5') {
+
+                                    var l = Math.round(k);
+                                    var s = k - l;
+
+                                    if (s < 0) {
+                                        var m = l - 1;
+                                        for (var i = 0; i < m; i++) {
+                                            text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                        }
+                                        text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                    else {
+                                        for (var i = 0; i < l; i++) {
+                                            text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                        }
+                                    }
+
+                                    var j = 5 - l;
+                                    for (var i = 0; i < j; i++) {
+                                        text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+
+                                }
+                                else {
+                                    for (var i = 0; i < k; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+
+                                    var j = 5 - k;
+                                    for (var i = 0; i < j; i++) {
+                                        text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                }
+
+                                return text;
+
+                            }, searchable: false, sortable: false
+
+                        },
+
+                        ],
+                        //dom: 'Blfrtip',
+                        //buttons: [
+                        // 'copy', 'csv', 'excel', 'pdf', 'print'
+                        //],
+                    });
+
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("ReviewCompanyLineChartList", "Home")?CompanyID=' + CompanyID + '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+
+                    if ($('#IsReview').val() == 1) {
+                        ReviewLineChart(data.reviewsCompanyLineChart.SP_Reviews_Line_CompanyWise_Dashboard, 'line');
+                    } else {
+                        RatingLineChart(data.reviewsCompanyLineChart.SP_Reviews_Line_CompanyWise_Dashboard, 'line');
+                    }
+
+
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("GetwordTypePieChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType + '&WrdTypeID=' + WrdTypeID,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    //console.log(data);
+                    $('#DataTables_Words_0').DataTable({
+                        processing: true,
+                        paging: false,
+                        sort: true,
+                        bDestroy: true,
+                        bRetreive: true,
+                        bFilter: false,
+                        info: false,
+                        data: data.wordtypedesc.SP_WordType_Desc_PieChart_Dashboard_HI,
+                        columns: [
+
+                        { 'data': 'SiteName' },
+
+                        { 'data': 'Good' },
+
+                        { 'data': 'Bad' },
+
+                        ],
+                    });
+
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("GetwordDescBarChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType + '&WrdTypeID=' + WrdTypeID,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    WordTypeBarChart(data.worddescbar.SP_WordDesc_MonthWise_BarChart_Dashboard_HI, 'line');
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+
+            $.ajax({
+                url: '@Url.Action("GetwordCountCloudCharts", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    anychart.onDocumentReady(function(){
+                        $('#wordSummaryCloudChart').html('');
+                        var chart = anychart.tagCloud(data.wordcloudcount.wordCloudData);
+                        var stage = anychart.graphics.create('wordSummaryCloudChart');
+                        chart.angles([0]);
+                        chart.container(stage);
+                        //chart.angles([-45,45]);
+                        //chart.normal().fill("#03a9f4"); //#1fadad //f7464a
+                        //chart.hovered().fill("#ff6e40"); //#93bfec
+                        //chart.selected().fill("#101010"); //#1f66ad
+                        //chart.normal().fontSize(10);
+                        chart.normal().fontWeight(600);
+                        chart.normal().fontFamily('Verdana, Helvetica, Arial, sans-serif');
+                        var customColorScale = anychart.scales.ordinalColor();
+                        customColorScale.colors(["#03a9f4", "#ff6e40", "#ffd600", "#1ac5a4", "#828282", "#17a78b", "#3578E5"]);
+                        chart.colorScale(customColorScale);
+                        chart.colorRange().enabled(true);
+                        chart.draw();
+                    });
+                },
+                failure: function (data) {
+                    alert("failed:" + data.responseText);
+                    console.log(data);
+                }, //End of AJAX failure function
+                error: function (data) {
+                    alert("error" + data.responseText);
+                    console.log(data);
+                } //End of AJAX error function
+            });
+        }
+
+        function ReviewPieChart(dataArray, chartType) {
+
+            $('#hedchart').html('');
+            var htmlData = '';
+            htmlData += '<h2 class="title-1 m-b-25">Review(s) Distribution</h2>'
+            $('#hedchart').html(htmlData);
+
+            $('#divpiecanvas').html('');
+            var htmlData1 = '';
+            htmlData1 += '<canvas id="reviewSummaryChartPie"></canvas>'
+            $('#divpiecanvas').html(htmlData1);
+
+            var myPieChart = null;
+            var ctxReviewSummary = document.getElementById('reviewSummaryChartPie').getContext('2d');
+            var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"];
+            var reviewcountarray = [];
+            var labelarray = [];
+            //console.log(dataArray);
+            for (var i = 0; i < dataArray.length; i++) {
+                reviewcountarray.push(dataArray[i].ReviewsCount);
+                labelarray.push(dataArray[i].SiteName);
+            }
+            myPieChart = new Chart(ctxReviewSummary, {
+                type: chartType,
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "Sites Reviews"
+                },
+                data: {
+                    labels: labelarray,
+                    datasets: [{
+                        //backgroundColor: colors,
+                        data: reviewcountarray,
+                        backgroundColor: [
+                            'rgba(247, 70, 74, 1)',
+                            'rgba(70, 191, 189, 1)',
+                        ],
+                    }],
+
+                    datapoint: [{ labels: labelarray, y: reviewcountarray, }],
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: labelarray
+                },
+                options: {
+                    cutoutPercentage: 10,
+                    responsive: true,
+                    legend: {
+                        display: true,
+                        position: 'right',
+                    }
+                }
+            });
+        }
+
+        function RatingPieChart(dataArray, chartType) {
+
+            $('#hedchart').html('');
+            var htmlData = '';
+            htmlData += '<h2 class="title-1 m-b-25">Rating(s) Distribution</h2>'
+            $('#hedchart').html(htmlData);
+
+            $('#divpiecanvas').html('');
+            var htmlData1 = '';
+            htmlData1 += '<canvas id="reviewSummaryChartPie"></canvas>'
+            $('#divpiecanvas').html(htmlData1);
+
+            var myPieChart = null;
+            var ctxReviewSummary = document.getElementById('reviewSummaryChartPie').getContext('2d');
+            var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"];
+            var reviewcountarray = [];
+            var labelarray = [];
+            for (var i = 0; i < dataArray.length; i++) {
+                reviewcountarray.push(dataArray[i].Rating);
+                labelarray.push(dataArray[i].SiteName);
+            }
+            myPieChart = new Chart(ctxReviewSummary, {
+                type: chartType,
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "Sites Reviews"
+                },
+                data: {
+                    labels: labelarray,
+                    datasets: [{
+                        //backgroundColor: colors,
+                        data: reviewcountarray,
+                        backgroundColor: [
+                            'rgba(247, 70, 74, 1)',
+                            'rgba(70, 191, 189, 1)',
+                        ],
+                    }],
+
+                    datapoint: [{ labels: labelarray, y: reviewcountarray, }],
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    labels: labelarray
+                },
+                options: {
+                    cutoutPercentage: 10,
+                    responsive: true,
+                    legend: {
+                        display: true,
+                        position: 'right',
+                    }
+                }
+            });
+
+        }
+
+        function ReviewLineChart(dataArray, chartType) {
+
+            $('#divlinecanvas').html('');
+            var htmlData = '';
+            htmlData += '<canvas id="reviewSummaryChartLine"></canvas>'
+            $('#divlinecanvas').html(htmlData);
+
+            var myLineChart = null;
+            var ctxReviewSummary = document.getElementById('reviewSummaryChartLine').getContext('2d');
+            var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"];
+            var reviewcountarray1 = [];
+            var reviewcountarray2 = [];
+            var labelarray = [];
+            //console.log(dataArray);
+            for (var i = 0; i < dataArray.length; i++) {
+                reviewcountarray1.push(dataArray[i].GoogleReviews);
+                reviewcountarray2.push(dataArray[i].YelpReviews);
+                labelarray.push(dataArray[i].MonthNam + " - " + dataArray[i].MonthYr);
+            }
+            myLineChart = new Chart(ctxReviewSummary, {
+                type: chartType,
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "Reviews Line Chart"
+                },
+                axisY: {
+                    includeZero: false,
+                    title: "Review Rating"
+                },
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    verticalAlign: "top",
+                    horizontalAlign: "center",
+                    dockInsidePlotArea: true,
+                    itemclick: toogleDataSeries
+                },
+                data: {
+                    labels: labelarray,
+                    legendText: dataArray.reviewcountarray1,
+                    legendText: dataArray.reviewcountarray2,
+                    type: "line",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    markerSize: 0,
+                    indexLabelFontSize: 16,
+                    datasets: [{
+                        label: 'Google',
+                        data: reviewcountarray1,
+                        backgroundColor: [
+                        'rgba(247, 70, 74, 1)',
+                        ],
+                        borderColor: [
+                          'rgba(247, 70, 74, 1)',
+                        ],
+                        borderWidth: 1,
+                        fill:false
+                    },
+                    {
+                        label: 'Yelp',
+                        data: reviewcountarray2,
+                        backgroundColor: [
+                        'rgba(70, 191, 189, 1)',
+                        ],
+                        borderColor: [
+                          'rgba(70, 191, 189, 1)',
+                        ],
+                        borderWidth: 1,
+                        fill: false
+                    }],
+
+                    //datapoint: [
+                    //    { labels: labelarray, y: reviewcountarray1, indexLabel: "\u2191 highest", markerColor: "red", markerType: "triangle" },
+                    //],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    data:reviewcountarray1,
+                    labels: labelarray
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                color: "rgba(0, 0, 0, 0)",
+                            },
+                            distribution: 'linear'
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                //color: "rgba(0, 0, 0, 0)",
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+
+                        }]
+                    },
+                    cutoutPercentage: 10,
+                    legend: {
+                        display: true,
+                        position: 'right',
+                    }
+                }
+            });
+
+            function toogleDataSeries(e) {
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+        }
+
+        function RatingLineChart(dataArray, chartType) {
+
+            $('#divlinecanvas').html('');
+            var htmlData = '';
+            htmlData += '<canvas id="reviewSummaryChartLine"></canvas>'
+            $('#divlinecanvas').html(htmlData);
+
+            var myLineChart = null;
+            var ctxReviewSummary = document.getElementById('reviewSummaryChartLine').getContext('2d');
+            var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"];
+            var reviewcountarray1 = [];
+            var reviewcountarray2 = [];
+            var labelarray = [];
+            //console.log(dataArray);
+            for (var i = 0; i < dataArray.length; i++) {
+                reviewcountarray1.push(dataArray[i].GoogleRating);
+                reviewcountarray2.push(dataArray[i].YelpRating);
+                labelarray.push(dataArray[i].MonthNam + " - " + dataArray[i].MonthYr);
+            }
+            myLineChart = new Chart(ctxReviewSummary, {
+                type: chartType,
+                animationEnabled: true,
+                theme: "light2",
+                title: {
+                    text: "Reviews Line Chart"
+                },
+                axisY: {
+                    includeZero: false,
+                    title: "Review Rating"
+                },
+                toolTip: {
+                    shared: true
+                },
+                legend: {
+                    cursor: "pointer",
+                    verticalAlign: "top",
+                    horizontalAlign: "center",
+                    dockInsidePlotArea: true,
+                    itemclick: toogleDataSeries
+                },
+                data: {
+                    labels: labelarray,
+                    legendText: dataArray.reviewcountarray1,
+                    legendText: dataArray.reviewcountarray2,
+                    type: "line",
+                    axisYType: "secondary",
+                    showInLegend: true,
+                    markerSize: 0,
+                    indexLabelFontSize: 16,
+                    datasets: [{
+                        label: 'Google',
+                        data: reviewcountarray1,
+                        backgroundColor: [
+                        'rgba(247, 70, 74, 1)',
+                        ],
+                        borderColor: [
+                          'rgba(247, 70, 74, 1)',
+                        ],
+                        borderWidth: 1,
+                        fill:false
+                    },
+                    {
+                        label: 'Yelp',
+                        data: reviewcountarray2,
+                        backgroundColor: [
+                        'rgba(70, 191, 189, 1)',
+                        ],
+                        borderColor: [
+                          'rgba(70, 191, 189, 1)',
+                        ],
+                        borderWidth: 1,
+                        fill: false
+                    }],
+
+                    //datapoint: [
+                    //    { labels: labelarray, y: reviewcountarray1, indexLabel: "\u2191 highest", markerColor: "red", markerType: "triangle" },
+                    //],
+
+                    // These labels appear in the legend and in the tooltips when hovering different arcs
+                    data:reviewcountarray1,
+                    labels: labelarray
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                color: "rgba(0, 0, 0, 0)",
+                            },
+                            distribution: 'linear'
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                //color: "rgba(0, 0, 0, 0)",
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+
+                        }]
+                    },
+                    cutoutPercentage: 10,
+                    legend: {
+                        display: true,
+                        position: 'right',
+                    }
+                }
+            });
+
+            function toogleDataSeries(e) {
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+        }
+
+        function WordCountCloudChart(dataArray) {
+            var chart = anychart.tagCloud(dataArray);
+            var stage = anychart.graphics.create('wordSummaryCloudChart');
+            var legend = anychart.standalones.legend();
+            legend.items([
+                {index: 0, text: 'Chrome'},
+                {index: 1, text: 'Firefox'},
+                {index: 2, text: 'Safari'},
+                {index: 3, text: 'IE'}
+            ]);
+
+            legend.parentBounds(100, 200, 340, 60);
+            chart.angles([0]);
+            legend.container(stage);
+            chart.container(stage);
+            chart.draw();
+
+            //chart.angles([0])
+            //chart.colorRange(true);
+            //chart.colorRange().length('80%');
+            //chart.container('wordSummaryCloudChart');
+            //chart.legend(true);
+            //chart.credits(true);
+            //chart.draw();
+        }
+
+        function WordTypeBarChart(dataArray, chartType) {
+
+            $('#divbarcanvas').html('');
+            var htmlData = '';
+            htmlData += '<canvas id="wordSummaryBarChart"></canvas>'
+            $('#divbarcanvas').html(htmlData);
+
+            var myLineChart = null;
+            var ctxWordSummary = document.getElementById('wordSummaryBarChart').getContext('2d');
+            var reviewcountarray1 = [];
+            var reviewcountarray2 = [];
+            var labelarray = [];
+            for (var i = 0; i < dataArray.length; i++) {
+                reviewcountarray1.push(dataArray[i].Good);
+                reviewcountarray2.push(dataArray[i].Bad);
+                labelarray.push(dataArray[i].MonthNam + " - " + dataArray[i].MonthYr);
+            }
+            var chartData = {
+                labels: labelarray,
+                datasets: [
+                    {
+                        type: chartType,
+                        label: 'Good',
+                        backgroundColor: [
+                            'rgba(139, 195, 74, 1)',
+                        ],
+                        borderColor: [
+                            'rgba(139, 195, 74, 1)',
+                        ],
+                        borderWidth: 1,
+                        fill: false,
+                        data: reviewcountarray1,
+                    },
+                    {
+                        type: 'bar',
+                        label: 'Good',
+                        backgroundColor: '#8bc34a',
+                        borderColor: '#8bc34a',
+                        borderWidth: 2,
+                        fill: false,
+                        data: reviewcountarray1,
+                    },
+                    {
+                        type: chartType,
+                        label: 'Bad',
+                        backgroundColor: [
+                            'rgba(247, 70, 74, 1)',
+                        ],
+                        borderColor: [
+                            'rgba(247, 70, 74, 1)',
+                        ],
+                        borderWidth: 1,
+                        fill: false,
+                        data: reviewcountarray2,
+                    },
+                    {
+                        type: 'bar',
+                        label: 'Bad',
+                        backgroundColor: '#f7464a',
+                        borderColor: '#f7464a',
+                        borderWidth: 2,
+                        fill: false,
+                        data: reviewcountarray2,
+                    }
+                ]
+            };
+            myLineChart = new Chart(ctxWordSummary, {
+                type:'bar',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                                color: "rgba(0, 0, 0, 0)",
+                            },
+                            distribution: 'linear'
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                //color: "rgba(0, 0, 0, 0)",
+                            },
+                            ticks: {
+                                beginAtZero: true
+                            }
+
+                        }]
+                    },
+                    cutoutPercentage: 10,
+                    legend: {
+                        position: 'right',
+                        display: false,
+                        //labels: {
+                        //    filter: function(legendItem, chartData) {
+                        //        console.log(chartData);
+                        //    }
+                        //}
+                    }
+                }
+            });
+
+            function toogleDataSeries(e) {
+                if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                    e.dataSeries.visible = false;
+                } else {
+                    e.dataSeries.visible = true;
+                }
+                chart.render();
+            }
+        }
+
+    </script>
+
+    <style>
+        th {
+            white-space: normal !important;
+            color: white !important;
+        }
+        .anychart-credits {
+            display: none;
+        }
+    </style>

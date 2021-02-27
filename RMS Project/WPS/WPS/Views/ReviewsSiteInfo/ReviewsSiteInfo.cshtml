@@ -1,0 +1,355 @@
+﻿@model WPS.Models.ReviewSiteTr
+@{
+    ViewBag.Title = "ReviewsSiteInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Reviews Information
+                </div>
+                <form class="form-horizontal" role="form" id="ReviewsInfo">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Reviews Information</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Review Site</label>
+                            </div>
+                            <div class="col-2">
+                                @Html.DropDownList("SiteID", null, "Select Site",
+                                new { id = "ddl_SiteID", @class = "form-control", style = "width: 95%", maxlength = "50" })
+                            </div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Account</label>
+                            </div>
+                            <div class="col-2">
+                                @Html.DropDownList("AccountID", null, "Select Name",
+                                new { id = "ddl_AccountID", @class = "form-control", style = "width: 95%", maxlength = "50" })
+                            </div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Type</label>
+                            </div>
+                            <div class="col-2">
+                                @Html.DropDownList("AccountType", null, "Select Type",
+                                new { id = "ddl_AccountType", @class = "form-control", style = "width: 95%", maxlength = "50" })
+                            </div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Rating</label>
+                            </div>
+                            <div class="col-2">
+                                @Html.DropDownList("Rating", null, "Select Rating",
+                                new { id = "ddl_Rating", @class = "form-control", style = "width: 95%", maxlength = "50" })
+                            </div>
+                        </div>
+
+                        @*<div class="row form-group">
+                                <div class="col-2">
+                                    <label for="cc-payment" class="control-label">Reviews</label>
+                                </div>
+                                <div class="col-3">
+                                    @Html.DropDownList("ReviewID", null, "Select Reviews",
+                                    new { id = "ddl_YelpID", @class = "form-control", style = "width: 95%", maxlength = "50" })
+                                </div>
+                            </div>*@
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="getReviewsSite($('#ddl_SiteID').val(), $('#ddl_AccountID').val(), $('#ddl_AccountType').val(), $('#ddl_Rating').val())">
+                            <i class="fa fa-search-plus"></i> Search
+                        </button>
+                    </div>
+                    <div class="au-card-bordered">
+                        <table id="DataTables_Table_0" class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th style="width:10%">Site</th>
+                                    <th style="width:20%">Account</th>
+                                    <th style="width:10%">Type</th>
+                                    <th style="width:25%">Author</th>
+                                    <th style="width:35%">Review Text</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="card">
+                @*<div class="card-header">
+                             <h3 class="text-left title-2">Reviews List</h3>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#ddl_Rating").select2({
+            templateResult: formatState
+        });
+
+        var SiteID = '@Request.QueryString["SiteID"]';
+        var AccountID = '@Request.QueryString["AccountID"]';
+        var AccountType = '@Request.QueryString["AccountType"]';
+        var Rating = '@Request.QueryString["Rating"]';
+
+        $.ajax({
+            url: '@Url.Action("ReviewsSiteList", "ReviewsSiteInfo")?SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountType=' + AccountType + '&Rating=' + Rating,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                $('#DataTables_Table_0').DataTable({
+                    processing: true,
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    bFilter: false,
+                    info: false,
+                    data: data.reviewSite.ReviewList,
+                    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                    columns: [
+
+                    { 'data': 'SiteName' },
+
+                    {
+                        'data': 'AccountName',
+                        render: function (data, type, full) {
+                            var a = '<a href="' + full.SitesURL + '" target="_blank"><i class="fa fa-link" aria-hidden="true"></i>' + "&nbsp" + full.AccountName + '</a>'; // row object contains the row data
+                            return a;
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    { 'data': 'AccountType' },
+
+                    {
+                        'data': 'Rating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            var k = full.Rating;
+
+                            if (k <= '1.5' || k <= '2.5' || k <= '3.5' || k <= '4.5' || k <= '5.5' || k <= '6.5') {
+
+                                var l = Math.round(k);
+                                var s = k - l;
+
+                                if (s < 0) {
+                                    var m = l - 1;
+                                    for (var i = 0; i < m; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                    text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+                                else {
+                                    for (var i = 0; i < l; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                }
+
+                                var j = 5 - l;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+
+                            }
+                            else {
+                                for (var i = 0; i < k; i++) {
+                                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+
+                                var j = 5 - k;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+                            }
+
+                            var myDate = full.ReviewDate;
+                            var nowDate = new Date(parseInt(myDate.substr(6)));
+                            var dateStr = "";
+                            dateStr += nowDate.toString('mm-dd-yyyy');
+
+                            return full.Author + "<br/>" + dateStr + "<br/>" + text;
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    { 'data': 'Reviews' },
+
+                    ],
+                    //createdRow: function (row, data, dataIndex) {
+                    //    // any manipulation in the row element
+                    //    var ratingInput = $(row).find('.rating');
+                    //},
+                    dom: 'Blfrtip',
+                    buttons: [
+                     'copy', 'csv', 'excel', 'pdf', 'print'
+                    ],
+                });
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+
+    });
+
+    function getReviewsSite(siteID, accountID, accountType, rating) {
+        var SiteID, AccountID, AccountType, ReviewID, Rating = "";
+        SiteID = siteID;
+        AccountID = accountID;
+        AccountType = accountType;
+        Rating = rating;
+        //console.log(siteID, accountID, accountType, rating);
+        var msg = '@Request.QueryString["message"]';
+
+        $.ajax({
+            url: '@Url.Action("ReviewsSiteList", "ReviewsSiteInfo")?SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountType=' + AccountType + '&Rating=' + Rating,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                //console.log(data);
+                //console.log(data.reviewSite.ReviewList);
+                $('#DataTables_Table_0').DataTable({
+                    processing: true,
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    bFilter: false,
+                    info: false,
+                    data: data.reviewSite.ReviewList,
+                    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                    columns: [
+
+                    { 'data': 'SiteName' },
+
+                    {
+                        'data': 'AccountName',
+                        render: function (data, type, full) {
+                            var a = '<a href="' + full.SitesURL + '" target="_blank"><i class="fa fa-link" aria-hidden="true"></i>' + "&nbsp" + full.AccountName + '</a>'; // row object contains the row data
+                            return a;
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    { 'data': 'AccountType' },
+
+                    {
+                        'data': 'Rating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            for (var i = 0; i < full.Rating; i++) {
+                                //text += '<span class="fa fa-star"></span>';
+                                text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red"></i>';
+                            }
+
+                            var j = 5 - full.Rating;
+                            for (var i = 0; i < j; i++) {
+                                //text += '<span class="fa fa-star-o"></span>';
+                                text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red"></i>';
+                            }
+                            var myDate = full.ReviewDate;
+                            var nowDate = new Date(parseInt(myDate.substr(6)));
+                            var dateStr = "";
+                            dateStr += nowDate.toString('mm-dd-yyyy');
+
+                            return full.Author + "<br/>" + dateStr + "<br/>" + text;
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    { 'data': 'Reviews' },
+
+                    ],
+                    //createdRow: function (row, data, dataIndex) {
+                    //    // any manipulation in the row element
+                    //    var ratingInput = $(row).find('.rating');
+                    //},
+                    dom: 'Blfrtip',
+                    buttons: [
+                     'copy', 'csv', 'excel', 'pdf', 'print'
+                    ],
+                });
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+    }
+
+    function formatState(state) {
+        if (!state.id) { return state.text; }
+        var html = '';
+        for (var i = 0; i < 5; i++) {
+            //console.log(state);
+            if (i >= state.text) {
+                html += '<span><i class="fa fa-star-o icon-c"></i>&nbsp</span>';
+            } else {
+                html += '<span><i class="fa fa-star icon-c"></i>&nbsp</span>';
+            }
+        }
+        var $state = $(html);
+        return $state;
+    }
+
+</script>
+<style>
+    td {
+        white-space: normal !important;
+        word-wrap: break-word;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    tr {
+        font-size: 12px !important;
+    }
+
+    .icon-c {
+        color: #1289ce;
+    }
+</style>
+

@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "SifApproved";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Sif Information Report
+                </div>
+                <form class="form-horizontal" role="form" id="frmSif">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Sif Information Report</h3>
+                        </div>
+                        <hr>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">From Date</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBox("txtFrom", "", "{0:MM/dd/yyy}", new { id = "txtFrom", @class = "form-control datepicker-here", style = "width:95%", placeholder = "MM/dd/yyyy" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">To Date</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBox("txtTo", "", "{0:MM/dd/yyy}", new { id = "txtTo", @class = "form-control datepicker-here", style = "width:95%", placeholder = "MM/dd/yyyy" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Agent</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("AgentId", null, "Select Agent",
+                                new { @class = "form-control ", style = "width: 95%", maxlength = "50", onchange = "fillSubAgents($(this).val())" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Sub Agent</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("SubAgentId", null, "Select Sub Agent",
+                                new { @class = "form-control ", style = "width: 95%", maxlength = "50", onchange = "fillCompanies($(this).val())" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("EstID", null, "Select Company",
+                                new { id = "EstID", @class = "form-control ", style = "width: 95% !important", maxlength = "50" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Personal No</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBox("PersonalNo", null, new { id = "PersonalNo", @class = "form-control ", style = "width:95%", placeholder = "Personal No" })
+                            </div>
+                        </div>                        
+                        <div class="row form-group">
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="getSifApprovedLog('PDF');">
+                                    <i class="fa fa-dot-circle-o"></i> Export to PDF
+                                </button>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="getSifApprovedLog('EXCEL');">
+                                    <i class="fa fa-dot-circle-o"></i> Export to Excel
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+    function fillSubAgents(agentId) {
+        if (agentId == '') {
+            agentId = '0';
+        }
+        $.ajax({
+            url: '@Url.Action("FillSubAgent", "Common", new { q = Request.QueryString["q"].ToString() })',
+            type: 'post',
+            data: { AgentId: agentId },
+            //datatype: 'json',
+            success: function (data) {
+                var items = [];
+                items.push("<option value='0'>" + "-- Select Sub Agent --" + "</option>"); //first item
+                if (data.SubAgent != null) {
+                    for (var i = 0; i < data.SubAgent.length; i++) {
+                        items.push("<option value=" + data.SubAgent[i].Value + ">" + data.SubAgent[i].Text + "</option>");
+                    }
+
+                    $("#SubAgentId").html(items.join(' '));
+
+                    $('#SubAgentId').trigger("chosen:updated");
+                }
+                fillCompanies(agentId);
+            }, error: function (ex) {
+                //hideAjaxLoader();
+                //myAlert.Alert("Error", ex.responseText);
+                alert(ex);
+            }
+        });
+    }
+
+    function fillCompanies(agentId) {
+        if (agentId == '') {
+            agentId = '0';
+        }
+        $.ajax({
+            url: '@Url.Action("FillCompany", "Common", new { q = Request.QueryString["q"].ToString() })',
+            type: 'post',
+            data: { AgentId: agentId },
+            //datatype: 'json',
+            success: function (data) {
+                var items = [];
+                items.push("<option value='0'>" + "-- Select Company --" + "</option>"); //first item
+                if (data.Company != null) {
+                    for (var i = 0; i < data.Company.length; i++) {
+                        items.push("<option value=" + data.Company[i].Value + ">" + data.Company[i].Text + "</option>");
+                    }
+
+                    $("#CompanyId").html(items.join(' '));
+
+                    $('#CompanyId').trigger("chosen:updated");
+                }
+
+            }, error: function (ex) {
+                //hideAjaxLoader();
+                //myAlert.Alert("Error", ex.responseText);
+                alert(ex);
+            }
+        });
+    }
+
+    function getSifApprovedLog(FileType) {
+        var UserId, FromDate, ToDate = "", CompanyId = "", PerNo = "", ProType = "";
+
+        UserId = '';
+        FromDate = $('#txtFrom').val();
+        ToDate = $('#txtTo').val();
+        CompanyId = $('#EstID').val();
+        PersonalNo = $('#PersonalNo').val();
+        Status = 'A';
+
+        if (UserId == '') {
+            UserId = 0;
+        }
+
+        var URL = 'GetSifApprovedLog?FileType=' + FileType + '&q=@Request.QueryString["q"].ToString()&UserId=' + UserId + '&FromDate=' + FromDate + '&ToDate=' + ToDate + '&CompanyId=' + CompanyId + '&PesNo=' + PersonalNo + '&ProType=' + Status + '';
+        window.open(URL, '_blank');
+    }
+</script>

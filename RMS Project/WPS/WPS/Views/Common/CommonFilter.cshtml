@@ -1,0 +1,80 @@
+﻿<div class="content-box">
+
+    <div class="row form-group" id="_div1">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <label for="cc-payment" class="control-label">Company</label>
+        </div>
+        <div class="col-md-3">
+            @Html.DropDownList("CompanyID", null, "---- Select ----",
+                                    new { id = "ddl_CompanyID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+        </div>
+        <div class="col-md-2">
+            <label for="cc-payment" class="control-label">Site</label>
+        </div>
+        <div class="col-md-3">
+            @Html.DropDownList("SiteID", null, "---- Select ----",
+                                    new { id = "ddl_SiteID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row form-group" id="_div2">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <label for="cc-payment" class="control-label">Type</label>
+        </div>
+        <div class="col-md-3">
+            @Html.DropDownList("AccountType", null, "---- Select ----",
+                                    new { id = "ddl_AccountType", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+            Review
+            <input id="IsReview" name="Review" type="radio" value="1" onchange="ChkMethodIsReview($(this),'@Request.QueryString["CompanyId"].ToString()', $('#ddl_SiteID').val(), $('#ddl_AccountID').val(), $('#ddl_AccountType').val(), '', '')" checked="checked" />
+            Rating
+            <input id="IsRating" name="Rating" type="radio" value="0" onchange="ChkMethodIsRating($(this),'@Request.QueryString["CompanyId"].ToString()', $('#ddl_SiteID').val(), $('#ddl_AccountID').val(), $('#ddl_AccountType').val(), '', '')" />
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row form-group" id="_div3">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <label for="cc-payment" class="control-label">Account</label>
+        </div>
+        <div class="col-md-3">
+            @Html.DropDownList("AccountID", null, "---- Select ----",
+                                    new { id = "ddl_AccountID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+        </div>
+        <div class="col-md-2">
+            <label for="cc-payment" class="control-label">Benchmark</label>
+        </div>
+        <div class="col-md-3">
+            @Html.DropDownList("BenchmarkID", null, "---- Select ----",
+                                new { id = "ddl_BenchmarkID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row form-group" id="_div4">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+            <label for="cc-payment" class="control-label">As of</label>
+        </div>
+        <div class="col-md-3">
+            @Html.TextBox("tbx_FromDate", "", "{0:MM/dd/yyy}",
+                                new
+                                {
+                                    id = "tbx_FromDate",
+                                    @class = "form-control datepicker-here",
+                                    style = "width:95%",
+                                    placeholder = "MM/dd/yyyy"
+                                })
+        </div>
+        <div class="col-md-2 text-right" id="_divbtn"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
+    </div>
+
+</div>

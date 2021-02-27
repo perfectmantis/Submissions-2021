@@ -1,0 +1,47 @@
+﻿
+@model IList<WPS.UserServiceClass.SMAM_Menu_ST>
+
+        <nav class="navbar-mobile">
+            <ul class="navbar-mobile__list list-unstyled">
+                <li class="active">
+                    <a href="/Home/Dashboard?q=@Request.QueryString["q"].ToString()" title="Dashboard">
+                        <i class="fas fa-home"></i>Dashboard
+                    </a>
+                </li>
+                @foreach (var item in Model.Where(x => x.MenuType == "P").OrderBy(x => x.MenuSeq))
+                {
+                    if (Model.Where(x => x.MenuType == "C" && x.ParentMenuId == item.MenuId).Count() > 0)
+                    {
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-tachometer-alt"></i>@item.MenuDescription
+                                <span class="arrow">
+                                    <i class="fas fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                @foreach (var itemChild in Model.Where(x => x.MenuType == "C" && x.ParentMenuId == item.MenuId).OrderBy(x => x.MenuSeq))
+                                {
+                                    <li>
+                                        <a href="@itemChild.urlPath">@itemChild.MenuDescription</a>
+                                    </li>
+                                }
+
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="active">
+                            <a href="@item.urlPath">
+                                <i class="@item.IconPath"></i>@item.MenuDescription
+                            </a>
+                        </li>
+                    }
+
+
+                }
+
+            </ul>
+        </nav>
+  

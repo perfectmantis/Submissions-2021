@@ -1,0 +1,484 @@
+﻿
+@{
+    ViewBag.Title = "ApproveSif";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    td.details-control {
+    background: url('/Content/Images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.shown td.details-control {
+    background: url('/Content/Images/details_close.png') no-repeat center center;
+}
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / SIF Approval
+                </div>
+                <form class="form-horizontal" role="form" id="frmSif">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">SIF Approval</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();"  >×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();"  >×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("CompanyId", null, "Select Company",
+                                new { @class = "form-control js-example-basic-single", style = "width: 95% !important", maxlength = "50" })
+                            </div>
+                            
+                            <div class="col-6">
+                                <button type="button" class="btn btn-primary btn-sm"  onclick="getPendingSif();">
+                                    <i class="fa fa-dot-circle-o"></i> Get Verified SIF(s)
+                                </button>
+                                
+
+                            </div>
+                        </div>
+
+                        <br /><br />
+
+                        <div class="table-responsive table--no-card m-b-30">
+                            <table id="SifFile" class="table table-borderless table-striped table-earning">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 5%">
+                                            <input id="chkAll" type="checkbox" onchange="checkAll();" />
+                                            <input id="sifId" type="hidden" />
+                                        </th>
+                                        
+                                        <th>Month</th>
+                                        <th>Year</th>
+                                        <th>Date</th>
+                                        <th>No. of Employees</th>
+                                        <th>Total Salary</th>
+                                        <th>Detail</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @*@foreach (var item in Model.HRPR_SifDetail_TR)
+                                        {
+                                            <tr>
+                                                <td>@item.SifId</td>
+                                                <td>@item.ProcessType</td>
+                                                <td>@item.Reason</td>
+
+                                                <td>
+                                                    <div class="table-data-feature">
+
+                                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="fancyitSifm('@item.SifId')">
+                                                            <i class="zmdi zmdi-edit"></i>
+                                                        </button>
+                                                        <button class="item" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete" onclick="DeleteRecord('@item.SifId')">
+                                                            <i class="zmdi zmdi-delete"></i>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        }*@
+
+                                </tbody>
+                                <tfoot id="SifFileFooter">
+                                    <tr>
+                                        <th>Total</th>
+                                        <th id="totalCount"></th>
+                                        <th colspan="2"></th>
+                                        <th id="totalEmployees"></th>
+                                        <th id="totalSalary"></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalSifApprovalConfirmation">
+                            <i class="fa fa-dot-circle-o"></i> Approve SIF
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myDeleteSifModal">
+                            <i class="fa fa-dot-circle-o"></i> Delete SIF
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script>
+    function getPendingSif() {
+        var oTable = $('#SifFile').dataTable();
+        if ($('#CompanyId').val() == '') {
+            $('#lblerrorMessage').text('Please select company');
+            $('#diverrorMessage').show();
+            return false;
+        }
+
+        var companyId = $('#CompanyId').val();
+
+        $.ajax({
+            url: '@Url.Action("GetVerifiedSIF", "Sif", new { q = Request.QueryString["q"].ToString() })',
+            dataType: 'json',
+            data: { "selectedCompanyId": companyId },
+            success: function (data) {
+                $('#lblcompBalance').text(data.Balance);
+                $('#txtcompDeposit').val('0.00');
+                $('#SifFile').dataTable({
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    data: data.active,
+                    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                    columns: [
+                         {
+                             'data': "SifId",
+                             'render': function (data, type, full) {
+                                 return '<input id=' + full.SifId + ' type="checkbox" value=' + full.SifId + ' onclick="sumFooterValues();">';
+                             }
+                         },
+                        {
+                            'data': 'Month',
+                            'render': function (Month) {
+                               return monthNumToName(Month);
+                            }
+                        },
+                        { 'data': "Year" },
+                       {
+                           'data': 'SifDate',
+                           'render': function (SifDate) {
+                               return dtConvFromJSONDateonly(SifDate);
+                           }
+                       },
+                        { 'data': "TotalEmployees" },
+                        { 'data': "TotalSalary" },
+                        {
+                            "className": 'details-control',
+                            "orderable": false,
+                            "data": null,
+                            "defaultContent": ''
+                        }
+                        //{
+                        //    'data': "SifId",
+                        //    'render': function (data, type, full) {
+                        //        return '<button class="item" data-toggle="modal" data-target="#myDeleteSifModal" data-placement="top" title="Delete" onclick="DeleteSif(' + full.SifId + ');"><i class="zmdi zmdi-delete"></i></button>';
+
+                        //    }
+                        //}
+                    ]
+                    //     ,
+                    //dom: 'Blfrtip'
+                    //buttons: [
+                    //    'copy', 'csv', 'excel', 'pdf', 'print'
+                    //]
+                });
+            }
+        });
+    }
+
+    function checkAll() {
+        if ($('#chkAll').prop("checked")) {
+            $('input:checkbox').each(function () {
+                if ($(this).attr('id') != 'chkAll') {
+                    $(this).prop("checked", true);
+
+                }
+
+            });
+        }
+        else {
+            $('input:checkbox').each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+
+        sumFooterValues();
+    };
+
+    function DeleteSif() {
+        if ($('#CompanyId').val() == '') {
+            $('#lblerrorMessage').text('Please select company');
+            $('#diverrorMessage').show();
+            return false;
+        } else {
+            $('#lblerrorMessage').text('');
+            $('#diverrorMessage').hide();
+        }
+
+        var companyId = $('#CompanyId').val();
+        var sifId = [];
+
+        $("#SifFile input:checkbox:checked").each(function () {
+            if ($(this).attr('id') == 'chkAll') {
+            }
+            else {
+                sifId.push($(this).attr('value'));
+            }
+        });
+
+        var remarks = $('#txtSidDeleteRemarks').val();
+
+        var dataParam = {
+            SifId: sifId,
+            Remarks: remarks,
+            selectedCompanyId: $('#CompanyId').val()
+        }
+
+        $.ajax({
+            url: '@Url.Action("DeleteSif", "Sif", new { q = Request.QueryString["q"].ToString() })',
+            type: "POST",
+            data: dataParam,
+            traditional: true,
+            success: function (response) {
+                if (response.success == false) {
+                    $('#lblerrorMessage').text(response.response);
+                    $('#diverrorMessage').show();
+                    return false;
+                }
+                else {
+                    var str = response.message;
+                    if (str != '') {
+                        var resStr = str.split(';');
+
+                        var status = '';
+                        for (var i = 0; i < resStr.length; i++) {
+                            status += resStr[i] + '<br/>';
+                        }
+
+                        $("#SuccessSummary").show();
+                        $("#lblSuccessSummary").html(status);
+                        status = "";
+                    }
+
+                    var failed = response.failMessage;
+                    if (failed != '') {
+                        var resFailStr = failed.split(';');
+
+                        var failedstatus = '';
+                        for (var i = 0; i < resFailStr.length; i++) {
+                            failedstatus += resFailStr[i] + '<br/>';
+                            console.log(failedstatus);
+                        }
+
+                        $("#ErrorSummary").show();
+                        $("#lblErrorSummary").html(failedstatus);
+                        status = "";
+                    }
+
+                    $("#mySifSummaryModal").modal();
+                    getPendingSif();
+                }
+            },
+            error: function (ex) {
+                $("#myModalError").modal();
+                $("#lblError").html(ex.responseText);
+
+
+            }
+        });
+
+    }
+
+    
+    function ApproveSif() {
+
+        if ($('#CompanyId').val() == '') {
+            $('#lblerrorMessage').text('Please select company');
+            $('#diverrorMessage').show();
+            return false;
+        } else {
+            $('#lblerrorMessage').text('');
+            $('#diverrorMessage').hide();
+        }
+
+        //var bal = $('#lblcompBalance').val();
+        var deposit = $('#txtcompDeposit').val();
+
+        //var net = parseFloat(bal).toFixed(2) + parseFloat(deposit).toFixed(2);
+        var companyId = $('#CompanyId').val();
+        var sifId = [];
+
+        $("#SifFile input:checkbox:checked").each(function () {
+            if ($(this).attr('id') == 'chkAll') {
+            }
+            else {
+                sifId.push($(this).attr('value'));
+            }
+        });
+
+        var dataParam = {
+            SifId: sifId,
+            deposit: deposit,
+            selectedCompanyId: $('#CompanyId').val()
+        }
+
+        $.ajax({
+            url: '@Url.Action("ApproveSif", "Sif", new { q = Request.QueryString["q"].ToString() })',
+            type: "POST",
+            data: dataParam,
+            traditional: true,
+            success: function (response) {
+                if (response.success == false) {
+                    $('#lblerrorMessage').text(response.response);
+                    $('#diverrorMessage').show();
+                    return false;
+                }
+                else {
+                    var str = response.message;
+                    if (str != '') {
+                        var resStr = str.split(';');
+
+                        var status = '';
+                        for (var i = 0; i < resStr.length; i++) {
+                            status += resStr[i] + '<br/>';
+                        }
+
+                        $("#SuccessSummary").show();
+                        $("#lblSuccessSummary").html(status);
+                        status = "";
+                    }
+
+                    var failed = response.failMessage;
+                    if (failed != '') {
+                        var resFailStr = failed.split(';');
+
+                        var failedstatus = '';
+                        for (var i = 0; i < resFailStr.length; i++) {
+                            failedstatus += resFailStr[i] + '<br/>';
+                            console.log(failedstatus);
+                        }
+
+                        $("#ErrorSummary").show();
+                        $("#lblErrorSummary").html(failedstatus);
+                        status = "";
+                    }
+
+                    $("#mySifSummaryModal").modal();
+                    getPendingSif();
+                }
+            },
+            error: function (ex) {
+                $("#myModalError").modal();
+                $("#lblError").html(ex.responseText);
+
+
+            }
+        });
+    }
+
+    function format(d, id) {
+       // `d` is the original data object for the row
+        return '<table id="' + id + '" cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+            '<thead>' +
+                '<tr>' +
+                    '<th>Full Name</th>' +
+                    '<th>Personal No.</th>' +
+                    '<th>IBAN</th>' +
+                    '<th>Basic Salary</th>' +
+                    '<th>Allowances</th>' +
+                '</tr>' +
+            '</thead>' +
+        '</table>';
+    }
+
+    $('#SifFile tbody').on('click', 'td.details-control', function () {
+        var oTable = $('#SifFile').dataTable();
+        var tr = $(this).closest('tr');
+        var row = oTable.api().row(tr);
+
+        if (row.child.isShown()) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+             var sifids = tr.find('td').eq(0).find('input')[0].value;
+            $.ajax({
+                url: '@Url.Action("GetSifDetail", "Sif", new { q = Request.QueryString["q"].ToString() })',
+                dataType: 'json',
+                data: { "sifId": sifids },
+                success: function (data) {
+
+                    row.child(format(data.sifdetail, 'tbl' + sifids)).show();
+                    $('#tbl' + sifids).dataTable({
+                        paging: true,
+                        data: data.sifdetail,
+                        columns : [
+                            { 'data': "HRMS_EmployeeMst_TR.FullName" },
+                            { 'data': "PersonalNo" },
+                            { 'data': "IBAN" },
+                            { 'data': "Basic" },
+                            { 'data': "Allowances" },
+
+                        ]
+                    });
+                    tr.addClass('shown');
+                }
+            });
+            
+        }
+    });
+
+    function sumFooterValues() {
+        var totalEmployees = 0, totalSalary = 0;
+        var totalCount = 0;
+        $('#SifFile input:checkbox:checked').each(function () {
+            var t = 0;
+            var tEmployees = $(this).closest('tr').find('td').eq(4).text();
+            var tSalary = $(this).closest('tr').find('td').eq(5).text();
+            
+            if (tEmployees > 0) {
+                t = t + parseFloat(tEmployees);
+                totalEmployees = parseFloat(totalEmployees) + parseFloat(tEmployees);
+                totalCount = totalCount + 1;
+            }
+            if (tSalary > 0) {
+                t = t + parseFloat(tEmployees);
+                totalSalary = parseFloat(totalSalary) + parseFloat(tSalary);
+                
+            }
+            
+
+
+        });
+
+        $("#totalCount").html(totalCount);
+        $("#totalEmployees").html(totalEmployees);
+        $("#totalSalary").html(totalSalary);
+        
+    }
+</script>

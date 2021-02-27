@@ -1,0 +1,161 @@
+﻿@model WPS.WPSService.ReviewCollection
+@{
+    ViewBag.Title = "ReviewAccountSite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Review Account Site
+                </div>
+                <form class="form-horizontal" role="form" id="frmReviewActSite">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Account Sites</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-1"></div>
+                            @if (Model.Reviewsites != null)
+                            {
+                                foreach (var item in Model.Reviewsites.ToList())
+                                {
+                                    var qStr = Request.QueryString["q"].ToString();
+                                    var query = Request.QueryString["Code"].ToString();
+                                    var respActSite = Model.ReviewActsites.Where(x => x.AccountID.ToString() == query && x.ReviewSiteID == item.SiteID).FirstOrDefault();
+                                    var respIActive = Model.ReviewActsites.Where(x => x.ReviewSiteID == item.SiteID).FirstOrDefault();
+                                    var idUrl = "#tbx_Url" + item.SiteID;
+                                    var idAct = "#chkActive" + item.SiteID;
+
+                                    <div class="row form-group">
+                                        <div class="col-1"></div>
+                                        <div class="col-1">
+                                            <label for="cc-payment" class="control-label">@item.SiteName</label>
+                                        </div>
+                                        <div class="col-6">
+                                            @if (respActSite != null)
+                                            {
+                                                string val = respActSite.ReviewURL;
+                                                @Html.TextBox("tbx_Url" + item.SiteID, val, new { id = "tbx_Url" + item.SiteID, @class = "form-control", style = "width:95%", placeholder = "Review URL" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBox("tbx_Url" + item.SiteID, null, new { id = "tbx_Url" + item.SiteID, @class = "form-control", style = "width:95%", placeholder = "Review URL" })
+                                            }
+                                        </div>
+
+                                        <div class="col-1 m-t-5">
+                                            @if (respIActive != null)
+                                            {
+                                                if (respActSite.IsActive == true)
+                                                {
+                                                    @Html.CheckBox("IsActive", new { id = "chkActive" + item.SiteID, @checked = "checked" })
+                                                }
+                                                else
+                                                {
+                                                    @Html.CheckBox("IsActive", new { id = "chkActive" + item.SiteID })
+                                                }
+                                            }
+                                            else
+                                            {
+                                                @Html.CheckBox("IsActive", new { id = "chkActive" + item.SiteID })
+                                            }
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="table-data-feature">
+                                                <button type="submit" value="Submit" class="item m-l-5" data-toggle="tooltip" data-placement="top" title="Add" onclick="addcomactSites('@qStr', '@query', '@item.SiteID',$('@idUrl').val(), $('@idAct').prop('checked'))">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </button>
+                                                <button type="submit" value="Submit" class="item m-l-5" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deletecomactSites('@qStr', '@query', '@item.SiteID', $('@idUrl').val(), $('@idAct').prop('checked'))">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-1"></div>
+                                    </div>
+                                }
+                            }
+                            <div class="col-1"></div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary btn-sm" title="GoBack" onclick="goBack('@Request.QueryString["q"].ToString()','')">
+                                <i class="fa fa-dot-circle-o"></i> Back
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+@*<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>*@
+<script type="text/javascript">
+
+    function addcomactSites(qStr, accountID, reviewSiteID, reviewURL, isActive) {
+        jQuery.ajax({
+            url: '@Url.Action("ReviewAccountSite", "AccountSites")?q=' + qStr + '&accountID=' + accountID + '&reviewSiteID=' + reviewSiteID + '&reviewURL=' + reviewURL + '&isActive=' + isActive + '',
+            type: "POST",
+            dataType: 'json',
+            data: { "accountID": accountID, "reviewSiteID": reviewSiteID, "reviewURL": reviewURL, "isActive": isActive },
+            success: function (response) {
+                if (response.success === true) {
+                    goBack1(accountID);
+                } else if (response.success === false) {
+                    $('#lblerrorMessage').html(response.response);
+                    $('#diverrorMessage').show();
+
+                }
+            },
+            error: function (ex) {
+                console.log(ex);
+                alert('error');
+            }
+        });
+
+    }
+
+    function deletecomactSites(qStr, accounts, sites, url, active) {
+        jQuery.ajax({
+            url: '@Url.Action("DeleteReviewAccountSite", "AccountSites")?q=' + qStr + '&accountID=' + accountID + '&reviewSiteID=' + reviewSiteID + '&reviewURL=' + reviewURL + '&isActive=' + isActive + '',
+            type: "POST",
+            data: { "accountID": accounts, "reviewSiteID": sites, "reviewURL": url, "isActive": active },
+            success: function (response) {
+                if (response.success === true) {                    
+                    goBack(qStr, response.response);
+                } else if (response.success === false) {
+                    $('#lblerrorMessage').html(response.response);
+                    $('#diverrorMessage').show();
+
+                }
+            }
+        });
+    }
+
+    function goBack(qStr, message) {
+        var iUrl = '@Url.Action("CompanyAccountsIndex", "CompanyAccounts")?q=' + qStr + '&message=' + message + '';
+        window.location = iUrl;
+    }
+
+    function goBack1(codeval) {
+        type: "GET";
+        var iUrl = '@Url.Action("ReviewAccountSite", "AccountSites", new { q = Request.QueryString["q"].ToString() })&Code=' + codeval + '';
+        window.location = iUrl;
+    }
+
+</script>

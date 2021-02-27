@@ -1,0 +1,160 @@
+﻿@model WPS.UserServiceClass.SMIM_UserMst_ST
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / User Information
+                </div>
+                <form class="form-horizontal" role="form" id="frmUser">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">User Information</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();"  >×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();"  >×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => model.UserId)
+                        <div class="row form-group">
+                           
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">First Name </label>
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("Type", null, "Mr.",
+                                new { @class = "form-control", style = "width: 20%; float:left !important;", maxlength = "50" })
+                                @Html.TextBoxFor(model => model.FirstName, new { id = "tbx_FirstName", @class = "form-control", style = "width:75%", placeholder = "First Name" })
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Last Name</label>
+                            </div>
+                            <div class="col-4">
+                           
+                                 @Html.TextBoxFor(model => model.LastName, new { id = "tbx_LastName", @class = "form-control", style = "width:95%", placeholder = "Last Name" })
+
+                            </div>
+                            
+
+                        </div>
+
+                        <div class="row form-group">
+                            
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">User Type</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("UserTypeId", null, "Select User Type",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50" })
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">User Name</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.UserName, new { id = "tbx_UserName", @class = "form-control", style = "width:95%", placeholder = "User Name", required = "required" })
+
+                            </div>
+                            
+
+                        </div>
+
+                        <div class="row form-group">
+                            
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Email</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.Email, new { id = "tbx_Email", @class = "form-control", style = "width:95%", placeholder = "Email" })
+
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Zip/Postal Code</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.ZipCode, new { id = "tbx_ZipCode", @class = "form-control", style = "width:95%", placeholder = "Zip Code" })
+                            </div>
+                           
+
+                        </div>
+
+                        <div class="row form-group">
+                           
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Phone No.</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.Phone, new { id = "tbx_Phone", @class = "form-control", style = "width:95%", placeholder = "Phone No" })
+
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Mobile No </label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.Mobile, new { id = "tbx_Mobile", @class = "form-control", style = "width:95%", placeholder = "Mobile No" })
+                            </div>
+                        
+
+                        </div>
+                       
+                    </div>
+                       
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        @*<button type="reset" class="btn btn-primary btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>*@
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $('#frmUser').validate({
+        submitHandler: function (form) {
+            $.ajax({
+                url: '@Url.Action("User", "User", new { q = Request.QueryString["q"].ToString() })',
+                type: "POST",
+                data: $(form).serialize(),
+                success: function (response) {
+                    if (response.success === true) {
+                        goBack(response.response);
+                    }
+                    else {
+                        $('#lblMessage').text(response.response);
+                        $('#divMessage').show();
+                    }
+                }
+            });
+        }
+    });
+
+    function goBack(message) {
+        window.location = '/User/UserIndex?q=@Request.QueryString["q"].ToString()&message=' + message;
+    }
+</script>

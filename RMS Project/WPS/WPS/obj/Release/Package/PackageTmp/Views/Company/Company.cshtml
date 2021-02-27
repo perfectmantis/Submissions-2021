@@ -1,0 +1,319 @@
+﻿@model WPS.Models.CompanyDetail
+@{
+    ViewBag.Title = "Company";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Company Information
+                </div>
+                <form class="form-horizontal" role="form" id="frmCompany">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Company Information(s)</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => model.CompanyID)
+                        @Html.HiddenFor(model => model.CompanyIDSpecified)
+                        @Html.HiddenFor(model => model.OrgID)
+                        @Html.HiddenFor(model => model.OrgIDSpecified)
+
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Agent</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("AgentId", null, "Select Agent",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50", onchange = "fillSubAgents($(this).val())" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Sub Agent</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("SubAgentId", null, "Select Sub Agent",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company Type</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("OrgType", null, "Select Company Type",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50", onchange = "fillOrganization($('#AgentId').val(), $('#SubAgentId').val(), $(this).val())" })
+                            </div>
+                            <div class="col-2" id="POrgDivLabel" style="display:none;">
+                                <label for="cc-payment" class="control-label">Group Company</label>
+                            </div>
+                            <div class="col-4" id="POrgDiv" style="display:none;">
+                                @Html.DropDownList("POrgId", null, "Select Group Company",
+                                new { @class = "form-control", style = "width: 95%;", maxlength = "50" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Establishment</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.EstID, new { @class = "form-control", style = "width:95%", placeholder = "Establishment", required = "required" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company Name</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.CompanyName, new { @class = "form-control", style = "width:95%", placeholder = "Company Name", required = "required" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Contact Person</label>
+                            </div>
+                            <div class="col-3">
+
+                                @Html.TextBoxFor(model => model.ContactPerson, new { @class = "form-control", style = "width:95%", placeholder = "Contact Person", required = "required" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Email</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", style = "width:95%", placeholder = "Email", required = "required" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Phone No.</label>
+                            </div>
+                            <div class="col-3">
+
+                                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", style = "width:95%", placeholder = "Phone No.", required = "required" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Mobile No.</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.Mobile, new { @class = "form-control", style = "width:95%", placeholder = "Mobile No.", required = "required" })
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Address</label>
+                            </div>
+                            <div class="col-9">
+
+                                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", style = "width:98%", placeholder = "Address", required = "required" })
+                            </div>
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company Logo</label>
+                            </div>
+                            <div class="col-3">
+                                <img id="iLogo"  @*Style="margin-bottom: 5px; width:133px; height: 171px;"*@ />
+                                @Html.TextBoxFor(model => model.logoPath, new { @class = "form-control", style = "width:95%", placeholder = "Upload Logo", type = "file", onchange="ShowImagePreview(this)" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">User Name</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", style = "width:95%", placeholder = "User Name", required = "required" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        @*<button type="reset" class="btn btn-primary btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>*@
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script>
+    $('#frmCompany').validate({
+        submitHandler: function (form) {
+            $.ajax({
+                url: '@Url.Action("Company", "Company", new { q = Request.QueryString["q"].ToString() })',
+                type: "POST",
+                data: $(form).serialize(),
+                success: function (response) {
+                    if (response.success === true) {
+                        goBack(response.response);
+                    }
+                    else {
+                        $('#lblMessage').text(response.response);
+                        $('#divMessage').show();
+                    }
+                }
+            });
+        }
+    });
+
+    $('#EstID').bind('keypress', function (e) {
+        if ($('#EstID').val().length > 0) {
+            var valid = (e.which >= 48 && e.which <= 57) || (e.which >= 65 && e.which <= 90) || (e.which >= 97 && e.which <= 122);
+            if (!valid) {
+                e.preventDefault();
+            }
+        }
+    });
+
+    $(document).ready(function () {
+        var msg = '@Request.QueryString["Code"]';
+        if (msg != '' && msg != '0') {
+            var agentId = $('#AgentId').val();
+            var subAgentId = $('#SubAgentId').val();
+            var OrgType = $('#OrgType').val();
+
+            if (agentId == '') {
+                agentId = '0';
+            }
+            if (subAgentId == '') {
+                subAgentId = '0';
+            }
+
+            if (OrgType != "G") {
+                //fillOrganization(agentId, subAgentId, OrgType);
+                $("#POrgDiv").show();
+                $("#POrgDivLabel").show();
+                //$("#POrgId").val("5");
+                //console.log('#POrgId option[value="' + $("#OrgID").val() + '"]');
+                //$('#POrgId option[value="5"]').prop("selected", true);
+                //$('#POrgId [name=options]').val($("#OrgID").val());
+            }
+            
+        }
+    });
+
+    function goBack(message) {
+        window.location = '/Company/CompanyIndex?q=@Request.QueryString["q"].ToString()&message=' + message;
+    }
+
+    function ShowImagePreview(input) {
+        var fileSize = 0;
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            fileSize = input.files[0].size;
+            fileSize = fileSize / 1048576;
+            fileSize = parseFloat(fileSize).toFixed(2);
+
+
+            if (fileSize == 1.00 || fileSize < 1.00) {
+                reader.onload = function (e) {
+                    $('#iLogo').prop('src', e.target.result)
+                    //.width("131")
+                    //.height("171");
+                };
+                reader.readAsDataURL(input.files[0]);
+
+            }
+            else {
+                alert("Image size must be equal to 1 MB or less.");
+
+                return false;
+            }
+        }
+    }
+
+    function fillSubAgents(agentId) {
+        if (agentId == '') {
+            agentId = '0';
+        }
+        $.ajax({
+                url: '@Url.Action("FillSubAgent", "Common", new { q = Request.QueryString["q"].ToString() })',
+                type: 'post',
+                data: { AgentId: agentId },
+                //datatype: 'json',
+                success: function (data) {
+                    var items = [];
+                    items.push("<option value='0'>" + "-- Select Sub Agent --" + "</option>"); //first item
+                    if (data.SubAgent != null) {
+                        for (var i = 0; i < data.SubAgent.length; i++) {
+                            items.push("<option value=" + data.SubAgent[i].Value + ">" + data.SubAgent[i].Text + "</option>");
+                        }
+
+                        $("#SubAgentId").html(items.join(' '));
+
+                        $('#SubAgentId').trigger("chosen:updated");
+                    }
+
+                }, error: function (ex) {
+                    //hideAjaxLoader();
+                    //myAlert.Alert("Error", ex.responseText);
+                    alert(ex);
+                }
+            });
+    }
+
+    function fillOrganization(agentId, subAgentId, orgType) {
+        if (agentId == '') {
+            agentId = '0';
+        }
+        if (subAgentId == '') {
+            subAgentId = '0';
+        }
+
+        if (orgType != "G") {
+            $.ajax({
+                url: '@Url.Action("FillOrganization", "Common", new { q = Request.QueryString["q"].ToString() })',
+                type: 'post',
+                data: { AgentId: agentId, SubAgentId: subAgentId },
+                //datatype: 'json',
+                success: function (data) {
+                    var items = [];
+                    items.push("<option value='0'>" + "-- Select Group of Companies --" + "</option>"); //first item
+                    if (data.Organization != null) {
+                        for (var i = 0; i < data.Organization.length; i++) {
+                            items.push("<option value=" + data.Organization[i].Value + ">" + data.Organization[i].Text + "</option>");
+                        }
+
+                        $("#POrgId").html(items.join(' '));
+
+                        $('#POrgId').trigger("chosen:updated");
+                    }
+
+
+                }, error: function (ex) {
+                    //hideAjaxLoader();
+                    //myAlert.Alert("Error", ex.responseText);
+
+                    alert(ex);
+                }
+            });
+            $("#POrgDiv").show();
+            $("#POrgDivLabel").show();
+        } else {
+            $("#POrgDiv").hide();
+            $("#POrgDivLabel").hide();
+        }
+
+    }
+</script>

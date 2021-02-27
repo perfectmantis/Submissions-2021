@@ -1,0 +1,134 @@
+============================ Start Error ========================================================
+Time : 12:33:37 PM
+
+Error : The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+StackTrace  :    at WPS.Models.WPSServiceModel.GetCompanyById(Int32 id) in G:\Siraj Finance\WPS\WPS\Models\WPSServiceModel.cs:line 229
+   at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 CompanyID, ImportSifExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\SifController.cs:line 326
+
+TargetSite   : WPS.WPSService.SMSA_CompanyMst_ST GetCompanyById(Int32)
+Line No.  :229
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 12:38:35 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 SelectedCompanyID, ImportSifExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\SifController.cs:line 360
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportSifExcel)
+Line No.  :360
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 12:41:47 PM
+
+Error : Input string was not in a correct format.
+
+StackTrace  :    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 SelectedCompanyID, ImportSifExcel model)
+
+TargetSite   : Void StringToNumber(System.String, System.Globalization.NumberStyles, NumberBuffer ByRef, System.Globalization.NumberFormatInfo, Boolean)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 12:43:05 PM
+
+Error : Non-static method requires a target.
+
+StackTrace  :    at System.Reflection.RuntimeMethodInfo.CheckConsistency(Object target)
+   at System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   at System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   at System.Reflection.PropertyInfo.SetValue(Object obj, Object value)
+   at WPS.Utility.IsSpecifed[T](T t)
+   at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 SelectedCompanyID, ImportSifExcel model)
+
+TargetSite   : Void CheckConsistency(System.Object)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 12:46:34 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 SelectedCompanyID, ImportSifExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\SifController.cs:line 360
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportSifExcel)
+Line No.  :360
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 12:47:04 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 SelectedCompanyID, ImportSifExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\SifController.cs:line 360
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportSifExcel)
+Line No.  :360
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 12:49:52 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 SelectedCompanyID, ImportSifExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\SifController.cs:line 360
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportSifExcel)
+Line No.  :360
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 12:50:22 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 SelectedCompanyID, ImportSifExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\SifController.cs:line 360
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportSifExcel)
+Line No.  :360
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 12:52:32 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 SelectedCompanyID, ImportSifExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\SifController.cs:line 360
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportSifExcel)
+Line No.  :360
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 12:55:40 PM
+
+Error : Input string was not in a correct format.
+
+StackTrace  :    at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseDecimal(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Convert.ToDecimal(String value)
+   at WPS.Controllers.SifController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Nullable`1 AgentID, Nullable`1 SubAgentID, Nullable`1 SelectedCompanyID, ImportSifExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\SifController.cs:line 348
+
+TargetSite   : Void StringToNumber(System.String, System.Globalization.NumberStyles, NumberBuffer ByRef, System.Globalization.NumberFormatInfo, Boolean)
+Line No.  :0
+============================= End Error =========================================================
+
+

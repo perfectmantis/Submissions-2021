@@ -1,0 +1,822 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WPSModelStoreContainer" CdmEntityContainer="WPSEntities">
+    <FunctionImportMapping FunctionImportName="Sp_RptSalesAccount" FunctionName="WPSModel.Store.Sp_RptSalesAccount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.Sp_RptSalesAccount_Result">
+          <ScalarProperty Name="SaleAccId" ColumnName="SaleAccId" />
+          <ScalarProperty Name="SaleAccount" ColumnName="SaleAccount" />
+          <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SMAM_ReviewSiteTypes_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMAM_ReviewSiteTypes_ST">
+        <MappingFragment StoreEntitySet="SMAM_ReviewSiteTypes_ST">
+          <ScalarProperty Name="SiteTypeName" ColumnName="SiteTypeName" />
+          <ScalarProperty Name="SiteTypeID" ColumnName="SiteTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMIM_ReviewAccounts_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMIM_ReviewAccounts_ST">
+        <MappingFragment StoreEntitySet="SMIM_ReviewAccounts_ST">
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="IsBenchmarkAccount" ColumnName="IsBenchmarkAccount" />
+          <ScalarProperty Name="ProfilePullType" ColumnName="ProfilePullType" />
+          <ScalarProperty Name="ReviewPullType" ColumnName="ReviewPullType" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="Specialty" ColumnName="Specialty" />
+          <ScalarProperty Name="NPI" ColumnName="NPI" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Credentials" ColumnName="Credentials" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMIM_ReviewAccountSite_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMIM_ReviewAccountSite_ST">
+        <MappingFragment StoreEntitySet="SMIM_ReviewAccountSite_ST">
+          <ScalarProperty Name="EnableProfile" ColumnName="EnableProfile" />
+          <ScalarProperty Name="SetInActive" ColumnName="SetInActive" />
+          <ScalarProperty Name="LastScrapeOn" ColumnName="LastScrapeOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ReviewURL" ColumnName="ReviewURL" />
+          <ScalarProperty Name="ReviewSiteTypeID" ColumnName="ReviewSiteTypeID" />
+          <ScalarProperty Name="ReviewSiteID" ColumnName="ReviewSiteID" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="AccountSiteID" ColumnName="AccountSiteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_CompanyMst_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_CompanyMst_ST">
+        <MappingFragment StoreEntitySet="SMSA_CompanyMst_ST">
+          <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+          <ScalarProperty Name="ModifyOn" ColumnName="ModifyOn" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="WPSUserId" ColumnName="WPSUserId" />
+          <ScalarProperty Name="SifCharges" ColumnName="SifCharges" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="Terms" ColumnName="Terms" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SaleAccId" ColumnName="SaleAccId" />
+          <ScalarProperty Name="VerifyEmail" ColumnName="VerifyEmail" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Salutation" ColumnName="Salutation" />
+          <ScalarProperty Name="Activity" ColumnName="Activity" />
+          <ScalarProperty Name="TotalEmp" ColumnName="TotalEmp" />
+          <ScalarProperty Name="EstID" ColumnName="EstID" />
+          <ScalarProperty Name="logoPath" ColumnName="logoPath" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_Organization_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_Organization_ST">
+        <MappingFragment StoreEntitySet="SMSA_Organization_ST">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="OrgType" ColumnName="OrgType" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="SaleAccId" ColumnName="SaleAccId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SRCC_ReviewStatusTypes_ST">
+      <EntityTypeMapping TypeName="WPSModel.SRCC_ReviewStatusTypes_ST">
+        <MappingFragment StoreEntitySet="SRCC_ReviewStatusTypes_ST">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SRCC_SalesAccount_ST">
+      <EntityTypeMapping TypeName="WPSModel.SRCC_SalesAccount_ST">
+        <MappingFragment StoreEntitySet="SRCC_SalesAccount_ST">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ParentSaleId" ColumnName="ParentSaleId" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+          <ScalarProperty Name="SaleAccount" ColumnName="SaleAccount" />
+          <ScalarProperty Name="SaleAccId" ColumnName="SaleAccId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMIM_AccountType_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMIM_AccountType_ST">
+        <MappingFragment StoreEntitySet="SMIM_AccountType_ST">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_Logs_HI">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_Logs_HI">
+        <MappingFragment StoreEntitySet="SMSA_Logs_HI">
+          <ScalarProperty Name="ActivityBy" ColumnName="ActivityBy" />
+          <ScalarProperty Name="ActivityOn" ColumnName="ActivityOn" />
+          <ScalarProperty Name="ActivityDesc" ColumnName="ActivityDesc" />
+          <ScalarProperty Name="ActivityType" ColumnName="ActivityType" />
+          <ScalarProperty Name="ColumnId" ColumnName="ColumnId" />
+          <ScalarProperty Name="LogId" ColumnName="LogId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_Applications">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_Applications">
+        <MappingFragment StoreEntitySet="aspnet_Applications">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+          <ScalarProperty Name="LoweredApplicationName" ColumnName="LoweredApplicationName" />
+          <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_Membership">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_Membership">
+        <MappingFragment StoreEntitySet="aspnet_Membership">
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+          <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+          <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+          <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+          <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+          <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+          <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+          <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MobilePIN" ColumnName="MobilePIN" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_Paths">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_Paths">
+        <MappingFragment StoreEntitySet="aspnet_Paths">
+          <ScalarProperty Name="LoweredPath" ColumnName="LoweredPath" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="PathId" ColumnName="PathId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_PersonalizationAllUsers">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_PersonalizationAllUsers">
+        <MappingFragment StoreEntitySet="aspnet_PersonalizationAllUsers">
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="PageSettings" ColumnName="PageSettings" />
+          <ScalarProperty Name="PathId" ColumnName="PathId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_PersonalizationPerUser">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_PersonalizationPerUser">
+        <MappingFragment StoreEntitySet="aspnet_PersonalizationPerUser">
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="PageSettings" ColumnName="PageSettings" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PathId" ColumnName="PathId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_Profile">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_Profile">
+        <MappingFragment StoreEntitySet="aspnet_Profile">
+          <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+          <ScalarProperty Name="PropertyValuesBinary" ColumnName="PropertyValuesBinary" />
+          <ScalarProperty Name="PropertyValuesString" ColumnName="PropertyValuesString" />
+          <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_Roles">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_Roles">
+        <MappingFragment StoreEntitySet="aspnet_Roles">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="LoweredRoleName" ColumnName="LoweredRoleName" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_SchemaVersions">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_SchemaVersions">
+        <MappingFragment StoreEntitySet="aspnet_SchemaVersions">
+          <ScalarProperty Name="IsCurrentVersion" ColumnName="IsCurrentVersion" />
+          <ScalarProperty Name="CompatibleSchemaVersion" ColumnName="CompatibleSchemaVersion" />
+          <ScalarProperty Name="Feature" ColumnName="Feature" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_Users">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_Users">
+        <MappingFragment StoreEntitySet="aspnet_Users">
+          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+          <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+          <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnet_WebEvent_Events">
+      <EntityTypeMapping TypeName="WPSModel.aspnet_WebEvent_Events">
+        <MappingFragment StoreEntitySet="aspnet_WebEvent_Events">
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+          <ScalarProperty Name="RequestUrl" ColumnName="RequestUrl" />
+          <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+          <ScalarProperty Name="ApplicationVirtualPath" ColumnName="ApplicationVirtualPath" />
+          <ScalarProperty Name="ApplicationPath" ColumnName="ApplicationPath" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="EventDetailCode" ColumnName="EventDetailCode" />
+          <ScalarProperty Name="EventCode" ColumnName="EventCode" />
+          <ScalarProperty Name="EventOccurrence" ColumnName="EventOccurrence" />
+          <ScalarProperty Name="EventSequence" ColumnName="EventSequence" />
+          <ScalarProperty Name="EventType" ColumnName="EventType" />
+          <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+          <ScalarProperty Name="EventTimeUtc" ColumnName="EventTimeUtc" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMAM_Menu_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMAM_Menu_ST">
+        <MappingFragment StoreEntitySet="SMAM_Menu_ST">
+          <ScalarProperty Name="LocalizeId" ColumnName="LocalizeId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="urlPath" ColumnName="urlPath" />
+          <ScalarProperty Name="MenuSeq" ColumnName="MenuSeq" />
+          <ScalarProperty Name="IconPath" ColumnName="IconPath" />
+          <ScalarProperty Name="MenuDescription" ColumnName="MenuDescription" />
+          <ScalarProperty Name="MenuType" ColumnName="MenuType" />
+          <ScalarProperty Name="ParentMenuId" ColumnName="ParentMenuId" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMAM_SystemService_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMAM_SystemService_ST">
+        <MappingFragment StoreEntitySet="SMAM_SystemService_ST">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="ServiceId" ColumnName="ServiceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMIM_UserAccess_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMIM_UserAccess_ST">
+        <MappingFragment StoreEntitySet="SMIM_UserAccess_ST">
+          <ScalarProperty Name="Allow" ColumnName="Allow" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="CoAccId" ColumnName="CoAccId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMIM_UserMst_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMIM_UserMst_ST">
+        <MappingFragment StoreEntitySet="SMIM_UserMst_ST">
+          <ScalarProperty Name="SACId" ColumnName="SACId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Salutation" ColumnName="Salutation" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMIM_UserType_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMIM_UserType_ST">
+        <MappingFragment StoreEntitySet="SMIM_UserType_ST">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMIM_UserTypeAccess_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMIM_UserTypeAccess_ST">
+        <MappingFragment StoreEntitySet="SMIM_UserTypeAccess_ST">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="Allow" ColumnName="Allow" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AccessType" ColumnName="AccessType" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="AccessId" ColumnName="AccessId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_Areas_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_Areas_ST">
+        <MappingFragment StoreEntitySet="SMSA_Areas_ST">
+          <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_City_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_City_ST">
+        <MappingFragment StoreEntitySet="SMSA_City_ST">
+          <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_Country_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_Country_ST">
+        <MappingFragment StoreEntitySet="SMSA_Country_ST">
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_Roles_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_Roles_ST">
+        <MappingFragment StoreEntitySet="SMSA_Roles_ST">
+          <ScalarProperty Name="FormName" ColumnName="FormName" />
+          <ScalarProperty Name="Header" ColumnName="Header" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SMSA_States_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMSA_States_ST">
+        <MappingFragment StoreEntitySet="SMSA_States_ST">
+          <ScalarProperty Name="CreateOn" ColumnName="CreateOn" />
+          <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SRCC_GooglePlus_TR">
+      <EntityTypeMapping TypeName="WPSModel.SRCC_GooglePlus_TR">
+        <MappingFragment StoreEntitySet="SRCC_GooglePlus_TR">
+          <ScalarProperty Name="APIReference" ColumnName="APIReference" />
+          <ScalarProperty Name="ReviewCount" ColumnName="ReviewCount" />
+          <ScalarProperty Name="OverallRating" ColumnName="OverallRating" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SiteAccountID" ColumnName="SiteAccountID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SRCC_GooglePlusReviews_TR">
+      <EntityTypeMapping TypeName="WPSModel.SRCC_GooglePlusReviews_TR">
+        <MappingFragment StoreEntitySet="SRCC_GooglePlusReviews_TR">
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="ReviewStatusID" ColumnName="ReviewStatusID" />
+          <ScalarProperty Name="AlertDate" ColumnName="AlertDate" />
+          <ScalarProperty Name="Entered" ColumnName="Entered" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="OverallRating" ColumnName="OverallRating" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="GoogleReviewID" ColumnName="GoogleReviewID" />
+          <ScalarProperty Name="GoogleID" ColumnName="GoogleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vw_AccountToScrape">
+      <EntityTypeMapping TypeName="WPSModel.Vw_AccountToScrape">
+        <MappingFragment StoreEntitySet="Vw_AccountToScrape">
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="AccountTypeID" ColumnName="AccountTypeID" />
+          <ScalarProperty Name="LoadDelayMillSeconds" ColumnName="LoadDelayMillSeconds" />
+          <ScalarProperty Name="Client" ColumnName="Client" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="SubTypeName" ColumnName="SubTypeName" />
+          <ScalarProperty Name="SubTypeID" ColumnName="SubTypeID" />
+          <ScalarProperty Name="ReviewTableCount" ColumnName="ReviewTableCount" />
+          <ScalarProperty Name="LastPullDate" ColumnName="LastPullDate" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="SiteAccountID" ColumnName="SiteAccountID" />
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="WPSModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
+      <EndProperty Name="aspnet_Users">
+        <ScalarProperty Name="UserId" ColumnName="UserId" />
+      </EndProperty>
+      <EndProperty Name="aspnet_Roles">
+        <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="AddGooglePlusReviews" FunctionName="WPSModel.Store.AddGooglePlusReviews" />
+    <FunctionImportMapping FunctionImportName="aspnet_AnyDataInTables" FunctionName="WPSModel.Store.aspnet_AnyDataInTables" />
+    <FunctionImportMapping FunctionImportName="aspnet_Applications_CreateApplication" FunctionName="WPSModel.Store.aspnet_Applications_CreateApplication" />
+    <FunctionImportMapping FunctionImportName="aspnet_CheckSchemaVersion" FunctionName="WPSModel.Store.aspnet_CheckSchemaVersion" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_ChangePasswordQuestionAndAnswer" FunctionName="WPSModel.Store.aspnet_Membership_ChangePasswordQuestionAndAnswer" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_CreateUser" FunctionName="WPSModel.Store.aspnet_Membership_CreateUser" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByEmail" FunctionName="WPSModel.Store.aspnet_Membership_FindUsersByEmail" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByName" FunctionName="WPSModel.Store.aspnet_Membership_FindUsersByName" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_GetAllUsers" FunctionName="WPSModel.Store.aspnet_Membership_GetAllUsers" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_GetNumberOfUsersOnline" FunctionName="WPSModel.Store.aspnet_Membership_GetNumberOfUsersOnline" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPassword" FunctionName="WPSModel.Store.aspnet_Membership_GetPassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.aspnet_Membership_GetPassword_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPasswordWithFormat" FunctionName="WPSModel.Store.aspnet_Membership_GetPasswordWithFormat">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.aspnet_Membership_GetPasswordWithFormat_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+          <ScalarProperty Name="Column3" ColumnName="Column3" />
+          <ScalarProperty Name="Column4" ColumnName="Column4" />
+          <ScalarProperty Name="Column5" ColumnName="Column5" />
+          <ScalarProperty Name="Column6" ColumnName="Column6" />
+          <ScalarProperty Name="Column7" ColumnName="Column7" />
+          <ScalarProperty Name="Column8" ColumnName="Column8" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByEmail" FunctionName="WPSModel.Store.aspnet_Membership_GetUserByEmail" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByName" FunctionName="WPSModel.Store.aspnet_Membership_GetUserByName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.aspnet_Membership_GetUserByName_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+          <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByUserId" FunctionName="WPSModel.Store.aspnet_Membership_GetUserByUserId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.aspnet_Membership_GetUserByUserId_Result">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+          <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+          <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_ResetPassword" FunctionName="WPSModel.Store.aspnet_Membership_ResetPassword" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_SetPassword" FunctionName="WPSModel.Store.aspnet_Membership_SetPassword" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_UnlockUser" FunctionName="WPSModel.Store.aspnet_Membership_UnlockUser" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUser" FunctionName="WPSModel.Store.aspnet_Membership_UpdateUser" />
+    <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUserInfo" FunctionName="WPSModel.Store.aspnet_Membership_UpdateUserInfo" />
+    <FunctionImportMapping FunctionImportName="aspnet_Paths_CreatePath" FunctionName="WPSModel.Store.aspnet_Paths_CreatePath" />
+    <FunctionImportMapping FunctionImportName="aspnet_Personalization_GetApplicationId" FunctionName="WPSModel.Store.aspnet_Personalization_GetApplicationId" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_DeleteAllState" FunctionName="WPSModel.Store.aspnet_PersonalizationAdministration_DeleteAllState" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_FindState" FunctionName="WPSModel.Store.aspnet_PersonalizationAdministration_FindState" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_GetCountOfState" FunctionName="WPSModel.Store.aspnet_PersonalizationAdministration_GetCountOfState" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetSharedState" FunctionName="WPSModel.Store.aspnet_PersonalizationAdministration_ResetSharedState" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetUserState" FunctionName="WPSModel.Store.aspnet_PersonalizationAdministration_ResetUserState" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_GetPageSettings" FunctionName="WPSModel.Store.aspnet_PersonalizationAllUsers_GetPageSettings" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_ResetPageSettings" FunctionName="WPSModel.Store.aspnet_PersonalizationAllUsers_ResetPageSettings" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_SetPageSettings" FunctionName="WPSModel.Store.aspnet_PersonalizationAllUsers_SetPageSettings" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_GetPageSettings" FunctionName="WPSModel.Store.aspnet_PersonalizationPerUser_GetPageSettings" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_ResetPageSettings" FunctionName="WPSModel.Store.aspnet_PersonalizationPerUser_ResetPageSettings" />
+    <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_SetPageSettings" FunctionName="WPSModel.Store.aspnet_PersonalizationPerUser_SetPageSettings" />
+    <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteInactiveProfiles" FunctionName="WPSModel.Store.aspnet_Profile_DeleteInactiveProfiles" />
+    <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteProfiles" FunctionName="WPSModel.Store.aspnet_Profile_DeleteProfiles" />
+    <FunctionImportMapping FunctionImportName="aspnet_Profile_GetNumberOfInactiveProfiles" FunctionName="WPSModel.Store.aspnet_Profile_GetNumberOfInactiveProfiles" />
+    <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProfiles" FunctionName="WPSModel.Store.aspnet_Profile_GetProfiles" />
+    <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProperties" FunctionName="WPSModel.Store.aspnet_Profile_GetProperties">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.aspnet_Profile_GetProperties_Result">
+          <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
+          <ScalarProperty Name="PropertyValuesString" ColumnName="PropertyValuesString" />
+          <ScalarProperty Name="PropertyValuesBinary" ColumnName="PropertyValuesBinary" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="aspnet_Profile_SetProperties" FunctionName="WPSModel.Store.aspnet_Profile_SetProperties" />
+    <FunctionImportMapping FunctionImportName="aspnet_RegisterSchemaVersion" FunctionName="WPSModel.Store.aspnet_RegisterSchemaVersion" />
+    <FunctionImportMapping FunctionImportName="aspnet_Roles_CreateRole" FunctionName="WPSModel.Store.aspnet_Roles_CreateRole" />
+    <FunctionImportMapping FunctionImportName="aspnet_Roles_DeleteRole" FunctionName="WPSModel.Store.aspnet_Roles_DeleteRole" />
+    <FunctionImportMapping FunctionImportName="aspnet_Roles_GetAllRoles" FunctionName="WPSModel.Store.aspnet_Roles_GetAllRoles" />
+    <FunctionImportMapping FunctionImportName="aspnet_Roles_RoleExists" FunctionName="WPSModel.Store.aspnet_Roles_RoleExists" />
+    <FunctionImportMapping FunctionImportName="aspnet_Setup_RemoveAllRoleMembers" FunctionName="WPSModel.Store.aspnet_Setup_RemoveAllRoleMembers" />
+    <FunctionImportMapping FunctionImportName="aspnet_Setup_RestorePermissions" FunctionName="WPSModel.Store.aspnet_Setup_RestorePermissions" />
+    <FunctionImportMapping FunctionImportName="aspnet_UnRegisterSchemaVersion" FunctionName="WPSModel.Store.aspnet_UnRegisterSchemaVersion" />
+    <FunctionImportMapping FunctionImportName="aspnet_Users_CreateUser" FunctionName="WPSModel.Store.aspnet_Users_CreateUser" />
+    <FunctionImportMapping FunctionImportName="aspnet_Users_DeleteUser" FunctionName="WPSModel.Store.aspnet_Users_DeleteUser" />
+    <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_AddUsersToRoles" FunctionName="WPSModel.Store.aspnet_UsersInRoles_AddUsersToRoles" />
+    <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_FindUsersInRole" FunctionName="WPSModel.Store.aspnet_UsersInRoles_FindUsersInRole" />
+    <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetRolesForUser" FunctionName="WPSModel.Store.aspnet_UsersInRoles_GetRolesForUser" />
+    <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetUsersInRoles" FunctionName="WPSModel.Store.aspnet_UsersInRoles_GetUsersInRoles" />
+    <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_IsUserInRole" FunctionName="WPSModel.Store.aspnet_UsersInRoles_IsUserInRole" />
+    <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_RemoveUsersFromRoles" FunctionName="WPSModel.Store.aspnet_UsersInRoles_RemoveUsersFromRoles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="aspnet_WebEvent_LogEvent" FunctionName="WPSModel.Store.aspnet_WebEvent_LogEvent" />
+    <FunctionImportMapping FunctionImportName="GetDashboard" FunctionName="WPSModel.Store.GetDashboard" />
+    <FunctionImportMapping FunctionImportName="UpdateGooglePlusAccount" FunctionName="WPSModel.Store.UpdateGooglePlusAccount" />
+    <FunctionImportMapping FunctionImportName="Sp_ReviewsSiteInfo" FunctionName="WPSModel.Store.Sp_ReviewsSiteInfo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.Sp_ReviewsSiteInfo_Result">
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="SitesURL" ColumnName="SitesURL" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Author" ColumnName="Author" />
+          <ScalarProperty Name="ReviewDate" ColumnName="ReviewDate" />
+          <ScalarProperty Name="Reviews" ColumnName="Reviews" />
+          <ScalarProperty Name="Overall" ColumnName="Overall" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_ReviewsSitesList" FunctionName="WPSModel.Store.Sp_ReviewsSitesList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.Sp_ReviewsSitesList_Result">
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="TotalReview" ColumnName="TotalReview" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ReviewsListFor_Dashboard_TR" FunctionName="WPSModel.Store.SP_ReviewsListFor_Dashboard_TR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_ReviewsListFor_Dashboard_TR_Result">
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="GoogleReview" ColumnName="GoogleReview" />
+          <ScalarProperty Name="GoogleRating" ColumnName="GoogleRating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reviews_Chart_Dashboard_TR" FunctionName="WPSModel.Store.SP_Reviews_Chart_Dashboard_TR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_Reviews_Chart_Dashboard_TR_Result">
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="ReviewsCount" ColumnName="ReviewsCount" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reviews_LineChart_Dashboard_TR" FunctionName="WPSModel.Store.SP_Reviews_LineChart_Dashboard_TR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_Reviews_LineChart_Dashboard_TR_Result">
+          <ScalarProperty Name="MonthNo" ColumnName="MonthNo" />
+          <ScalarProperty Name="MonthNam" ColumnName="MonthNam" />
+          <ScalarProperty Name="MonthYr" ColumnName="MonthYr" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="GoogleReviews" ColumnName="GoogleReviews" />
+          <ScalarProperty Name="YelpReviews" ColumnName="YelpReviews" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetCompanies_By_Organization" FunctionName="WPSModel.Store.SP_GetCompanies_By_Organization">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_GetCompanies_By_Organization_Result">
+          <ScalarProperty Name="OrgID" ColumnName="OrgID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CompanyCount" ColumnName="CompanyCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reviews_CompanyWise_Dashboard" FunctionName="WPSModel.Store.SP_Reviews_CompanyWise_Dashboard">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_Reviews_CompanyWise_Dashboard_Result">
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="ReviewsCount" ColumnName="ReviewsCount" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Account_By_Company" FunctionName="WPSModel.Store.SP_Get_Account_By_Company">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_Get_Account_By_Company_Result">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="AccountCount" ColumnName="AccountCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Review_WordCount_Dashboard_HI" FunctionName="WPSModel.Store.SP_Review_WordCount_Dashboard_HI">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_Review_WordCount_Dashboard_HI_Result">
+          <ScalarProperty Name="WrdTypeCount" ColumnName="WrdTypeCount" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WordType_Desc_PieChart_Dashboard_HI" FunctionName="WPSModel.Store.SP_WordType_Desc_PieChart_Dashboard_HI">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_WordType_Desc_PieChart_Dashboard_HI_Result">
+          <ScalarProperty Name="SiteId" ColumnName="SiteId" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Good" ColumnName="Good" />
+          <ScalarProperty Name="Bad" ColumnName="Bad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WordDesc_MonthWise_BarChart_Dashboard_HI" FunctionName="WPSModel.Store.SP_WordDesc_MonthWise_BarChart_Dashboard_HI">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result">
+          <ScalarProperty Name="MonthNo" ColumnName="MonthNo" />
+          <ScalarProperty Name="MonthNam" ColumnName="MonthNam" />
+          <ScalarProperty Name="MonthYr" ColumnName="MonthYr" />
+          <ScalarProperty Name="Good" ColumnName="Good" />
+          <ScalarProperty Name="Bad" ColumnName="Bad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_WordCount_Desc_CloudChart_Dashboard_HI" FunctionName="WPSModel.Store.SP_WordCount_Desc_CloudChart_Dashboard_HI">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_WordCount_Desc_CloudChart_Dashboard_HI_Result">
+          <ScalarProperty Name="Word" ColumnName="Word" />
+          <ScalarProperty Name="WordCount" ColumnName="WordCount" />
+          <ScalarProperty Name="WorType" ColumnName="WorType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reviews_Line_CompanyWise_Dashboard" FunctionName="WPSModel.Store.SP_Reviews_Line_CompanyWise_Dashboard">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_Reviews_Line_CompanyWise_Dashboard_Result">
+          <ScalarProperty Name="MonthNo" ColumnName="MonthNo" />
+          <ScalarProperty Name="MonthNam" ColumnName="MonthNam" />
+          <ScalarProperty Name="MonthYr" ColumnName="MonthYr" />
+          <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="GoogleReviews" ColumnName="GoogleReviews" />
+          <ScalarProperty Name="YelpReviews" ColumnName="YelpReviews" />
+          <ScalarProperty Name="GoogleRating" ColumnName="GoogleRating" />
+          <ScalarProperty Name="YelpRating" ColumnName="YelpRating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Reviews_Rating_Summary_Dashboard" FunctionName="WPSModel.Store.SP_Reviews_Rating_Summary_Dashboard">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_Reviews_Rating_Summary_Dashboard_Result">
+          <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="Google" ColumnName="Google" />
+          <ScalarProperty Name="GoogleRating" ColumnName="GoogleRating" />
+          <ScalarProperty Name="Yelp" ColumnName="Yelp" />
+          <ScalarProperty Name="YelpRating" ColumnName="YelpRating" />
+          <ScalarProperty Name="Vitals" ColumnName="Vitals" />
+          <ScalarProperty Name="VitalsRating" ColumnName="VitalsRating" />
+          <ScalarProperty Name="Healthgrades" ColumnName="Healthgrades" />
+          <ScalarProperty Name="HealthgradesRating" ColumnName="HealthgradesRating" />
+          <ScalarProperty Name="RateMDs" ColumnName="RateMDs" />
+          <ScalarProperty Name="RateMDsRating" ColumnName="RateMDsRating" />
+          <ScalarProperty Name="YellowPages" ColumnName="YellowPages" />
+          <ScalarProperty Name="YellowPagesRating" ColumnName="YellowPagesRating" />
+          <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+          <ScalarProperty Name="FacebookRating" ColumnName="FacebookRating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SMAM_ReviewSites_ST">
+      <EntityTypeMapping TypeName="WPSModel.SMAM_ReviewSites_ST">
+        <MappingFragment StoreEntitySet="SMAM_ReviewSites_ST">
+          <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LastScrapeOn" ColumnName="LastScrapeOn" />
+          <ScalarProperty Name="TimerValue" ColumnName="TimerValue" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_IsAccount_Benchmark_Dashboard" FunctionName="WPSModel.Store.SP_IsAccount_Benchmark_Dashboard">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_IsAccount_Benchmark_Dashboard_Result">
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="ReviewsCount" ColumnName="ReviewsCount" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_IsBenAccount_Benchmark_Dashboard" FunctionName="WPSModel.Store.SP_IsBenAccount_Benchmark_Dashboard">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WPSModel.SP_IsBenAccount_Benchmark_Dashboard_Result">
+          <ScalarProperty Name="SiteID" ColumnName="SiteID" />
+          <ScalarProperty Name="SiteName" ColumnName="SiteName" />
+          <ScalarProperty Name="ReviewsCount" ColumnName="ReviewsCount" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

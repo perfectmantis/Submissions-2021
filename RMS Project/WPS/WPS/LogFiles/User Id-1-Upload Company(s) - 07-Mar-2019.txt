@@ -1,0 +1,43 @@
+============================ Start Error ========================================================
+Time : 2:22:38 PM
+
+Error : Value cannot be null.
+Parameter name: source
+
+StackTrace  :    at System.Linq.Enumerable.Contains[TSource](IEnumerable`1 source, TSource value, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.Contains[TSource](IEnumerable`1 source, TSource value)
+   at WPS.Controllers.CompanyController.<>c__DisplayClass12_0.<ApproveCompany>b__0(SMSA_TempCompany_ST x) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 618
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at WPS.Controllers.CompanyController.ApproveCompany(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32[] Ids) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 618
+
+TargetSite   : Boolean Contains[TSource](System.Collections.Generic.IEnumerable`1[TSource], TSource, System.Collections.Generic.IEqualityComparer`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:29:23 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportCompanyExcel)
+Line No.  :388
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:29:33 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportCompanyExcel)
+Line No.  :388
+============================= End Error =========================================================
+
+

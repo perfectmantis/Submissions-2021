@@ -1,0 +1,138 @@
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\ApplicationInsights.config
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\WPSService.dll.config
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\WPSService.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\WPSService.pdb
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.Agent.Intercept.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.PerfCounterCollector.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.xml
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.xml
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.xml
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.xml
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.xml
+G:\Siraj Finance\WPSService\WPSService\WPSService\obj\Debug\WPSService.csprojResolveAssemblyReference.cache
+G:\Siraj Finance\WPSService\WPSService\WPSService\obj\Debug\WPSService.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\obj\Debug\WPSService.pdb
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\EntityFramework.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\EntityFramework.xml
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.dll
+G:\Siraj Finance\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.xml
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\ApplicationInsights.config
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\WPSService.dll.config
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\WPSService.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\WPSService.pdb
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\EntityFramework.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\EntityFramework.xml
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.xml
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.xml
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.xml
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.xml
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.xml
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\obj\Debug\WPSService.csprojResolveAssemblyReference.cache
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\obj\Debug\WPSService.dll
+D:\Raza Working Folder\Temp\WPSService\WPSService\WPSService\obj\Debug\WPSService.pdb
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\ApplicationInsights.config
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\WPSService.dll.config
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\WPSService.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\WPSService.pdb
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\EntityFramework.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\EntityFramework.xml
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.xml
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.xml
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.xml
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.xml
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.xml
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\obj\Debug\WPSService.dll
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\obj\Debug\WPSService.pdb
+D:\Raza Working Folder\Review Finance\WPSService\WPSService\WPSService\obj\Debug\WPSService.csprojResolveAssemblyReference.cache
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\ApplicationInsights.config
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\WPSService.dll.config
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\WPSService.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\WPSService.pdb
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\EntityFramework.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\EntityFramework.xml
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.xml
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.xml
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.xml
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.xml
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.xml
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\obj\Debug\WPSService.csprojResolveAssemblyReference.cache
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\obj\Debug\WPSService.dll
+D:\Irfan Working Folder\SIT\Review Management System\WPSService\WPSService\WPSService\obj\Debug\WPSService.pdb
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\ApplicationInsights.config
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\WPSService.dll.config
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\WPSService.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\WPSService.pdb
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\EntityFramework.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.Agent.Intercept.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\EntityFramework.xml
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.xml
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.xml
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.xml
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.xml
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.xml
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\obj\Debug\WPSService.csprojResolveAssemblyReference.cache
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\obj\Debug\WPSService.dll
+D:\Raza Working Folder\Review Management  System\RMS Project\WPSService\WPSService\WPSService\obj\Debug\WPSService.pdb
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\obj\Debug\WPSService.csprojResolveAssemblyReference.cache
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\obj\Debug\WPSService.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\obj\Debug\WPSService.pdb
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\ApplicationInsights.config
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\WPSService.dll.config
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\WPSService.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\WPSService.pdb
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\EntityFramework.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.Agent.Intercept.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.PerfCounterCollector.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.dll
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\EntityFramework.xml
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\EntityFramework.SqlServer.xml
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.DependencyCollector.xml
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.ServerTelemetryChannel.xml
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.Web.xml
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.AI.WindowsServer.xml
+G:\MCS\Fourth\FYP\Project\RMS Project\WPSService\WPSService\WPSService\bin\Microsoft.ApplicationInsights.xml

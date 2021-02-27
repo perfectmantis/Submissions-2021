@@ -1,0 +1,13 @@
+============================ Start Error ========================================================
+Time : 1:31:53 PM
+
+Object reference not set to an instance of an object.
+
+   at WPS.Log.LogWrite(String msg, String fileName, Exception ex)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+Void LogWrite(System.String, System.String, System.Exception)
+Line No.  :0
+============================= End Error =========================================================
+
+

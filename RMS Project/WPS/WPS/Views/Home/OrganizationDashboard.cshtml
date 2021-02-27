@@ -1,0 +1,690 @@
+﻿@model WPS.Models.mDashboard
+@{
+    ViewBag.Title = "OrganizationDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="overview-wrap">
+                <h2 class="title-1">Organization Dashboard</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row m-b-20"></div>
+
+    <div class="card-header">
+        <a href="#"><i class="fas fa-home"></i></a> / <a href="#"><i class="fas fa-user-circle"></i></a> / DEMO CHARTS || <span id="reviewclient" class="label label-default">ALL REVIEWS</span> <label id="currentCom" class="control-label" style="float:inherit !important;"></label>
+    </div>
+
+    <div class="content-box border">
+        <div class="row m-b-20"></div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="cc-payment" class="control-label">Company</label>
+            </div>
+            <div class="col-lg-2">
+                @Html.DropDownList("CompanyID", null, "---- Select ----",
+                                new { id = "ddl_CompanyID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+            </div>
+            <div class="col-md-1">
+                <label for="cc-payment" class="control-label">Site</label>
+            </div>
+            <div class="col-lg-2">
+                @Html.DropDownList("SiteID", null, "---- Select ----",
+                                new { id = "ddl_SiteID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+            </div>
+            <div class="col-md-1">
+                <label for="cc-payment" class="control-label">Type</label>
+            </div>
+            <div class="col-lg-2">
+                @Html.DropDownList("AccountType", null, "---- Select ----",
+                                new { id = "ddl_AccountType", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="cc-payment" class="control-label">Account</label>
+            </div>
+            <div class="col-lg-2">
+                @Html.DropDownList("AccountID", null, "---- Select ----",
+                                new { id = "ddl_AccountID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+            </div>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-primary btn-sm" onclick="getSearchReviewsCompanyWise('@Request.QueryString["OrgId"].ToString()', $('#ddl_CompanyID').val(), $('#ddl_SiteID').val(), $('#ddl_AccountID').val(), $('#ddl_AccountType').val(), '')">
+                    <i class="fa fa-search-plus"></i> Search
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-t-25">
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c1">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-account-o"></i>
+                        </div>
+                        <div class="text">
+                            <h2>@Model.ComCount</h2>
+                            <span># Companies</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart1"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c2">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                        <div class="text">
+                            <h2>@Model.ActCount</h2>
+                            <span># Accounts</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart2"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c3">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-calendar-note"></i>
+                        </div>
+                        <div class="text">
+                            <h2>@Model.RevCount</h2>
+                            <span># Reviews</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c4">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-money"></i>
+                        </div>
+                        <div class="text">
+                            <h2>0</h2>
+                            <span># Survey</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart4"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row col-lg-12">
+                <h2 class="title-1 m-b-20">Registered Company(s)</h2>
+            </div>
+            <div class="row">
+                <label id="lblComCount" class="col-lg-12 control-label" style="padding-left:4% !important">You have&nbsp;@Model.SP_Get_Account_By_Company.Count()&nbsp;Company(s)</label>
+            </div>
+            <div class="col-md-12" style="border-bottom: 1px solid rgba(0, 0, 0, .0625);"></div>
+            <div class="row">
+                <div class="col-lg-12 m-t-5" style="height:280px; overflow-y:auto;background:#eee;border-radius:10px;">
+                    <nav class="navbar-sidebar2">
+
+                        <ul class="list-unstyled navbar__list">
+                            <div id="divLis">
+                                @foreach (WPS.WPSService.SP_Get_Account_By_Company_Result item in Model.SP_Get_Account_By_Company)
+                                {
+                                    <li class="has-sub">
+                                        <a href="/Home/Dashboard?q=@Request.QueryString["q"].ToString()&CompanyId=@item.CompanyID" class="js-arrow">
+                                            <i class="fas fa-university"></i>@item.CompanyName
+                                            <small style="float:right; position:relative;">No. of Account : @item.AccountCount</small>
+                                        </a>
+                                    </li>
+                                }
+                            </div>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-b-10"></div>
+    <div class="col-md-12" style="border-bottom: 1px solid rgba(0, 0, 0, .0625);"></div>
+    <div class="row m-b-10"></div>
+
+    <div class="row">
+            <div class="col-lg-8">
+                <h2 class="title-1 m-b-25">Company(s) Distribution</h2>
+                <div class="table--no-card m-b-40">
+                    <div class="row">
+                        <div class="col-md-7" id="divpiecanvas">
+                            <canvas id="reviewCompanyChartPie"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>      
+        <div class="col-lg-4">
+            <h2 class="title-1 m-b-20 m-l-30">Review(s) Status</h2>
+            <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" style="padding:28px !important;">
+                <div class="au-card-inner">
+                    <div class="table-responsive">
+                        <table id="DataTables_Companies_0" class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th style="width:3%">Site</th>
+                                    <th style="width:3%">Reviews</th>
+                                    <th style="width:3%">Avg Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-b-30"></div>
+
+    <div class="card-header">
+        <h4 class="title">MONTHLY TRAFFIC</h4>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="content-box border">
+                <div class="row m-b-20"></div>
+                <div class="table--no-card m-b-40">
+                    <div class="col-md-12" id="divlinecanvas">
+                        <canvas id="reviewCompanyChartLine"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>     
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        getReviewsCompanyWise('','', '', '', '');
+    });
+
+    function getReviewsCompanyWise(companyID, siteID, accountID, accountType, rating) {
+        var CompanyID, SiteID, AccountID, AccountType = "", qStr = '@Request.QueryString["q"].ToString()';
+        CompanyID = companyID; SiteID = siteID; AccountID = accountID; AccountType = accountType;
+        //alert(CompanyID + SiteID + AccountID + AccountType);
+        $.ajax({
+            url: '@Url.Action("ReviewCompanyPieChartList", "Home")?CompanyID=' + CompanyID +  '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                //console.log(data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard);
+                ReviewPieChart(data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard, 'pie');
+                $('#DataTables_Companies_0').DataTable({
+                    processing: true,
+                    paging: false,
+                    sort: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    bFilter: false,
+                    info: false,
+                    data: data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard,
+                    columns: [
+
+                    { 'data': 'SiteName' },
+
+                    {
+                        'data': 'ReviewsCount',
+                        render: function (data, type, full) {
+                            var a = '<a href="/ReviewsSiteInfo/ReviewsSiteInfo?q=' + qStr + '&SiteID=' + full.SiteID + '&AccountID=' + AccountID + '&AccountType=' + AccountType + '&Rating=" target="_blank"><i class="fa fa-link" aria-hidden="true"></i>' + "&nbsp" + full.ReviewsCount + '</a>'; // row object contains the row data
+                            return a;
+
+                        }
+                    },
+
+                    {
+                        'data': 'Rating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            var k = full.Rating;
+
+                            if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+                                var l = Math.round(k);
+                                var s = k - l;
+
+                                if (s < 0) {
+                                    var m = l - 1;
+                                    for (var i = 0; i < m; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                    text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+                                else {
+                                    for (var i = 0; i < l; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                }
+
+                                var j = 5 - l;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+                            }
+                            else {
+                                for (var i = 0; i < k; i++) {
+                                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+
+                                var j = 5 - k;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+                            }
+
+                            return text;
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    ],
+                });
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+
+        $.ajax({
+            url: '@Url.Action("ReviewCompanyLineChartList", "Home")?CompanyID=' + CompanyID + '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                //console.log(data.reviewsLineChart.ReviewsLineChartDashboardTR);
+                ReviewLineChart(data.reviewsCompanyLineChart.SP_Reviews_Line_CompanyWise_Dashboard, 'line');
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+    }
+
+    function getSearchReviewsCompanyWise(orgID, companyID, siteID, accountID, accountType, rating) {
+        var OrgID, CompanyID, SiteID, AccountID, AccountType = "", qStr = '@Request.QueryString["q"].ToString()';
+        OrgID = orgID; CompanyID = companyID; SiteID = siteID; AccountID = accountID; AccountType = accountType;
+        var datacountarray1 = [];
+        //alert(OrgID + " " + CompanyID + " " + SiteID + " " + AccountID + " " + AccountType);
+        $.ajax({
+            url: '@Url.Action("GetCompanyOrgdash", "Home", new { q = Request.QueryString["q"].ToString()})&OrgId=' + OrgID + '&CompanyID=' + CompanyID,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                var myOrgData = data.organizationcompany.SP_Get_Account_By_Company;
+                if (CompanyID != "" && CompanyID != null) {
+                    for (var i = 0; i < myOrgData.length; i++) {
+                        datacountarray1.push(myOrgData[i].CompanyName);
+                        $("#currentCom").text(" " + datacountarray1);
+                    }
+                }
+                else {
+                    $("#currentCom").text(" ");
+                }
+
+                $('#divLis').html('');
+                var listData = '';
+                for (var i = 0; i < myOrgData.length; i++) {
+                    listData += '<li class="has-sub">'
+                    listData += '<a href="/Home/Dashboard?q=@Request.QueryString["q"].ToString()&CompanyId=' + myOrgData[i].CompanyID + '" class="js-arrow">'
+                    listData += '<i class="fas fa-university"></i>' + myOrgData[i].CompanyName + ''
+                    listData += '<small style="float:right; position:relative;">No. of Account : ' + myOrgData[i].AccountCount + '</small>'
+                    listData += '</a>'
+                    listData += '</li>'
+                }
+                $('#lblOrgCount').html('You have ' + myOrgData.length + ' Organziation(s)');
+                $('#divLis').html(listData);
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+
+
+        $.ajax({
+            url: '@Url.Action("ReviewCompanyPieChartList", "Home")?CompanyID=' + CompanyID + '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                if (SiteID != "" && SiteID != null) {
+                    var datareviews = data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard;
+                    var datacountarray1 = [];
+                    for (var i = 0; i < datareviews.length; i++) {
+                        datacountarray1.push(datareviews[i].SiteName)
+                    }
+                    $("label[for='cc-site']").text(" " + datacountarray1);
+                }
+                else {
+                    $("label[for='cc-site']").text("");
+                }
+                //console.log(data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard);
+                ReviewPieChart(data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard, 'pie');
+                $('#DataTables_Companies_0').DataTable({
+                    processing: true,
+                    paging: false,
+                    sort: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    bFilter: false,
+                    info: false,
+                    data: data.reviewsCompanyPieChart.SP_Reviews_CompanyWise_Dashboard,
+                    columns: [
+
+                    { 'data': 'SiteName' },
+
+                    {
+                        'data': 'ReviewsCount',
+                        render: function (data, type, full) {
+                            var a = '<a href="/ReviewsSiteInfo/ReviewsSiteInfo?q=' + qStr + '&SiteID=' + full.SiteID + '&AccountID=' + AccountID + '&AccountType=' + AccountType + '&Rating=" target="_blank"><i class="fa fa-link" aria-hidden="true"></i>' + "&nbsp" + full.ReviewsCount + '</a>'; // row object contains the row data
+                            return a;
+
+                        }
+                    },
+
+                    {
+                        'data': 'Rating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            var k = full.Rating;
+
+                            if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+                                var l = Math.round(k);
+                                var s = k - l;
+
+                                if (s < 0) {
+                                    var m = l - 1;
+                                    for (var i = 0; i < m; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                    text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+                                else {
+                                    for (var i = 0; i < l; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                    }
+                                }
+
+                                var j = 5 - l;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+                            }
+                            else {
+                                for (var i = 0; i < k; i++) {
+                                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+
+                                var j = 5 - k;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.Rating + '"></i>';
+                                }
+                            }
+
+                            return text;
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    ],
+                });
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+
+        $.ajax({
+            url: '@Url.Action("ReviewCompanyLineChartList", "Home")?CompanyID=' + CompanyID + '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                //console.log(data.reviewsLineChart.ReviewsLineChartDashboardTR);
+                ReviewLineChart(data.reviewsCompanyLineChart.SP_Reviews_Line_CompanyWise_Dashboard, 'line');               
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+    }
+
+    function ReviewPieChart(dataArray, chartType) {
+
+        $('#divpiecanvas').html('');
+        var htmlData = '';
+        htmlData += '<canvas id="reviewCompanyChartPie"></canvas>'
+        $('#divpiecanvas').html(htmlData);
+
+        var myPieChart = null;
+        var ctxReviewSummary = document.getElementById('reviewCompanyChartPie').getContext('2d');
+        var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"];
+        var reviewcountarray = [];
+        var labelarray = [];
+        //console.log(dataArray);
+        for (var i = 0; i < dataArray.length; i++) {
+            reviewcountarray.push(dataArray[i].ReviewsCount);
+            labelarray.push(dataArray[i].SiteName);
+        }
+        myPieChart = new Chart(ctxReviewSummary, {
+            type: chartType,
+            animationEnabled: true,
+            theme: "light2",
+            title: {
+                text: "Sites Reviews"
+            },
+            data: {
+                labels: labelarray,
+                datasets: [{
+                    //backgroundColor: colors,
+                    data: reviewcountarray,
+                    backgroundColor: [
+                        'rgba(247, 70, 74, 1)',
+                        'rgba(70, 191, 189, 1)',
+                    ],
+                }],
+
+                datapoint: [{ labels: labelarray, y: reviewcountarray, }],
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                labels: labelarray
+            },
+            options: {
+                cutoutPercentage: 10,
+                responsive: true,
+                legend: {
+                    display: true,
+                    position: 'right',
+                }
+            }
+        });
+    }
+
+    function ReviewLineChart(dataArray, chartType) {
+
+        $('#divlinecanvas').html('');
+        var htmlData = '';
+        htmlData += '<canvas id="reviewCompanyChartLine"></canvas>'
+        $('#divlinecanvas').html(htmlData);
+
+        var myLineChart = null;
+        var ctxReviewSummary = document.getElementById('reviewCompanyChartLine').getContext('2d');
+        var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"];
+        var reviewcountarray1 = [];
+        var reviewcountarray2 = [];
+        var labelarray = [];
+        //console.log(dataArray);
+        for (var i = 0; i < dataArray.length; i++) {
+            reviewcountarray1.push(dataArray[i].GoogleReviews);
+            reviewcountarray2.push(dataArray[i].YelpReviews);
+            labelarray.push(dataArray[i].MonthNam + " - " + dataArray[i].MonthYr);
+        }
+        myLineChart = new Chart(ctxReviewSummary, {
+            type: chartType,
+            animationEnabled: true,
+            theme: "light2",
+            title: {
+                text: "Reviews Line Chart"
+            },
+            axisY: {
+                includeZero: false,
+                title: "Review Rating"
+            },
+            toolTip: {
+                shared: true
+            },
+            legend: {
+                cursor: "pointer",
+                verticalAlign: "top",
+                horizontalAlign: "center",
+                dockInsidePlotArea: true,
+                itemclick: toogleDataSeries
+            },
+            data: {
+                labels: labelarray,
+                legendText: dataArray.reviewcountarray1,
+                legendText: dataArray.reviewcountarray2,
+                type: "line",
+                axisYType: "secondary",
+                showInLegend: true,
+                markerSize: 0,
+                indexLabelFontSize: 16,
+                datasets: [{
+                    label: 'Google',
+                    data: reviewcountarray1,
+                    backgroundColor: [
+                    'rgba(247, 70, 74, 1)',
+                    ],
+                    borderColor: [
+                      'rgba(247, 70, 74, 1)',
+                    ],
+                    borderWidth: 1,
+                    fill: false
+                },
+                {
+                    label: 'Yelp',
+                    data: reviewcountarray2,
+                    backgroundColor: [
+                    'rgba(70, 191, 189, 1)',
+                    ],
+                    borderColor: [
+                      'rgba(70, 191, 189, 1)',
+                    ],
+                    borderWidth: 1,
+                    fill: false
+                }],
+
+                //datapoint: [
+                //    { labels: labelarray, y: reviewcountarray1, indexLabel: "\u2191 highest", markerColor: "red", markerType: "triangle" },
+                //],
+
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                data: reviewcountarray1,
+                labels: labelarray
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            color: "rgba(0, 0, 0, 0)",
+                        },
+                        distribution: 'linear'
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            //color: "rgba(0, 0, 0, 0)",
+                        },
+                        ticks: {
+                            beginAtZero: true
+                        }
+
+                    }]
+                },
+                cutoutPercentage: 10,
+                legend: {
+                    display: true,
+                    position: 'right',
+                }
+            }
+        });
+
+        function toogleDataSeries(e) {
+            if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+                e.dataSeries.visible = false;
+            } else {
+                e.dataSeries.visible = true;
+            }
+            chart.render();
+        }
+    }
+</script>
+

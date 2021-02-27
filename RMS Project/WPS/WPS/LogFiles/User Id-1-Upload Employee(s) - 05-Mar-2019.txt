@@ -1,0 +1,102 @@
+============================ Start Error ========================================================
+Time : 1:14:56 PM
+
+Error : Value cannot be null.
+Parameter name: source
+
+StackTrace  :    at System.Linq.Enumerable.Count[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.ApprovePendingEmployee(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 selectedCompanyId, Int32[] EmpIds) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 373
+
+TargetSite   : Int32 Count[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 3:39:53 PM
+
+Error : A column named 'FullName' already belongs to this DataTable.
+
+StackTrace  :    at System.Data.DataColumnCollection.RegisterColumnName(String name, DataColumn column)
+   at System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   at System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   at System.Data.DataColumnCollection.Add(String columnName)
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model)
+
+TargetSite   : Void RegisterColumnName(System.String, System.Data.DataColumn)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 3:41:31 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 177
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportEmployeeExcel)
+Line No.  :177
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 3:42:16 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 177
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportEmployeeExcel)
+Line No.  :177
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 3:42:28 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 177
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportEmployeeExcel)
+Line No.  :177
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 3:45:12 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 177
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportEmployeeExcel)
+Line No.  :177
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 3:45:45 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 177
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportEmployeeExcel)
+Line No.  :177
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 3:46:19 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 177
+
+TargetSite   : System.Web.Mvc.ActionResult UploadFile(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], WPS.Models.ImportEmployeeExcel)
+Line No.  :177
+============================= End Error =========================================================
+
+

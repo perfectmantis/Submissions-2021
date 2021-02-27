@@ -1,0 +1,10 @@
+G:\Siraj Finance\UserService\ApplicationService\bin\ApplicationService.dll.config
+G:\Siraj Finance\UserService\ApplicationService\bin\ApplicationService.dll
+G:\Siraj Finance\UserService\ApplicationService\bin\ApplicationService.pdb
+G:\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.dll
+G:\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.SqlServer.dll
+G:\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.xml
+G:\Siraj Finance\UserService\ApplicationService\bin\EntityFramework.SqlServer.xml
+G:\Siraj Finance\UserService\ApplicationService\obj\Release\ApplicationService.csprojResolveAssemblyReference.cache
+G:\Siraj Finance\UserService\ApplicationService\obj\Release\ApplicationService.dll
+G:\Siraj Finance\UserService\ApplicationService\obj\Release\ApplicationService.pdb

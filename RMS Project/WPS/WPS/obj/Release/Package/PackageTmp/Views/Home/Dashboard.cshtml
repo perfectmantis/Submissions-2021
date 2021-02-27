@@ -1,0 +1,254 @@
+﻿@model WPS.Models.mDashboard
+@{
+    
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@*<h2>Dashboard</h2>
+    <h1>Work In Progress!!!</h1>*@
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="overview-wrap">
+                <h2 class="title-1">overview</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row m-t-25">
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c1">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-account-o"></i>
+                        </div>
+                        <div class="text">
+                            <h2>@Model.sifMaster.Count()</h2>@*.Where(x => x.SND_CBUAE == true)*@
+                            <span>SIF Uploaded</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart1"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c2">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                        <div class="text">
+                            <h2>0</h2>
+                            <span>PAF Received</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart2"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c3">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-calendar-note"></i>
+                        </div>
+                        <div class="text">
+                            <h2>0</h2>
+                            <span>PRC</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c4">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-money"></i>
+                        </div>
+                        <div class="text">
+                            <h2>0</h2>
+                            <span>RFA</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart4"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-9">
+            <h2 class="title-1 m-b-25">Daily WPS Status</h2>
+            <div class="table-responsive table--no-card m-b-40">
+                <table class="table table-borderless table-striped table-earning" id="summary">
+                    <thead>
+                        <tr>
+                            <th>File(s)</th>
+                            <th>Uploaded</th>
+                            <th>ACK</th>
+                            <th>NAK</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @{ 
+                                int ack = Model.sifMaster.Where(x => x.ACK_NAK != null && x.ACK_NAK.Contains(".ack")).Count();
+                                int nack = Model.sifMaster.Where(x => x.ACK_NAK != null && x.ACK_NAK.Contains(".nack")).Count();
+                            }
+                            <td>SIF</td>
+                            <td class="text-right" id="expand">@Model.sifMaster.Count()</td>
+                            <td class="text-right">@ack</td>
+                            <td class="text-right">@nack</td>
+                        </tr>
+                        <tr>
+                            <td>PAF</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right">0</td>
+                        </tr>
+                        <tr>
+                            <td>PRC</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right">0</td>
+                        </tr>
+                        <tr>
+                            <td>RFA</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right">0</td>
+                            <td class="text-right">0</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <h2 class="title-1 m-b-25">Service(s) Status</h2>
+            <div class="au-card au-card--bg-blue au-card-top-countries m-b-40" style="padding:28px !important;">
+                <div class="au-card-inner">
+                    <div class="table-responsive">
+                        <table class="table table-top-countries">
+                            <tbody>
+                                @foreach (var item in Model.serviceControllerC)
+                                {
+                                    string imgPath = "";
+                                    if (item.IsRunning)
+                                    {
+                                        imgPath = "/Content/Images/green_bl.gif";
+                                    }
+                                    else {
+                                        imgPath = "/Content/Images/red_bl.gif";
+                                    }
+                                    <tr>
+                                        <td>@item.ServiceName</td>
+                                        <td class=""><img src ="@imgPath" /></td>
+                                    </tr>
+                                }
+                                
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        //$("#summary").dataTable({
+        //    "bStateSave": true,
+        //    "fnStateSave": function (oSettings, oData) {
+        //        localStorage.setItem('DataTables', JSON.stringify(oData));
+        //    },
+        //    "fnStateLoad": function (oSettings) {
+        //        return JSON.parse(localStorage.getItem('DataTables'));
+        //    },
+        //    //"pagingType": "full_numbers",
+        //    "paging": true,
+        //    "lengthMenu": [[10, 25, 50, 100, 250, -1], [10, 25, 50, 100, 250, "All"]]
+        //});
+        $('#summary tbody').on('click', 'td#expand', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row(tr);
+
+            if (row.child.isShown()) {
+                // This row is already open - close it
+                row.child.hide();
+                tr.removeClass('shown');
+            }
+            else {
+                // Open this row
+                row.child(createTable()).show();
+                GetDetail(row.data().SifId);
+                //row.child(GetDetail(row.data())).show();
+                tr.addClass('shown');
+            }
+        });
+    });
+
+    function createTable() {
+        var table = '<table class="table table-borderless table-striped table-earning" colspan="4" id="detail">';
+        table += '<thead>';
+        table += '<tr>';
+        table += '<th>File(s)</th>';
+        table += '<th>Uploaded</th>';
+        table += '<th>ACK</th>';
+        table += '<th>NAK</th>';
+        table += '</tr>';
+        table += '</thead><tbody></tbody></table>';
+        return table;
+    }
+    function GetDetail(d) {
+        // `d` is the original data object for the row
+        $.ajax({
+            url: '@Url.Action("GetSifDetail", "Home", new { q = Request.QueryString["q"].ToString() })',
+            dataType: 'json',
+            data: { "SifId": d},
+            success: function (data) {
+                $('#detail').dataTable({
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    data: data.active,
+                    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                    columns: [
+                        { 'data': "PersonalNo" },
+                        { 'data': "RoutingCode" },
+                        { 'data': "IBAN" },
+                        { 'data': "BasicSalary" },
+                        { 'data': "Allownaces" },
+                        { 'data': "NetSalary" }
+                    ]
+                });
+                
+            }
+        });
+
+        
+    }
+
+</script>
+
+
+

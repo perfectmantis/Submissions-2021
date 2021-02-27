@@ -1,0 +1,550 @@
+﻿@model WPS.Models.ImportEmployeeExcel
+@{
+    ViewBag.Title = "UploadFile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Upload Employee(s)
+                </div>
+
+                @using (Html.BeginForm("UploadFile", "Employee", new { q = Request.QueryString["q"].ToString() }, FormMethod.Post, new { @id = "frmEmpUpload", enctype = "multipart/form-data", @class = "form-horizontal" }))
+                {
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Upload Employee(s)</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("CompanyID", null, "Select Company",
+                                new { id = "CompanyID", @class = "form-control js-example-basic-single", style = "width: 95% !important", maxlength = "50", required = "required" })
+                            </div>
+                            <div class="col-6"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Browse File</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.AntiForgeryToken()
+                                @Html.TextBoxFor(x => x.MyExcelFile, new { @class = "form-control", required = "required", type = "file", @multiple = "multiple" })
+                            </div>
+                            <div class="col-6"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalEmpUploadConfirmation">
+                            <i class="fa fa-dot-circle-o"></i> Upload
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick="GetPendingUploadEmployee()">
+                            <i class="fa fa-dot-circle-o"></i> Get Pending
+                        </button>
+                        @if (Request.QueryString["q"].ToString() != "")
+                        {
+                            string urlParams = WPS.decryptURL.decryptURLstring(Request.QueryString["q"].ToString());
+                            string[] arrQryStr = urlParams.Split('?');
+
+                            int User = Convert.ToInt16(arrQryStr[0].Split('=')[1].ToString());
+                            int OrgId = arrQryStr[1].Split('=')[1].ToString() == "" ? 0 : Convert.ToInt16(arrQryStr[1].Split('=')[1].ToString());
+                            int CompanyId = arrQryStr[2].Split('=')[1].ToString() == "" ? 0 : Convert.ToInt16(arrQryStr[2].Split('=')[1].ToString());
+
+                            if (new Utility().IsInRole("Approve Employee", User))
+                            {
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalEmpApproveConfirmation">
+                                    <i class="fa fa-dot-circle-o"></i> Approve
+                                </button>
+
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModalEmpTmpDeleteConfirmation">
+                                    <i class="fa fa-dot-circle-o"></i> Delete
+                                </button>
+                            }
+
+                           
+                        }
+                        
+                        
+                        
+                    </div>
+                }
+                <div class="card-body">
+                    <div class="default-tab">
+                        <nav>
+                            <div class="nav nav-tabs" id="tabHeader" role="tablist">
+                                <a id="aUploaded" data-toggle="tab" href="#ValidEmployee" class="nav-item nav-link active">Uploaded Employee(s)</a>
+                                <a id="aPending" data-toggle="tab" href="#PendingEmployee" class="nav-item nav-link">Pending Employee(s)</a>
+                                <a id="aErrors" data-toggle="tab" href="#ErrorEmployee" class="nav-item nav-link">Error Employee(s)</a>
+
+                            </div>
+                            <div class="tab-content" id="nav-tabConent">
+
+                                <div class="tab-pane fade show active" id="ValidEmployee">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-borderless table-striped table-earning" id="tblEmployee" role="grid" style="width: 100% !important">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 11%">Employee Code</th>
+                                                        <th style="width: 11%">First Name</th>
+                                                        <th style="width: 22%">Last Name</th>
+                                                        <th style="width: 24%">Personal No</th>
+                                                        <th style="width: 9%">Routing Code</th>
+                                                        <th style="width: 10%">IBAN</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="PendingEmployee">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-borderless table-striped table-earning" id="tblPendingEmployee" role="grid" style="width: 100% !important">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 5%">
+                                                            <input id="chkAll" type="checkbox" onchange="checkAll();" />
+                                                        </th>
+                                                        <th style="width: 11%">Employee Code</th>
+                                                        <th style="width: 11%">First Name</th>
+                                                        <th style="width: 22%">Last Name</th>
+                                                        <th style="width: 24%">Personal No</th>
+                                                        <th style="width: 9%">Routing Code</th>
+                                                        <th style="width: 10%">IBAN</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="ErrorEmployee">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-borderless table-striped table-earning" id="tblErrorEmployee" role="grid" style="width: 100% !important">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 11%">Employee Code</th>
+                                                        <th style="width: 11%">First Name</th>
+                                                        <th style="width: 22%">Last Name</th>
+                                                        <th style="width: 24%">Personal No</th>
+                                                        <th style="width: 9%">Routing Code</th>
+                                                        <th style="width: 10%">IBAN</th>
+                                                        <th style="width: 10%">Message</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody></tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                @*<ul class="nav nav-tabs" id="tabHeader">
+                        <li>
+
+                        </li>
+                        <li>
+
+                        </li>
+
+                    </ul>*@
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script src="~/Content/vendor/jquery.form.min.js"></script>
+
+<script>
+    function UploadEmployee() {
+        $("#frmEmpUpload").submit();
+    }
+
+    $('form').ajaxForm({
+        beforeSubmit: function () {
+        },
+        success: function (data) {
+            console.log(data);
+            if (data.success == false) {
+                $('#lblMessage').text('');
+                $('#divMessage').hide();
+
+                $('#lblerrorMessage').text(data.response);
+                $('#diverrorMessage').show();
+                return false;
+            }
+
+            $('#lblMessage').text('Employees uploaded successfully, waiting for approval. Please check errors.');
+            $('#divMessage').show();
+
+            $('#lblerrorMessage').text('');
+            $('#diverrorMessage').hide();
+
+            $('#tblErrorEmployee').dataTable({
+                paging: true,
+                sort: true,
+                searching: true,
+                bDestroy: true,
+                bRetreive: true,
+                data: data.ErrorEmployees,
+                aLengthMenu: [[-1, 25, 50, 100, 250], ["All", 25, 50, 100, 250]],
+                columns: [
+
+                    { 'data': "EmpCode" },
+                    { 'data': "FirstName" },
+                    { 'data': "LastName" },
+                    { 'data': "PersonalNo" },
+                    { 'data': "RoutingCode" },
+                    { 'data': "IBAN" },
+                    { 'data': "ErrorMessage" },
+                ]
+               ,
+                dom: 'Blfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+            $('#tblEmployee').dataTable({
+                paging: true,
+                sort: true,
+                searching: true,
+                bDestroy: true,
+                bRetreive: true,
+                data: data.Employees,
+                aLengthMenu: [[-1, 25, 50, 100, 250], ["All", 25, 50, 100, 250]],
+                columns: [
+                    { 'data': "EmpCode" },
+                    { 'data': "FirstName" },
+                    { 'data': "LastName" },
+                    { 'data': "PersonalNo" },
+                    { 'data': "RoutingCode" },
+                    { 'data': "IBAN" },
+                ]
+              ,
+                dom: 'Blfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+
+            if (data.ErrorEmployees.length > 0) {
+                $('#aUploaded').attr("class", "nav-item nav-link");
+                $('#aPending').attr("class", "nav-item nav-link");
+                $('#aErrors').attr("class", "nav-item nav-link active");
+
+                $("#ValidEmployee").attr("class", "tab-pane fade");
+                $("#PendingEmployee").attr("class", "tab-pane fade");
+                $("#ErrorEmployee").attr("class", "tab-pane fade show active");
+            }
+            else {
+                $('#aUploaded').attr("class", "nav-item nav-link active");
+                $('#aPending').attr("class", "nav-item nav-link");
+                $('#aErrors').attr("class", "nav-item nav-link");
+
+                $("#ValidEmployee").attr("class", "tab-pane fade show active");
+                $("#PendingEmployee").attr("class", "tab-pane fade");
+                $("#ErrorEmployee").attr("class", "tab-pane fade");
+            }
+        }
+
+
+    });
+
+    function GetPendingUploadEmployee() {
+        if ($('#CompanyID').val() == '') {
+            $('#lblMessage').text('');
+            $('#divMessage').hide();
+
+            $('#lblerrorMessage').text('Please select company');
+            $('#diverrorMessage').show();
+            return false;
+        }
+
+        var companyId = $('#CompanyID').val();
+
+        $.ajax({
+            url: '@Url.Action("GetTempPendingEmployees", "Employee", new { q = Request.QueryString["q"].ToString() })',
+            dataType: 'json',
+            data: { "selectedCompanyId": companyId },
+            success: function (data) {
+                if (data.success == false) {
+                    $('#lblMessage').text('');
+                    $('#divMessage').hide();
+
+                    $('#lblerrorMessage').text(data.response);
+                    $('#diverrorMessage').show();
+                    return false;
+                }
+
+                $('#lblerrorMessage').text('');
+                $('#diverrorMessage').hide();
+
+                $('#aUploaded').attr("class", "nav-item nav-link");
+                $('#aPending').attr("class", "nav-item nav-link active");
+                $('#aErrors').attr("class", "nav-item nav-link");
+
+
+                $("#ValidEmployee").attr("class", "tab-pane fade");
+                $("#PendingEmployee").attr("class", "tab-pane fade show active");
+                $("#ErrorEmployee").attr("class", "tab-pane fade");
+
+                $('#tblPendingEmployee').dataTable({
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    data: data.Employees,
+                    aLengthMenu: [[-1, 25, 50, 100, 250], ["All", 25, 50, 100, 250]],
+                    columns: [
+                        {
+                            'data': "EmpId",
+                            'render': function (data, type, full) {
+                                return '<input id=' + full.EmpId + ' type="checkbox" value=' + full.EmpId + '">';
+                            }
+                        },
+                        { 'data': "EmpCode" },
+                        { 'data': "First_Name" },
+                        { 'data': "LastName" },
+                        { 'data': "PersonalNo" },
+                        { 'data': "RoutingCode" },
+                        { 'data': "IBAN" },
+                    ]
+              ,
+                    dom: 'Blfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+
+                $('#tblErrorEmployee').dataTable().fnClearTable();;
+
+                $('#tblEmployee').dataTable().fnClearTable();;
+
+            }
+        });
+    }
+
+    function ApprovePendingEmployee() {
+        if ($('#CompanyID').val() == '') {
+            $('#lblerrorMessage').text('Please select company');
+            $('#diverrorMessage').show();
+            return false;
+        }
+
+        var companyId = $('#CompanyID').val();
+        var EmpIds = [];
+        $("#tblPendingEmployee input:checkbox:checked").each(function () {
+            if ($(this).attr('id') == 'chkAll') {
+            }
+            else {
+                EmpIds.push($(this).closest('tr').find('td').eq(0).find('input').attr('id'));
+
+            }
+        })
+
+        var dataParam = {
+            selectedCompanyId: companyId,
+            EmpIds: EmpIds
+        }
+        $.ajax({
+            url: '@Url.Action("ApprovePendingEmployee", "Employee", new { q = Request.QueryString["q"].ToString() })',
+            dataType: 'json',
+            data: dataParam,
+            traditional: true,
+            success: function (data) {
+                if (data.success == false) {
+                    $('#lblMessage').text('');
+                    $('#divMessage').hide();
+
+                    $('#lblerrorMessage').text(data.response);
+                    $('#diverrorMessage').show();
+                    return false;
+                }
+
+                $('#lblMessage').text('Employee(s) approved succesfully');
+                $('#divMessage').show();
+
+                $('#lblerrorMessage').text('');
+                $('#diverrorMessage').hide();
+
+                $('#tblPendingEmployee').dataTable({
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    data: data.Employees,
+                    aLengthMenu: [[-1, 25, 50, 100, 250], ["All", 25, 50, 100, 250]],
+                    columns: [
+                        {
+                            'data': "EmpId",
+                            'render': function (data, type, full) {
+                                return '<input id=' + full.EmpId + ' type="checkbox" value=' + full.EmpId + '">';
+                            }
+                        },
+                        { 'data': "EmpCode" },
+                        { 'data': "First_Name" },
+                        { 'data': "LastName" },
+                        { 'data': "PersonalNo" },
+                        { 'data': "RoutingCode" },
+                        { 'data': "IBAN" },
+                    ]
+              ,
+                    dom: 'Blfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+
+                $('#aUploaded').attr("class", "nav-item nav-link");
+                $('#aPending').attr("class", "nav-item nav-link active");
+                $('#aErrors').attr("class", "nav-item nav-link");
+
+
+                $("#ValidEmployee").attr("class", "tab-pane fade");
+                $("#PendingEmployee").attr("class", "tab-pane fade show active");
+                $("#ErrorEmployee").attr("class", "tab-pane fade");
+            }
+        });
+    }
+
+    function DeletePendingEmployee() {
+        if ($('#CompanyID').val() == '') {
+            $('#lblerrorMessage').text('Please select company');
+            $('#diverrorMessage').show();
+            return false;
+        }
+
+        var companyId = $('#CompanyID').val();
+        var EmpIds = [];
+        $("#tblPendingEmployee input:checkbox:checked").each(function () {
+            if ($(this).attr('id') == 'chkAll') {
+            }
+            else {
+                EmpIds.push($(this).closest('tr').find('td').eq(0).find('input').attr('id'));
+
+            }
+        })
+
+        var dataParam = {
+            selectedCompanyId: companyId,
+            EmpIds: EmpIds
+        }
+        $.ajax({
+            url: '@Url.Action("DeletePendingEmployee", "Employee", new { q = Request.QueryString["q"].ToString() })',
+            dataType: 'json',
+            data: dataParam,
+            traditional: true,
+            success: function (data) {
+                if (data.success == false) {
+                    $('#lblMessage').text('');
+                    $('#divMessage').hide();
+
+                    $('#lblerrorMessage').text(data.response);
+                    $('#diverrorMessage').show();
+                    return false;
+                }
+
+                $('#lblMessage').text('Employee(s) deleted succesfully');
+                $('#divMessage').show();
+
+                $('#lblerrorMessage').text('');
+                $('#diverrorMessage').hide();
+
+                $('#tblPendingEmployee').dataTable({
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    data: data.Employees,
+                    aLengthMenu: [[-1, 25, 50, 100, 250], ["All", 25, 50, 100, 250]],
+                    columns: [
+                        {
+                            'data': "EmpId",
+                            'render': function (data, type, full) {
+                                return '<input id=' + full.EmpId + ' type="checkbox" value=' + full.EmpId + '">';
+                            }
+                        },
+                        { 'data': "EmpCode" },
+                        { 'data': "First_Name" },
+                        { 'data': "LastName" },
+                        { 'data': "PersonalNo" },
+                        { 'data': "RoutingCode" },
+                        { 'data': "IBAN" },
+                    ]
+              ,
+                    dom: 'Blfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+
+                $('#aUploaded').attr("class", "nav-item nav-link");
+                $('#aPending').attr("class", "nav-item nav-link active");
+                $('#aErrors').attr("class", "nav-item nav-link");
+
+
+                $("#ValidEmployee").attr("class", "tab-pane fade");
+                $("#PendingEmployee").attr("class", "tab-pane fade show active");
+                $("#ErrorEmployee").attr("class", "tab-pane fade");
+            }
+        });
+    }
+
+    function checkAll() {
+        if ($('#chkAll').prop("checked")) {
+            $('input:checkbox').each(function () {
+                if ($(this).attr('id') != 'chkAll') {
+                    $(this).prop("checked", true);
+
+                }
+
+            });
+        }
+        else {
+            $('input:checkbox').each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+
+
+    };
+
+</script>

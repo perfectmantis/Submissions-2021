@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="83b213b2db814500b409cb541e9be9c1" Name="Diagram1" ZoomLevel="83">
+        <EntityTypeShape EntityType="WPSModel.HRPR_SifAllowances_TR" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPSModel.HRPR_SifDetail_TR" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPSModel.HRPR_SifMaster_TR" Width="1.5" PointX="0.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_Bank_ST" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_CompanyMst_ST" Width="1.5" PointX="1.5" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_Organization_ST" Width="1.5" PointX="1.5" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WPSModel.SRCC_SalesAccount_ST" Width="1.5" PointX="1.5" PointY="36.625" IsExpanded="true" />
+        <AssociationConnector Association="WPSModel.FK_HRPR_SifAllowances_TR_HRPR_SifDetail_TR" ManuallyRouted="false" />
+        <AssociationConnector Association="WPSModel.FK_HRPR_SifAllowances_TR_HRPR_SifMaster_TR" ManuallyRouted="false" />
+        <AssociationConnector Association="WPSModel.FK__HRPR_SifD__SifId__1EE485AA" ManuallyRouted="false" />
+        <AssociationConnector Association="WPSModel.FK_HRPR_SifDetail_TR_SMSA_Bank_ST" ManuallyRouted="false" />
+        <AssociationConnector Association="WPSModel.FK_HRPR_SifDetail_TR_SMSA_CompanyMst_ST" ManuallyRouted="false" />
+        <AssociationConnector Association="WPSModel.FK_HRPR_SifMaster_TR_SMSA_CompanyMst_ST" ManuallyRouted="false" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_CompanyMst_SMSA_Organization" ManuallyRouted="false" />
+        <AssociationConnector Association="WPSModel.FK_SMSA_CompanyMst_SRCC_SalesAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="WPSModel.FK_HRMS_Organization_ST_SRCC_SalesAccount_ST" ManuallyRouted="false" />
+        <AssociationConnector Association="WPSModel.FK_SRCC_SalesAccount_SRCC_SalesAccount" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WPSModel.HRPR_RFADetail_TR" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WPSModel.HRPR_Deduction_TR" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="WPSModel.HRPR_ReasonCode_ST" Width="1.5" PointX="10.375" PointY="4.75" />
+        <EntityTypeShape EntityType="WPSModel.HRPR_Dif_TR" Width="1.5" PointX="3.375" PointY="10.75" />
+        <EntityTypeShape EntityType="WPSModel.HRPR_SifNAK_Detail_TR" Width="1.5" PointX="6.25" PointY="14" />
+        <AssociationConnector Association="WPSModel.FK_HRPR_SifNAK_Detail_TR_HRPR_SifDetail_TR" />
+        <AssociationConnector Association="WPSModel.FK_HRPR_SifNAK_Detail_TR_HRPR_SifMaster_TR" />
+        <EntityTypeShape EntityType="WPSModel.HRPR_RFRDetail_HI" Width="1.5" PointX="10.375" PointY="7.75" />
+        <EntityTypeShape EntityType="WPSModel.TBL_PRC" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WPSModel.TBL_RFA" Width="1.5" PointX="7.75" PointY="6.75" />
+        <EntityTypeShape EntityType="WPSModel.PAF_Status" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WPSModel.TBL_PAF" Width="1.5" PointX="12.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WPSModel.TBL_PAF_DETAILS" Width="1.5" PointX="12.75" PointY="6.75" />
+        <EntityTypeShape EntityType="WPSModel.HRMS_EmployeeMst_TR" Width="1.5" PointX="3" PointY="41.625" />
+        <AssociationConnector Association="WPSModel.FK__HRPR_SifD__EmpId__20CCCE1C" />
+        <AssociationConnector Association="WPSModel.FK_HRMS_EmployeeMst_TR_SMSA_Bank_ST" />
+        <AssociationConnector Association="WPSModel.FK_HRPR_SifAllowances_TR_HRMS_EmployeeMst_TR" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_TempCompany_ST" Width="1.5" PointX="8.375" PointY="13.75" />
+        <EntityTypeShape EntityType="WPSModel.HRMS_TempEmployeeMst_TR" Width="1.5" PointX="10.375" PointY="14.75" />
+        <EntityTypeShape EntityType="WPSModel.SMSA_Logs_HI" Width="1.5" PointX="0.75" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,12 @@
+============================ Start Error ========================================================
+Time : 4:13:27 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.ApproveCompany(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32[] Ids) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 630
+
+TargetSite   : System.Web.Mvc.ActionResult ApproveCompany(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Int32[])
+Line No.  :630
+============================= End Error =========================================================
+
+

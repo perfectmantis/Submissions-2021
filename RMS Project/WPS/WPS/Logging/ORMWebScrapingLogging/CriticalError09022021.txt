@@ -1,0 +1,103 @@
+2/9/2021 12:25:06 PM : Assembly Name : ORMService || Error updating Yelp - Rating:  | Review Count: 0
+Client: ABC Group | Account: Keeva Indian Kitchen (ID: 1) | SiteAccountID: 1
+URL: https://www.yelp.com/biz/keeva-indian-kitchen-san-francisco
+Error:DB : Data Base Error: The SqlParameterCollection only accepts non-null SqlParameter type objects.
+Parameter name: value
+2/9/2021 12:30:36 PM : Assembly Name : ORMService || Error updating Yelp - Rating:  | Review Count: 0
+Client: ABC Group | Account: Keeva Indian Kitchen (ID: 1) | SiteAccountID: 1
+URL: https://www.yelp.com/biz/keeva-indian-kitchen-san-francisco
+Error:DB : Data Base Error: The SqlParameterCollection only accepts non-null SqlParameter type objects.
+Parameter name: value
+2/9/2021 1:32:55 PM : Assembly Name : ORMService || Error updating Yelp - Rating:  | Review Count: 0
+Client: ABC Group | Account: Keeva Indian Kitchen (ID: 1) | SiteAccountID: 1
+URL: https://www.yelp.com/biz/keeva-indian-kitchen-san-francisco
+Error:DB : Data Base Error: The SqlParameterCollection only accepts non-null SqlParameter type objects.
+Parameter name: value
+2/9/2021 2:01:51 PM : Assembly Name : ORMService || System.NullReferenceException: Object reference not set to an instance of an object.
+   at ORMService.Scraper.GetData(ORMWebRequest Site, String altURL, WebProxy altProxy) in G:\SIT Tek\Review Management System\ORMServices\ORMService\Global\Scraper.cs:line 170
+   at ORMService.Scraper.GetData(ORMWebRequest Site, String altURL) in G:\SIT Tek\Review Management System\ORMServices\ORMService\Global\Scraper.cs:line 111
+   at ORMService.Scraper.GetData(ORMWebRequest Site) in G:\SIT Tek\Review Management System\ORMServices\ORMService\Global\Scraper.cs:line 109
+   at GooglePlus.GoogleScraper.GetData(ORMWebRequest Site)  for SiteAccountID 1 URL https://www.google.com/search?q=american+dental+clinic+america&oq=american+dental+clinic+america&#lrd=0x38dfbe73944d4db3:0x90b6e552598a7f2f,1,,,
+2/9/2021 2:04:13 PM : Assembly Name : ORMService || System.NullReferenceException: Object reference not set to an instance of an object.
+   at GooglePlus.GoogleScraper.GetData(ORMWebRequest Site)  for SiteAccountID 1 URL https://www.google.com/search?q=american+dental+clinic+america&oq=american+dental+clinic+america&#lrd=0x38dfbe73944d4db3:0x90b6e552598a7f2f,1,,,
+2/9/2021 3:46:13 PM : Assembly Name : ORMService || Error updating Google - Rating: 4.6 | Review Count: 54
+Client: ABC Group | Account: Keeva Indian Kitchen (ID: 1) | SiteAccountID: 1
+URL: https://www.google.co.in/async/reviewDialog?ei=QXu6XeyNG8qe9QOJh7nIAw&yv=3&async=feature_id:0x38dfbe73944d4db3%3A0x90b6e552598a7f2f,1,,,review_source:All%20reviews,sort_by:qualityScore,start_index:0,is_owner:false,filter_text:,associated_topic:,next_page_token:,async_id_prefix:,_pms:s,_jsfs:Ffpdje,_fmt:pc
+Error:DB : Data Base Error: Invalid object name 'SMIM_CompanyMst_ST'.
+Transaction count after EXECUTE indicates a mismatching number of BEGIN and COMMIT statements. Previous count = 0, current count = 1.
+2/9/2021 3:52:02 PM : Assembly Name : ORMService || Error in AddGooglePlusReviews. Error: DB : Data Base Error: The SqlParameter is already contained by another SqlParameterCollection. URL https://www.google.co.in/async/reviewDialog?ei=QXu6XeyNG8qe9QOJh7nIAw&yv=3&async=feature_id:0x38dfbe73944d4db3%3A0x90b6e552598a7f2f,1,,,review_source:All%20reviews,sort_by:qualityScore,start_index:0,is_owner:false,filter_text:,associated_topic:,next_page_token:,async_id_prefix:,_pms:s,_jsfs:Ffpdje,_fmt:pc
+2/9/2021 4:01:35 PM : Assembly Name : ORMService || Error updating Google - Rating:  | Review Count: 0
+Client: ABC Group | Account: Keeva Indian Kitchen (ID: 1) | SiteAccountID: 1
+URL: https://www.google.co.in/async/reviewDialog?ei=QXu6XeyNG8qe9QOJh7nIAw&yv=3&async=feature_id:0x38dfbe73944d4db3%3A0x90b6e552598a7f2f,1,,,review_source:All%20reviews,sort_by:qualityScore,start_index:0,is_owner:false,filter_text:,associated_topic:,next_page_token:,async_id_prefix:,_pms:s,_jsfs:Ffpdje,_fmt:pc
+Error:DB : Data Base Error: The SqlParameterCollection only accepts non-null SqlParameter type objects.
+Parameter name: value
+2/9/2021 4:02:28 PM : Assembly Name : ORMService || Error updating Google - Rating:  | Review Count: 0
+Client: ABC Group | Account: Keeva Indian Kitchen (ID: 1) | SiteAccountID: 1
+URL: https://www.google.co.in/async/reviewDialog?ei=QXu6XeyNG8qe9QOJh7nIAw&yv=3&async=feature_id:0x38dfbe73944d4db3%3A0x90b6e552598a7f2f,1,,,review_source:All%20reviews,sort_by:qualityScore,start_index:0,is_owner:false,filter_text:,associated_topic:,next_page_token:,async_id_prefix:,_pms:s,_jsfs:Ffpdje,_fmt:pc
+Error:DB : Data Base Error: The SqlParameterCollection only accepts non-null SqlParameter type objects.
+Parameter name: value
+2/9/2021 4:41:25 PM : Assembly Name : ORMService || Error in AddGooglePlusReviews. Error: DB : Data Base Error: Trying to pass a table-valued parameter with 5 column(s) where the corresponding user-defined table type requires 6 column(s). URL https://www.google.co.in/async/reviewDialog?ei=QXu6XeyNG8qe9QOJh7nIAw&yv=3&async=feature_id:0x38dfbe73944d4db3%3A0x90b6e552598a7f2f,1,,,review_source:All%20reviews,sort_by:qualityScore,start_index:0,is_owner:false,filter_text:,associated_topic:,next_page_token:,async_id_prefix:,_pms:s,_jsfs:Ffpdje,_fmt:pc
+2/9/2021 5:00:10 PM : Assembly Name : ORMService || Error in AddGooglePlusReviews. Error: DB : Data Base Error: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated. URL https://www.google.co.in/async/reviewDialog?ei=QXu6XeyNG8qe9QOJh7nIAw&yv=3&async=feature_id:0x3eb33d69957f2cf9%3A0x570f31adec0393b1,1,,,review_source:All%20reviews,sort_by:qualityScore,start_index:0,is_owner:false,filter_text:,associated_topic:,next_page_token:,async_id_prefix:,_pms:s,_jsfs:Ffpdje,_fmt:pc
+2/9/2021 5:34:44 PM : Assembly Name : ORMService || Error in AddGooglePlusReviews. Error: DB : Data Base Error: The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The INSERT statement conflicted with the FOREIGN KEY constraint "FK_SRCC_GooglePlusReviews_GooglePlus". The conflict occurred in database "ORM_FYP", table "dbo.SRCC_GooglePlus_TR", column 'ID'.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated.
+The statement has been terminated. URL https://www.google.co.in/async/reviewDialog?ei=QXu6XeyNG8qe9QOJh7nIAw&yv=3&async=feature_id:0x3eb33d69957f2cf9%3A0x570f31adec0393b1,1,,,review_source:All%20reviews,sort_by:qualityScore,start_index:0,is_owner:false,filter_text:,associated_topic:,next_page_token:,async_id_prefix:,_pms:s,_jsfs:Ffpdje,_fmt:pc

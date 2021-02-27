@@ -1,0 +1,250 @@
+﻿@model WPS.Models.mDashboard
+@{
+    ViewBag.Title = "AdminDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="overview-wrap">
+                <h2 class="title-1">Admin Dashboard</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row m-b-20"></div>
+
+    @*@{
+           int oCount = 0;int mCount = 0; int aCount = 0; int sCount = 0;
+           WPS.WPSService.WPSService wpModel1 = new WPS.WPSService.WPSService();
+
+           var lstOrganization = wpModel1.GetAllOrganization();
+           if (lstOrganization != null)
+           {
+               oCount = lstOrganization.Count();
+           }
+
+        }*@
+
+    <div class="row m-t-25">
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c1">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-account-o"></i>
+                        </div>
+                        <div class="text">
+                            <h2>@Model.OrgCount</h2>
+                            <span># Organization</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart1"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c2">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                        <div class="text">
+                            <h2>@Model.ComCount</h2>
+                            <span># Companies</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart2"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c3">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-calendar-note"></i>
+                        </div>
+                        <div class="text">
+                            <h2>@Model.ActCount</h2>
+                            <span># Accounts</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart3"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="overview-item overview-item--c4">
+                <div class="overview__inner">
+                    <div class="overview-box clearfix">
+                        <div class="icon">
+                            <i class="zmdi zmdi-money"></i>
+                        </div>
+                        <div class="text">
+                            <h2>@Model.SitCount</h2>
+                            <span># Sites</span>
+                        </div>
+                    </div>
+                    <div class="overview-chart">
+                        <canvas id="widgetChart4"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row col-lg-12">
+                <h2 class="title-1 m-b-25">Registered Organization(s)</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-10" style="padding-left:4% !important">
+                    <input type="text" id="txtOrgName" placeholder="Organization" class="form-control" />
+                    @*@Html.DropDownList("OrgID", null, "----- Select Organization -----",
+                        new { id = "ddl_OrgID", @class = "form-control", style = "width: 99%;border-radius:10px;", maxlength = "50" })*@
+                </div>
+                <div class="col-lg-1">
+                    @*<input type="button" value="Search" class="btn btn btn-primary btn-sm" />*@
+                    <button type="button" class="btn-primary btn-sm" onclick="getOrgList($('#txtOrgName').val())">
+                        Search
+                    </button>
+                </div>
+
+            </div>
+            <div class="row">
+                <label id="lblOrgCount" class="col-lg-12 control-label" style="padding-left:4% !important">You have&nbsp;@Model.SP_GetCompanies_By_Organization.Count()&nbsp;Organiztion(s)</label>
+            </div>
+            <div class="col-md-12" style="border-bottom: 1px solid rgba(0, 0, 0, .0625);"></div>
+            <div class="row">
+                <div class="col-lg-12 m-t-5" style="height:280px; overflow-y:auto;background:#eee;border-radius:10px;">
+                    <nav class="navbar-sidebar2">
+
+                        <ul class="list-unstyled navbar__list">
+                            <div id="divLis">
+                                @foreach (WPS.WPSService.SP_GetCompanies_By_Organization_Result item in Model.SP_GetCompanies_By_Organization)
+                                {
+                                    //int cCount = 0;
+                                    //WPS.WPSService.WPSService wpModel = new WPS.WPSService.WPSService();
+                                    //var lstCompanies = wpModel.GetAllCompaniesByOrgId(item.OrgID, true);
+                                    //if (lstCompanies != null)
+                                    //{
+                                    //    cCount = lstCompanies.Count();
+                                    //}
+
+                                <li class="has-sub">
+                                    <a href="/Home/OrganizationDashboard?q=@Request.QueryString["q"].ToString()&OrgId=@item.OrgID" class="js-arrow">
+                                        <i class="fas fa-university"></i>@item.Description
+                                        <small style="float:right; position:relative;">No. of Companies : @item.CompanyCount</small>
+                                    </a>
+                                </li>
+
+
+                                }
+                            </div>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4">
+            <div class="row col-lg-12">
+                <h2 class="title-1 m-b-25">Review(s) Sites</h2>
+            </div>
+            <div class="row col-lg-12 m-t-60">
+                <div class="table-responsive table--no-card m-b-30 m-t-5">
+                    <table id="DataTables_Organization_0" class="table-borderless table-striped table-earning">
+                        <thead>
+                            <tr>
+                                <th>Site Name</th>
+                                <th>Last Run On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (WPS.WPSService.SMAM_ReviewSites_ST item in Model.SiteList)
+                            {
+                                string dt = "";
+                                dt = item.LastScrapeOn == null ? "N/A" : item.LastScrapeOn.Value.ToString("MM/dd/yyyy HH:mm");
+                            <tr>
+                                <td>@item.SiteName</td>
+                                <td>@dt</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#DataTables_Organization_0').dataTable({
+            paging: false,
+            sort: true,
+            searching: false,
+            bDestroy: true,
+            bRetreive: false,
+        });
+        $('#DataTables_Organization_0_info').html('');
+    });
+
+    function getOrgList(orgName) {
+        $.ajax({
+            url: '@Url.Action("GetorgAdmindash", "Home", new { q = Request.QueryString["q"].ToString()})&OrgName=' + orgName,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                var myOrgData = data.orgcompany.SP_GetCompanies_By_Organization;
+                console.log(myOrgData);
+                $('#divLis').html('');
+                var listData = '';
+                for (var i = 0; i < myOrgData.length; i++) {
+                    listData += '<li class="has-sub">'
+                    listData += '<a href="/Home/OrganizationDashboard?q=@Request.QueryString["q"].ToString()&OrgId=' + myOrgData[i].OrgID + '" class="js-arrow">'
+                    listData += '<i class="fas fa-university"></i>' + myOrgData[i].Description + ''
+                    listData += '<small style="float:right; position:relative;">No. of Companies : ' + myOrgData[i].CompanyCount + '</small>'
+                    listData += '</a>'
+                    listData += '</li>'
+                }
+                $('#lblOrgCount').html('You have ' + myOrgData.length + ' Organziation(s)');
+                $('#divLis').html(listData);
+                //$('#DataTables_Organization_0').dataTable({
+                //    paging: false,
+                //    sort: true,
+                //    searching: false,
+                //    bDestroy: true,
+                //    bRetreive: false,
+                //    data: data.orgcompany,
+                //    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                //    columns: [
+                //        { 'data': "Description" },
+                //        { 'data': "CompanyCount" }
+                //    ],
+                //});
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+    }
+
+</script>

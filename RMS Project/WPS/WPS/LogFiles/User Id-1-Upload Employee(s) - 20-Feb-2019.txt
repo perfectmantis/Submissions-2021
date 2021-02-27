@@ -1,0 +1,207 @@
+============================ Start Error ========================================================
+Time : 6:39:37 PM
+
+Error : Collection was modified; enumeration operation might not execute.
+
+StackTrace  :    at System.Data.RBTree`1.RBTreeEnumerator.MoveNext()
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 186
+
+TargetSite   : Boolean MoveNext()
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 6:41:27 PM
+
+Error : A column named 'EmpCode' already belongs to this DataTable.
+
+StackTrace  :    at System.Data.DataColumnCollection.RegisterColumnName(String name, DataColumn column)
+   at System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   at System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   at System.Data.DataColumnCollection.Add(String columnName)
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model)
+
+TargetSite   : Void RegisterColumnName(System.String, System.Data.DataColumn)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 6:43:56 PM
+
+Error : Collection was modified; enumeration operation might not execute.
+
+StackTrace  :    at System.Data.RBTree`1.RBTreeEnumerator.MoveNext()
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 186
+
+TargetSite   : Boolean MoveNext()
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 6:45:49 PM
+
+Error : Collection was modified; enumeration operation might not execute.
+
+StackTrace  :    at System.Data.RBTree`1.RBTreeEnumerator.MoveNext()
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 186
+
+TargetSite   : Boolean MoveNext()
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 6:46:06 PM
+
+Error : Collection was modified; enumeration operation might not execute.
+
+StackTrace  :    at System.Data.RBTree`1.RBTreeEnumerator.MoveNext()
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 186
+
+TargetSite   : Boolean MoveNext()
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 6:46:20 PM
+
+Error : Collection was modified; enumeration operation might not execute.
+
+StackTrace  :    at System.Data.RBTree`1.RBTreeEnumerator.MoveNext()
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 186
+
+TargetSite   : Boolean MoveNext()
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 6:47:59 PM
+
+Error : The given DataRow is not in the current DataRowCollection.
+
+StackTrace  :    at System.Data.DataRowCollection.Remove(DataRow row)
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 213
+
+TargetSite   : Void Remove(System.Data.DataRow)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 6:58:58 PM
+
+Error : The given DataRow is not in the current DataRowCollection.
+
+StackTrace  :    at System.Data.DataRowCollection.Remove(DataRow row)
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model)
+
+TargetSite   : Void Remove(System.Data.DataRow)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:00:16 PM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 367
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:00:38 PM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 367
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:01:02 PM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 367
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:01:31 PM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 367
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:02:41 PM
+
+Error : A column named 'EmpCode' already belongs to this DataTable.
+
+StackTrace  :    at System.Data.DataColumnCollection.RegisterColumnName(String name, DataColumn column)
+   at System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   at System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   at System.Data.DataColumnCollection.Add(String columnName)
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 153
+
+TargetSite   : Void RegisterColumnName(System.String, System.Data.DataColumn)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:04:12 PM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 367
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:07:22 PM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 370
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+

@@ -1,0 +1,25 @@
+============================ Start Error ========================================================
+Time : 6:45:50 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.RFRController.GenerateRFR(Int32 CompanyId, Nullable`1 user, Int32 SelectedCompanyId, String PersonalNo, Decimal amount, Int32 uploadId, String Reason) in G:\Siraj Finance\WPS\WPS\Controllers\RFRController.cs:line 194
+
+TargetSite   : System.Web.Mvc.ActionResult GenerateRFR(Int32, System.Nullable`1[System.Int32], Int32, System.String, System.Decimal, Int32, System.String)
+Line No.  :Object reference not set to an instance of an object.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:45:57 PM
+
+Error : The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+StackTrace  :    at WPS.Models.WPSServiceModel.spInsertRFRDetail(Nullable`1 refundDate, Nullable`1 iD, String estbId, String routingCode, String employeeNo, Nullable`1 amountToRefund, String pan, Nullable`1 createBy, Nullable`1 createOn, String reason) in G:\Siraj Finance\WPS\WPS\Models\WPSServiceModel.cs:line 1178
+   at WPS.Controllers.RFRController.GenerateRFR(Int32 CompanyId, Nullable`1 user, Int32 SelectedCompanyId, String PersonalNo, Decimal amount, Int32 uploadId, String Reason) in G:\Siraj Finance\WPS\WPS\Controllers\RFRController.cs:line 170
+
+TargetSite   : System.Collections.Generic.List`1[WPS.WPSService.sp_InsertRFRDetail_Result] spInsertRFRDetail(System.Nullable`1[System.DateTime], System.Nullable`1[System.Int32], System.String, System.String, System.String, System.Nullable`1[System.Decimal], System.String, System.Nullable`1[System.Int32], System.Nullable`1[System.DateTime], System.String)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+

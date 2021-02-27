@@ -1,0 +1,261 @@
+﻿@model WPS.WPSService.HRMS_EmployeeMst_TR
+@{
+    ViewBag.Title = "Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Employee Information
+                </div>
+                <form class="form-horizontal" role="form" id="frmEmployee">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Employee Information</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => model.EmpId)
+
+                        @*@Html.HiddenFor(model => model.CompanyId)*@
+                        @Html.HiddenFor(model => model.Active)
+                        @Html.HiddenFor(model => model.CreatedBy)
+                        @Html.HiddenFor(model => model.CreatedOn)
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("CompanyID", null, "Select Company",
+                                new { @class = "form-control js-example-basic-single", style = "width: 95% !important", maxlength = "50", required = "required" })
+                            </div>
+                            <div class="col-6"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Personal No</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.PersonalNo, new { id = "tbx_PersonalNo", @class = "form-control", style = "width:95%", placeholder = "Personal No", minlength="14", required = "required" })
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Employee Code</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.EmpCode, new { id = "tbx_EmployeeCode", @class = "form-control", style = "width:95%", placeholder = "Employee Code" })
+
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">First Name</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.First_Name, new { id = "tbx_FirstName", @class = "form-control", style = "width:95%", placeholder = "First Name" })
+
+
+                                @*@Html.DropDownList("MenuType", null, "Select Menu Type",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50" })*@
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Last Name</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.LastName, new { id = "tbx_LastName", @class = "form-control", style = "width:95%", placeholder = " LastName", required = "required" })
+
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Date of Birth</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.DOB, "{0:MM/dd/yyy}", new { id = "tbx_DOB", @class = "form-control datepicker-here", style = "width:95%", placeholder = "MM/dd/yyyy" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Date Of Joining</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.DOJ, "{0:MM/dd/yyy}", new { id = "tbx_DOJ", @class = "form-control datepicker-here", style = "width:95%", placeholder = "MM/dd/yyyy" })
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Phone</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.PhoneNo, new { id = "tbx_Phone", @class = "form-control", style = "width:95%", placeholder = "Phone" })
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Mobile</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.MobileNo, new { id = "tbx_MobileNo", @class = "form-control", style = "width:95%", placeholder = "Mobile" })
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Email</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.Email, new { id = "tbx_Email", @class = "form-control", style = "width:95%", placeholder = "Email" })
+                            </div>
+                            <div class="col-2">
+                                
+                            </div>
+                            <div class="col-3">
+                                
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Bank</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("BankId", null, "Select Bank",
+                                new { @class = "form-control js-example-basic-single", style = "width: 95% !important", maxlength = "50" })
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">IBAN #</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.IBAN, new { id = "tbx_IBAN", @class = "form-control", style = "width:95%", placeholder = "IBAN", minLength="23" })
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">BasicSalary</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.BasicSalary, new { id = "tbx_BasicSalary", @class = "form-control", style = "width:95%", placeholder = "BasicSalary" })
+
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Tarvel</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.Travel, new { id = "tbx_Tarvel", @class = "form-control", style = "width:95%", placeholder = "Tarvel" })
+
+
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Housing</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.Housing, new { id = "tbx_Housing", @class = "form-control", style = "width:95%", placeholder = "Housing" })
+
+
+                            </div>
+                            <div class="col-2">
+                                
+                            </div>
+                            <div class="col-3">
+                                
+
+
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        @*<button type="reset" class="btn btn-primary btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>*@
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $('#frmEmployee').validate({
+        submitHandler: function (form) {
+            $.ajax({
+                url: '@Url.Action("Employee", "Employee", new { q = Request.QueryString["q"].ToString() })',
+                type: "POST",
+                data: $(form).serialize(),
+                success: function (response) {
+                    if (response.success === true) {
+                        goBack(response.response);
+                    }
+                    else {
+                        $('#lblMessage').text(response.response);
+                        $('#divMessage').show();
+                    }
+                }
+            });
+        }
+    });
+
+    $('#tbx_PersonalNo').bind('keypress', function (e) {
+        if ($('#tbx_PersonalNo').val().length > 0) {
+            var valid = (e.which >= 48 && e.which <= 57) || (e.which >= 65 && e.which <= 90) || (e.which >= 97 && e.which <= 122);
+            if (!valid) {
+                e.preventDefault();
+            }
+        }
+    });
+
+    function goBack(message) {
+        window.location = '/Employee/EmployeeIndex?q=@Request.QueryString["q"].ToString()&message=' + message;
+    }
+</script>

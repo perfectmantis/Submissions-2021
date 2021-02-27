@@ -1,0 +1,104 @@
+============================ Start Error ========================================================
+Time : 10:07:00 PM
+
+Object reference not set to an instance of an object.
+
+   at WPS.Models.WPSServiceModel.DeleteSalesAccount(SRCC_SalesAccount_ST org) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\WPSServiceModel.cs:line 544
+   at WPS.Controllers.SaleAccountController.DeleteSaleAccount(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SaleAccountController.cs:line 149
+
+Void DeleteSalesAccount(WPS.WPSService.SRCC_SalesAccount_ST)
+Line No.  :Object reference not set to an instance of an object.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:07:00 PM
+
+Object reference not set to an instance of an object.
+
+   at WPS.Models.WPSServiceModel.DeleteSalesAccount(SRCC_SalesAccount_ST org) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\WPSServiceModel.cs:line 544
+   at WPS.Controllers.SaleAccountController.DeleteSaleAccount(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SaleAccountController.cs:line 149
+
+Void DeleteSalesAccount(WPS.WPSService.SRCC_SalesAccount_ST)
+Line No.  :Object reference not set to an instance of an object.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:07:04 PM
+
+Object reference not set to an instance of an object.
+
+   at WPS.Models.WPSServiceModel.DeleteSalesAccount(SRCC_SalesAccount_ST org) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\WPSServiceModel.cs:line 544
+   at WPS.Controllers.SaleAccountController.DeleteSaleAccount(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SaleAccountController.cs:line 149
+
+Void DeleteSalesAccount(WPS.WPSService.SRCC_SalesAccount_ST)
+Line No.  :Object reference not set to an instance of an object.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:07:04 PM
+
+Object reference not set to an instance of an object.
+
+   at WPS.Models.WPSServiceModel.DeleteSalesAccount(SRCC_SalesAccount_ST org) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\WPSServiceModel.cs:line 544
+   at WPS.Controllers.SaleAccountController.DeleteSaleAccount(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SaleAccountController.cs:line 149
+
+Void DeleteSalesAccount(WPS.WPSService.SRCC_SalesAccount_ST)
+Line No.  :Object reference not set to an instance of an object.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:07:21 PM
+
+Object reference not set to an instance of an object.
+
+   at WPS.Models.WPSServiceModel.DeleteSalesAccount(SRCC_SalesAccount_ST org) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\WPSServiceModel.cs:line 544
+   at WPS.Controllers.SaleAccountController.DeleteSaleAccount(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SaleAccountController.cs:line 149
+
+Void DeleteSalesAccount(WPS.WPSService.SRCC_SalesAccount_ST)
+Line No.  :Object reference not set to an instance of an object.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:07:22 PM
+
+Object reference not set to an instance of an object.
+
+   at WPS.Models.WPSServiceModel.DeleteSalesAccount(SRCC_SalesAccount_ST org) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\WPSServiceModel.cs:line 544
+   at WPS.Controllers.SaleAccountController.DeleteSaleAccount(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SaleAccountController.cs:line 149
+
+Void DeleteSalesAccount(WPS.WPSService.SRCC_SalesAccount_ST)
+Line No.  :Object reference not set to an instance of an object.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:07:23 PM
+
+The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+   at WPS.Models.WPSServiceModel.DeleteSalesAccount(SRCC_SalesAccount_ST org) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\WPSServiceModel.cs:line 544
+   at WPS.Controllers.SaleAccountController.DeleteSaleAccount(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SaleAccountController.cs:line 149
+
+Void DeleteSalesAccount(WPS.WPSService.SRCC_SalesAccount_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:07:23 PM
+
+Object reference not set to an instance of an object.
+
+   at WPS.Models.WPSServiceModel.DeleteSalesAccount(SRCC_SalesAccount_ST org) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\WPSServiceModel.cs:line 544
+   at WPS.Controllers.SaleAccountController.DeleteSaleAccount(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32 Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SaleAccountController.cs:line 149
+
+Void DeleteSalesAccount(WPS.WPSService.SRCC_SalesAccount_ST)
+Line No.  :Object reference not set to an instance of an object.
+============================= End Error =========================================================
+
+

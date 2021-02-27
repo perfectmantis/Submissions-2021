@@ -1,0 +1,287 @@
+============================ Start Error ========================================================
+Time : 1:31:52 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 550
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 528
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :550
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 1:32:46 PM
+
+Error : A column named 'AgentCode' already belongs to this DataTable.
+
+StackTrace  :    at System.Data.DataColumnCollection.RegisterColumnName(String name, DataColumn column)
+   at System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   at System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   at System.Data.DataColumnCollection.Add(String columnName)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 370
+
+TargetSite   : Void RegisterColumnName(System.String, System.Data.DataColumn)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 1:35:12 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 550
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 528
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :550
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 1:37:59 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 550
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 528
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :550
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 1:39:49 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 550
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 528
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :550
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 1:52:49 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 550
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 528
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :550
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 1:58:39 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 570
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 530
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :570
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 1:59:38 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 570
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 530
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :570
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:00:37 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 570
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 530
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 388
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :570
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:02:49 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:03:27 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:08:30 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:08:36 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:09:21 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:09:31 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:09:56 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:11:03 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:11:40 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:12:18 PM
+
+Error : Object reference not set to an instance of an object.
+
+StackTrace  :    at WPS.Controllers.CompanyController.GetCellValue(SpreadsheetDocument document, Cell cell)
+   at WPS.Controllers.CompanyController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId)
+   at WPS.Controllers.CompanyController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportCompanyExcel model)
+
+TargetSite   : System.String GetCellValue(DocumentFormat.OpenXml.Packaging.SpreadsheetDocument, DocumentFormat.OpenXml.Spreadsheet.Cell)
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 4:00:37 PM
+
+Error : Value cannot be null.
+Parameter name: source
+
+StackTrace  :    at System.Linq.Enumerable.Contains[TSource](IEnumerable`1 source, TSource value, IEqualityComparer`1 comparer)
+   at System.Linq.Enumerable.Contains[TSource](IEnumerable`1 source, TSource value)
+   at WPS.Controllers.CompanyController.<>c__DisplayClass12_0.<ApproveCompany>b__0(SMSA_TempCompany_ST x) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 617
+   at System.Linq.Enumerable.WhereListIterator`1.MoveNext()
+   at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   at WPS.Controllers.CompanyController.ApproveCompany(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, Int32[] Ids) in G:\Siraj Finance\WPS\WPS\Controllers\CompanyController.cs:line 617
+
+TargetSite   : Boolean Contains[TSource](System.Collections.Generic.IEnumerable`1[TSource], TSource, System.Collections.Generic.IEqualityComparer`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+

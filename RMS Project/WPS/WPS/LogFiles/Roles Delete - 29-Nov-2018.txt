@@ -1,0 +1,65 @@
+============================ Start Error ========================================================
+Time : 7:24:23 PM
+
+Error : The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+StackTrace  :    at WPS.Models.UserServiceModel.DeleteRoles(SMSA_Roles_ST Roles) in G:\Siraj Finance\WPS\WPS\Models\UserServiceModel.cs:line 224
+   at WPS.Controllers.SetupController.DeleteRoles(Guid Code) in G:\Siraj Finance\WPS\WPS\Controllers\SetupController.cs:line 186
+
+TargetSite   : Int32 DeleteRoles(WPS.UserServiceClass.SMSA_Roles_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:24:57 PM
+
+Error : The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+StackTrace  :    at WPS.Models.UserServiceModel.DeleteRoles(SMSA_Roles_ST Roles) in G:\Siraj Finance\WPS\WPS\Models\UserServiceModel.cs:line 224
+   at WPS.Controllers.SetupController.DeleteRoles(Guid Code) in G:\Siraj Finance\WPS\WPS\Controllers\SetupController.cs:line 186
+
+TargetSite   : Int32 DeleteRoles(WPS.UserServiceClass.SMSA_Roles_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:25:17 PM
+
+Error : The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+StackTrace  :    at WPS.Models.UserServiceModel.DeleteRoles(SMSA_Roles_ST Roles) in G:\Siraj Finance\WPS\WPS\Models\UserServiceModel.cs:line 224
+   at WPS.Controllers.SetupController.DeleteRoles(Guid Code) in G:\Siraj Finance\WPS\WPS\Controllers\SetupController.cs:line 186
+
+TargetSite   : Int32 DeleteRoles(WPS.UserServiceClass.SMSA_Roles_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:25:27 PM
+
+Error : The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+StackTrace  :    at WPS.Models.UserServiceModel.DeleteRoles(SMSA_Roles_ST Roles) in G:\Siraj Finance\WPS\WPS\Models\UserServiceModel.cs:line 224
+   at WPS.Controllers.SetupController.DeleteRoles(Guid Code) in G:\Siraj Finance\WPS\WPS\Controllers\SetupController.cs:line 186
+
+TargetSite   : Int32 DeleteRoles(WPS.UserServiceClass.SMSA_Roles_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 7:25:28 PM
+
+Error : The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+StackTrace  :    at WPS.Models.UserServiceModel.DeleteRoles(SMSA_Roles_ST Roles) in G:\Siraj Finance\WPS\WPS\Models\UserServiceModel.cs:line 224
+   at WPS.Controllers.SetupController.DeleteRoles(Guid Code) in G:\Siraj Finance\WPS\WPS\Controllers\SetupController.cs:line 186
+
+TargetSite   : Int32 DeleteRoles(WPS.UserServiceClass.SMSA_Roles_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+

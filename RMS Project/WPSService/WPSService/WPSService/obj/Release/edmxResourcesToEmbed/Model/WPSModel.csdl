@@ -1,0 +1,972 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WPSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="HRPR_SifAllowances_TR">
+    <Key>
+      <PropertyRef Name="SifAllId" />
+    </Key>
+    <Property Name="SifAllId" Type="Int32" Nullable="false" />
+    <Property Name="SifDtlId" Type="Int32" />
+    <Property Name="SifId" Type="Int32" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="IBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Housing" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Convenyance" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Medical" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="AnnualPassage" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Overtime" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Others" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="LeaveEncashment" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="NetAllowances" Type="Decimal" Precision="9" Scale="2" />
+    <NavigationProperty Name="HRPR_SifDetail_TR" Relationship="Self.FK_HRPR_SifAllowances_TR_HRPR_SifDetail_TR" FromRole="HRPR_SifAllowances_TR" ToRole="HRPR_SifDetail_TR" />
+    <NavigationProperty Name="HRPR_SifMaster_TR" Relationship="Self.FK_HRPR_SifAllowances_TR_HRPR_SifMaster_TR" FromRole="HRPR_SifAllowances_TR" ToRole="HRPR_SifMaster_TR" />
+    <NavigationProperty Name="HRMS_EmployeeMst_TR" Relationship="WPSModel.FK_HRPR_SifAllowances_TR_HRMS_EmployeeMst_TR" FromRole="HRPR_SifAllowances_TR" ToRole="HRMS_EmployeeMst_TR" />
+  </EntityType>
+  <EntityType Name="HRPR_SifDetail_TR">
+    <Key>
+      <PropertyRef Name="SifDtlId" />
+    </Key>
+    <Property Name="SifDtlId" Type="Int32" Nullable="false" />
+    <Property Name="SifId" Type="Int32" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="BankId" Type="Int32" />
+    <Property Name="EstId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoutingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Basic" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Allowances" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="NetSalary" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="LeavesPeriod" Type="Int32" />
+    <NavigationProperty Name="HRPR_SifAllowances_TR" Relationship="Self.FK_HRPR_SifAllowances_TR_HRPR_SifDetail_TR" FromRole="HRPR_SifDetail_TR" ToRole="HRPR_SifAllowances_TR" />
+    <NavigationProperty Name="HRPR_SifMaster_TR" Relationship="Self.FK__HRPR_SifD__SifId__1EE485AA" FromRole="HRPR_SifDetail_TR" ToRole="HRPR_SifMaster_TR" />
+    <NavigationProperty Name="SMSA_Bank_ST" Relationship="Self.FK_HRPR_SifDetail_TR_SMSA_Bank_ST" FromRole="HRPR_SifDetail_TR" ToRole="SMSA_Bank_ST" />
+    <NavigationProperty Name="SMSA_CompanyMst_ST" Relationship="Self.FK_HRPR_SifDetail_TR_SMSA_CompanyMst_ST" FromRole="HRPR_SifDetail_TR" ToRole="SMSA_CompanyMst_ST" />
+    <NavigationProperty Name="HRPR_SifNAK_Detail_TR" Relationship="WPSModel.FK_HRPR_SifNAK_Detail_TR_HRPR_SifDetail_TR" FromRole="HRPR_SifDetail_TR" ToRole="HRPR_SifNAK_Detail_TR" />
+    <NavigationProperty Name="HRMS_EmployeeMst_TR" Relationship="WPSModel.FK__HRPR_SifD__EmpId__20CCCE1C" FromRole="HRPR_SifDetail_TR" ToRole="HRMS_EmployeeMst_TR" />
+  </EntityType>
+  <EntityType Name="HRPR_SifMaster_TR">
+    <Key>
+      <PropertyRef Name="SifId" />
+    </Key>
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="SifId" Type="Int32" Nullable="false" />
+    <Property Name="EstID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SifDate" Type="DateTime" Precision="3" />
+    <Property Name="FolderName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Month" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="Year" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="TotalEmployees" Type="Int32" />
+    <Property Name="TotalSalary" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="WPSRefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="WPSDepositSlip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChargesRefNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ChargesDepositSlip" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProcessType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HRPR_SifAllowances_TR" Relationship="Self.FK_HRPR_SifAllowances_TR_HRPR_SifMaster_TR" FromRole="HRPR_SifMaster_TR" ToRole="HRPR_SifAllowances_TR" />
+    <NavigationProperty Name="HRPR_SifDetail_TR" Relationship="Self.FK__HRPR_SifD__SifId__1EE485AA" FromRole="HRPR_SifMaster_TR" ToRole="HRPR_SifDetail_TR" />
+    <NavigationProperty Name="SMSA_CompanyMst_ST" Relationship="Self.FK_HRPR_SifMaster_TR_SMSA_CompanyMst_ST" FromRole="HRPR_SifMaster_TR" ToRole="SMSA_CompanyMst_ST" />
+    <Property Name="SND_CBUAE" Type="Boolean" Nullable="false" />
+    <Property Name="SND_CBUAE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="ACK_NAK" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ACT_NAK_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HRPR_SifNAK_Detail_TR" Relationship="WPSModel.FK_HRPR_SifNAK_Detail_TR_HRPR_SifMaster_TR" FromRole="HRPR_SifMaster_TR" ToRole="HRPR_SifNAK_Detail_TR" />
+    <Property Name="DeletedBy" Type="Int32" />
+    <Property Name="DeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="DeleteRemarks" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SMSA_Bank_ST">
+    <Key>
+      <PropertyRef Name="BankId" />
+    </Key>
+    <Property Name="BankId" Type="Int32" Nullable="false" />
+    <Property Name="BankName" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="RoutingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HRPR_SifDetail_TR" Relationship="Self.FK_HRPR_SifDetail_TR_SMSA_Bank_ST" FromRole="SMSA_Bank_ST" ToRole="HRPR_SifDetail_TR" />
+    <Property Name="IsMaster" Type="Boolean" />
+    <Property Name="Agent_id" Type="Int32" />
+    <NavigationProperty Name="HRMS_EmployeeMst_TR" Relationship="WPSModel.FK_HRMS_EmployeeMst_TR_SMSA_Bank_ST" FromRole="SMSA_Bank_ST" ToRole="HRMS_EmployeeMst_TR" />
+  </EntityType>
+  <EntityType Name="SMSA_CompanyMst_ST">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="OrgID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyID" Type="Int32" Nullable="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="logoPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EstID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalEmp" Type="Int32" />
+    <Property Name="Activity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Salutation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CityID" Type="Int32" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VerifyEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SaleAccId" Type="Int32" />
+    <Property Name="IsActive" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IsApproved" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Terms" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifyOn" Type="DateTime" Precision="3" />
+    <Property Name="ModifyBy" Type="Int32" />
+    <NavigationProperty Name="HRPR_SifDetail_TR" Relationship="Self.FK_HRPR_SifDetail_TR_SMSA_CompanyMst_ST" FromRole="SMSA_CompanyMst_ST" ToRole="HRPR_SifDetail_TR" />
+    <NavigationProperty Name="HRPR_SifMaster_TR" Relationship="Self.FK_HRPR_SifMaster_TR_SMSA_CompanyMst_ST" FromRole="SMSA_CompanyMst_ST" ToRole="HRPR_SifMaster_TR" />
+    <NavigationProperty Name="SMSA_Organization_ST" Relationship="Self.FK_SMSA_CompanyMst_SMSA_Organization" FromRole="SMSA_CompanyMst_ST" ToRole="SMSA_Organization_ST" />
+    <NavigationProperty Name="SRCC_SalesAccount_ST" Relationship="Self.FK_SMSA_CompanyMst_SRCC_SalesAccount" FromRole="SMSA_CompanyMst_ST" ToRole="SRCC_SalesAccount_ST" />
+    <Property Name="Balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SifCharges" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WPSUserId" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SMSA_Organization_ST">
+    <Key>
+      <PropertyRef Name="OrgID" />
+    </Key>
+    <Property Name="OrgID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SaleAccId" Type="Int32" />
+    <Property Name="Reference" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OrgType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SMSA_CompanyMst_ST" Relationship="Self.FK_SMSA_CompanyMst_SMSA_Organization" FromRole="SMSA_Organization_ST" ToRole="SMSA_CompanyMst_ST" />
+    <NavigationProperty Name="SRCC_SalesAccount_ST" Relationship="Self.FK_HRMS_Organization_ST_SRCC_SalesAccount_ST" FromRole="SMSA_Organization_ST" ToRole="SRCC_SalesAccount_ST" />
+  </EntityType>
+  <EntityType Name="SRCC_SalesAccount_ST">
+    <Key>
+      <PropertyRef Name="SaleAccId" />
+    </Key>
+    <Property Name="SaleAccId" Type="Int32" Nullable="false" />
+    <Property Name="SaleAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AccountType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ParentSaleId" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Area" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SMSA_CompanyMst_ST" Relationship="Self.FK_SMSA_CompanyMst_SRCC_SalesAccount" FromRole="SRCC_SalesAccount_ST" ToRole="SMSA_CompanyMst_ST" />
+    <NavigationProperty Name="SMSA_Organization_ST" Relationship="Self.FK_HRMS_Organization_ST_SRCC_SalesAccount_ST" FromRole="SRCC_SalesAccount_ST" ToRole="SMSA_Organization_ST" />
+    <NavigationProperty Name="SRCC_SalesAccount_ST1" Relationship="Self.FK_SRCC_SalesAccount_SRCC_SalesAccount" FromRole="SRCC_SalesAccount_ST" ToRole="SRCC_SalesAccount_ST1" />
+    <NavigationProperty Name="SRCC_SalesAccount_ST2" Relationship="Self.FK_SRCC_SalesAccount_SRCC_SalesAccount" FromRole="SRCC_SalesAccount_ST1" ToRole="SRCC_SalesAccount_ST" />
+    <Property Name="AccountCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_HRPR_SifAllowances_TR_HRPR_SifDetail_TR">
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifAllowances_TR" Type="Self.HRPR_SifAllowances_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="SifDtlId" />
+      </Principal>
+      <Dependent Role="HRPR_SifAllowances_TR">
+        <PropertyRef Name="SifDtlId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifAllowances_TR_HRPR_SifMaster_TR">
+    <End Role="HRPR_SifMaster_TR" Type="Self.HRPR_SifMaster_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifAllowances_TR" Type="Self.HRPR_SifAllowances_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifMaster_TR">
+        <PropertyRef Name="SifId" />
+      </Principal>
+      <Dependent Role="HRPR_SifAllowances_TR">
+        <PropertyRef Name="SifId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HRPR_SifD__SifId__1EE485AA">
+    <End Role="HRPR_SifMaster_TR" Type="Self.HRPR_SifMaster_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifMaster_TR">
+        <PropertyRef Name="SifId" />
+      </Principal>
+      <Dependent Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="SifId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifDetail_TR_SMSA_Bank_ST">
+    <End Role="SMSA_Bank_ST" Type="Self.SMSA_Bank_ST" Multiplicity="0..1" />
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Bank_ST">
+        <PropertyRef Name="BankId" />
+      </Principal>
+      <Dependent Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="BankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifDetail_TR_SMSA_CompanyMst_ST">
+    <End Role="SMSA_CompanyMst_ST" Type="Self.SMSA_CompanyMst_ST" Multiplicity="0..1" />
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifMaster_TR_SMSA_CompanyMst_ST">
+    <End Role="SMSA_CompanyMst_ST" Type="Self.SMSA_CompanyMst_ST" Multiplicity="0..1" />
+    <End Role="HRPR_SifMaster_TR" Type="Self.HRPR_SifMaster_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="HRPR_SifMaster_TR">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_CompanyMst_SMSA_Organization">
+    <End Role="SMSA_Organization_ST" Type="Self.SMSA_Organization_ST" Multiplicity="1" />
+    <End Role="SMSA_CompanyMst_ST" Type="Self.SMSA_CompanyMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Organization_ST">
+        <PropertyRef Name="OrgID" />
+      </Principal>
+      <Dependent Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="OrgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_CompanyMst_SRCC_SalesAccount">
+    <End Role="SRCC_SalesAccount_ST" Type="Self.SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Role="SMSA_CompanyMst_ST" Type="Self.SMSA_CompanyMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRMS_Organization_ST_SRCC_SalesAccount_ST">
+    <End Role="SRCC_SalesAccount_ST" Type="Self.SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Role="SMSA_Organization_ST" Type="Self.SMSA_Organization_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SMSA_Organization_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRCC_SalesAccount_SRCC_SalesAccount">
+    <End Role="SRCC_SalesAccount_ST" Type="Self.SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Role="SRCC_SalesAccount_ST1" Type="Self.SRCC_SalesAccount_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SRCC_SalesAccount_ST1">
+        <PropertyRef Name="ParentSaleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WPSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="HRPR_SifAllowances_TR" EntityType="Self.HRPR_SifAllowances_TR" />
+    <EntitySet Name="HRPR_SifDetail_TR" EntityType="Self.HRPR_SifDetail_TR" />
+    <EntitySet Name="HRPR_SifMaster_TR" EntityType="Self.HRPR_SifMaster_TR" />
+    <EntitySet Name="SMSA_Bank_ST" EntityType="Self.SMSA_Bank_ST" />
+    <EntitySet Name="SMSA_CompanyMst_ST" EntityType="Self.SMSA_CompanyMst_ST" />
+    <EntitySet Name="SMSA_Organization_ST" EntityType="Self.SMSA_Organization_ST" />
+    <EntitySet Name="SRCC_SalesAccount_ST" EntityType="Self.SRCC_SalesAccount_ST" />
+    <AssociationSet Name="FK_HRPR_SifAllowances_TR_HRPR_SifDetail_TR" Association="Self.FK_HRPR_SifAllowances_TR_HRPR_SifDetail_TR">
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+      <End Role="HRPR_SifAllowances_TR" EntitySet="HRPR_SifAllowances_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifAllowances_TR_HRPR_SifMaster_TR" Association="Self.FK_HRPR_SifAllowances_TR_HRPR_SifMaster_TR">
+      <End Role="HRPR_SifMaster_TR" EntitySet="HRPR_SifMaster_TR" />
+      <End Role="HRPR_SifAllowances_TR" EntitySet="HRPR_SifAllowances_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HRPR_SifD__SifId__1EE485AA" Association="Self.FK__HRPR_SifD__SifId__1EE485AA">
+      <End Role="HRPR_SifMaster_TR" EntitySet="HRPR_SifMaster_TR" />
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifDetail_TR_SMSA_Bank_ST" Association="Self.FK_HRPR_SifDetail_TR_SMSA_Bank_ST">
+      <End Role="SMSA_Bank_ST" EntitySet="SMSA_Bank_ST" />
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifDetail_TR_SMSA_CompanyMst_ST" Association="Self.FK_HRPR_SifDetail_TR_SMSA_CompanyMst_ST">
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifMaster_TR_SMSA_CompanyMst_ST" Association="Self.FK_HRPR_SifMaster_TR_SMSA_CompanyMst_ST">
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+      <End Role="HRPR_SifMaster_TR" EntitySet="HRPR_SifMaster_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_CompanyMst_SMSA_Organization" Association="Self.FK_SMSA_CompanyMst_SMSA_Organization">
+      <End Role="SMSA_Organization_ST" EntitySet="SMSA_Organization_ST" />
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_CompanyMst_SRCC_SalesAccount" Association="Self.FK_SMSA_CompanyMst_SRCC_SalesAccount">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRMS_Organization_ST_SRCC_SalesAccount_ST" Association="Self.FK_HRMS_Organization_ST_SRCC_SalesAccount_ST">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SMSA_Organization_ST" EntitySet="SMSA_Organization_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRCC_SalesAccount_SRCC_SalesAccount" Association="Self.FK_SRCC_SalesAccount_SRCC_SalesAccount">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SRCC_SalesAccount_ST1" EntitySet="SRCC_SalesAccount_ST" />
+    </AssociationSet>
+    <FunctionImport Name="sp_GetPAF" ReturnType="Collection(WPSModel.sp_GetPAF_Result)">
+      <Parameter Name="currentDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getPAFSummaryByDate" ReturnType="Collection(WPSModel.sp_getPAFSummaryByDate_Result)">
+      <Parameter Name="currentDate" Mode="In" Type="DateTime" />
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="HRPR_RFADetail_TR" EntityType="WPSModel.HRPR_RFADetail_TR" />
+    <EntitySet Name="HRPR_Deduction_TR" EntityType="WPSModel.HRPR_Deduction_TR" />
+    <EntitySet Name="HRPR_ReasonCode_ST" EntityType="WPSModel.HRPR_ReasonCode_ST" />
+    <EntitySet Name="HRPR_Dif_TR" EntityType="WPSModel.HRPR_Dif_TR" />
+    <EntitySet Name="HRPR_SifNAK_Detail_TR" EntityType="WPSModel.HRPR_SifNAK_Detail_TR" />
+    <AssociationSet Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifDetail_TR" Association="WPSModel.FK_HRPR_SifNAK_Detail_TR_HRPR_SifDetail_TR">
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+      <End Role="HRPR_SifNAK_Detail_TR" EntitySet="HRPR_SifNAK_Detail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifMaster_TR" Association="WPSModel.FK_HRPR_SifNAK_Detail_TR_HRPR_SifMaster_TR">
+      <End Role="HRPR_SifMaster_TR" EntitySet="HRPR_SifMaster_TR" />
+      <End Role="HRPR_SifNAK_Detail_TR" EntitySet="HRPR_SifNAK_Detail_TR" />
+    </AssociationSet>
+    <EntitySet Name="HRPR_RFRDetail_HI" EntityType="WPSModel.HRPR_RFRDetail_HI" />
+    <FunctionImport Name="sp_getPayrollAmountByDate" ReturnType="Collection(WPSModel.sp_getPayrollAmountByDate_Result)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="PayrollDate" Mode="In" Type="String" />
+      <Parameter Name="PersonelNo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetPayrollDates" ReturnType="Collection(String)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getPayrollProcessEmp" ReturnType="Collection(String)">
+      <Parameter Name="CompanyId" Mode="In" Type="Int32" />
+      <Parameter Name="payrollDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="TBL_PRC" EntityType="WPSModel.TBL_PRC" />
+    <EntitySet Name="TBL_RFA" EntityType="WPSModel.TBL_RFA" />
+    <EntitySet Name="PAF_Status" EntityType="WPSModel.PAF_Status" />
+    <EntitySet Name="TBL_PAF" EntityType="WPSModel.TBL_PAF" />
+    <EntitySet Name="TBL_PAF_DETAILS" EntityType="WPSModel.TBL_PAF_DETAILS" />
+    <FunctionImport Name="sp_InsertRFRDetail" ReturnType="Collection(WPSModel.sp_InsertRFRDetail_Result)">
+      <Parameter Name="RefundDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="EstbId" Mode="In" Type="String" />
+      <Parameter Name="RoutingCode" Mode="In" Type="String" />
+      <Parameter Name="EmployeeNo" Mode="In" Type="String" />
+      <Parameter Name="AmountToRefund" Mode="In" Type="Decimal" />
+      <Parameter Name="Pan" Mode="In" Type="String" />
+      <Parameter Name="CreateBy" Mode="In" Type="Int32" />
+      <Parameter Name="CreateOn" Mode="In" Type="DateTime" />
+      <Parameter Name="Reason" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="HRMS_EmployeeMst_TR" EntityType="WPSModel.HRMS_EmployeeMst_TR" />
+    <AssociationSet Name="FK__HRPR_SifD__EmpId__20CCCE1C" Association="WPSModel.FK__HRPR_SifD__EmpId__20CCCE1C">
+      <End Role="HRMS_EmployeeMst_TR" EntitySet="HRMS_EmployeeMst_TR" />
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRMS_EmployeeMst_TR_SMSA_Bank_ST" Association="WPSModel.FK_HRMS_EmployeeMst_TR_SMSA_Bank_ST">
+      <End Role="SMSA_Bank_ST" EntitySet="SMSA_Bank_ST" />
+      <End Role="HRMS_EmployeeMst_TR" EntitySet="HRMS_EmployeeMst_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifAllowances_TR_HRMS_EmployeeMst_TR" Association="WPSModel.FK_HRPR_SifAllowances_TR_HRMS_EmployeeMst_TR">
+      <End Role="HRMS_EmployeeMst_TR" EntitySet="HRMS_EmployeeMst_TR" />
+      <End Role="HRPR_SifAllowances_TR" EntitySet="HRPR_SifAllowances_TR" />
+    </AssociationSet>
+    <EntitySet Name="SMSA_TempCompany_ST" EntityType="WPSModel.SMSA_TempCompany_ST" />
+    <EntitySet Name="HRMS_TempEmployeeMst_TR" EntityType="WPSModel.HRMS_TempEmployeeMst_TR" />
+    <EntitySet Name="SMSA_Logs_HI" EntityType="WPSModel.SMSA_Logs_HI" />
+    <FunctionImport Name="sp_RptGetUserActivityLog" ReturnType="Collection(WPSModel.sp_RptGetUserActivityLog_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="UserId" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_RptCompanyCreation" ReturnType="Collection(WPSModel.sp_RptCompanyCreation_Result)">
+      <Parameter Name="Fromdate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_RptEmpInfo" ReturnType="Collection(WPSModel.Sp_RptEmpInfo_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_RptRFRId" ReturnType="Collection(WPSModel.Sp_RptRFRId_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_RptSalesAccount" ReturnType="Collection(WPSModel.Sp_RptSalesAccount_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Sp_SifMstDtl" ReturnType="Collection(WPSModel.Sp_SifMstDtl_Result)">
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="User" Mode="In" Type="String" />
+      <Parameter Name="EstId" Mode="In" Type="String" />
+      <Parameter Name="PersonalNo" Mode="In" Type="String" />
+      <Parameter Name="ProcessType" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_GetPAF_Result">
+    <Property Type="Decimal" Name="ID" Nullable="false" Precision="10" Scale="0" />
+    <Property Type="Decimal" Name="uploadid" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="String" Name="paffilename" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="numberofrecords" Nullable="true" />
+    <Property Type="DateTime" Name="uploaddate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="BatchID" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="Decimal" Name="status" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="String" Name="Status2" Nullable="true" MaxLength="18" />
+    <Property Type="String" Name="pafStatus" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_getPAFSummaryByDate_Result">
+    <Property Type="Decimal" Name="PafId" Nullable="false" Precision="10" Scale="0" />
+    <Property Type="Decimal" Name="uploadid" Nullable="true" Precision="10" Scale="0" />
+    <Property Type="String" Name="pafactualname" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="numberofrecords" Nullable="true" />
+    <Property Type="String" Name="personalnumber" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="accountnumber" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="fixedamount" Nullable="true" />
+    <Property Type="Double" Name="variableamount" Nullable="true" />
+    <Property Type="Double" Name="netpay" Nullable="true" />
+    <Property Type="Int32" Name="EmpId" Nullable="false" />
+    <Property Type="String" Name="IsRFAGenerated" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="RFATimestamp" Nullable="true" Precision="23" />
+  </ComplexType>
+  <EntityType Name="HRPR_RFADetail_TR">
+    <Key>
+      <PropertyRef Name="RFAId" />
+    </Key>
+    <Property Name="RFAId" Type="Int32" Nullable="false" />
+    <Property Name="PafId" Type="Int32" />
+    <Property Name="PafActualName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BankId" Type="Int32" />
+    <Property Name="RoutingCode" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="PersonalNo" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="IBAN" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="RefundAmount" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="ReturnReasonCode" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Reference" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="IsExported" Type="Boolean" />
+    <Property Name="ExportedOn" Type="DateTime" Precision="3" />
+    <Property Name="ExportedFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="HRPR_Deduction_TR">
+    <Key>
+      <PropertyRef Name="DedId" />
+    </Key>
+    <Property Name="DedId" Type="Int32" Nullable="false" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="EmpId" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ReceiptNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CreateBy" Type="Int32" />
+    <Property Name="CreateOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="HRPR_ReasonCode_ST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FileType" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HRPR_Dif_TR">
+    <Key>
+      <PropertyRef Name="DifId" />
+    </Key>
+    <Property Name="DifId" Type="Int32" Nullable="false" />
+    <Property Name="DifRef" Type="Int32" />
+    <Property Name="DifDate" Type="DateTime" Precision="3" />
+    <Property Name="DedId" Type="Int32" />
+    <Property Name="uploadId" Type="Int32" />
+    <Property Name="PafdtlId" Type="Int32" />
+    <Property Name="CompanyID" Type="Int32" />
+    <Property Name="EmpID" Type="Int32" />
+    <Property Name="RecordType" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="AgentCode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PersonalNo" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="IBAN" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+    <Property Name="Timestamp" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DispendAmount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="RemittAmount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="ATMTerminalId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PafBatchNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RefNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GenerateOn" Type="DateTime" Precision="3" />
+    <Property Name="GenerateBy" Type="Int32" />
+    <Property Name="IsExported" Type="Boolean" />
+    <Property Name="ExportedDt" Type="DateTime" Precision="3" />
+    <Property Name="ExportedFileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HRPR_SifNAK_Detail_TR">
+    <Key>
+      <PropertyRef Name="SIFNAK_ID" />
+    </Key>
+    <Property Name="SIFNAK_ID" Type="Int32" Nullable="false" />
+    <Property Name="SIFid" Type="Int32" />
+    <Property Name="SifDtlId" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Line_Number" Type="Int32" />
+    <Property Name="ErrorCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="PersonalNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ErrorReason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NACK_FILE_NAME" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="HRPR_SifDetail_TR" Relationship="WPSModel.FK_HRPR_SifNAK_Detail_TR_HRPR_SifDetail_TR" FromRole="HRPR_SifNAK_Detail_TR" ToRole="HRPR_SifDetail_TR" />
+    <NavigationProperty Name="HRPR_SifMaster_TR" Relationship="WPSModel.FK_HRPR_SifNAK_Detail_TR_HRPR_SifMaster_TR" FromRole="HRPR_SifNAK_Detail_TR" ToRole="HRPR_SifMaster_TR" />
+  </EntityType>
+  <Association Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifDetail_TR">
+    <End Type="WPSModel.HRPR_SifDetail_TR" Role="HRPR_SifDetail_TR" Multiplicity="0..1" />
+    <End Type="WPSModel.HRPR_SifNAK_Detail_TR" Role="HRPR_SifNAK_Detail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="SifDtlId" />
+      </Principal>
+      <Dependent Role="HRPR_SifNAK_Detail_TR">
+        <PropertyRef Name="SifDtlId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifMaster_TR">
+    <End Type="WPSModel.HRPR_SifMaster_TR" Role="HRPR_SifMaster_TR" Multiplicity="0..1" />
+    <End Type="WPSModel.HRPR_SifNAK_Detail_TR" Role="HRPR_SifNAK_Detail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifMaster_TR">
+        <PropertyRef Name="SifId" />
+      </Principal>
+      <Dependent Role="HRPR_SifNAK_Detail_TR">
+        <PropertyRef Name="SIFid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HRPR_RFRDetail_HI">
+    <Key>
+      <PropertyRef Name="RFRId" />
+    </Key>
+    <Property Name="RFRId" Type="Int32" Nullable="false" />
+    <Property Name="RefundDate" Type="DateTime" Precision="3" />
+    <Property Name="uploadId" Type="Int32" />
+    <Property Name="RecordType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="SIFRef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ACKRef" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RountingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AmountToRefund" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="RequestCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="PAN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RecordCount" Type="Int32" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="FutureCol1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FutureCol2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FutureCol3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Reason" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="sp_getPayrollAmountByDate_Result">
+    <Property Type="Int32" Name="Value" Nullable="false" />
+    <Property Type="Double" Name="Text" Nullable="true" />
+    <Property Type="Decimal" Name="status" Nullable="true" Precision="10" Scale="0" />
+  </ComplexType>
+  <EntityType Name="TBL_PRC">
+    <Key>
+      <PropertyRef Name="PRCID" />
+    </Key>
+    <Property Name="PRCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PRC_FILE_ID" Type="Int32" />
+    <Property Name="PRC_LINE_NO" Type="Int32" />
+    <Property Name="Uploadid" Type="Int32" />
+    <Property Name="Header" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PAF_ACTUAL_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FIXED_TOTAL" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="VARIABLE_TOTAL" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="NET_TOTAL" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="REC_COUNT" Type="Int32" />
+    <Property Name="FUT_USE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FUT_USE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FUT_USE3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FUT_USE4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Created_date" Type="DateTime" Precision="3" />
+    <Property Name="SND_CBUAE" Type="Boolean" />
+    <Property Name="SND_CBUAE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="ACK_NACK_FILENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ACK_NACK_DATE" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TBL_RFA">
+    <Key>
+      <PropertyRef Name="RFAID" />
+    </Key>
+    <Property Name="RFAID" Type="Int32" Nullable="false" />
+    <Property Name="RFA_FILE_ID" Type="Int32" />
+    <Property Name="RFA_LINE_NO" Type="Int32" />
+    <Property Name="Uploadid" Type="Int32" />
+    <Property Name="Header" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PAF_REF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EST_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PERSONAL_NUMBER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NET_PAY" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="RFA_REASON_CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FUT_USE1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FUT_USE2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FUT_USE3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FUT_USE4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Created_date" Type="DateTime" Precision="3" />
+    <Property Name="SND_CBUAE" Type="Boolean" />
+    <Property Name="SND_CBUAE_DATE" Type="DateTime" Precision="3" />
+    <Property Name="ACK_NACK_FILENAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ACK_NACK_DATE" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PAF_Status">
+    <Key>
+      <PropertyRef Name="Status_id" />
+    </Key>
+    <Property Name="Status_id" Type="Int32" Nullable="false" />
+    <Property Name="Status_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status_description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBL_PAF">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Done" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="10" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numberofrecords" Type="Int32" />
+    <Property Name="uploadid" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="userid" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="uploaddate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="companyid" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="uploaddatetext" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="pafactualname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="estid" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="estname" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Done" Type="Boolean" Nullable="false" />
+    <Property Name="BatchRef" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="uploaddatenumber" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="BatchID" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="PRCgenerated" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="checked" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PrevStatus" Type="Int32" />
+    <Property Name="PafStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsR8Generated" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="R8Timestatmp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TBL_PAF_DETAILS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="uploadid" Type="Int32" />
+    <Property Name="edr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="personalnumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="agentcode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="accountnumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Start_date" Type="DateTime" Precision="3" />
+    <Property Name="End_date" Type="DateTime" Precision="3" />
+    <Property Name="Days" Type="Int32" />
+    <Property Name="fixedamount" Type="Double" />
+    <Property Name="variableamount" Type="Double" />
+    <Property Name="Days_leave" Type="Int32" />
+    <Property Name="netpay" Type="Double" />
+    <Property Name="Payrolldate" Type="DateTime" Precision="3" />
+    <Property Name="remainingamount" Type="Double" />
+    <Property Name="done" Type="Int32" />
+    <Property Name="companyid" Type="Int32" />
+    <Property Name="paid" Type="Int32" />
+    <Property Name="pafdetailstimestamp" Type="DateTime" Precision="3" />
+    <Property Name="DIFGenerated" Type="Int32" />
+    <Property Name="DIFTimestamp" Type="DateTime" Precision="3" />
+    <Property Name="DCRGenerated" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="DCRTimestamp" Type="DateTime" Precision="3" />
+    <Property Name="RFRGenerated" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="RFRTimestamp" Type="DateTime" Precision="3" />
+    <Property Name="RFAMarked" Type="Boolean" />
+    <Property Name="RFAGenerated" Type="Int32" />
+    <Property Name="RFATimestamp" Type="DateTime" Precision="3" />
+  </EntityType>
+  <ComplexType Name="sp_InsertRFRDetail_Result">
+    <Property Type="String" Name="RecordType" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SIFRef" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ACKRef" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="RountingCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmployeeNo" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="AmountToRefund" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="RequestCode" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="PAN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Future" Nullable="false" MaxLength="1" />
+    <Property Type="String" Name="Last" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="HRMS_EmployeeMst_TR">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonalNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <Property Name="DOJ" Type="DateTime" Precision="3" />
+    <Property Name="DOE" Type="DateTime" Precision="3" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="BankId" Type="Int32" />
+    <Property Name="RoutingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="BasicSalary" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Travel" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Housing" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Allowance" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Other" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="HRPR_SifDetail_TR" Relationship="WPSModel.FK__HRPR_SifD__EmpId__20CCCE1C" FromRole="HRMS_EmployeeMst_TR" ToRole="HRPR_SifDetail_TR" />
+    <NavigationProperty Name="SMSA_Bank_ST" Relationship="WPSModel.FK_HRMS_EmployeeMst_TR_SMSA_Bank_ST" FromRole="HRMS_EmployeeMst_TR" ToRole="SMSA_Bank_ST" />
+    <NavigationProperty Name="HRPR_SifAllowances_TR" Relationship="WPSModel.FK_HRPR_SifAllowances_TR_HRMS_EmployeeMst_TR" FromRole="HRMS_EmployeeMst_TR" ToRole="HRPR_SifAllowances_TR" />
+  </EntityType>
+  <Association Name="FK__HRPR_SifD__EmpId__20CCCE1C">
+    <End Type="WPSModel.HRMS_EmployeeMst_TR" Role="HRMS_EmployeeMst_TR" Multiplicity="0..1" />
+    <End Type="WPSModel.HRPR_SifDetail_TR" Role="HRPR_SifDetail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRMS_EmployeeMst_TR">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRMS_EmployeeMst_TR_SMSA_Bank_ST">
+    <End Type="WPSModel.SMSA_Bank_ST" Role="SMSA_Bank_ST" Multiplicity="0..1" />
+    <End Type="WPSModel.HRMS_EmployeeMst_TR" Role="HRMS_EmployeeMst_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Bank_ST">
+        <PropertyRef Name="BankId" />
+      </Principal>
+      <Dependent Role="HRMS_EmployeeMst_TR">
+        <PropertyRef Name="BankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifAllowances_TR_HRMS_EmployeeMst_TR">
+    <End Type="WPSModel.HRMS_EmployeeMst_TR" Role="HRMS_EmployeeMst_TR" Multiplicity="0..1" />
+    <End Type="WPSModel.HRPR_SifAllowances_TR" Role="HRPR_SifAllowances_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRMS_EmployeeMst_TR">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="HRPR_SifAllowances_TR">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SMSA_TempCompany_ST">
+    <Key>
+      <PropertyRef Name="TempCompanyId" />
+    </Key>
+    <Property Name="TempCompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SubAgentCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="ParentCompanyEstID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="EstID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsApproved" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ApprovedOn" Type="DateTime" Precision="3" />
+    <Property Name="ApprovedBy" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="HRMS_TempEmployeeMst_TR">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonalNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmpCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <Property Name="DOJ" Type="DateTime" Precision="3" />
+    <Property Name="DOE" Type="DateTime" Precision="3" />
+    <Property Name="CompanyId" Type="Int32" Nullable="false" />
+    <Property Name="BankId" Type="Int32" />
+    <Property Name="RoutingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PerAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="BasicSalary" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Travel" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Housing" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Allowance" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="Other" Type="Decimal" Precision="9" Scale="2" />
+    <Property Name="CreatedBy" Type="Int32" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="Approved" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SMSA_Logs_HI">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ColumnId" Type="Int32" />
+    <Property Name="ActivityType" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ActivityDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="ActivityOn" Type="DateTime" Precision="3" />
+    <Property Name="ActivityBy" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="sp_RptGetUserActivityLog_Result">
+    <Property Type="Int64" Name="LogId" Nullable="false" />
+    <Property Type="String" Name="ActivityBy" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ActivityDesc" Nullable="true" MaxLength="1000" />
+    <Property Type="DateTime" Name="ActivityOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_RptCompanyCreation_Result">
+    <Property Type="Int32" Name="CompanyID" Nullable="false" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EstID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="String" Name="CreatedUserName" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="String" Name="SaleAccount" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="AgentType" Nullable="true" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="Sp_RptEmpInfo_Result">
+    <Property Type="Int32" Name="EmpId" Nullable="false" />
+    <Property Type="String" Name="PersonalNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmpCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="200" />
+    <Property Type="DateTime" Name="DOJ" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="DOE" Nullable="true" Precision="23" />
+    <Property Type="String" Name="IBAN" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PhoneNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MobileNo" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="BasicSalary" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Company" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="EstID" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="BankName" Nullable="true" MaxLength="80" />
+    <Property Type="String" Name="RoutingCode" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sp_RptRFRId_Result">
+    <Property Type="Int32" Name="RFRId" Nullable="false" />
+    <Property Type="DateTime" Name="RefundDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="RecordType" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="EmployeeNo" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="AmountToRefund" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="RequestCode" Nullable="true" MaxLength="5" />
+    <Property Type="String" Name="PAN" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RecordCount" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="SIFRef" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ACKRef" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Sp_RptSalesAccount_Result">
+    <Property Type="Int32" Name="SaleAccId" Nullable="false" />
+    <Property Type="String" Name="SaleAccount" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="AccountCode" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="AccountType" Nullable="true" MaxLength="9" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Area" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="CreatedBy" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="Sp_SifMstDtl_Result">
+    <Property Type="Int32" Name="SifDtlId" Nullable="false" />
+    <Property Type="Int32" Name="SifId" Nullable="true" />
+    <Property Type="Int32" Name="CompanyID" Nullable="true" />
+    <Property Type="Int32" Name="EmpId" Nullable="true" />
+    <Property Type="Int32" Name="BankId" Nullable="true" />
+    <Property Type="DateTime" Name="SifDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Month" Nullable="true" MaxLength="2" />
+    <Property Type="String" Name="Year" Nullable="true" MaxLength="4" />
+    <Property Type="String" Name="FileName" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="TotalEmployees" Nullable="true" />
+    <Property Type="String" Name="EstId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="PersonalNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="BankName" Nullable="true" MaxLength="80" />
+    <Property Type="String" Name="RoutingCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="IBAN" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Basic" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="Allowances" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Decimal" Name="NetSalary" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="Int32" Name="LeavesPeriod" Nullable="true" />
+    <Property Type="Decimal" Name="TotalSalary" Nullable="true" Precision="9" Scale="2" />
+    <Property Type="String" Name="WPSRefNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="WPSDepositSlip" Nullable="true" />
+    <Property Type="String" Name="ChargesRefNo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ChargesDepositSlip" Nullable="true" />
+    <Property Type="String" Name="ProcessType" Nullable="true" MaxLength="8" />
+    <Property Type="String" Name="Reason" Nullable="true" />
+    <Property Type="Int32" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedOn" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="SND_CBUAE" Nullable="false" />
+    <Property Type="DateTime" Name="SND_CBUAE_DATE" Nullable="true" Precision="23" />
+    <Property Type="String" Name="ACK_NAK" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="ACT_NAK_DATE" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="DeletedBy" Nullable="true" />
+    <Property Type="DateTime" Name="DeletedOn" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DeleteRemarks" Nullable="true" MaxLength="200" />
+  </ComplexType>
+</Schema>

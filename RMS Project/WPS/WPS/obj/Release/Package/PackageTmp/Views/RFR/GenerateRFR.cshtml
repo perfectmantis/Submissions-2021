@@ -1,0 +1,308 @@
+﻿
+@{
+    ViewBag.Title = "GenerateRFR";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / RFR
+                </div>
+                <form class="form-horizontal" role="form" id="frmEmployee">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">RFR</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("CompanyID", null, "Select Company",
+                                new { @class = "form-control js-example-basic-single", style = "width: 95% !important", maxlength = "50",
+                                    onchange = "FillPayrollMonth($(this).val());"
+                                })
+                            </div>
+                            <div class="col-6"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Payroll Month</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("PayrollMonth", null, "Select Payroll Month", new { @id = "MonthId", @class = "form-control js-example-basic-single", placeholder = "Select month", onchange = "FillEmployeeByMonth($(this).val());" })
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Salary Status</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBox("txtSalaryStatus", "", new { @class = "form-control", required = "required", maxLength = "50", type = "text", placeholder = "Salary Status", disabled = true })
+
+
+                                @*@Html.DropDownList("MenuType", null, "Select Menu Type",
+            new { @class = "form-control", style = "width: 95%", maxlength = "50" })*@
+
+                            </div>
+                            
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Employee No</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("Employee", null, "Select Employee", new { @id = "Employee", @class = "form-control js-example-basic-single", placeholder = "Select Employee", onchange = "FillEmployeeAmount($(this).val());" })
+
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Employee Name</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBox("txtEmpName", "", new { @class = "form-control", required = "required", maxLength = "50", type = "text", placeholder = "Employee Name", disabled = true })
+
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Available Balance</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBox("txtAvailableBalance", "", new { @class = "form-control", required = "required", maxLength = "50", type = "text", placeholder = "Available Balance", disabled = true })
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Salary Amount</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("SalaryAmount", null, "Select Payroll Amount", new { @id = "SalaryAmountId", @class = "form-control ", placeholder = "Select Payroll Amount" })
+                            </div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Amount</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBox("txtAmount", "", new { @class = "form-control", required = "required", maxLength = "50", type = "text", placeholder = "Amount" })
+
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Return Reason</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("Reason", null, "-- Select Reason --", new { @id = "ReturnReasonId", @class = "form-control ", placeholder = "-- Select Reason --" })
+                            </div>
+                            <div class="col-1"></div>
+
+                        </div>
+                        
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-sm" onclick="ProcessRFR();">
+                            <i class="fa fa-dot-circle-o"></i> Generate RFR
+                        </button>
+                        
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function FillPayrollMonth(CompanyId) {
+        //var CompanyId = $("#CompanyId").val();
+        $.ajax({
+            url: '@Url.Action("FillPayrollMonth", "RFR", new { q = Request.QueryString["q"].ToString() })',
+            type: 'post',
+            data: { "CompanyId": CompanyId },
+            success: function (data) {
+                var items = [];
+                items.push("<option value=''>" + "-- All --" + "</option>"); //first item
+                for (var i = 0; i < data.PayrollMonth.length; i++) {
+                    items.push("<option value=" + data.PayrollMonth[i].Value + ">" + data.PayrollMonth[i].Text + "</option>");
+                }
+                $("#MonthId").html(items.join(' '));
+            },
+            error: function (ex) {
+                $('#lblerrorMessage').text(ex);
+                $('#diverrorMessage').show();
+            }
+        });
+    }
+
+    function FillEmployeeByMonth(month) {
+        var CompanyId = $("#CompanyID").val();
+
+        $.ajax({
+            url: '@Url.Action("FillEmployeeByMonth", "RFR", new { q = Request.QueryString["q"].ToString() })',
+            type: 'post',
+            data: { "CompanyId": CompanyId, "monthYear": month },
+            success: function (data) {
+                var items = [];
+                items.push("<option value=''>" + "-- All --" + "</option>"); //first item
+                for (var i = 0; i < data.Employee.length; i++) {
+                    items.push("<option value=" + data.Employee[i].Value + ">" + data.Employee[i].Text + "</option>");
+                }
+                $("#Employee").html(items.join(' '));
+
+            },
+            error: function (ex) {
+                $('#lblerrorMessage').text(ex);
+                $('#diverrorMessage').show();
+            }
+        });
+    }
+
+    function FillEmployeeAmount(personalNo) {
+        var CompanyId = $("#CompanyID").val();
+        var month = $("#MonthId").val();
+
+        $.ajax({
+            url: '@Url.Action("FillEmployeeAmount", "RFR", new { q = Request.QueryString["q"].ToString() })',
+            type: 'post',
+            data: { "CompanyId": CompanyId, "monthYear": month, "personalNo": personalNo },
+            success: function (data) {
+                var items = [];
+                items.push("<option value=''>" + "-- All --" + "</option>"); //first item
+                for (var i = 0; i < data.EmployeeAmount.length; i++) {
+                    items.push("<option value=" + data.EmployeeAmount[i].Value + ">" + data.EmployeeAmount[i].Text + "</option>");
+                }
+                console.log(data.SalaryStatus);
+                $("#txtSalaryStatus").val(data.SalaryStatus);
+                $("#SalaryAmountId").html(items.join(' '));
+
+                $.ajax({
+                    url: '@Url.Action("GetEmployeeDetails", "Common", new { q = Request.QueryString["q"].ToString() })',
+                    type: 'post',
+                    data: { "PersonalNo": personalNo, "CompanyId": CompanyId },
+                    success: function (response) {
+                        console.log(response);
+                        if (response.Employee != null) {
+
+                            $('#txtEmpName').val(response.Employee.FullName);
+                            
+
+                            $.ajax({
+                                url: '@Url.Action("GetEmployeeBalance", "Common", new { q = Request.QueryString["q"].ToString() })',
+                                type: 'post',
+                                data: { "EmpId": response.Employee.EmpId },
+                                success: function (responseDetail) {
+                                    if (responseDetail.Balance != null) {
+
+                                        $("#txtAvailableBalance").val(responseDetail.Balance);
+                                    }
+                                    else {
+                                        $('#lblerrorMessage').text("Detail not found");
+                                        $('#diverrorMessage').show();
+                                    }
+                                }
+                            });
+
+                        }
+                        else {
+                            $('#lblerrorMessage').text("Detail not found");
+                            $('#diverrorMessage').show();
+                        }
+
+                    },
+                    error: function (ex) {
+                        $('#lblerrorMessage').text(ex);
+                        $('#diverrorMessage').show();
+                    }
+                });
+            },
+            error: function (ex) {
+                $('#lblerrorMessage').text(ex);
+                $('#diverrorMessage').show();
+            }
+        });
+    }
+
+    function ProcessRFR() {
+        var CompanyID = $("#CompanyID").val();
+        var PersonalNo = $("#Employee").val();
+        var amount = $("#txtAmount").val();
+        var uploadId = $("#SalaryAmountId").val();
+        var _reason = $("#ReturnReasonId").val();
+
+        $.ajax({
+            url: '@Url.Action("GenerateRFR", "RFR", new { q = Request.QueryString["q"].ToString() })',
+            type: 'post',
+            data: { "SelectedCompanyId": CompanyID, "PersonalNo": PersonalNo, "amount": amount, "uploadId": uploadId, "Reason": _reason },
+            success: function (response) {
+                if (response.status == true) {
+                    goBack(response.response);
+                    //$('#lblMessage').text(response.response);
+                    //$('#divMessage').show();
+                }
+                else {
+                    $('#lblerrorMessage').text(response.response);
+                    $('#diverrorMessage').show();
+
+                }
+            },
+            error: function (ex) {
+                hideAjaxLoader();
+                $('#lblerrorMessage').text(ex);
+                $('#diverrorMessage').show();
+            }
+        });
+    }
+
+    function goBack(message) {
+        window.location = '/RFR/GenerateRFR?q=@Request.QueryString["q"].ToString()&message=' + message;
+    }
+
+    $(document).ready(function () {
+        var msg = '@Request.QueryString["message"]';
+        var newUrl = '/RFR/GenerateRFR?q=@Request.QueryString["q"].ToString()';
+        if (msg != '' && msg != '0') {
+            $('#lblMessage').html(msg);
+            $('#divMessage').show();
+        }
+
+
+        window.history.pushState("", "RFR", newUrl);
+    });
+</script>

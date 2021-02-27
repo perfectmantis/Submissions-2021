@@ -1,0 +1,876 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WPSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HRMS_EmployeeMst_TR">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonalNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmpCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="First Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="DOJ" Type="datetime" />
+    <Property Name="DOE" Type="datetime" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="BankId" Type="int" />
+    <Property Name="RoutingCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="IBAN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PerAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="Active" Type="char" MaxLength="1" />
+    <Property Name="BasicSalary" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Travel" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Housing" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Allowance" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Other" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="HRMS_TempEmployeeMst_TR">
+    <Key>
+      <PropertyRef Name="EmpId" />
+    </Key>
+    <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PersonalNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmpCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="First Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="200" />
+    <Property Name="DOB" Type="datetime" />
+    <Property Name="DOJ" Type="datetime" />
+    <Property Name="DOE" Type="datetime" />
+    <Property Name="CompanyId" Type="int" Nullable="false" />
+    <Property Name="BankId" Type="int" />
+    <Property Name="RoutingCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="IBAN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="PerAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="Active" Type="char" MaxLength="1" />
+    <Property Name="BasicSalary" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Travel" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Housing" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Allowance" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Other" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="Approved" Type="char" MaxLength="1" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="HRPR_Deduction_TR">
+    <Key>
+      <PropertyRef Name="DedId" />
+    </Key>
+    <Property Name="DedId" Type="int" Nullable="false" />
+    <Property Name="CompanyId" Type="int" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ReceiptNo" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="CreateBy" Type="int" />
+    <Property Name="CreateOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="HRPR_Dif_TR">
+    <Key>
+      <PropertyRef Name="DifId" />
+    </Key>
+    <Property Name="DifId" Type="int" Nullable="false" />
+    <Property Name="DifRef" Type="int" />
+    <Property Name="DifDate" Type="datetime" />
+    <Property Name="DedId" Type="int" />
+    <Property Name="uploadId" Type="int" />
+    <Property Name="PafdtlId" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="RecordType" Type="varchar" MaxLength="3" />
+    <Property Name="AgentCode" Type="varchar" MaxLength="30" />
+    <Property Name="PersonalNo" Type="varchar" MaxLength="35" />
+    <Property Name="IBAN" Type="varchar" MaxLength="35" />
+    <Property Name="Timestamp" Type="varchar" MaxLength="20" />
+    <Property Name="DispendAmount" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="RemittAmount" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="ATMTerminalId" Type="varchar" MaxLength="10" />
+    <Property Name="PafBatchNo" Type="varchar" MaxLength="100" />
+    <Property Name="RefNo" Type="varchar" MaxLength="100" />
+    <Property Name="GenerateOn" Type="datetime" />
+    <Property Name="GenerateBy" Type="int" />
+    <Property Name="IsExported" Type="bit" />
+    <Property Name="ExportedDt" Type="datetime" />
+    <Property Name="ExportedFileName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="HRPR_ReasonCode_ST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="varchar" MaxLength="5" />
+    <Property Name="Description" Type="nvarchar" MaxLength="150" />
+    <Property Name="FileType" Type="nvarchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="HRPR_RFADetail_TR">
+    <Key>
+      <PropertyRef Name="RFAId" />
+    </Key>
+    <Property Name="RFAId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PafId" Type="int" />
+    <Property Name="PafActualName" Type="nvarchar" MaxLength="50" />
+    <Property Name="BankId" Type="int" />
+    <Property Name="RoutingCode" Type="nvarchar" MaxLength="35" />
+    <Property Name="PersonalNo" Type="nvarchar" MaxLength="35" />
+    <Property Name="IBAN" Type="nvarchar" MaxLength="35" />
+    <Property Name="RefundAmount" Type="decimal" Precision="9" Scale="2" />
+    <Property Name="ReturnReasonCode" Type="nvarchar" MaxLength="5" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="35" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="IsExported" Type="bit" />
+    <Property Name="ExportedOn" Type="datetime" />
+    <Property Name="ExportedFileName" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="HRPR_RFRDetail_HI">
+    <Key>
+      <PropertyRef Name="RFRId" />
+    </Key>
+    <Property Name="RFRId" Type="int" Nullable="false" />
+    <Property Name="RefundDate" Type="datetime" />
+    <Property Name="uploadId" Type="int" />
+    <Property Name="RecordType" Type="nvarchar" MaxLength="10" />
+    <Property Name="SIFRef" Type="nvarchar" MaxLength="50" />
+    <Property Name="ACKRef" Type="nvarchar" MaxLength="50" />
+    <Property Name="RountingCode" Type="varchar" MaxLength="50" />
+    <Property Name="EmployeeNo" Type="varchar" MaxLength="50" />
+    <Property Name="AmountToRefund" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="RequestCode" Type="varchar" MaxLength="5" />
+    <Property Name="PAN" Type="varchar" MaxLength="50" />
+    <Property Name="RecordCount" Type="int" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="FutureCol1" Type="nvarchar" MaxLength="50" />
+    <Property Name="FutureCol2" Type="nvarchar" MaxLength="50" />
+    <Property Name="FutureCol3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Reason" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="HRPR_SifAllowances_TR">
+    <Key>
+      <PropertyRef Name="SifAllId" />
+    </Key>
+    <Property Name="SifAllId" Type="int" Nullable="false" />
+    <Property Name="SifDtlId" Type="int" />
+    <Property Name="SifId" Type="int" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="IBAN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Housing" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Convenyance" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Medical" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="AnnualPassage" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Overtime" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Others" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="LeaveEncashment" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="NetAllowances" Type="numeric" Precision="9" Scale="2" />
+  </EntityType>
+  <EntityType Name="HRPR_SifDetail_TR">
+    <Key>
+      <PropertyRef Name="SifDtlId" />
+    </Key>
+    <Property Name="SifDtlId" Type="int" Nullable="false" />
+    <Property Name="SifId" Type="int" />
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="EmpId" Type="int" />
+    <Property Name="BankId" Type="int" />
+    <Property Name="EstId" Type="nvarchar" MaxLength="50" />
+    <Property Name="PersonalNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="RoutingCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="IBAN" Type="nvarchar" MaxLength="50" />
+    <Property Name="Basic" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="Allowances" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="NetSalary" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="LeavesPeriod" Type="int" />
+  </EntityType>
+  <EntityType Name="HRPR_SifMaster_TR">
+    <Key>
+      <PropertyRef Name="SifId" />
+    </Key>
+    <Property Name="CompanyID" Type="int" />
+    <Property Name="SifId" Type="int" Nullable="false" />
+    <Property Name="EstID" Type="nvarchar" MaxLength="50" />
+    <Property Name="SifDate" Type="datetime" />
+    <Property Name="FolderName" Type="nvarchar(max)" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Month" Type="nvarchar" MaxLength="2" />
+    <Property Name="Year" Type="nvarchar" MaxLength="4" />
+    <Property Name="TotalEmployees" Type="int" />
+    <Property Name="TotalSalary" Type="numeric" Precision="9" Scale="2" />
+    <Property Name="WPSRefNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="WPSDepositSlip" Type="nvarchar(max)" />
+    <Property Name="ChargesRefNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChargesDepositSlip" Type="nvarchar(max)" />
+    <Property Name="ProcessType" Type="char" MaxLength="1" />
+    <Property Name="Reason" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="SND_CBUAE" Type="bit" Nullable="false" />
+    <Property Name="SND_CBUAE_DATE" Type="datetime" />
+    <Property Name="ACK_NAK" Type="varchar" MaxLength="50" />
+    <Property Name="ACT_NAK_DATE" Type="datetime" />
+    <Property Name="DeletedBy" Type="int" />
+    <Property Name="DeletedOn" Type="datetime" />
+    <Property Name="DeleteRemarks" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="HRPR_SifNAK_Detail_TR">
+    <Key>
+      <PropertyRef Name="SIFNAK_ID" />
+    </Key>
+    <Property Name="SIFNAK_ID" Type="int" Nullable="false" />
+    <Property Name="SIFid" Type="int" />
+    <Property Name="SifDtlId" Type="int" />
+    <Property Name="FileName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Line_Number" Type="int" />
+    <Property Name="ErrorCode" Type="char" MaxLength="10" />
+    <Property Name="PersonalNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="ErrorReason" Type="nvarchar" MaxLength="500" />
+    <Property Name="NACK_FILE_NAME" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EWPS.dbo.PAF_Status' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PAF_Status">
+    <Key>
+      <PropertyRef Name="Status_id" />
+    </Key>
+    <Property Name="Status_id" Type="int" Nullable="false" />
+    <Property Name="Status_name" Type="varchar" MaxLength="50" />
+    <Property Name="Status_description" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="SMSA_Bank_ST">
+    <Key>
+      <PropertyRef Name="BankId" />
+    </Key>
+    <Property Name="BankId" Type="int" Nullable="false" />
+    <Property Name="BankName" Type="nvarchar" MaxLength="80" />
+    <Property Name="RoutingCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsMaster" Type="bit" />
+    <Property Name="Agent_id" Type="int" />
+  </EntityType>
+  <EntityType Name="SMSA_CompanyMst_ST">
+    <Key>
+      <PropertyRef Name="CompanyID" />
+    </Key>
+    <Property Name="OrgID" Type="int" Nullable="false" />
+    <Property Name="CompanyID" Type="int" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="logoPath" Type="nvarchar(max)" />
+    <Property Name="EstID" Type="nvarchar" MaxLength="50" />
+    <Property Name="TotalEmp" Type="int" />
+    <Property Name="Activity" Type="nvarchar" MaxLength="100" />
+    <Property Name="Salutation" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="Area" Type="nvarchar" MaxLength="100" />
+    <Property Name="CityID" Type="int" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="VerifyEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="SaleAccId" Type="int" />
+    <Property Name="IsActive" Type="char" MaxLength="1" />
+    <Property Name="IsApproved" Type="char" MaxLength="1" />
+    <Property Name="Terms" Type="char" MaxLength="1" />
+    <Property Name="Balance" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SifCharges" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="WPSUserId" Type="varchar" MaxLength="30" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ModifyOn" Type="datetime" />
+    <Property Name="ModifyBy" Type="int" />
+  </EntityType>
+  <EntityType Name="SMSA_Logs_HI">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ColumnId" Type="int" />
+    <Property Name="ActivityType" Type="char" MaxLength="1" />
+    <Property Name="ActivityDesc" Type="varchar" MaxLength="1000" />
+    <Property Name="ActivityOn" Type="datetime" />
+    <Property Name="ActivityBy" Type="int" />
+  </EntityType>
+  <EntityType Name="SMSA_Organization_ST">
+    <Key>
+      <PropertyRef Name="OrgID" />
+    </Key>
+    <Property Name="OrgID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="100" />
+    <Property Name="Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="SaleAccId" Type="int" />
+    <Property Name="Reference" Type="nvarchar(max)" />
+    <Property Name="OrgType" Type="char" MaxLength="1" />
+    <Property Name="Status" Type="char" MaxLength="1" />
+    <Property Name="Reason" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SMSA_TempCompany_ST">
+    <Key>
+      <PropertyRef Name="TempCompanyId" />
+    </Key>
+    <Property Name="TempCompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AgentCode" Type="varchar" MaxLength="10" />
+    <Property Name="SubAgentCode" Type="varchar" MaxLength="10" />
+    <Property Name="CompanyType" Type="varchar" MaxLength="1" />
+    <Property Name="ParentCompanyEstID" Type="varchar" MaxLength="30" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="100" />
+    <Property Name="EstID" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address" Type="nvarchar" MaxLength="200" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsApproved" Type="char" MaxLength="1" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="ApprovedOn" Type="datetime" />
+    <Property Name="ApprovedBy" Type="int" />
+    <Property Name="FileName" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="SRCC_SalesAccount_ST">
+    <Key>
+      <PropertyRef Name="SaleAccId" />
+    </Key>
+    <Property Name="SaleAccId" Type="int" Nullable="false" />
+    <Property Name="SaleAccount" Type="nvarchar" MaxLength="50" />
+    <Property Name="AccountCode" Type="varchar" MaxLength="10" />
+    <Property Name="AccountType" Type="char" MaxLength="1" />
+    <Property Name="ParentSaleId" Type="int" />
+    <Property Name="Address" Type="nvarchar" MaxLength="100" />
+    <Property Name="Area" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="30" />
+    <Property Name="CreatedBy" Type="int" />
+    <Property Name="CreatedOn" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EWPS.dbo.TBL_PAF' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBL_PAF">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Done" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="10" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="numberofrecords" Type="int" />
+    <Property Name="uploadid" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="userid" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="uploaddate" Type="datetime" />
+    <Property Name="status" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="companyid" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="uploaddatetext" Type="nvarchar" MaxLength="255" />
+    <Property Name="pafactualname" Type="nvarchar" MaxLength="255" />
+    <Property Name="estid" Type="nvarchar" MaxLength="255" />
+    <Property Name="estname" Type="nvarchar" MaxLength="255" />
+    <Property Name="Done" Type="bit" Nullable="false" />
+    <Property Name="BatchRef" Type="nvarchar" MaxLength="255" />
+    <Property Name="uploaddatenumber" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="BatchID" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="PRCgenerated" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="checked" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="PrevStatus" Type="int" />
+    <Property Name="PafStatus" Type="varchar" MaxLength="50" />
+    <Property Name="IsR8Generated" Type="char" MaxLength="1" />
+    <Property Name="R8Timestatmp" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'EWPS.dbo.TBL_PAF_DETAILS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBL_PAF_DETAILS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uploadid" Type="int" />
+    <Property Name="edr" Type="nvarchar" MaxLength="255" />
+    <Property Name="personalnumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="agentcode" Type="nvarchar" MaxLength="255" />
+    <Property Name="accountnumber" Type="nvarchar" MaxLength="255" />
+    <Property Name="Start_date" Type="datetime" />
+    <Property Name="End_date" Type="datetime" />
+    <Property Name="Days" Type="int" />
+    <Property Name="fixedamount" Type="float" />
+    <Property Name="variableamount" Type="float" />
+    <Property Name="Days_leave" Type="int" />
+    <Property Name="netpay" Type="float" />
+    <Property Name="Payrolldate" Type="datetime" />
+    <Property Name="remainingamount" Type="float" />
+    <Property Name="done" Type="int" />
+    <Property Name="companyid" Type="int" />
+    <Property Name="paid" Type="int" />
+    <Property Name="pafdetailstimestamp" Type="datetime" />
+    <Property Name="DIFGenerated" Type="int" />
+    <Property Name="DIFTimestamp" Type="datetime" />
+    <Property Name="DCRGenerated" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="DCRTimestamp" Type="datetime" />
+    <Property Name="RFRGenerated" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="RFRTimestamp" Type="datetime" />
+    <Property Name="RFAMarked" Type="bit" />
+    <Property Name="RFAGenerated" Type="int" />
+    <Property Name="RFATimestamp" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TBL_PRC">
+    <Key>
+      <PropertyRef Name="PRCID" />
+    </Key>
+    <Property Name="PRCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRC_FILE_ID" Type="int" />
+    <Property Name="PRC_LINE_NO" Type="int" />
+    <Property Name="Uploadid" Type="int" />
+    <Property Name="Header" Type="nchar" MaxLength="10" />
+    <Property Name="PAF_ACTUAL_NAME" Type="varchar" MaxLength="50" />
+    <Property Name="FIXED_TOTAL" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="VARIABLE_TOTAL" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="NET_TOTAL" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="REC_COUNT" Type="int" />
+    <Property Name="FUT_USE1" Type="varchar" MaxLength="50" />
+    <Property Name="FUT_USE2" Type="varchar" MaxLength="50" />
+    <Property Name="FUT_USE3" Type="varchar" MaxLength="50" />
+    <Property Name="FUT_USE4" Type="varchar" MaxLength="50" />
+    <Property Name="Created_date" Type="datetime" />
+    <Property Name="SND_CBUAE" Type="bit" />
+    <Property Name="SND_CBUAE_DATE" Type="datetime" />
+    <Property Name="ACK_NACK_FILENAME" Type="varchar" MaxLength="50" />
+    <Property Name="ACK_NACK_DATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TBL_RFA">
+    <Key>
+      <PropertyRef Name="RFAID" />
+    </Key>
+    <Property Name="RFAID" Type="int" Nullable="false" />
+    <Property Name="RFA_FILE_ID" Type="int" />
+    <Property Name="RFA_LINE_NO" Type="int" />
+    <Property Name="Uploadid" Type="int" />
+    <Property Name="Header" Type="nchar" MaxLength="10" />
+    <Property Name="PAF_REF" Type="varchar" MaxLength="50" />
+    <Property Name="EST_ID" Type="varchar" MaxLength="50" />
+    <Property Name="PERSONAL_NUMBER" Type="varchar" MaxLength="50" />
+    <Property Name="NET_PAY" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="RFA_REASON_CODE" Type="varchar" MaxLength="50" />
+    <Property Name="FUT_USE1" Type="varchar" MaxLength="50" />
+    <Property Name="FUT_USE2" Type="varchar" MaxLength="50" />
+    <Property Name="FUT_USE3" Type="varchar" MaxLength="50" />
+    <Property Name="FUT_USE4" Type="varchar" MaxLength="50" />
+    <Property Name="Created_date" Type="datetime" />
+    <Property Name="SND_CBUAE" Type="bit" />
+    <Property Name="SND_CBUAE_DATE" Type="datetime" />
+    <Property Name="ACK_NACK_FILENAME" Type="varchar" MaxLength="50" />
+    <Property Name="ACK_NACK_DATE" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__HRPR_SifD__EmpId__20CCCE1C">
+    <End Role="HRMS_EmployeeMst_TR" Type="Self.HRMS_EmployeeMst_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRMS_EmployeeMst_TR">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HRPR_SifD__SifId__1EE485AA">
+    <End Role="HRPR_SifMaster_TR" Type="Self.HRPR_SifMaster_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifMaster_TR">
+        <PropertyRef Name="SifId" />
+      </Principal>
+      <Dependent Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="SifId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRMS_EmployeeMst_TR_SMSA_Bank_ST">
+    <End Role="SMSA_Bank_ST" Type="Self.SMSA_Bank_ST" Multiplicity="0..1" />
+    <End Role="HRMS_EmployeeMst_TR" Type="Self.HRMS_EmployeeMst_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Bank_ST">
+        <PropertyRef Name="BankId" />
+      </Principal>
+      <Dependent Role="HRMS_EmployeeMst_TR">
+        <PropertyRef Name="BankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRMS_Organization_ST_SRCC_SalesAccount_ST">
+    <End Role="SRCC_SalesAccount_ST" Type="Self.SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Role="SMSA_Organization_ST" Type="Self.SMSA_Organization_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SMSA_Organization_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifAllowances_TR_HRMS_EmployeeMst_TR">
+    <End Role="HRMS_EmployeeMst_TR" Type="Self.HRMS_EmployeeMst_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifAllowances_TR" Type="Self.HRPR_SifAllowances_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRMS_EmployeeMst_TR">
+        <PropertyRef Name="EmpId" />
+      </Principal>
+      <Dependent Role="HRPR_SifAllowances_TR">
+        <PropertyRef Name="EmpId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifAllowances_TR_HRPR_SifDetail_TR">
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifAllowances_TR" Type="Self.HRPR_SifAllowances_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="SifDtlId" />
+      </Principal>
+      <Dependent Role="HRPR_SifAllowances_TR">
+        <PropertyRef Name="SifDtlId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifAllowances_TR_HRPR_SifMaster_TR">
+    <End Role="HRPR_SifMaster_TR" Type="Self.HRPR_SifMaster_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifAllowances_TR" Type="Self.HRPR_SifAllowances_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifMaster_TR">
+        <PropertyRef Name="SifId" />
+      </Principal>
+      <Dependent Role="HRPR_SifAllowances_TR">
+        <PropertyRef Name="SifId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifDetail_TR_SMSA_Bank_ST">
+    <End Role="SMSA_Bank_ST" Type="Self.SMSA_Bank_ST" Multiplicity="0..1" />
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Bank_ST">
+        <PropertyRef Name="BankId" />
+      </Principal>
+      <Dependent Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="BankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifDetail_TR_SMSA_CompanyMst_ST">
+    <End Role="SMSA_CompanyMst_ST" Type="Self.SMSA_CompanyMst_ST" Multiplicity="0..1" />
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifMaster_TR_SMSA_CompanyMst_ST">
+    <End Role="SMSA_CompanyMst_ST" Type="Self.SMSA_CompanyMst_ST" Multiplicity="0..1" />
+    <End Role="HRPR_SifMaster_TR" Type="Self.HRPR_SifMaster_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="CompanyID" />
+      </Principal>
+      <Dependent Role="HRPR_SifMaster_TR">
+        <PropertyRef Name="CompanyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifDetail_TR">
+    <End Role="HRPR_SifDetail_TR" Type="Self.HRPR_SifDetail_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifNAK_Detail_TR" Type="Self.HRPR_SifNAK_Detail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifDetail_TR">
+        <PropertyRef Name="SifDtlId" />
+      </Principal>
+      <Dependent Role="HRPR_SifNAK_Detail_TR">
+        <PropertyRef Name="SifDtlId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifMaster_TR">
+    <End Role="HRPR_SifMaster_TR" Type="Self.HRPR_SifMaster_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifNAK_Detail_TR" Type="Self.HRPR_SifNAK_Detail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifMaster_TR">
+        <PropertyRef Name="SifId" />
+      </Principal>
+      <Dependent Role="HRPR_SifNAK_Detail_TR">
+        <PropertyRef Name="SIFid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifNAK_Detail_TR">
+    <End Role="HRPR_SifMaster_TR" Type="Self.HRPR_SifMaster_TR" Multiplicity="0..1" />
+    <End Role="HRPR_SifNAK_Detail_TR" Type="Self.HRPR_SifNAK_Detail_TR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HRPR_SifMaster_TR">
+        <PropertyRef Name="SifId" />
+      </Principal>
+      <Dependent Role="HRPR_SifNAK_Detail_TR">
+        <PropertyRef Name="SIFid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_CompanyMst_SMSA_Organization">
+    <End Role="SMSA_Organization_ST" Type="Self.SMSA_Organization_ST" Multiplicity="1" />
+    <End Role="SMSA_CompanyMst_ST" Type="Self.SMSA_CompanyMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SMSA_Organization_ST">
+        <PropertyRef Name="OrgID" />
+      </Principal>
+      <Dependent Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="OrgID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SMSA_CompanyMst_SRCC_SalesAccount">
+    <End Role="SRCC_SalesAccount_ST" Type="Self.SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Role="SMSA_CompanyMst_ST" Type="Self.SMSA_CompanyMst_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SMSA_CompanyMst_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SRCC_SalesAccount_SRCC_SalesAccount">
+    <End Role="SRCC_SalesAccount_ST" Type="Self.SRCC_SalesAccount_ST" Multiplicity="0..1" />
+    <End Role="SRCC_SalesAccount_ST1" Type="Self.SRCC_SalesAccount_ST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SRCC_SalesAccount_ST">
+        <PropertyRef Name="SaleAccId" />
+      </Principal>
+      <Dependent Role="SRCC_SalesAccount_ST1">
+        <PropertyRef Name="ParentSaleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="sp_GetPAF" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currentDate" Type="datetime" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getPAFSummaryByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currentDate" Type="datetime" Mode="In" />
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getPayrollAmountByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+    <Parameter Name="PayrollDate" Type="varchar" Mode="In" />
+    <Parameter Name="PersonelNo" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_GetPayrollDates" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getPayrollProcessEmp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CompanyId" Type="int" Mode="In" />
+    <Parameter Name="payrollDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_InsertRFRDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RefundDate" Type="datetime" Mode="In" />
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="EstbId" Type="varchar" Mode="In" />
+    <Parameter Name="RoutingCode" Type="varchar" Mode="In" />
+    <Parameter Name="EmployeeNo" Type="varchar" Mode="In" />
+    <Parameter Name="AmountToRefund" Type="decimal" Mode="In" />
+    <Parameter Name="Pan" Type="varchar" Mode="In" />
+    <Parameter Name="CreateBy" Type="int" Mode="In" />
+    <Parameter Name="CreateOn" Type="datetime" Mode="In" />
+    <Parameter Name="Reason" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_RptCompanyCreation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Fromdate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_RptEmpInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_RptGetUserActivityLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="UserId" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_RptRFRId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_RptSalesAccount" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Sp_SifMstDtl" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FromDate" Type="datetime" Mode="In" />
+    <Parameter Name="ToDate" Type="datetime" Mode="In" />
+    <Parameter Name="User" Type="varchar" Mode="In" />
+    <Parameter Name="EstId" Type="varchar" Mode="In" />
+    <Parameter Name="PersonalNo" Type="varchar" Mode="In" />
+    <Parameter Name="ProcessType" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="WPSModelStoreContainer">
+    <EntitySet Name="HRMS_EmployeeMst_TR" EntityType="Self.HRMS_EmployeeMst_TR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRMS_TempEmployeeMst_TR" EntityType="Self.HRMS_TempEmployeeMst_TR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPR_Deduction_TR" EntityType="Self.HRPR_Deduction_TR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPR_Dif_TR" EntityType="Self.HRPR_Dif_TR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPR_ReasonCode_ST" EntityType="Self.HRPR_ReasonCode_ST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPR_RFADetail_TR" EntityType="Self.HRPR_RFADetail_TR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPR_RFRDetail_HI" EntityType="Self.HRPR_RFRDetail_HI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPR_SifAllowances_TR" EntityType="Self.HRPR_SifAllowances_TR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPR_SifDetail_TR" EntityType="Self.HRPR_SifDetail_TR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPR_SifMaster_TR" EntityType="Self.HRPR_SifMaster_TR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HRPR_SifNAK_Detail_TR" EntityType="Self.HRPR_SifNAK_Detail_TR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSA_Bank_ST" EntityType="Self.SMSA_Bank_ST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSA_CompanyMst_ST" EntityType="Self.SMSA_CompanyMst_ST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSA_Logs_HI" EntityType="Self.SMSA_Logs_HI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSA_Organization_ST" EntityType="Self.SMSA_Organization_ST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SMSA_TempCompany_ST" EntityType="Self.SMSA_TempCompany_ST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SRCC_SalesAccount_ST" EntityType="Self.SRCC_SalesAccount_ST" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_PRC" EntityType="Self.TBL_PRC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TBL_RFA" EntityType="Self.TBL_RFA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAF_Status" EntityType="Self.PAF_Status" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PAF_Status].[Status_id] AS [Status_id], 
+    [PAF_Status].[Status_name] AS [Status_name], 
+    [PAF_Status].[Status_description] AS [Status_description]
+    FROM [dbo].[PAF_Status] AS [PAF_Status]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TBL_PAF" EntityType="Self.TBL_PAF" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TBL_PAF].[ID] AS [ID], 
+    [TBL_PAF].[numberofrecords] AS [numberofrecords], 
+    [TBL_PAF].[uploadid] AS [uploadid], 
+    [TBL_PAF].[userid] AS [userid], 
+    [TBL_PAF].[uploaddate] AS [uploaddate], 
+    [TBL_PAF].[status] AS [status], 
+    [TBL_PAF].[companyid] AS [companyid], 
+    [TBL_PAF].[uploaddatetext] AS [uploaddatetext], 
+    [TBL_PAF].[pafactualname] AS [pafactualname], 
+    [TBL_PAF].[estid] AS [estid], 
+    [TBL_PAF].[estname] AS [estname], 
+    [TBL_PAF].[Done] AS [Done], 
+    [TBL_PAF].[BatchRef] AS [BatchRef], 
+    [TBL_PAF].[uploaddatenumber] AS [uploaddatenumber], 
+    [TBL_PAF].[BatchID] AS [BatchID], 
+    [TBL_PAF].[PRCgenerated] AS [PRCgenerated], 
+    [TBL_PAF].[checked] AS [checked], 
+    [TBL_PAF].[PrevStatus] AS [PrevStatus], 
+    [TBL_PAF].[PafStatus] AS [PafStatus], 
+    [TBL_PAF].[IsR8Generated] AS [IsR8Generated], 
+    [TBL_PAF].[R8Timestatmp] AS [R8Timestatmp]
+    FROM [dbo].[TBL_PAF] AS [TBL_PAF]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TBL_PAF_DETAILS" EntityType="Self.TBL_PAF_DETAILS" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TBL_PAF_DETAILS].[ID] AS [ID], 
+    [TBL_PAF_DETAILS].[uploadid] AS [uploadid], 
+    [TBL_PAF_DETAILS].[edr] AS [edr], 
+    [TBL_PAF_DETAILS].[personalnumber] AS [personalnumber], 
+    [TBL_PAF_DETAILS].[agentcode] AS [agentcode], 
+    [TBL_PAF_DETAILS].[accountnumber] AS [accountnumber], 
+    [TBL_PAF_DETAILS].[Start_date] AS [Start_date], 
+    [TBL_PAF_DETAILS].[End_date] AS [End_date], 
+    [TBL_PAF_DETAILS].[Days] AS [Days], 
+    [TBL_PAF_DETAILS].[fixedamount] AS [fixedamount], 
+    [TBL_PAF_DETAILS].[variableamount] AS [variableamount], 
+    [TBL_PAF_DETAILS].[Days_leave] AS [Days_leave], 
+    [TBL_PAF_DETAILS].[netpay] AS [netpay], 
+    [TBL_PAF_DETAILS].[Payrolldate] AS [Payrolldate], 
+    [TBL_PAF_DETAILS].[remainingamount] AS [remainingamount], 
+    [TBL_PAF_DETAILS].[done] AS [done], 
+    [TBL_PAF_DETAILS].[companyid] AS [companyid], 
+    [TBL_PAF_DETAILS].[paid] AS [paid], 
+    [TBL_PAF_DETAILS].[pafdetailstimestamp] AS [pafdetailstimestamp], 
+    [TBL_PAF_DETAILS].[DIFGenerated] AS [DIFGenerated], 
+    [TBL_PAF_DETAILS].[DIFTimestamp] AS [DIFTimestamp], 
+    [TBL_PAF_DETAILS].[DCRGenerated] AS [DCRGenerated], 
+    [TBL_PAF_DETAILS].[DCRTimestamp] AS [DCRTimestamp], 
+    [TBL_PAF_DETAILS].[RFRGenerated] AS [RFRGenerated], 
+    [TBL_PAF_DETAILS].[RFRTimestamp] AS [RFRTimestamp], 
+    [TBL_PAF_DETAILS].[RFAMarked] AS [RFAMarked], 
+    [TBL_PAF_DETAILS].[RFAGenerated] AS [RFAGenerated], 
+    [TBL_PAF_DETAILS].[RFATimestamp] AS [RFATimestamp]
+    FROM [dbo].[TBL_PAF_DETAILS] AS [TBL_PAF_DETAILS]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__HRPR_SifD__EmpId__20CCCE1C" Association="Self.FK__HRPR_SifD__EmpId__20CCCE1C">
+      <End Role="HRMS_EmployeeMst_TR" EntitySet="HRMS_EmployeeMst_TR" />
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HRPR_SifD__SifId__1EE485AA" Association="Self.FK__HRPR_SifD__SifId__1EE485AA">
+      <End Role="HRPR_SifMaster_TR" EntitySet="HRPR_SifMaster_TR" />
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRMS_EmployeeMst_TR_SMSA_Bank_ST" Association="Self.FK_HRMS_EmployeeMst_TR_SMSA_Bank_ST">
+      <End Role="SMSA_Bank_ST" EntitySet="SMSA_Bank_ST" />
+      <End Role="HRMS_EmployeeMst_TR" EntitySet="HRMS_EmployeeMst_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRMS_Organization_ST_SRCC_SalesAccount_ST" Association="Self.FK_HRMS_Organization_ST_SRCC_SalesAccount_ST">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SMSA_Organization_ST" EntitySet="SMSA_Organization_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifAllowances_TR_HRMS_EmployeeMst_TR" Association="Self.FK_HRPR_SifAllowances_TR_HRMS_EmployeeMst_TR">
+      <End Role="HRMS_EmployeeMst_TR" EntitySet="HRMS_EmployeeMst_TR" />
+      <End Role="HRPR_SifAllowances_TR" EntitySet="HRPR_SifAllowances_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifAllowances_TR_HRPR_SifDetail_TR" Association="Self.FK_HRPR_SifAllowances_TR_HRPR_SifDetail_TR">
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+      <End Role="HRPR_SifAllowances_TR" EntitySet="HRPR_SifAllowances_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifAllowances_TR_HRPR_SifMaster_TR" Association="Self.FK_HRPR_SifAllowances_TR_HRPR_SifMaster_TR">
+      <End Role="HRPR_SifMaster_TR" EntitySet="HRPR_SifMaster_TR" />
+      <End Role="HRPR_SifAllowances_TR" EntitySet="HRPR_SifAllowances_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifDetail_TR_SMSA_Bank_ST" Association="Self.FK_HRPR_SifDetail_TR_SMSA_Bank_ST">
+      <End Role="SMSA_Bank_ST" EntitySet="SMSA_Bank_ST" />
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifDetail_TR_SMSA_CompanyMst_ST" Association="Self.FK_HRPR_SifDetail_TR_SMSA_CompanyMst_ST">
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifMaster_TR_SMSA_CompanyMst_ST" Association="Self.FK_HRPR_SifMaster_TR_SMSA_CompanyMst_ST">
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+      <End Role="HRPR_SifMaster_TR" EntitySet="HRPR_SifMaster_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifDetail_TR" Association="Self.FK_HRPR_SifNAK_Detail_TR_HRPR_SifDetail_TR">
+      <End Role="HRPR_SifDetail_TR" EntitySet="HRPR_SifDetail_TR" />
+      <End Role="HRPR_SifNAK_Detail_TR" EntitySet="HRPR_SifNAK_Detail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifMaster_TR" Association="Self.FK_HRPR_SifNAK_Detail_TR_HRPR_SifMaster_TR">
+      <End Role="HRPR_SifMaster_TR" EntitySet="HRPR_SifMaster_TR" />
+      <End Role="HRPR_SifNAK_Detail_TR" EntitySet="HRPR_SifNAK_Detail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HRPR_SifNAK_Detail_TR_HRPR_SifNAK_Detail_TR" Association="Self.FK_HRPR_SifNAK_Detail_TR_HRPR_SifNAK_Detail_TR">
+      <End Role="HRPR_SifMaster_TR" EntitySet="HRPR_SifMaster_TR" />
+      <End Role="HRPR_SifNAK_Detail_TR" EntitySet="HRPR_SifNAK_Detail_TR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_CompanyMst_SMSA_Organization" Association="Self.FK_SMSA_CompanyMst_SMSA_Organization">
+      <End Role="SMSA_Organization_ST" EntitySet="SMSA_Organization_ST" />
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SMSA_CompanyMst_SRCC_SalesAccount" Association="Self.FK_SMSA_CompanyMst_SRCC_SalesAccount">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SMSA_CompanyMst_ST" EntitySet="SMSA_CompanyMst_ST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SRCC_SalesAccount_SRCC_SalesAccount" Association="Self.FK_SRCC_SalesAccount_SRCC_SalesAccount">
+      <End Role="SRCC_SalesAccount_ST" EntitySet="SRCC_SalesAccount_ST" />
+      <End Role="SRCC_SalesAccount_ST1" EntitySet="SRCC_SalesAccount_ST" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

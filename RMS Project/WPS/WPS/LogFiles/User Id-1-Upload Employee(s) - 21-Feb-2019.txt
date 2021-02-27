@@ -1,0 +1,70 @@
+============================ Start Error ========================================================
+Time : 11:53:02 AM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 372
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 11:53:34 AM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 372
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 11:54:40 AM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 373
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 11:54:53 AM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 373
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 11:56:08 AM
+
+Error : Sequence contains no elements
+
+StackTrace  :    at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at WPS.Controllers.EmployeeController.GetDataTableFromSpreadsheet(Stream MyExcelStream, Boolean ReadOnly, Int32 UserId, Int32 CompanyID) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 373
+   at WPS.Controllers.EmployeeController.UploadFile(Nullable`1 user, Nullable`1 OrgId, Nullable`1 CompanyId, ImportEmployeeExcel model) in G:\Siraj Finance\WPS\WPS\Controllers\EmployeeController.cs:line 173
+
+TargetSite   : TSource First[TSource](System.Collections.Generic.IEnumerable`1[TSource])
+Line No.  :0
+============================= End Error =========================================================
+
+

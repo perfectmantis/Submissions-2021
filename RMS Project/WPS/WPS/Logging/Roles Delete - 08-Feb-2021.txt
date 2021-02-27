@@ -1,0 +1,52 @@
+============================ Start Error ========================================================
+Time : 10:22:11 PM
+
+Input string was not in a correct format.
+
+   at WPS.Models.UserServiceModel.DeleteRoles(SMSA_Roles_ST Roles) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\UserServiceModel.cs:line 224
+   at WPS.Controllers.SetupController.DeleteRoles(Guid Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SetupController.cs:line 186
+
+Int32 DeleteRoles(WPS.UserServiceClass.SMSA_Roles_ST)
+Line No.  :Input string was not in a correct format.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:22:29 PM
+
+Input string was not in a correct format.
+
+   at WPS.Models.UserServiceModel.DeleteRoles(SMSA_Roles_ST Roles) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\UserServiceModel.cs:line 224
+   at WPS.Controllers.SetupController.DeleteRoles(Guid Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SetupController.cs:line 186
+
+Int32 DeleteRoles(WPS.UserServiceClass.SMSA_Roles_ST)
+Line No.  :Input string was not in a correct format.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:22:40 PM
+
+Input string was not in a correct format.
+
+   at WPS.Models.UserServiceModel.DeleteRoles(SMSA_Roles_ST Roles) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\UserServiceModel.cs:line 224
+   at WPS.Controllers.SetupController.DeleteRoles(Guid Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SetupController.cs:line 186
+
+Int32 DeleteRoles(WPS.UserServiceClass.SMSA_Roles_ST)
+Line No.  :Input string was not in a correct format.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 10:23:06 PM
+
+Input string was not in a correct format.
+
+   at WPS.Models.UserServiceModel.DeleteRoles(SMSA_Roles_ST Roles) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Models\UserServiceModel.cs:line 224
+   at WPS.Controllers.SetupController.DeleteRoles(Guid Code) in G:\MCS\Fourth\FYP\Project\RMS Project\WPS\WPS\Controllers\SetupController.cs:line 186
+
+Int32 DeleteRoles(WPS.UserServiceClass.SMSA_Roles_ST)
+Line No.  :Input string was not in a correct format.
+============================= End Error =========================================================
+
+

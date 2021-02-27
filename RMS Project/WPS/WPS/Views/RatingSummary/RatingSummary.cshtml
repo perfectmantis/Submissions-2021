@@ -1,0 +1,487 @@
+﻿@model WPS.Models.RatingSummary
+@{
+    ViewBag.Title = "RatingSummary";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Ratings Summary
+                </div>
+                <form class="form-horizontal" role="form" id="ReviewsInfo">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Ratings Summary</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        <div class="card-header">
+                            <a href="#"><i class="fas fa-home"></i></a> / <a href="#"><i class="fas fa-user-circle"></i></a> / DEMO || ALL PROVIDERS <span class="label label-default">|| ALL DATES</span> <label for="cc-site" class="control-label" style="float:inherit !important;"></label>
+                        </div>
+
+                        <div class="row form-group m-t-10">
+                            <div class="col-2"></div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Account</label>
+                            </div>
+                            <div class="col-2">
+                                @Html.DropDownList("AccountID", null, "---- Select ----",
+                                new { id = "ddl_AccountID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Date</label>
+                            </div>
+                            <div class="col-2">
+                                @Html.TextBox("tbx_FromDate", "", "{0:MM/dd/yyy}", 
+                                new { id = "tbx_FromDate", @class = "form-control datepicker-here",
+                                style = "width:95%", placeholder = "MM/dd/yyyy" })
+                            </div>
+                            @*<i class="fa fa-calendar m-t-10" aria-hidden="true"></i>*@
+                            <button type="button" onclick="getRatingSummary('', '', $('#ddl_AccountID').val(), '', $('#tbx_FromDate').val()), ''">
+                                <i class="fa fa-search m-l-20" aria-hidden="true"></i> Refresh
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="au-card-bordered">
+                        <table id="DataTables_Table_01" class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th style="width:23%">Account</th>
+                                    <th style="width:11%">Vitals</th>
+                                    <th style="width:11%">HealthGrades</th>
+                                    <th style="width:11%">RateMDs</th>
+                                    <th style="width:11%">Google</th>
+                                    <th style="width:11%">YP</th>
+                                    <th style="width:11%">Yelp</th>
+                                    <th style="width:11%">Facebook</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>           
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var fromDate = $('#tbx_FromDate').val();
+        if (fromDate == '') {
+            fromDate = null;
+        }
+        getRatingSummary('', '', '', '', '', fromDate , null);
+    });
+
+    function getRatingSummary(companyID, siteID, accountID, accountType, fromDate, sqlqry) {
+
+        var fromDate = $('#tbx_FromDate').val();
+        if (fromDate == '') {
+            fromDate = null
+        }
+        var CompanyID, SiteID, AccountID, AccountType, FromDate, Sqlqry = "";
+        CompanyID = companyID; SiteID = siteID; AccountID = accountID; AccountType = accountType; FromDate = fromDate; Sqlqry = sqlqry;
+
+        $.ajax({
+            url: '@Url.Action("RatingSummaryList", "RatingSummary")?CompanyID=' + CompanyID + '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType + '&FromDate=' + FromDate + '&Sqlqry=' + Sqlqry,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                console.log(data.RatingSummary.SP_Reviews_Rating_Summary_Dashboard);
+                $('#DataTables_Table_01').DataTable({
+                    processing: true,
+                    paging: true,
+                    sort: true,
+                    searching: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    bFilter: false,
+                    info: false,
+                    data: data.RatingSummary.SP_Reviews_Rating_Summary_Dashboard,
+                    aLengthMenu: [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
+                    columns: [
+
+                    //{ 'data': 'AccountName' },
+
+                    {
+                        'data': 'AccountName',
+                        render: function (data, type, full) {
+                            var text = '<i class="fa fa-user" aria-hidden="true"></i>&nbsp<u data-color="red" title="' + full.AccountName + '">' + full.AccountName + '</u>';
+                            return text;
+                        }
+                    },
+
+                    {
+                        'data': 'VitalsRating',
+                            render: function (data, type, full) {
+                                var text = "";
+                                var k = full.VitalsRating;
+
+                                if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+                                    var l = Math.round(k);
+                                    var s = k - l;
+
+                                    if (s < 0) {
+                                        var m = l - 1;
+                                        for (var i = 0; i < m; i++) {
+                                            text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.VitalsRating + '"></i>';
+                                        }
+                                        text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.VitalsRating + '"></i>';
+                                    }
+                                    else {
+                                        for (var i = 0; i < l; i++) {
+                                            text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.VitalsRating + '"></i>';
+                                        }
+                                    }
+
+                                    var j = 5 - l;
+                                    for (var i = 0; i < j; i++) {
+                                        text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.VitalsRating + '"></i>';
+                                    }
+
+                                    //Heading 3.5 from 28 ratings
+                                    
+                                }
+                                else {
+                                    for (var i = 0; i < k; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.VitalsRating + '"></i>';
+                                    }
+
+                                    var j = 5 - k;
+                                    for (var i = 0; i < j; i++) {
+                                        text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.VitalsRating + '"></i>';
+                                    }
+
+                                    //Heading 3.5 from 28 ratings
+                                }
+
+                                return text + '<br/><p>' + full.VitalsRating + " " + "from" + " " + full.Vitals + " " + "ratings" + '</p>';
+
+                            }, searchable: false, sortable: false
+
+                    },
+
+                    {
+                        'data': 'HealthgradesRating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            var k = full.HealthgradesRating;
+
+                            if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+                                var l = Math.round(k);
+                                var s = k - l;
+
+                                if (s < 0) {
+                                    var m = l - 1;
+                                    for (var i = 0; i < m; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.HealthgradesRating + '"></i>';
+                                    }
+                                    text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.HealthgradesRating + '"></i>';
+                                }
+                                else {
+                                    for (var i = 0; i < l; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.HealthgradesRating + '"></i>';
+                                    }
+                                }
+
+                                var j = 5 - l;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.HealthgradesRating + '"></i>';
+                                }
+                            }
+                            else {
+                                for (var i = 0; i < k; i++) {
+                                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.HealthgradesRating + '"></i>';
+                                }
+
+                                var j = 5 - k;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.HealthgradesRating + '"></i>';
+                                }
+                            }
+
+                            return text + '<br/><p>' + full.HealthgradesRating + " " + "from" + " " + full.Healthgrades + " " + "ratings" + '</p>';
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    {
+                        'data': 'RateMDsRating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            var k = full.RateMDsRating;
+
+                            if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+                                var l = Math.round(k);
+                                var s = k - l;
+
+                                if (s < 0) {
+                                    var m = l - 1;
+                                    for (var i = 0; i < m; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.RateMDsRating + '"></i>';
+                                    }
+                                    text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.RateMDsRating + '"></i>';
+                                }
+                                else {
+                                    for (var i = 0; i < l; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.RateMDsRating + '"></i>';
+                                    }
+                                }
+
+                                var j = 5 - l;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.RateMDsRating + '"></i>';
+                                }
+                            }
+                            else {
+                                for (var i = 0; i < k; i++) {
+                                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.RateMDsRating + '"></i>';
+                                }
+
+                                var j = 5 - k;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.RateMDsRating + '"></i>';
+                                }
+                            }
+
+                            return text + '<br/><p>' + full.RateMDsRating + " " + "from" + " " + full.RateMDs + " " + "ratings" + '</p>';
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    {
+                        'data': 'GoogleRating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            var k = full.GoogleRating;
+
+                            if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+                                var l = Math.round(k);
+                                var s = k - l;
+
+                                if (s < 0) {
+                                    var m = l - 1;
+                                    for (var i = 0; i < m; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.GoogleRating + '"></i>';
+                                    }
+                                    text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.GoogleRating + '"></i>';
+                                }
+                                else {
+                                    for (var i = 0; i < l; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.GoogleRating + '"></i>';
+                                    }
+                                }
+
+                                var j = 5 - l;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.GoogleRating + '"></i>';
+                                }
+                            }
+                            else {
+                                for (var i = 0; i < k; i++) {
+                                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.GoogleRating + '"></i>';
+                                }
+
+                                var j = 5 - k;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.GoogleRating + '"></i>';
+                                }
+                            }
+
+                            return text + '<br/><p>' + full.GoogleRating + " " + "from" + " " + full.Google + " " + "ratings" + '</p>';
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    {
+                        'data': 'YellowPagesRating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            var k = full.YellowPagesRating;
+
+                            if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+                                var l = Math.round(k);
+                                var s = k - l;
+
+                                if (s < 0) {
+                                    var m = l - 1;
+                                    for (var i = 0; i < m; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.YellowPagesRating + '"></i>';
+                                    }
+                                    text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.YellowPagesRating + '"></i>';
+                                }
+                                else {
+                                    for (var i = 0; i < l; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.YellowPagesRating + '"></i>';
+                                    }
+                                }
+
+                                var j = 5 - l;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.YellowPagesRating + '"></i>';
+                                }
+                            }
+                            else {
+                                for (var i = 0; i < k; i++) {
+                                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.YellowPagesRating + '"></i>';
+                                }
+
+                                var j = 5 - k;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.YellowPagesRating + '"></i>';
+                                }
+                            }
+
+                            return text + '<br/><p>' + full.YellowPagesRating + " " + "from" + " " + full.YellowPages + " " + "ratings" + '</p>';
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    {
+                        'data': 'YelpRating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            var k = full.YelpRating;
+
+                            if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+                                var l = Math.round(k);
+                                var s = k - l;
+
+                                if (s < 0) {
+                                    var m = l - 1;
+                                    for (var i = 0; i < m; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.YelpRating + '"></i>';
+                                    }
+                                    text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.YelpRating + '"></i>';
+                                }
+                                else {
+                                    for (var i = 0; i < l; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.YelpRating + '"></i>';
+                                    }
+                                }
+
+                                var j = 5 - l;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.YelpRating + '"></i>';
+                                }
+                            }
+                            else {
+                                for (var i = 0; i < k; i++) {
+                                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.YelpRating + '"></i>';
+                                }
+
+                                var j = 5 - k;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.YelpRating + '"></i>';
+                                }
+                            }
+
+                            return text + '<br/><p>' + full.YelpRating + " " + "from" + " " + full.Yelp + " " + "ratings" + '</p>';
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    {
+                        'data': 'FacebookRating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            var k = full.FacebookRating;
+
+                            if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+                                var l = Math.round(k);
+                                var s = k - l;
+
+                                if (s < 0) {
+                                    var m = l - 1;
+                                    for (var i = 0; i < m; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.FacebookRating + '"></i>';
+                                    }
+                                    text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + full.FacebookRating + '"></i>';
+                                }
+                                else {
+                                    for (var i = 0; i < l; i++) {
+                                        text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.FacebookRating + '"></i>';
+                                    }
+                                }
+
+                                var j = 5 - l;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.FacebookRating + '"></i>';
+                                }
+                            }
+                            else {
+                                for (var i = 0; i < k; i++) {
+                                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + full.FacebookRating + '"></i>';
+                                }
+
+                                var j = 5 - k;
+                                for (var i = 0; i < j; i++) {
+                                    text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + full.FacebookRating + '"></i>';
+                                }
+                            }
+
+                            return text + '<br/><p>' + full.FacebookRating + " " + "from" + " " + full.Facebook + " " + "ratings" + '</p>';
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+
+                    ],                    
+                    dom: 'Blfrtip',
+                    buttons: [
+                     'copy', 'csv', 'excel', 'pdf', 'print'
+                    ],
+                });
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+
+    }
+
+</script>
+<style>
+    .fa{
+        color:#1289ce;
+    }
+</style>
+

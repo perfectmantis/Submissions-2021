@@ -1,0 +1,52 @@
+============================ Start Error ========================================================
+Time : 2:54:18 PM
+
+The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+   at WPS.Models.WPSServiceModel.DeleteComAccounts(SMIM_ReviewAccounts_ST comAct) in D:\Raza Working Folder\Review Finance\WPS\WPS\Models\WPSServiceModel.cs:line 1254
+   at WPS.Controllers.CompanyAccountsController.DeleteCompanyAccounts(Int32 Code) in D:\Raza Working Folder\Review Finance\WPS\WPS\Controllers\CompanyAccountsController.cs:line 125
+
+Int32 DeleteComAccounts(WPS.WPSService.SMIM_ReviewAccounts_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 2:57:06 PM
+
+The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+   at WPS.Models.WPSServiceModel.DeleteComAccounts(SMIM_ReviewAccounts_ST comAct) in D:\Raza Working Folder\Review Finance\WPS\WPS\Models\WPSServiceModel.cs:line 1254
+   at WPS.Controllers.CompanyAccountsController.DeleteCompanyAccounts(Int32 Code) in D:\Raza Working Folder\Review Finance\WPS\WPS\Controllers\CompanyAccountsController.cs:line 126
+
+Int32 DeleteComAccounts(WPS.WPSService.SMIM_ReviewAccounts_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 3:05:53 PM
+
+The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+   at WPS.Models.WPSServiceModel.DeleteComAccounts(SMIM_ReviewAccounts_ST comAct) in D:\Raza Working Folder\Review Finance\WPS\WPS\Models\WPSServiceModel.cs:line 1254
+   at WPS.Controllers.CompanyAccountsController.DeleteCompanyAccounts(Int32 Code) in D:\Raza Working Folder\Review Finance\WPS\WPS\Controllers\CompanyAccountsController.cs:line 126
+
+Int32 DeleteComAccounts(WPS.WPSService.SMIM_ReviewAccounts_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+
+============================ Start Error ========================================================
+Time : 3:05:58 PM
+
+The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+
+   at WPS.Models.WPSServiceModel.DeleteComAccounts(SMIM_ReviewAccounts_ST comAct) in D:\Raza Working Folder\Review Finance\WPS\WPS\Models\WPSServiceModel.cs:line 1254
+   at WPS.Controllers.CompanyAccountsController.DeleteCompanyAccounts(Int32 Code) in D:\Raza Working Folder\Review Finance\WPS\WPS\Controllers\CompanyAccountsController.cs:line 126
+
+Int32 DeleteComAccounts(WPS.WPSService.SMIM_ReviewAccounts_ST)
+Line No.  :The server was unable to process the request due to an internal error.  For more information about the error, either turn on IncludeExceptionDetailInFaults (either from ServiceBehaviorAttribute or from the <serviceDebug> configuration behavior) on the server in order to send the exception information back to the client, or turn on tracing as per the Microsoft .NET Framework SDK documentation and inspect the server trace logs.
+============================= End Error =========================================================
+
+

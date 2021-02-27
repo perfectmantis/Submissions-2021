@@ -1,0 +1,99 @@
+﻿@model WPS.WPSService.SMSA_Bank_ST
+@{
+    ViewBag.Title = "Bank";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Bank Information
+                </div>
+                <form class="form-horizontal" role="form" id="frmBank">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Bank Information</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => model.BankId)
+
+                        <div class="row form-group">
+                            <div class="col-3"></div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Bank</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.BankName, new { id = "tbx_BankName", @class = "form-control", style = "width:95%", placeholder = "Bank Name" })
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-3"></div>
+                            <div class="col-1">
+                                <label for="cc-payment" class="control-label">Routing</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.TextBoxFor(model => model.RoutingCode, new { id = "tbx_RoutingCode", @class = "form-control", style = "width:95%", placeholder = "Routing Code", maxlength = "9", minlength = "9" })
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        @*<button type="reset" class="btn btn-primary btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>*@
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $('#frmBank').validate({
+        submitHandler: function (form) {
+            $.ajax({
+                url: '@Url.Action("Bank", "Bank", new { q = Request.QueryString["q"].ToString() })',
+                type: "POST",
+                data: $(form).serialize(),
+                success: function (response) {
+                    if (response.success === true) {
+                        goBack(response.response);
+                    }
+                    else {
+                        $('#lblMessage').text(response.response);
+                        $('#divMessage').show();
+                    }
+                }
+            });
+        }
+    });
+
+    function goBack(message) {
+        window.location = '/Bank/BankIndex?q=@Request.QueryString["q"].ToString()&message=' + message;
+    }
+</script>
+

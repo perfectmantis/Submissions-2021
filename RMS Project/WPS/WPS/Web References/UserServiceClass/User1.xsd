@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/ApplicationService.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ApplicationService.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:54589/User.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfSMSA_Roles_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMSA_Roles_ST" nillable="true" type="tns:SMSA_Roles_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMSA_Roles_ST" nillable="true" type="tns:ArrayOfSMSA_Roles_ST" />
+  <xs:complexType name="SMSA_Roles_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FormName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Header" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleId" type="ser:guid" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="aspnet_Roles" nillable="true" type="tns:aspnet_Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMSA_Roles_ST" nillable="true" type="tns:SMSA_Roles_ST" />
+  <xs:complexType name="aspnet_Roles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoweredRoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleId" type="ser:guid" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SMIM_UserTypeAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserTypeAccess_ST" />
+      <xs:element minOccurs="0" name="SMSA_Roles_ST" nillable="true" type="tns:SMSA_Roles_ST" />
+      <xs:element minOccurs="0" name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:ArrayOfaspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Roles" nillable="true" type="tns:aspnet_Roles" />
+  <xs:complexType name="ArrayOfSMIM_UserTypeAccess_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_UserTypeAccess_ST" nillable="true" type="tns:SMIM_UserTypeAccess_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_UserTypeAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserTypeAccess_ST" />
+  <xs:complexType name="SMIM_UserTypeAccess_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessId" type="xs:int" />
+      <xs:element minOccurs="0" name="AccessType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Allow" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="SMIM_UserType_ST" nillable="true" type="tns:SMIM_UserType_ST" />
+      <xs:element minOccurs="0" name="UserTypeId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="aspnet_Roles" nillable="true" type="tns:aspnet_Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_UserTypeAccess_ST" nillable="true" type="tns:SMIM_UserTypeAccess_ST" />
+  <xs:complexType name="SMIM_UserType_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SMIM_UserAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserAccess_ST" />
+      <xs:element minOccurs="0" name="SMIM_UserMst_ST" nillable="true" type="tns:ArrayOfSMIM_UserMst_ST" />
+      <xs:element minOccurs="0" name="SMIM_UserTypeAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserTypeAccess_ST" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserTypeId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_UserType_ST" nillable="true" type="tns:SMIM_UserType_ST" />
+  <xs:complexType name="ArrayOfSMIM_UserAccess_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_UserAccess_ST" nillable="true" type="tns:SMIM_UserAccess_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_UserAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserAccess_ST" />
+  <xs:complexType name="SMIM_UserAccess_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Allow" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CoAccId" type="xs:int" />
+      <xs:element minOccurs="0" name="SMIM_UserMst_ST" nillable="true" type="tns:SMIM_UserMst_ST" />
+      <xs:element minOccurs="0" name="SMIM_UserType_ST" nillable="true" type="tns:SMIM_UserType_ST" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserTypeId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_UserAccess_ST" nillable="true" type="tns:SMIM_UserAccess_ST" />
+  <xs:complexType name="SMIM_UserMst_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CompanyId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreateOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoginDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrgId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SACId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SMIM_UserAccess_ST" nillable="true" type="tns:ArrayOfSMIM_UserAccess_ST" />
+      <xs:element minOccurs="0" name="SMIM_UserType_ST" nillable="true" type="tns:SMIM_UserType_ST" />
+      <xs:element minOccurs="0" name="Salutation" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="UserId" type="xs:int" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserTypeId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMIM_UserMst_ST" nillable="true" type="tns:SMIM_UserMst_ST" />
+  <xs:complexType name="ArrayOfSMIM_UserMst_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_UserMst_ST" nillable="true" type="tns:SMIM_UserMst_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_UserMst_ST" nillable="true" type="tns:ArrayOfSMIM_UserMst_ST" />
+  <xs:complexType name="aspnet_Applications">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="ApplicationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoweredApplicationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="aspnet_Membership" nillable="true" type="tns:ArrayOfaspnet_Membership" />
+      <xs:element minOccurs="0" name="aspnet_Paths" nillable="true" type="tns:ArrayOfaspnet_Paths" />
+      <xs:element minOccurs="0" name="aspnet_Roles" nillable="true" type="tns:ArrayOfaspnet_Roles" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:ArrayOfaspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+  <xs:complexType name="ArrayOfaspnet_Membership">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_Membership" nillable="true" type="tns:aspnet_Membership" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_Membership" nillable="true" type="tns:ArrayOfaspnet_Membership" />
+  <xs:complexType name="aspnet_Membership">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FailedPasswordAnswerAttemptCount" type="xs:int" />
+      <xs:element minOccurs="0" name="FailedPasswordAnswerAttemptWindowStart" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FailedPasswordAttemptCount" type="xs:int" />
+      <xs:element minOccurs="0" name="FailedPasswordAttemptWindowStart" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsApproved" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLockedOut" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastLockoutDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastLoginDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastPasswordChangedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LoweredEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobilePIN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordAnswer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordFormat" type="xs:int" />
+      <xs:element minOccurs="0" name="PasswordQuestion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordSalt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Membership" nillable="true" type="tns:aspnet_Membership" />
+  <xs:complexType name="aspnet_Users">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="IsAnonymous" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastActivityDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LoweredUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileAlias" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+      <xs:element minOccurs="0" name="aspnet_Membership" nillable="true" type="tns:aspnet_Membership" />
+      <xs:element minOccurs="0" name="aspnet_PersonalizationPerUser" nillable="true" type="tns:ArrayOfaspnet_PersonalizationPerUser" />
+      <xs:element minOccurs="0" name="aspnet_Profile" nillable="true" type="tns:aspnet_Profile" />
+      <xs:element minOccurs="0" name="aspnet_Roles" nillable="true" type="tns:ArrayOfaspnet_Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+  <xs:complexType name="ArrayOfaspnet_PersonalizationPerUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_PersonalizationPerUser" nillable="true" type="tns:aspnet_PersonalizationPerUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_PersonalizationPerUser" nillable="true" type="tns:ArrayOfaspnet_PersonalizationPerUser" />
+  <xs:complexType name="aspnet_PersonalizationPerUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="LastUpdatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PageSettings" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PathId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserId" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Paths" nillable="true" type="tns:aspnet_Paths" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_PersonalizationPerUser" nillable="true" type="tns:aspnet_PersonalizationPerUser" />
+  <xs:complexType name="aspnet_Paths">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApplicationId" type="ser:guid" />
+      <xs:element minOccurs="0" name="LoweredPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Path" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PathId" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Applications" nillable="true" type="tns:aspnet_Applications" />
+      <xs:element minOccurs="0" name="aspnet_PersonalizationAllUsers" nillable="true" type="tns:aspnet_PersonalizationAllUsers" />
+      <xs:element minOccurs="0" name="aspnet_PersonalizationPerUser" nillable="true" type="tns:ArrayOfaspnet_PersonalizationPerUser" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Paths" nillable="true" type="tns:aspnet_Paths" />
+  <xs:complexType name="aspnet_PersonalizationAllUsers">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LastUpdatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PageSettings" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PathId" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Paths" nillable="true" type="tns:aspnet_Paths" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_PersonalizationAllUsers" nillable="true" type="tns:aspnet_PersonalizationAllUsers" />
+  <xs:complexType name="aspnet_Profile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LastUpdatedDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PropertyNames" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyValuesBinary" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="PropertyValuesString" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserId" type="ser:guid" />
+      <xs:element minOccurs="0" name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="aspnet_Profile" nillable="true" type="tns:aspnet_Profile" />
+  <xs:complexType name="ArrayOfaspnet_Roles">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_Roles" nillable="true" type="tns:aspnet_Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_Roles" nillable="true" type="tns:ArrayOfaspnet_Roles" />
+  <xs:complexType name="ArrayOfaspnet_Paths">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_Paths" nillable="true" type="tns:aspnet_Paths" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_Paths" nillable="true" type="tns:ArrayOfaspnet_Paths" />
+  <xs:complexType name="ArrayOfaspnet_Users">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="aspnet_Users" nillable="true" type="tns:aspnet_Users" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfaspnet_Users" nillable="true" type="tns:ArrayOfaspnet_Users" />
+  <xs:complexType name="ArrayOfSMIM_UserType_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMIM_UserType_ST" nillable="true" type="tns:SMIM_UserType_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMIM_UserType_ST" nillable="true" type="tns:ArrayOfSMIM_UserType_ST" />
+  <xs:complexType name="ArrayOfSMAM_Menu_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMAM_Menu_ST" nillable="true" type="tns:SMAM_Menu_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMAM_Menu_ST" nillable="true" type="tns:ArrayOfSMAM_Menu_ST" />
+  <xs:complexType name="SMAM_Menu_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedBy" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CreatedOn" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DefaultValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IconPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LocalizeId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MenuDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MenuId" type="xs:int" />
+      <xs:element minOccurs="0" name="MenuSeq" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MenuType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentMenuId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="RoleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="urlPath" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMAM_Menu_ST" nillable="true" type="tns:SMAM_Menu_ST" />
+  <xs:complexType name="ArrayOfSMAM_SystemService_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SMAM_SystemService_ST" nillable="true" type="tns:SMAM_SystemService_ST" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSMAM_SystemService_ST" nillable="true" type="tns:ArrayOfSMAM_SystemService_ST" />
+  <xs:complexType name="SMAM_SystemService_ST">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsActive" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ServiceId" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SMAM_SystemService_ST" nillable="true" type="tns:SMAM_SystemService_ST" />
+</xs:schema>
