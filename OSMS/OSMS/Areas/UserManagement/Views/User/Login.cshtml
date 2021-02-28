@@ -8,8 +8,6 @@
 <html lang="en">
 <head>
     <title>OSMS | Online Survey Management System</title>
-
-
     <!--[if lt IE 10]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -100,7 +98,7 @@
             <div class="row">
                 <div class="col-sm-12">
 
-                    <form class="md-float-material form-material">
+                    <form class="md-float-material form-material" method="post">
                         <div class="text-center">
                             <img src="~/Content/images/logo.png" alt="logo.png">
                             <h2>ONLINE SURVEY MANAGEMENT SYSTEM</h2>
@@ -111,33 +109,23 @@
                                     <div class="col-md-12">
                                         <h3 class="text-center txt-primary">Sign in</h3>
                                     </div>
-                                </div>
-                                @*<div class="row m-b-20">
-                                    <div class="col-md-6">
-                                        <a href="#!" class="btn btn-facebook m-b-20 btn-block waves-effect waves-light"><i class="icofont icofont-social-facebook"></i>facebook</a>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <a href="#!" class="btn btn-twitter m-b-0 btn-block waves-effect waves-light"><i class="icofont icofont-social-twitter"></i>twitter</a>
-                                    </div>
-                                </div>*@
+                                </div>                               
                                 <p class="text-muted text-center p-b-5">Sign in with your credentials</p>
                                
                                 <div class="form-group form-primary">
-                                    @*<input type="text" name="Address" class="form-control" required="">*@
                                     @Html.TextBoxFor(x => x.Name, new { @name = "UserName", @class = "form-control", @required = "" })
                                     <span class="form-bar"></span>
                                     <label class="float-label">User Name</label>
                                 </div>
                                 <div class="form-group form-primary">
-                                    @*<input type="text" name="Address" class="form-control" required="">*@
                                     @Html.TextBoxFor(x => x.LoginPassword, new { @name = "Password", @class = "form-control", @required = "", @type="Password" })
                                     <span class="form-bar"></span>
                                     <label class="float-label">Password</label>
                                 </div>                                
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" onclick="Signin()">Sign in</button>
-                                        <button class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" onclick="SaveSignup()">Sign up now</button>
+                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" onclick="Signin()">Sign in</button>
+                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" onclick="SaveSignup()">Sign up now</button>
                                     </div>
                                 </div>
                                 <hr />                               
@@ -228,23 +216,42 @@
 
 <script type="text/javascript">
     function Signin() {
-        var frmdata = $('form').serialize();
-        var UserName = $('#Name').val();
-        var LoginPassword = $('#LoginPassword').val();
-       
-        $.ajax({
-            url: "@Url.Action("Checkuser", "User")",
-            type: "Post",
-            data: frmdata,//{ UserName, LoginPassword },
-            success: function (response) {
-                debugger;
-               // if (response.data > 0) {
-                var iUrl = '/QuestionnaireManagement/Questionnaire/NewQuestionnaire';
-                    window.location.href = iUrl;
-                //}
-                //console.log(response.data);
-
+        try{        
+            var frmdata = $('form').serialize();
+            var UserName = $('#Name').val();
+            var LoginPassword = $('#LoginPassword').val();
+            if (UserName == '' || LoginPassword == '')
+            {
+                alert("Username and password is required.");
+                return false;
             }
-        });
+            $.ajax({
+                url: "@Url.Action("Checkuser", "User")",
+                type: "Post",
+                data: frmdata,//{ UserName, LoginPassword },                      
+                success: function (response) {
+                        window.location.href = '/QuestionnaireManagement/Questionnaire/NewQuestionnaire';
+                    //debugger;
+                    //if (response.data == 1)
+                    //{
+                    //    alert("success");
+                    @*}
+                    else {
+                        alert("Username or password is incorrect. Please check and try again.");
+                        var iUrl = "@Url.Action("Login", "User")";
+                        window.location.href = iUrl;                    
+                    }*@                
+                }
+            });
+        }
+        catch (err) {
+            alert(err.message);
+            console.log(err.message);
+        }
+    }
+    function SaveSignup()
+    {
+        var iUrl = "@Url.Action("Register", "User")";
+        window.location.href = iUrl;
     }
 </script>

@@ -14,21 +14,7 @@
                     <span>This is User Profile section.</span>
                 </div>
             </div>
-        </div>
-        @*<div class="col-lg-4">
-            <div class="page-header-breadcrumb">
-                <ul class=" breadcrumb breadcrumb-title">
-                    <li class="breadcrumb-item">
-                        <a href="index.html"><i class="feather icon-home"></i></a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="#!">Form Components</a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="#!">Basic Form Inputs</a>
-                    </li>
-                </ul>
-            </div>*@
+        </div>       
     </div>
     <div class="row align-items-end">
     </div>
@@ -55,29 +41,23 @@
             </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Cnic :</label>
-                        @*@Html.LabelFor(x => x.MaxResponse, new { @class = "col-sm-2 col-form-label" })*@
                         <div class="col-sm-4">
-                            @*<input type="text" class="form-control form-control-success" id="inputSuccess1">*@
                             @Html.TextBoxFor(x => x.Cnic, new { @class = "form-control form-control-success" })
                         </div>
                         <label class="col-sm-2 col-form-label">Email Address :</label>
 
                         <div class="col-sm-4">
-                            @*<input type="date" class="form-control form-control-success" id="inputSuccess1">*@
                             @Html.TextBoxFor(x => x.Email, new { @class = "form-control form-control-success" })
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Department :</label>
                         <div class="col-sm-4">
-                            @Html.TextBoxFor(x => x.Department, new { @class = "form-control form-control-success" })
-                            @*<textarea class="form-control form-control-success" id="inputSuccess1"></textarea>*@
+                            @Html.TextBoxFor(x => x.Department, new { @class = "form-control form-control-success" })                            
                         </div>
-
                         <label class="col-sm-2 col-form-label">Organization :</label>
                         <div class="col-sm-4">
                             @Html.TextBoxFor(x => x.Organization, new { @class = "form-control form-control-success" })
-                            @*<textarea class="form-control form-control-success" id="inputSuccess1"></textarea>*@
                         </div>
                     </div>
 

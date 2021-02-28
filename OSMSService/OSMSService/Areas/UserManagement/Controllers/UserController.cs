@@ -140,16 +140,22 @@ namespace OSMSService.Areas.UserManagement.Controllers
         {           
             try
             {
-                var user = db.UserInfoes.Where(x => x.Name == modelClass.Name).FirstOrDefault();
-                if (user.LoginPassword == modelClass.LoginPassword)
+                if (modelClass.Name != null && modelClass.Name != "" && modelClass.LoginPassword != null && modelClass.LoginPassword != "")
                 {
-                    return 1;
+                    var user = db.UserInfoes.Where(x => x.Name == modelClass.Name).FirstOrDefault();
+                    if (user != null && user.LoginPassword == modelClass.LoginPassword)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
                 else
                 {
                     return 0;
                 }
-
             }
             catch (DbEntityValidationException ex)
             {

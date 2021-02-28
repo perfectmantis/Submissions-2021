@@ -8,9 +8,7 @@
 <html lang="en">
 <head>
     <title>OSMS | Online Survey Management System</title>
-
-
-    <!--[if lt IE 10]>
+<!--[if lt IE 10]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
           <![endif]-->
@@ -111,29 +109,19 @@
                                     <div class="col-md-12">
                                         <h3 class="text-center txt-primary">Sign up</h3>
                                     </div>
-                                </div>
-                                @*<div class="row m-b-20">
-                                        <div class="col-md-6">
-                                            <a href="#!" class="btn btn-facebook m-b-20 btn-block waves-effect waves-light"><i class="icofont icofont-social-facebook"></i>facebook</a>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <a href="#!" class="btn btn-twitter m-b-0 btn-block waves-effect waves-light"><i class="icofont icofont-social-twitter"></i>twitter</a>
-                                        </div>
-                                    </div>*@
+                                </div>                               
                                 <p class="text-muted text-center p-b-5">Sign up with your regular account</p>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
-                                            @*<input type="text" name="Name" class="form-control" required="">*@
-                                            @Html.TextBoxFor(x => x.Name, new { @name = "Name", @class = "form-control" })
+                                            @Html.TextBoxFor(x => x.Name, new { @name = "Name", @class = "form-control", required = "required" })
                                             <span class="form-bar"></span>
                                             <label class="float-label">Name</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
-                                            @*<input type="text" name="FatherName" class="form-control" required="">*@
-                                            @Html.TextBoxFor(x => x.FatherName, new { @name = "FatherName", @class = "form-control" })
+                                            @Html.TextBoxFor(x => x.FatherName, new { @name = "FatherName", @class = "form-control", required = "required" })
                                             <span class="form-bar"></span>
                                             <label class="float-label">Father Name</label>
                                         </div>
@@ -142,16 +130,14 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
-                                            @*<input type="text" name="Cnic" class="form-control" required="">*@
-                                            @Html.TextBoxFor(x => x.Cnic, new { @name = "Cnic", @class = "form-control" })
+                                            @Html.TextBoxFor(x => x.Cnic, new { @name = "Cnic", @class = "form-control", required = "required" })
                                             <span class="form-bar"></span>
                                             <label class="float-label">Cnic</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
-                                            @*<input type="email" name="Email" class="form-control" required="">*@
-                                            @Html.TextBoxFor(x => x.Email, new { @name = "Email", @class = "form-control" })
+                                            @Html.TextBoxFor(x => x.Email, new { @name = "Email", @class = "form-control", required= "required" })
                                             <span class="form-bar"></span>
                                             <label class="float-label">Email</label>
                                         </div>
@@ -160,16 +146,14 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
-                                            @*<input type="text" name="Department" class="form-control" required="">*@
-                                            @Html.TextBoxFor(x => x.Department, new { @name = "Department", @class = "form-control" })
+                                            @Html.TextBoxFor(x => x.Department, new { @name = "Department", @class = "form-control", required = "required" })
                                             <span class="form-bar"></span>
                                             <label class="float-label">Department</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
-                                            @*<input type="text" name="Organization" class="form-control" required="">*@
-                                            @Html.TextBoxFor(x => x.Organization, new { @name = "Organization", @class = "form-control" })
+                                            @Html.TextBoxFor(x => x.Organization, new { @name = "Organization", @class = "form-control", required = "required" })
                                             <span class="form-bar"></span>
                                             <label class="float-label">Organization</label>
                                         </div>
@@ -178,63 +162,33 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
-                                            @*<input type="password" name="password" class="form-control" required="">*@
-                                            @Html.TextBoxFor(x => x.LoginPassword, new { @name = "password", @class = "form-control", @type = "Password" })
+                                            @Html.TextBoxFor(x => x.LoginPassword, new { @name = "password", @class = "form-control", @type = "Password", required = "required" })
                                             <span class="form-bar"></span>
                                             <label class="float-label">Password</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group form-primary">
-                                            @*<input type="password" name="confirm-password" class="form-control" required="">*@
-                                            @Html.TextBoxFor(x => x.LoginPassword, new { @name = "confirm-password", @class = "form-control", @type = "Password" })
+                                            @Html.TextBoxFor(x => x.LoginPassword, new { id = "confirm-password", @name = "confirm-password", @class = "form-control", @type = "Password", required = "required" })
                                             <span class="form-bar"></span>
                                             <label class="float-label">Confirm Password</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group form-primary">
-                                    @*<input type="text" name="Address" class="form-control" required="">*@
-                                    @Html.TextBoxFor(x => x.UserAddress, new { @name = "Address", @class = "form-control" })
+                                    @Html.TextBoxFor(x => x.UserAddress, new { @name = "Address", @class = "form-control", required = "required" })
                                     <span class="form-bar"></span>
                                     <label class="float-label">Address</label>
                                 </div>
-                                <div class="row m-t-25 text-left">
-                                    @*<div class="col-md-12">
-                                            <div class="checkbox-fade fade-in-primary">
-                                                <label>
-                                                    <input type="checkbox" value="">
-                                                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                    <span class="text-inverse">I read and accept <a href="#">Terms &amp; Conditions.</a></span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="checkbox-fade fade-in-primary">
-                                                <label>
-                                                    <input type="checkbox" value="">
-                                                    <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
-                                                    <span class="text-inverse">Send me the <a href="">Newsletter</a> weekly.</span>
-                                                </label>
-                                            </div>
-                                        </div>*@
+                                <div class="row m-t-25 text-left">                                    
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" onclick="SaveSignup()">Sign up now</button>
-                                        <button href="/UserManagement/User/Login" class="btn btn-success btn-md btn-block waves-effect text-center ">Sign in</button>
+                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" onclick="SaveSignup()">Sign up now</button>
+                                        <button type="button" class="btn btn-success btn-md btn-block waves-effect text-center " onclick="Signin()">Sign in</button>
                                     </div>
                                 </div>
-                                <hr />
-                                @*<div class="row">
-                                        <div class="col-md-10">
-                                            <p class="text-inverse text-left m-b-0">Thank you.</p>
-                                            <p class="text-inverse text-left"><a href="index.html"><b>Back to website</b></a></p>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <img src="../files/assets/images/auth/Logo-small-bottom.png" alt="small-logo.png">
-                                        </div>
-                                    </div>*@
+                                <hr />                                
                             </div>
                         </div>
                     </form>
@@ -323,16 +277,24 @@
 <script type="text/javascript">
     function SaveSignup() {
         var frmdata = $('form').serialize();
-       
-        $.ajax({
+        if ($("#Name").val() == '' || $("#FatherName").val() == '' || $("#Cnic").val() == '' || $("#Email").val() == '' || $("#Department").val() == '' || $("#Organization").val() == '' || $("#LoginPassword").val() == '' || $("#confirm-password").val() == '' || $("#UserAddress").val() == '')
+        {
+            alert("All fields are required.");
+            return 
+        }
+        if ($("#LoginPassword").val() !=  $("#confirm-password").val())
+        {
+            alert("Password and Confirm password must be same.");
+            return
+        }
+        $.ajax({            
             url: "@Url.Action("Insert", "User")",
             type: "Post",
             data: frmdata,
             success: function (response) {
                 debugger;
-                alert('yes');
+                alert('User registered. You will be redirect to login page.');
                 var iUrl = "@Url.Action("Login", "User")";
-                alert(iUrl);
                 window.location.href = iUrl;
                 console.log(response);
                 if (response.data.UserId > 0) {
@@ -343,5 +305,11 @@
 
             }
         });
+    }
+
+    function Signin() {
+        debugger;
+        var iUrl = "@Url.Action("Login", "User")";
+        window.location.href = iUrl;
     }
 </script>

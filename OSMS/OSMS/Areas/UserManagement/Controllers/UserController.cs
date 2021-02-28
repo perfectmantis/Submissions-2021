@@ -68,7 +68,12 @@ namespace OSMS.Areas.UserManagement.Controllers
             if (loginUser > 0)
             {
                 OSMS.Models.GenricClass.UserName = modelClass.Name;
+                
             }
+            //else
+            //{
+            //    return View("Login", loginUser);
+            //}
             return Json(new { data = loginUser }, JsonRequestBehavior.AllowGet);//View("Register");
         }
 

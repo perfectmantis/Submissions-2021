@@ -5,10 +5,10 @@
 }
 <style type="text/css">
     .modal-dialog {
-          max-width: 90%; /* New width for default modal */
-          max-height:8new00px;
-          height: 600px !important;
-        }
+        max-width: 90%; /* New width for default modal */
+        max-height: 800px;
+        height: 600px !important;
+    }
 </style>
 <div class="page-header card">
     <div class="row align-items-end">
@@ -51,15 +51,12 @@
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Max Response</label>
-                @*@Html.LabelFor(x => x.MaxResponse, new { @class = "col-sm-2 col-form-label" })*@
                 <div class="col-sm-4">
-                    @*<input type="text" class="form-control form-control-success" id="inputSuccess1">*@
                     @Html.TextBoxFor(x => x.MaxResponse, new { @class = "form-control form-control-success" })
                 </div>
                 <label class="col-sm-2 col-form-label">Expiry Date</label>
 
                 <div class="col-sm-4">
-                    @*<input type="date" class="form-control form-control-success" id="inputSuccess1">*@
                     @Html.TextBoxFor(x => x.Expiry, new { @class = "form-control form-control-success", @type = "date" })
                 </div>
             </div>
@@ -67,7 +64,6 @@
                 <label class="col-sm-2 col-form-label">Description</label>
                 <div class="col-sm-10">
                     @Html.TextAreaFor(x => x.QuestionnaireDesc, new { @class = "form-control form-control-success" })
-                    @*<textarea class="form-control form-control-success" id="inputSuccess1"></textarea>*@
                 </div>
             </div>
 
@@ -105,7 +101,6 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>*@
                         <h4 class="modal-title" id="mySectionModalLabel">Section</h4>
                     </div>
                     <div class="modal-body">
@@ -179,7 +174,6 @@
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>*@
                                                             <h4 class="modal-title" id="myPageModalLabel">Page</h4>
                                                         </div>
                                                         <div class="modal-body">
@@ -230,7 +224,7 @@
                                                                 <div class="accordion-content accordion-desc">
                                                                     @* Question will start here *@
                                                                     @{
-                                                                        string questionModalId ="Modal" + PageItem.PageId;
+                                                                        string questionModalId = "Modal" + PageItem.PageId;
                                                                         string questionName = "txtPageName" + PageItem.PageId;
                                                                         string questionSeq = "txtPageSeqNo" + PageItem.PageId;
 
@@ -247,7 +241,6 @@
                                                                                 <div class="modal-dialog">
                                                                                     <div class="modal-content">
                                                                                         <div class="modal-header">
-                                                                                            @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>*@
                                                                                             <h4 class="modal-title" id="myQuestionModalLabel">Question</h4>
                                                                                         </div>
                                                                                         <div class="modal-body">
@@ -262,7 +255,7 @@
                                                                                             <div class="form-group row">
                                                                                                 <label class="col-sm-4 col-form-label">Sequence #</label>
                                                                                                 <div class="col-sm-8">
-                                                                                                    @Html.TextBox(questionSeq , null, new { @class = "form-control form-control-success" })
+                                                                                                    @Html.TextBox(questionSeq, null, new { @class = "form-control form-control-success" })
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -312,9 +305,7 @@
 
 
                                         <!--Section Pages End-->
-                                                                        @*</div>
-                                                                                </div>
-                                                                            </div>*@
+
                                                                             }
 
                                                                         }
@@ -338,7 +329,6 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                @*<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>*@
                 <h4 class="modal-title" id="previewlabel">Preview Questionnaire</h4>
             </div>
             <div class="modal-body">
@@ -386,8 +376,7 @@
             success: function (response) {
                 console.log(response.QuestionnaireID);
                 var QuestionnaireId = response.QuestionnaireID;
-                // $('#mySectionModal').toggle('hide');
-                $('#mySectionModal').modal('toggle');
+               $('#mySectionModal').modal('toggle');
                 var iUrl = "@Url.Action("NewQuestionnaire", "Questionnaire")" + "?QuestionnaireId=" + QuestionnaireId;
                 window.location.href = iUrl;
 
@@ -401,8 +390,7 @@
     }
 
     function DeleteSection() {
-        //var QuestionnaireId = $('#QuestionnaireId').val();
-        debugger;
+        
         $.ajax({
             url: "@Url.Action("SectionDelete", "Questionnaire")",
             type: "Post",
@@ -421,10 +409,7 @@
             type: "Post",
             data: { sectionId, PageName, SequenceNumber },
             success: function (response) {
-                //console.log(response.QuestionnaireID);
-                //var QuestionnaireId = response.QuestionnaireID;
-                // $('#mySectionModal').toggle('hide');
-                $('#myPageModal').modal('toggle');
+               $('#myPageModal').modal('toggle');
                 var iUrl = "@Url.Action("NewQuestionnaire", "Questionnaire")" + "?QuestionnaireId=" + QuestionnaireId;
                 window.location.href = iUrl;
 
@@ -439,9 +424,6 @@
             type: "Post",
             data: { PageId, QuestionName, SequenceNumber },
             success: function (response) {
-                //console.log(response.QuestionnaireID);
-                //var QuestionnaireId = response.QuestionnaireID;
-                // $('#mySectionModal').toggle('hide');
                 $('#myQuestionModal').modal('toggle');
                 var iUrl = "@Url.Action("NewQuestionnaire", "Questionnaire")" + "?QuestionnaireId=" + QuestionnaireId;
                 window.location.href = iUrl;
@@ -453,9 +435,6 @@
     function previewQuestionnaire() {
         var QuestionnaireId = $('#QuestionnaireId').val();
         var iURL = '/QuestionnaireManagement/Questionnaire/PreviewQuestionnaire?QuestionnaireID=' + QuestionnaireId;
-        //$('#previewiFrame').attr('src', iURL);
-        //$('.modal-dialog').css('max-height', '100%');
-        //$('#myPreviewModal').modal('toggle');
         window.location.href = '/QuestionnaireManagement/Questionnaire/PreviewQuestionnaire?QuestionnaireID=' + QuestionnaireId;
     }
 </script>
