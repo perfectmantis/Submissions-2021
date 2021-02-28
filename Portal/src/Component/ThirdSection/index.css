@@ -1,0 +1,66 @@
+.ThirdSection{
+  background: url(../../assets/image/bg1.png);
+  /* background: RED; */
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 1120px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.ThirdSectionInner{
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center !important;
+}
+.third-box{
+  width: 200px;
+  height: 300px;
+  /* justify-content: center; */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 20px -6px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 20px -6px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 20px -6px rgba(0,0,0,0.75);
+}
+.red-round-box{
+  width: 60px;
+  height: 60px;
+  margin-bottom: -50px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #F83A64;
+}
+.mtn-100{
+  margin-top: -100px;
+}
+.font-bold{
+  font-weight: bold;
+}
+.third-heading-1{
+  text-align: left;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.third-sub-heading{
+  text-align: left;
+}
+.justify-center{
+  align-items: center;
+  display: flex;
+}
+.third-right{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+}

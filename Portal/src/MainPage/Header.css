@@ -1,0 +1,83 @@
+.bg-white{
+    background-color: black
+}
+.changeColor{
+    background-color: black !important
+}
+.nav-item{
+    cursor: pointer;
+}
+.nav-link{
+    color: #000!important;
+    font-weight: bolder;
+}
+
+
+  @media screen and (max-width: 991px){
+    .navbar .navbar-toggler-bar{
+        background: #00BCD5 !important;
+    }
+.navbar-collapse {
+    position: fixed;
+    display: block;
+    top: 0;
+    height: 100% !important;
+    width: 300px;
+    right: 0;
+    z-index: 1032;
+    visibility: visible;
+    background-color: #999;
+    overflow-y: visible;
+    border-top: none;
+    text-align: left;
+    max-height: none !important;
+    -webkit-transform: translate3d(300px, 0, 0);
+    -moz-transform: translate3d(300px, 0, 0);
+    -o-transform: translate3d(300px, 0, 0);
+    -ms-transform: translate3d(300px, 0, 0);
+    transform: translate3d(300px, 0, 0);
+    -webkit-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -moz-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -o-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    -ms-transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+    transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+}
+.nav-open .navbar-collapse {
+    -webkit-transform: translate3d(0px, 0, 0);
+    -moz-transform: translate3d(0px, 0, 0);
+    -o-transform: translate3d(0px, 0, 0);
+    -ms-transform: translate3d(0px, 0, 0);
+    transform: translate3d(0px, 0, 0);
+  }
+  }
+  .bg-custom{
+      background-color: #00BCD5 !important;
+  }
+  .bg-custom-light{
+      background-color: #14acc2 !important;
+  }
+  .text-custom-light{
+      color: #14acc2 !important;
+  }
+  .text-custom{
+      color: #F83A64 !important;
+  }
+  #WhatWeDo{
+      scroll-behavior: smooth;
+  }
+  .mr-11{
+      margin-right: 11%;
+  }
+  .mr-5{
+      margin-right: 4%;
+  }
+  .loginBtn{
+      background-color: white;
+      border-radius: 50px;
+      width: 150px;
+      height: 35px;
+      padding-top: 0.5em !important;
+      font-size: 13px !important;
+      padding-top: inherit;
+      color:#000
+  }

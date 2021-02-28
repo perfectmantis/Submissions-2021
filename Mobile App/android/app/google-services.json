@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "320248036388",
+    "firebase_url": "https://crime-management-system-f3071-default-rtdb.firebaseio.com",
+    "project_id": "crime-management-system-f3071",
+    "storage_bucket": "crime-management-system-f3071.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320248036388:android:1dc7a55d83f19a381c2cb1",
+        "android_client_info": {
+          "package_name": "com.topheo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320248036388-n8fniv7jhejfjgo04p1kh3m48dlajssk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUCOrZQBIAQHQQ3QbnTUtI6mEHBV2WlOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320248036388-n8fniv7jhejfjgo04p1kh3m48dlajssk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
