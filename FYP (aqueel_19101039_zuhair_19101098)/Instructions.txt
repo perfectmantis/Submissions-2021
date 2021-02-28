@@ -1,0 +1,17 @@
+Download these files and paste it in folder as instructed below:
+> chromedriver.exe 
+> gn.caffemodel
+tasks
+> ofd_uint8.pb
+
+Download from this Link:
+https://drive.google.com/drive/folders/16YFYs2eQNYDWA2Nh48wMcNm5QI3_-o5w?usp=sharing
+
+PASTE IN FOLDER:
+> chromedriver.exe (in main folder along with start.py)
+> \tasks\vision\rec_gengn.caffemodel
+tasks
+> \tasks\vision\rec_genofd_uint8.pb
+
+Paste Music and Video files in music and video folder respectively.
+Paste PDF in PDFs folder.
