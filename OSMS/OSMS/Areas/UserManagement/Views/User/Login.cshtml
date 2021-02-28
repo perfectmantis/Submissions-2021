@@ -124,7 +124,7 @@
                                 </div>                                
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" onclick="Signin()">Sign in</button>
+                                        <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" onclick="Signin()">Sign in</button>
                                         <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" onclick="SaveSignup()">Sign up now</button>
                                     </div>
                                 </div>
@@ -230,17 +230,17 @@
                 type: "Post",
                 data: frmdata,//{ UserName, LoginPassword },                      
                 success: function (response) {
-                        window.location.href = '/QuestionnaireManagement/Questionnaire/NewQuestionnaire';
                     //debugger;
-                    //if (response.data == 1)
-                    //{
-                    //    alert("success");
-                    @*}
+                    if (response.data == 1)
+                    {
+                        alert("success");
+                        window.location.href = '/QuestionnaireManagement/Questionnaire/NewQuestionnaire';
+                    }
                     else {
                         alert("Username or password is incorrect. Please check and try again.");
                         var iUrl = "@Url.Action("Login", "User")";
                         window.location.href = iUrl;                    
-                    }*@                
+                    }                
                 }
             });
         }
