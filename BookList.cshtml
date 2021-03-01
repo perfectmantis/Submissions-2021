@@ -1,0 +1,91 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+@{
+    ViewBag.Title = "BookList";
+}
+<script>    
+    function ConfirmDelete() {
+        return confirm("Are you sure! You want to delete this record?");
+    }
+</script>
+<div class="container">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">BookStore</a>
+                </div>
+                <ul class="nav navbar-nav">
+
+                    <li>
+                        @Html.ActionLink("Add Book", "Addbook", "Admin")
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("Book List", "BookList", "Admin")
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("Users", "Index", "Users")
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("User Registration", "Index", "Registrations")
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>
+                        @Html.ActionLink("Log Out", "Index", "Login")
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<h2>
+    BookList
+</h2>
+<div class="table table-responsive table-hover">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Price</th>
+            <th>Author</th>
+            <th>Description</th>
+            <th>Condition</th>
+            <th>PublishYear</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>ISBN</th>
+            <th>Name</th>
+            <th> </th>
+
+        </tr>
+        @foreach (var book in ViewBag.BookList)
+        {
+            <tr>
+                <td>@book.Id</td>
+                <td>@book.Price $</td>
+                <td>@book.Author </td>
+                <td>@book.Discription </td>
+                <td>@book.Condition </td>
+                <td>@book.PublishYear</td>
+                <td>@book.Discription</td>
+                <td>@book.Status</td>
+                <td>@book.ISBN</td>
+                <td>@book.Name </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Admin", new { id = book.Id }, htmlAttributes: new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("delt ", "Delete", "Admin", new { id = book.Id }, htmlAttributes: new { @class = "btn btn-danger",onclick= "return ConfirmDelete()" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div>
+
+    <a href="http://localhost:1867/Admin/Addbook" class="btn btn-primary btn-sm">Back</a>
+</div>
