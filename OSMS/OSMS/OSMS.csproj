@@ -554,6 +554,7 @@
     <Compile Include="Areas\QuestionnaireManagement\Models\RespondentAnswersModelClass.cs" />
     <Compile Include="Areas\QuestionnaireManagement\Models\SectionModelClass.cs" />
     <Compile Include="Areas\QuestionnaireManagement\Models\SurveyRespondentModelClass.cs" />
+    <Compile Include="Areas\QuestionnaireManagement\Models\UserAndQuestionnaireVM.cs" />
     <Compile Include="Areas\QuestionnaireManagement\QuestionnaireManagementAreaRegistration.cs" />
     <Compile Include="Areas\UserManagement\Controllers\UserController.cs" />
     <Compile Include="Areas\UserManagement\Controllers\UserTypeController.cs" />

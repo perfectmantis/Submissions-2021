@@ -25,6 +25,13 @@
 
         @using (Html.BeginForm(new { enctype = "multipart/form-data", id = "frmUser" }))
         {
+            @*@{
+
+                OSMS.Models.callAPI db = new OSMS.Models.callAPI();
+                long UserID = OSMS.Models.GenricClass.UserId;
+                string URL = "api/UserManagement/User/GetUserById?UserId=";
+                var UserData = db.GetEntityListById<OSMS.Areas.QuestionnaireManagement.Models.SectionModelClass>(URL, UserID);
+            }*@
             @Html.HiddenFor(x => x.UserId)
             @Html.HiddenFor(x => x.UserType)
             @Html.HiddenFor(x => x.LoginPassword)

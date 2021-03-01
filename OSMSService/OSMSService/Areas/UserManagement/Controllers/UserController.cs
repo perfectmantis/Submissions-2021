@@ -145,7 +145,7 @@ namespace OSMSService.Areas.UserManagement.Controllers
                     var user = db.UserInfoes.Where(x => x.Name == modelClass.Name).FirstOrDefault();
                     if (user != null && user.LoginPassword == modelClass.LoginPassword)
                     {
-                        return 1;
+                        return user.UserId;
                     }
                     else
                     {

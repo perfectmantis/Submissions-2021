@@ -15,15 +15,16 @@ namespace OSMS.Areas.QuestionnaireManagement.Controllers
         {
             return View();
         }
-        
-        public JsonResult QuestionnaireHistory()
+       
+        [System.Web.Http.HttpPost] 
+        public JsonResult QuestionnaireHistory(int UserId)
         {
-            string url = "api/QuestionnaireManagement/Questionnaire/GetAllQuestionnaire";
-            var AllQuestionnaire = CallAPI.GetEntityList<QuestionnaireModelClass>(url);
+            string url = "api/QuestionnaireManagement/Questionnaire/GetAllQuestionnaireByUserId?UserId=";
+            var AllQuestionnaire = CallAPI.GetEntityListById<QuestionnaireModelClass>(url, UserId);
             return Json(new { data = AllQuestionnaire }, JsonRequestBehavior.AllowGet);
         }
+
         [System.Web.Http.HttpPost]
-       
         public ActionResult QuestionnaireInsert(QuestionnaireModelClass modelClass)
         {
             string url = "api/QuestionnaireManagement/Questionnaire/QuestionnaireInsert";

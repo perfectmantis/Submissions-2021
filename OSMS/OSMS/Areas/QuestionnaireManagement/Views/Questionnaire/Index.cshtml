@@ -42,11 +42,12 @@
     $(document).ready(function () {
        getData();
     })
-
+    var id = @OSMS.Models.GenricClass.UserId;
     function getData() {
         $.ajax({
             url: '@Url.Action("QuestionnaireHistory", "Questionnaire")',
-            type: 'Get',
+            type: 'Post',
+            data: {UserId: id},
             success: function (response) {
                 console.log(response.data);
                 $(".table").dataTable({

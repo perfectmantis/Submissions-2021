@@ -68,7 +68,7 @@ namespace OSMS.Areas.UserManagement.Controllers
             if (loginUser > 0)
             {
                 OSMS.Models.GenricClass.UserName = modelClass.Name;
-                
+                OSMS.Models.GenricClass.UserId = loginUser;
             }
             //else
             //{

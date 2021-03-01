@@ -38,6 +38,12 @@
                     @Html.HiddenFor(x => x.QuestionnaireId)
                     @{OSMS.Models.GenricClass.QuestionnaireId = Model != null ? Model.QuestionnaireId : 0;}
                     @Html.HiddenFor(x => x.CreatedOn)
+                    @{
+                        if (Model != null)
+                        {
+                            Model.UserId = OSMS.Models.GenricClass.UserId;
+                        }
+                    }
                     @Html.HiddenFor(x => x.UserId)
                     @Html.DropDownListFor(x => x.QuestionnaireStatus, new SelectList(new[]
                                                                     {
@@ -352,6 +358,7 @@
 
     function saveData() {
         var frmdata = $('form').serialize();
+       
         debugger;
         $.ajax({
             url: "@Url.Action("QuestionnaireInsert", "Questionnaire")",
