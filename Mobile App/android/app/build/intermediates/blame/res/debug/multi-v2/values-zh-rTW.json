@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\UNI MCS\\4th Semester\\fyp\\Crime management\\Final FYP\\Mobile App\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rTW\\values-zh-rTW.xml",
+            "outputFile": "F:\\UNI MCS\\4th Semester\\fyp\\Crime management\\Final FYP\\Submissions-2021\\Mobile App\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rTW\\values-zh-rTW.xml",
             "map": [
                 {
                     "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\27ecaff6d203b776aca3c036b86494a2\\res\\values-zh-rTW\\values-zh-rTW.xml",
@@ -21,23 +21,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\d0959b70b435d8a6db3fb3f19993351a\\res\\values-zh-rTW\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "251",
-                        "endColumns": "161",
-                        "endOffsets": "412"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "3697",
-                        "endColumns": "161",
-                        "endOffsets": "3854"
-                    }
-                },
-                {
                     "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\99bdfb1f9c20af8af6fb71400005e0ca\\res\\values-zh-rTW\\values-zh-rTW.xml",
                     "from": {
                         "startLines": "2",
@@ -52,6 +35,23 @@
                         "startOffsets": "5431",
                         "endColumns": "100",
                         "endOffsets": "5527"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\3a3e1e16c3111875463c30db9d952f00\\res\\values-zh-rTW\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "251",
+                        "endColumns": "161",
+                        "endOffsets": "412"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "3697",
+                        "endColumns": "161",
+                        "endOffsets": "3854"
                     }
                 },
                 {

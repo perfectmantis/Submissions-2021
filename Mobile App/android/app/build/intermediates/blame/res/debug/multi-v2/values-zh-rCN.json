@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\UNI MCS\\4th Semester\\fyp\\Crime management\\Final FYP\\Mobile App\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
+            "outputFile": "F:\\UNI MCS\\4th Semester\\fyp\\Crime management\\Final FYP\\Submissions-2021\\Mobile App\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh-rCN\\values-zh-rCN.xml",
             "map": [
-                {
-                    "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\d0959b70b435d8a6db3fb3f19993351a\\res\\values-zh-rCN\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "251",
-                        "endColumns": "157",
-                        "endOffsets": "408"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "3686",
-                        "endColumns": "157",
-                        "endOffsets": "3839"
-                    }
-                },
                 {
                     "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\27ecaff6d203b776aca3c036b86494a2\\res\\values-zh-rCN\\values-zh-rCN.xml",
                     "from": {
@@ -86,6 +69,23 @@
                         "startOffsets": "4969,5052,5144,5245",
                         "endColumns": "82,91,100,92",
                         "endOffsets": "5047,5139,5240,5333"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\3a3e1e16c3111875463c30db9d952f00\\res\\values-zh-rCN\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "251",
+                        "endColumns": "157",
+                        "endOffsets": "408"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "3686",
+                        "endColumns": "157",
+                        "endOffsets": "3839"
                     }
                 }
             ]

@@ -1,8 +1,25 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\UNI MCS\\4th Semester\\fyp\\Crime management\\Final FYP\\Mobile App\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si\\values-si.xml",
+            "outputFile": "F:\\UNI MCS\\4th Semester\\fyp\\Crime management\\Final FYP\\Submissions-2021\\Mobile App\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-si\\values-si.xml",
             "map": [
+                {
+                    "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\3a3e1e16c3111875463c30db9d952f00\\res\\values-si\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "197",
+                        "endOffsets": "444"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "3958",
+                        "endColumns": "197",
+                        "endOffsets": "4151"
+                    }
+                },
                 {
                     "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\27ecaff6d203b776aca3c036b86494a2\\res\\values-si\\values-si.xml",
                     "from": {
@@ -18,23 +35,6 @@
                         "startOffsets": "105,215,322,429,517,622,738,827,914,1005,1098,1193,1287,1388,1481,1576,1670,1761,1852,1936,2045,2150,2248,2358,2457,2563,2722,5936",
                         "endColumns": "109,106,106,87,104,115,88,86,90,92,94,93,100,92,94,93,90,90,83,108,104,97,109,98,105,158,98,81",
                         "endOffsets": "210,317,424,512,617,733,822,909,1000,1093,1188,1282,1383,1476,1571,1665,1756,1847,1931,2040,2145,2243,2353,2452,2558,2717,2816,6013"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\d0959b70b435d8a6db3fb3f19993351a\\res\\values-si\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "197",
-                        "endOffsets": "444"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "3958",
-                        "endColumns": "197",
-                        "endOffsets": "4151"
                     }
                 },
                 {

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "F:\\UNI MCS\\4th Semester\\fyp\\Crime management\\Final FYP\\Mobile App\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-es\\values-es.xml",
+            "outputFile": "F:\\UNI MCS\\4th Semester\\fyp\\Crime management\\Final FYP\\Submissions-2021\\Mobile App\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-es\\values-es.xml",
             "map": [
                 {
                     "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\867c3ed43ac4a994f2bc82b1cd57afeb\\res\\values-es\\values.xml",
@@ -38,23 +38,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\d0959b70b435d8a6db3fb3f19993351a\\res\\values-es\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "247",
-                        "endColumns": "218",
-                        "endOffsets": "465"
-                    },
-                    "to": {
-                        "startLines": "37",
-                        "startColumns": "4",
-                        "startOffsets": "4036",
-                        "endColumns": "218",
-                        "endOffsets": "4250"
-                    }
-                },
-                {
                     "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\45ad275e92556a66e74681efdd3a1458\\res\\values-es\\values-es.xml",
                     "from": {
                         "startLines": "2,3,4,5",
@@ -86,6 +69,23 @@
                         "startOffsets": "105,222,335,443,528,629,757,842,924,1016,1110,1208,1302,1403,1497,1593,1689,1781,1873,1955,2062,2162,2261,2369,2476,2583,2742,6096",
                         "endColumns": "116,112,107,84,100,127,84,81,91,93,97,93,100,93,95,95,91,91,81,106,99,98,107,106,106,158,99,81",
                         "endOffsets": "217,330,438,523,624,752,837,919,1011,1105,1203,1297,1398,1492,1588,1684,1776,1868,1950,2057,2157,2256,2364,2471,2578,2737,2837,6173"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\MNasi\\.gradle\\caches\\transforms-2\\files-2.1\\3a3e1e16c3111875463c30db9d952f00\\res\\values-es\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "247",
+                        "endColumns": "218",
+                        "endOffsets": "465"
+                    },
+                    "to": {
+                        "startLines": "37",
+                        "startColumns": "4",
+                        "startOffsets": "4036",
+                        "endColumns": "218",
+                        "endOffsets": "4250"
                     }
                 }
             ]
