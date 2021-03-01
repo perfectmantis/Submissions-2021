@@ -1,0 +1,104 @@
+LFADS REPORT 
+
+Ten posts have been fetched from your Facebook Timline and Analysed.  Analysis is as follow:
+
+Post Number : 0 
+
+Post ID : 102261145237538_102277768569209 , Original Post: 
+when your  friend is manhos and you get failed with him in exams
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: when your  friend is **** and you get failed with him in exams  
+
+
+Post Number : 1 
+
+Post ID : 102261145237538_102277638569222 , Original Post: 
+harami log hain university open krdi
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: **** log hain university open krdi  
+
+
+Post Number : 2 
+
+Post ID : 102261145237538_102276858569300 , Original Post: 
+BC we are having exams
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: **** we are having exams  
+
+
+Post Number : 3 
+
+Post ID : 102261145237538_102275875236065 , Original Post: 
+holy shit india won the match
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: holy **** india won the match  
+
+
+Post Number : 4 
+
+Post ID : 102261145237538_102068581923461 , Original Post: 
+some people are Bastards
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: some people are ****  
+
+
+Post Number : 5 
+
+Post ID : 102261145237538_102068415256811 , Original Post: 
+do your own work you piece of crap
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: do your own work you piece of ****  
+
+
+Post Number : 6 
+
+Post ID : 102261145237538_102068191923500 , Original Post: 
+new year event was fucking good
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: new year event was **** good  
+
+
+Post Number : 7 
+
+Post ID : 102261145237538_102068128590173 , Original Post: 
+some people are moron
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: some people are ****  
+
+
+Post Number : 8 
+
+Post ID : 102261145237538_102067951923524 , Original Post: 
+you are a bitch
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: you are a ****  
+
+
+Post Number : 9 
+
+Post ID : 102261145237538_102067915256861 , Original Post: 
+crappy shit
+ 
+, No. of Abusive Words Used: 1
+ 
+, Filtered Version: crappy ****  
+
+
