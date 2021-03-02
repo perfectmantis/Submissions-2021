@@ -1,0 +1,166 @@
+clc;
+clear all;
+close all;
+
+%import java library for mouse control
+import java.awt.Robot;
+import java.awt.event.*;
+mouse = Robot; % create mouse object
+
+ 
+vid = videoinput('winvideo', 1, 'I420_320x240'); %create video object
+ 
+
+ 
+
+
+vidDevice = imaq.VideoDevice('winvideo', 1, 'I420_320x240', ... % Acquire input video stream
+                    'ROI', [1 1 320 240], ...
+                    'ReturnedColorSpace', 'rgb');
+					
+vidInfo = imaqhwinfo(vidDevice); % Acquire input video property
+
+hVideoIn = vision.VideoPlayer('Name', 'Final Video', ... % Output video player
+                                'Position', [100 100 vidInfo.MaxWidth+20 vidInfo.MaxHeight+30]);
+								
+								
+shape_circle = vision.ShapeInserter('Shape','Circles','BorderColor', 'Custom', ... % Set Red box handling
+                                        'CustomBorderColor', [1 0 0], ...
+                                        'Fill', true, ...
+                                        'FillColor', 'Custom', ...
+                                        'CustomFillColor', [1 0 0], ...
+                                        'Opacity', 1);
+shape_rectangle = vision.ShapeInserter('Shape','Rectangles','BorderColor', 'Custom', ... % Set blue box handling
+                                        'CustomBorderColor', [0 0 1], ...
+                                        'Fill', false );
+                                    
+
+screenSize = get(0, 'screensize'); % get screenSize
+center_left = [0;0];  % initialize center iris
+center_right = [0;0]; % initialize center for right iris
+eye_pos_x = 160;  % initialise center position of eye's x coordinate
+eye_pos_y = 120;  % initialise center position of eye's y coordinate
+
+count_1 = 0;  % check for one eye blink
+count_3 = 0;  % check for right eye blink
+count_2 = 0;  % check for left eye blink
+for c = 1:1:200
+while(vid.FramesAcquired<=25)
+
+im = step(vidDevice); % get snapshot of the video    
+
+im_rgb = im;
+im = rgb2gray(im);  % rgb to gray conversion
+im = imadjust(im); % adjust the intensity
+im = adapthisteq(im); % enhances the contrast
+
+
+
+face = vision.CascadeObjectDetector('LeftEyeCART'); % create object for eye detection
+bboxes = step(face, im); % extract position of eyes from image
+
+[a, b] = size(bboxes); 
+
+if (a == 1)  % if only one eye is detected
+    left_eye = im((bboxes(1,2) : bboxes(1,2)+ bboxes(1,4)),(bboxes(1,1) : bboxes(1,1)+ bboxes(1,3))) ;  % extract eye from image
+	[i,j]= size(left_eye);  % size of eye image
+    left_eyee = left_eye(  round(0.2*i):i,: );  % adjust the eye image so that only eye can be focussed
+    [center_left, radii_left] = imfindcircles(left_eyee, [4 14],'ObjectPolarity','dark', 'Sensitivity',0.88); % get position of iris from eye 
+    if isempty(center_left)  % if empty no iris detected from eye
+        bboxes1 = [0 0 0];
+    else
+        bboxes1 = [(center_left(1,1) + bboxes(1,1)) (center_left(1,2) + bboxes(1,2)) radii_left(1,1)]; % store the coordinates of iris into bboxes1
+    end
+    
+elseif (a == 2)  % if both eyes are detected
+    left_eye = im((bboxes(1,2) : bboxes(1,2)+ bboxes(1,4)),(bboxes(1,1) : bboxes(1,1)+ bboxes(1,3))) ; % extract left eye from image
+	[i,j]= size(left_eye); %size of left eye image
+    left_eyee = left_eye(  round(0.2*i):i,: );  % adjust the eye image so that only eye can be focussed
+    [center_left, radii_left] = imfindcircles(left_eyee,[4 14],'ObjectPolarity','dark', 'Sensitivity',0.88); % get position of iris from eye 
+
+    right_eye = im((bboxes(2,2) : bboxes(2,2)+ bboxes(2,4)),(bboxes(2,1) : bboxes(2,1)+ bboxes(2,3))) ; % extract right eye from image
+    [k,l]= size(right_eye); %size of right eye image
+    right_eyee = right_eye( round(0.2*k):k, : ); % adjust the eye image so that only eye can be focussed
+    [center_right, radii_right] = imfindcircles(right_eyee,[4 14],'ObjectPolarity','dark', 'Sensitivity',0.88); % get position of iris from eye
+    
+
+    if isempty(center_right) && isempty(center_left) % if left iris and right iris is empty
+        bboxes1 = [0 0 0]; % empty the bboxes1
+    elseif isempty(center_right) % if only left iris is detected
+        bboxes1 = [(center_left(1,1) + bboxes(1,1)) (center_left(1,2) + bboxes(1,2)+ round(0.2*i)) radii_left(1,1)]; % store the coordinates of left iris into bboxes1
+    elseif isempty(center_left) % if only right iris is detected
+         bboxes1 = [(center_right(1,1) + bboxes(2,1)) (center_right(1,2) + bboxes(2,2)) radii_right(1,1)]; % store the coordinates of right iris into bboxes1
+    else % both iris are detected
+		% store the coordinates of left iris and right iris into bboxes1
+        bboxes1 = [(center_left(1,1) + bboxes(1,1)) (center_left(1,2) + bboxes(1,2)+ round(0.2*i)) radii_left(1,1);(center_right(1,1) + bboxes(2,1)) (center_right(1,2) + bboxes(2,2)+round(0.2*k)) radii_right(1,1)];
+    end
+else % no eye detected hence no iris detected
+    bboxes1 = [0 0 0];
+end
+
+vidIn = step(shape_circle, im_rgb, bboxes1); % Insert the red circle for iris
+vidIn = step(shape_rectangle, vidIn, bboxes); % Insert the rectangle for eyes
+
+step(hVideoIn, vidIn); % Output video stream
+
+
+      
+if( a  == 1 ) % if only one eye is detected consider as blink
+      count_2 = 0;
+      count_3 = 0;
+      if(count_1 > 5) % check if continuously five times the blink is detected, click mouse button
+        count_1 = 0; 
+        
+        if( bboxes(1,1) > eye_pos_x) % check if position of detected one eye is less than center of both eyes then consider the detected eye as right eye 
+         mouse.mousePress(InputEvent.BUTTON3_MASK); % click right button
+         pause(0.2);
+         mouse.mouseRelease(InputEvent.BUTTON3_MASK);
+        elseif ( bboxes(1,1) < eye_pos_x) % check if position of detected one eye is greater than center of both eyes then consider the detected eye as left eye 
+           mouse.mousePress(InputEvent.BUTTON1_MASK); % click left button
+         pause(0.2);
+         mouse.mouseRelease(InputEvent.BUTTON1_MASK);
+        end
+      else % if blink is not for five times
+            count_1 = count_1 + 1;
+      end
+elseif(a == 2) % if both eyes are detected
+        count_1 = 0;
+        eye_pos_x = ((bboxes(1,1) + bboxes(2,1))/2);  % update the center of the both eyes
+        eye_pos_y = ((bboxes(1,2) + bboxes(2,2))/2); 
+       if isempty(center_right) && isempty(center_left) % if both iris are not detected
+           % do nothing
+       elseif isempty(center_left)  % if left iris is not detected
+                if(count_2 > 5) % check if left iris is not detected continuously for five times
+                    mouse.mousePress(InputEvent.BUTTON3_MASK);% click right button
+                    pause(0.2);
+                    mouse.mouseRelease(InputEvent.BUTTON3_MASK);
+                    count_2 = 0;
+                else % till not detected five times continuously increase the count
+                    count_2 = count_2 + 1;
+                end
+        elseif isempty(center_right) % if right iris is not detected
+            if(count_3 > 5) % check if right iris is not detected continuously for five times
+                mouse.mousePress(InputEvent.BUTTON1_MASK);% click left button
+                pause(0.2);
+                mouse.mouseRelease(InputEvent.BUTTON1_MASK);
+                count_3 = 0;
+            else  % till not detected five times continuously increase the count
+                count_3 = count_3 + 1;   
+            end
+       else % if both eyes and iris are detectes then move the mouse
+            eye_x = ((center_left(1,1) + center_right(1,1))/2)-5; % get average x coordinate of both iris and adjust it by subtracting five 
+            eye_y = ((center_left(1,2) + center_right(1,2))/2) -5; % get average y coordinate of both iris and adjust it by subtracting five
+            xcoord = abs(screenSize(1,3) - (screenSize(1,3)/((j+l-20)/2))*eye_x); % calculate the position of mouse according to the screen size and iris postion
+            ycoord  = (screenSize(1,4)/((i+k-20)/2))*eye_y;
+            mouse.mouseMove(xcoord*1.2,ycoord);  % move cursor according to position
+            count_3 = 0;
+            count_2 = 0;
+       end
+ 
+           
+
+end
+end
+end
+release(hVideoIn); % Release all memory and buffer used
+release(vidDevice);
