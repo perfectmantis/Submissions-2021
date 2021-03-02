@@ -6,7 +6,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import *
 from sklearn import svm
 from sklearn.model_selection import train_test_split
-import csv
+import csv 
 
 
 def predict_data(algorithm, train_data, train_classes, test_data):
