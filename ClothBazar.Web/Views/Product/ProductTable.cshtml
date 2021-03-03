@@ -1,0 +1,252 @@
+﻿@model ProductSearchViewModel
+@{
+    ViewBag.Title = "ProductTable";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+	<form method="post">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="form-group">
+					<label>Search</label>
+					<input class="form-control" id="searchTxt" name="Search" value="@Model.SearchTerm" />
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="form-group">
+					<label>Action</label>
+					<div class="row">
+						<div class="col-md-4 pr-0">
+							<button class="btn btn-primary form-control" type="button" id="searchBtn">Search</button>
+						</div>
+						<div class="col-md-4 pr-0">
+							<button class="btn btn-primary form-control" type="button" id="resetBtn">Reset</button>
+						</div>
+						<div class="col-md-4 pr-0">
+							<button class="btn btn-primary form-control" type="button" id="newBtn">New</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div>
+	<table id="ProductsTable" class="table table-striped">
+		<thead>
+			<tr>
+				<th class="font-weight-bold">Product Name</th>
+				<th class="font-weight-bold">Category</th>
+				<th class="font-weight-bold">Price</th>
+				<th class="font-weight-bold wrap-td">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@if (Model.Products != null && Model.Products.Count > 0)
+			{
+
+				foreach (var product in Model.Products)
+				{
+					<tr>
+						<td>@product.Name</td>
+						<td>
+							@if (product.Category != null)
+							{
+								<text>@product.Category.Name</text>
+							}
+							else
+							{
+								<text>-</text>
+							}
+						</td>
+						<td>@product.Price</td>
+						<td class="wrap-td">
+							<button class="editBtn" data-id="@product.ID">Edit</button>
+							<button class="deleteBtn" data-id="@product.ID">Delete</button>
+							<button class="addtoCart" data-id="@product.ID">Add To Cart</button>
+						</td>
+					</tr>
+				}
+			}
+			else
+			{
+				<tr>
+					<td class="text-danger" colspan="4">No Products found.</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	<div>
+		@if (Model.Pager != null && Model.Pager.TotalPages > 1)
+		{
+
+			if (Model.Pager.CurrentPage > 1)
+			{
+				<button class="pageButtons" data-pageno="1">First</button>
+				<button class="pageButtons" data-pageno="@(Model.Pager.CurrentPage - 1)">Previous</button>
+			}
+
+			for (var page = Model.Pager.StartPage; page <= Model.Pager.EndPage; page++)
+			{
+				string activeClass = Model.Pager.CurrentPage == page ? "active bg-info" : string.Empty;
+
+				<button class="@activeClass pageButtons" data-pageno="@page">@page</button>
+			}
+
+			if (Model.Pager.CurrentPage < Model.Pager.TotalPages)
+			{
+				<button class="pageButtons" data-pageno="@(Model.Pager.CurrentPage + 1)">Next</button>
+				<button class="pageButtons" data-pageno="@Model.Pager.EndPage">Last</button>
+			}
+		}
+	</div>
+</div>
+
+<script>
+
+	$(".pageButtons").click(function () {
+		$.ajax({
+			url: '@Url.Action("ProductTable", "Product")',
+			data: {
+				pageNo : $(this).attr("data-pageno")
+			}
+		})
+        .done(function (response) {
+        	$("#tableContiner").html(response);
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+	});
+
+	$("#searchBtn").click(function () {
+		var searchValue = $("#searchTxt").val();
+
+		$.ajax({
+			url: '@Url.Action("ProductTable", "Product")',
+			data: {
+				search: searchValue
+			}
+		})
+        .done(function (response) {
+        	$("#tableContiner").html(response);
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+	});
+
+	$("#resetBtn").click(function () {
+		var searchValue = '';
+
+		$.ajax({
+			url: '@Url.Action("ProductTable", "Product")',
+			data: {
+				search: searchValue
+			}
+		})
+        .done(function (response) {
+        	$("#tableContainer").html(response);
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+	});
+
+	$("#newBtn").click(function () {
+		$.ajax({
+			url: '@Url.Action("Create", "Product")',
+		})
+        .done(function (response) {
+        	$("#actionContainer").html(response);
+
+        	focusAction("actionContainer");
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+	});
+
+	$(".editBtn").click(function () {
+		$.ajax({
+			url: '@Url.Action("Edit", "Product")',
+			data: {
+				ID: $(this).attr('data-id')
+			}
+		})
+        .done(function (response) {
+        	$("#actionContainer").html(response);
+
+        	focusAction("actionContainer");
+        })
+        .fail(function (XMLHttpRequest, textStatus, errorThrown) {
+        	alert("FAIL");
+        });
+	});
+
+	$(".deleteBtn").click(function () {
+
+		swal({
+			title: "Confirm?",
+			text: "Are you sure you want to delete this product?",
+			icon: "warning",
+			buttons: true,
+			dangerMode: true,
+		})
+		.then((willDelete) => {
+			if (willDelete) {
+				$.ajax({
+					type: 'POST',
+					url: '@Url.Action("Delete", "Product")',
+					data: {
+						ID: $(this).attr('data-id')
+					}
+				})
+				.done(function (response) {
+					$("#tableContiner").html(response);
+
+					swal("Record deleted Successfully.", {
+						icon: "success",
+					});
+				})
+				.fail(function (XMLHttpRequest, textStatus, errorThrown) {
+					alert("FAIL");
+				});
+
+			}
+		});
+
+		//var confirmDelete = confirm("Are you sure you want to delete this product?");
+
+		//if (confirmDelete)
+		//{
+		//	$.ajax({
+		//		type: 'POST',
+		//		url: '/Product/Delete',
+		//		data: {
+		//			ID: $(this).attr('data-id')
+		//		}
+		//	})
+		//	.done(function (response) {
+		//		$("#tableContiner").html(response);
+		//	})
+		//	.fail(function (XMLHttpRequest, textStatus, errorThrown) {
+		//		alert("FAIL");
+		//	});
+		//}
+	});
+
+	var products = [];
+	$(".addtoCart").click(function () {
+		var productID = $(this).attr('data-id');
+
+		products.push(productID);
+
+		$.cookie('CartProducts', products.join('-'), { path: '/' });
+
+		alert("Product added to Cart.");
+	});
+</script>
