@@ -1,0 +1,20 @@
+Assalam-O-Alaikum Sir, 
+
+1. Icons might not properly be displayed and for the icons to be displayed properly we have to copy the source code and make a new .py file and paste the code to a newly created python file.
+
+2. Python version 3.9.1 currently latest is used for the project (Downloaded from www.python.org)
+
+3. The dependencies should be installed like PyQt5, SpeechRecognition, etc...
+
+4.
+#######################
+INSTALLING DEPENDENCIES
+#######################
+
+pip install PyQt5
+pip install SpeechRecognition
+pip install PyAudio 
+	or
+if it is not installing then search for python unofficial binaries and dwnload the pygame wheel file based on the python version currently installed on the system.
+
+5. DONE!!
