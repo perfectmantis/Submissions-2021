@@ -1,0 +1,27 @@
+.header {
+    font-weight   : bolder;
+    letter-spacing: 1px;
+}
+
+.card1 {
+    margin-left: -24px;
+    margin-top: -34px;
+    margin-right: -24px;
+    border-radius: 0;
+}
+
+.icon {
+    width     : auto;
+    height    : auto;
+    margin-top: -40px;
+}
+
+.content {
+    height: 60px;
+   background: #145c9b;
+    color: white;
+}
+
+.icon {
+    cursor: pointer;
+}

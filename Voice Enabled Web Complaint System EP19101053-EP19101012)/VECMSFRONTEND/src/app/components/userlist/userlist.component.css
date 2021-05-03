@@ -1,0 +1,37 @@
+a.add {
+    color: #27C46B;
+}
+
+a.edit {
+    color: #FFC107;
+}
+
+a.delete {
+    color: #E34724;
+}
+
+a:hover{
+    cursor: pointer;
+}
+i:hover{
+    cursor: pointer;
+}
+
+.add-new {
+    float: right;
+    height: 30px;
+    font-weight: bold;
+    font-size: 12px;
+    text-shadow: none;
+    min-width: 100px;
+    border-radius: 50px;
+    line-height: 13px;
+}
+.add-new {
+    margin-right: 5px;
+}
+
+::ng-deep .dx-checkbox.dx-state-readonly .dx-checkbox-icon {
+    border-color: #819321;
+    background-color: #fff;
+}

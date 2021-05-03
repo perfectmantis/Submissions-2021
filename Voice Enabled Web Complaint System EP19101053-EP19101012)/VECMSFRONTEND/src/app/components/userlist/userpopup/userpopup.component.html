@@ -1,0 +1,113 @@
+<div>
+    <h4 style="padding: 13px;padding-left: 2px;"> {{header}} </h4>
+</div>
+
+
+
+<div class="row col-md-12" style="width: 830px;">
+
+    <form [formGroup]="UserForm">
+
+        <mat-form-field class="col-md-4">
+            <input required matInput placeholder="Full Name" formControlName="fullName" type=text>
+            <mat-error *ngIf="UserForm.controls['fullName'].hasError('required')">
+                This is required
+                <strong>Field</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <input  required matInput placeholder="User Email" formControlName="email" type=text>
+            <mat-error *ngIf="UserForm.controls['email'].hasError('required')">
+                This is required
+                <strong>Field</strong>
+            </mat-error>
+            <mat-error *ngIf="UserForm.controls['email'].hasError('email')">
+
+                Email must be a valid email
+                <strong>address</strong></mat-error>
+
+        </mat-form-field>
+
+
+        <mat-form-field class="col-md-4">
+            <input matInput placeholder="Contact Number" formControlName="contactNo" type=number>
+
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <textarea matInput placeholder="Address" formControlName="address" type=text></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <mat-select required placeholder="State" formControlName="stateId" type="text">
+                <mat-option *ngFor="let item of StateData" [value]="item.id">{{item.stateName}}
+
+                </mat-option>
+
+            </mat-select>
+            <mat-error *ngIf="UserForm.controls['stateId'].hasError('required')">
+                This is required
+                <strong>Field</strong>
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="col-md-4">
+            <mat-select required placeholder="User Type" formControlName="userTypeId" type="text">
+                <mat-option *ngFor="let item of UserTypeData" [value]="item.id">{{item.type}}
+
+                </mat-option>
+
+            </mat-select>
+            <mat-error *ngIf="UserForm.controls['userTypeId'].hasError('required')">
+                This is required
+                <strong>Field</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <input required matInput placeholder="Company" formControlName="companyName" type="text">
+            <mat-error *ngIf="UserForm.controls['companyName'].hasError('required')">
+                This is required
+                <strong>Field</strong>
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="col-md-4">
+            <input matInput placeholder="Pin Code" formControlName="pinCode" type="text">
+
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4">
+            <input matInput placeholder="Password" formControlName="password" type="password">
+
+        </mat-form-field>
+        <div class="col-md-4">
+            <mat-checkbox formControlName="isApproved"><strong>Approved</strong>
+            </mat-checkbox>
+          </div>
+
+
+
+
+
+
+    </form>
+
+    <div class="ml-auto" style="margin-top: 8px">
+        
+        <!-- <button mat-raised-button color="primary" (click)="SubmitItem()"> Submit </button> -->
+        <button style="margin-right: 5px;width:100px" mat-raised-button color="warn" (click)="Close()">
+            <mat-icon>clear</mat-icon>
+
+            <span>Close</span>
+        </button>
+        <button style="margin-right: 5px;width:100px" mat-raised-button color="primary" (click)="SubmitUserRegistration()">
+            <mat-icon>save</mat-icon>
+
+            <span>Submit</span>
+        </button>
+    </div>
+</div>

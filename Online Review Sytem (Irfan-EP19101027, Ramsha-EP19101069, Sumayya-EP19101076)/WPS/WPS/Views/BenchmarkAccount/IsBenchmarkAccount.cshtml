@@ -1,0 +1,253 @@
+﻿@model WPS.Models.BenchmarkAct
+@{
+    ViewBag.Title = "IsBenchmarkAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / DEMO || ALL ACCOUNTS
+                </div>
+                <form class="form-horizontal" role="form" id="IsBenchmarkAct">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Benchmark Dashboard</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        @Html.Action("CommonFilter", "Common")
+                        
+
+                        @*<div class="">
+
+                            <div class="row form-group">
+                                <div class="col-1"></div>
+
+                                <div class="col-1">
+                                    <label for="cc-payment" class="control-label">Accounts</label>
+                                </div>
+                                <div class="col-3">
+                                    @Html.DropDownList("AccountID", null, "---- Select ----",
+                                new { id = "ddl_AccountID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+                                </div>
+
+                                <div class="col-2">
+                                    <label for="cc-payment" class="control-label">Benchmark Accounts</label>
+                                </div>
+                                <div class="col-3">
+                                    @Html.DropDownList("BenchmarkID", null, "---- Select ----",
+                                new { id = "ddl_BenchmarkID", @class = "form-control chosen", style = "width: 95%", maxlength = "50" })
+                                </div>
+
+                                <div class="col-2"></div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-1"></div>
+
+                                <div class="col-1">
+                                    <label for="cc-payment" class="control-label">As of</label>
+                                </div>
+                                <div class="col-3">
+                                    @Html.TextBox("tbx_FromDate", "", "{0:MM/dd/yyy}",
+                                new
+                                {
+                                    id = "tbx_FromDate",
+                                    @class = "form-control datepicker-here",
+                                    style = "width:95%",
+                                    placeholder = "MM/dd/yyyy"
+                                })
+                                </div>
+                                <div class="col-4">
+                                    <button type="button" onclick="fancyitBanmarkAccount('', '', $('#ddl_AccountID').val(), $('#ddl_BenchmarkID').val(), '', $('#tbx_FromDate').val())">
+                                        <i class="fa fa-search m-l-20" aria-hidden="true"></i> Search
+                                    </button>
+                                </div>
+                                <div class="col-1"></div>
+                            </div>
+
+                        </div>*@
+
+                        <div id="_divSearch">
+                            <button type="button" onclick="fancyitBanmarkAccount('', '', $('#ddl_AccountID').val(), $('#ddl_BenchmarkID').val(), '', $('#tbx_FromDate').val())">
+                                <i class="fa fa-search m-l-20" aria-hidden="true"></i> Search
+                            </button>
+                        </div>
+
+                        <hr />
+
+                        <div style="background: #124c6d;font-size: 22px;color: white;">
+                            <div class="row form-group">
+                                <div class="col-md-5"></div>
+                                <div class="col-md-2 text-center"> Comparing</div>
+                                <div class="col-md-5"></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-5 text-center">All Account</div>
+                                <div class="col-md-2 text-center">VS</div>
+                                <div class="col-md-5 text-center">All Benchmark Account</div>
+                            </div>
+                        </div>
+
+
+                        @foreach (WPS.WPSService.SMAM_ReviewSites_ST rSite in Model.SiteNames)
+                        {
+                            var aid = "a" + rSite.SiteID;
+                            var bid = "b" + rSite.SiteID;
+                            var aratingId = "arating" + rSite.SiteID;
+                            var bratingId = "brating" + rSite.SiteID;
+
+                            <div style="background: #124c6d;font-size: 14px;color: white;">
+                                <div class="row form-group">
+                                    <div class="col-md-2 text-left p-l-20">@rSite.SiteName</div>
+                                    <div class="col-md-10"></div>
+                                </div>
+                            </div>
+                            f
+                            <div class="row">
+                                <div class="col-md-5 text-center"></div>
+                                <div class="col-md-2 text-center"><img src="@Url.Content(rSite.ImageURL)"></div>
+                                <div class="col-md-5 text-center"></div>
+                            </div>
+
+                                <div class="row">
+                                    <div class="col-md-5 text-center">
+                                        @foreach (WPS.WPSService.SP_IsAccount_Benchmark_Dashboard_Result items in Model.SP_IsAccount_Benchmark_Dashboard.Where(x => x.SiteID == rSite.SiteID))
+                                        {
+                                            <div class="p-l-180">
+                                                <div class="row col-md-12 text-center"><label id="@aratingId" for="cc-payment" class="control-label" style="font-size:3em !important;">@items.Rating</label></div>
+                                                <div class="row col-md-12 m-t-5 text-center" style="margin-top: -15px !important;" id='@aid'></div>
+                                                <div class="row col-md-12 text-center">from @items.ReviewsCount rating(s)</div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="col-md-2 text-center p-t-40" style="font-size:22px;">VS</div>
+                                    <div class="col-md-5 text-center">
+                                        @foreach (WPS.WPSService.SP_IsBenAccount_Benchmark_Dashboard_Result items in Model.SP_IsBenAccount_Benchmark_Dashboard.Where(x => x.SiteID == rSite.SiteID))
+                                        {
+                                            <div class="p-l-180">
+                                                <div class="row col-md-12"><label id="@bratingId" for="cc-payment" class="control-label" style="font-size:3em !important;">@items.Rating</label></div>
+                                                <div class="row col-md-12 m-t-5" style="margin-top: -15px !important;" id='@bid'></div>
+                                                <div class="row col-md-12">from @items.ReviewsCount rating(s)</div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                        }
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("[id*='arating']").each(function () {
+            var label = $(this).text();
+            var nId = $(this)[0].id.replace('rating', '');
+            getRatingStar(label, nId);
+        });
+
+        $("[id*='brating']").each(function () {
+            var label = $(this).text();
+            var nId = $(this)[0].id.replace('rating', '');
+            getRatingStar(label, nId);
+        })
+
+        var d = new Date(),
+        date = ((d.getMonth() + 1) + '/' + (d.getDate()) + '/' + d.getFullYear());
+        $('#tbx_FromDate').val(date);
+
+        $('#_div1').hide();
+        $('#_div2').hide();
+        $('#_divSearch').hide();
+        var text = $('#_divSearch').html();
+        console.log(text);
+        $('#_divbtn').html(text);
+
+    });
+
+    function getRatingStar(itemRating, nid) {
+
+        var text = "";
+        var k = itemRating;
+
+        if (k < '1.5' || k < '2.5' || k < '3.5' || k < '4.5' || k < '5.5' || k < '6.5') {
+
+            var l = Math.round(k);
+            var s = k - l;
+
+            if (s < 0) {
+                var m = l - 1;
+                for (var i = 0; i < m; i++) {
+                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + itemRating + '"></i>';
+                }
+                text += '<i class="fa fa-star-half-o icon-c" aria-hidden="true" data-color="red" title="' + itemRating + '"></i>';
+            }
+            else {
+                for (var i = 0; i < l; i++) {
+                    text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + itemRating + '"></i>';
+                }
+            }
+
+            var j = 5 - l;
+            for (var i = 0; i < j; i++) {
+                text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + itemRating + '"></i>';
+            }
+        }
+        else {
+            for (var i = 0; i < k; i++) {
+                text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red" title="' + itemRating + '"></i>';
+            }
+
+            var j = 5 - k;
+            for (var i = 0; i < j; i++) {
+                text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red" title="' + itemRating + '"></i>';
+            }
+        }
+
+        return $('#' + nid).html(text);
+
+    }
+
+    function fancyitBanmarkAccount(companyID, siteID, accountID, benaccountID, accountType, date) {
+        var date = $('#tbx_FromDate').val();
+        if (companyID == '' && siteID == '' && accountID == '' && benaccountID == '' && accountType == '' && date == '') {
+            companyID = null,
+            siteID = null,
+            accountID = null,
+            benaccountID = null,
+            accountType = null,
+            date = null
+        }
+
+        var CompanyID, SiteID, AccountID, AccountType, Date = "";
+        CompanyID = companyID; SiteID = siteID; AccountID = accountID; BenAccountID = benaccountID; AccountType = accountType; Date = date;
+
+        var url = '@Url.Action("IsBenchmarkAccount", "BenchmarkAccount", new { q = Request.QueryString["q"].ToString() })&CompanyID=' + CompanyID + '&SiteID=' + SiteID + '&AccountID=' + AccountID + '&BenAccountID=' + BenAccountID + '&AccountTypeID=' + AccountType + '&Date=' + Date + '';
+        window.location = url;
+    }
+
+</script>
+
+<style>
+    .fa {
+        color: #1289ce;
+    }
+</style>

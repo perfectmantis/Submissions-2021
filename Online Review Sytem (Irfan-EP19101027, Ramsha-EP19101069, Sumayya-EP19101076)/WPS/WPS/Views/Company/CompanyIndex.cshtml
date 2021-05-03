@@ -1,0 +1,163 @@
+﻿@model IList<WPS.WPSService.SMSA_CompanyMst_ST>
+@{
+    ViewBag.Title = "CompanyIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    function fancyitUser(codeval) {
+        var url = '@Url.Action("Company", "Company", new { q = Request.QueryString["q"].ToString() })&Code=' + codeval + '';
+        window.location = url;
+    }
+
+    function deleteUser(codeval) {
+        jQuery.ajax({
+            url: '@Url.Action("DeleteCompany", "Company", new { q = Request.QueryString["q"] })',
+            type: "POST",
+            data: { code: codeval },
+            success: function (response) {
+                if (response.success === true) {
+                    var newUrl = '/Company/CompanyIndex?q=@Request.QueryString["q"].ToString()&message=' + response.response;
+                    window.location = newUrl;
+                } else if (response.success === false) {
+                    $('#lblerrorMessage').html(response.response);
+                    $('#diverrorMessage').show();
+
+                }
+
+            }
+        });
+    }
+
+    function DeleteRecord(ID) {
+        $('#delete').click(function () {
+            deleteUser(ID);
+        });
+    }
+</script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a href="#"><i class="fas fa-user-circle"></i></a> / List of Companies
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-left title-2">
+                            List of Companies
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="fancyitUser('0')">
+                                    <i class="fa fa-plus"></i> Add Company
+                                </button>
+                            </div>
+                        </h3>
+
+                    </div>
+                    <hr>
+                    <div class="box-content alerts">
+                        <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                            <button type="button" class="close" onclick="closeDiv();">×</button>
+                            <label id="lblerrorMessage" style="float:left !important"></label>
+                        </div>
+                        <div class="alert alert-success" id="divMessage" style="display:none;">
+                            <button type="button" class="close" onclick="closeDiv();">×</button>
+                            <label id="lblMessage" style="float:left !important"></label>
+                        </div>
+                    </div>
+                    <div class="table-responsive table--no-card m-b-30">
+                        <table class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th>Agent / Subagent</th>
+                                    <th>Company Name</th>
+                                    <th>License No.</th>
+                                    <th>Company Type</th>
+                                    <th>Company Group</th>
+                                    <th>Contact Person</th>
+                                    <th>Contact No.</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model.OrderBy(x => x.OrgID).ToList())
+                                    {
+                                        string OrgType = ""; string GroupCompany = "";
+                                        WPS.WPSService.WPSService wps = new WPS.WPSService.WPSService();
+                                        string AgentName = "No Agent / Blank";
+                                        var reqOrg = wps.GetOrganizationById(item.OrgID, true);
+                                        OrgType = reqOrg.OrgType;
+                                        if (OrgType == "G" && reqOrg.UserName == "Org" + item.UserName)
+                                        {
+                                            OrgType = "Group of Companies";
+                                        }
+                                        else if (OrgType == "C" && reqOrg.UserName == "Org" + item.UserName)
+                                        {
+                                            OrgType = "Company";
+                                        }
+
+                                        if (item.SaleAccId != null)
+                                        {
+                                            var reqSaleAccount = wps.GetAgentById(item.SaleAccId.Value, true);
+                                            if (reqSaleAccount != null)
+                                            {
+                                                AgentName = reqSaleAccount.SaleAccount;
+                                            }
+                                        }
+
+                                        else { OrgType = "Company"; GroupCompany = reqOrg.Description; }
+                                        <tr>
+                                            <td>@AgentName</td>
+                                            <td>@item.CompanyName</td>
+                                            <td>@item.EstID</td>
+                                            <td>@OrgType</td>
+                                            <td>@GroupCompany</td>
+                                            <td>@item.ContactPerson</td>
+                                            <td>@item.Phone</td>
+                                            <td>
+                                                <div class="table-data-feature">
+
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="fancyitUser('@item.CompanyID')">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </button>
+                                                    <button class="item" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete" onclick="DeleteRecord('@item.CompanyID')">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+                               
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    @*<button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>*@
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var msg = '@Request.QueryString["message"]';
+        var newUrl = '/Company/CompanyIndex?q=@Request.QueryString["q"].ToString()';
+        if (msg != '' && msg != '0') {
+            $('#lblMessage').html(msg);
+            $('#divMessage').show();
+        }
+
+
+        window.history.pushState("", "Company", newUrl);
+    });
+</script>

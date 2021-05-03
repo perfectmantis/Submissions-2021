@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EC4B4FCD-3033-4DE0-A24B-FC77B3BE0956}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WPSService</RootNamespace>
+    <AssemblyName>WPSService</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\WPSModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WPSModel.edmx</DependentUpon>
+      <LastGenOutput>WPSModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\WPSModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WPSModel.edmx</DependentUpon>
+      <LastGenOutput>WPSModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="WPSService.svc" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\aspnet_Applications.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Membership.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Membership_GetPasswordWithFormat_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Membership_GetPassword_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Membership_GetUserByName_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Membership_GetUserByUserId_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Paths.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_PersonalizationAllUsers.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_PersonalizationPerUser.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Profile.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Profile_GetProperties_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Roles.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_SchemaVersions.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_Users.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_UsersInRoles_RemoveUsersFromRoles_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\aspnet_WebEvent_Events.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Common.cs" />
+    <Compile Include="Model\Dashboard.cs" />
+    <Compile Include="Model\SMAM_Menu_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMAM_ReviewSites_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMAM_ReviewSiteTypes_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMAM_SystemService_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMIM_AccountType_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMIM_ReviewAccountSite_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMIM_ReviewAccounts_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMIM_UserAccess_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMIM_UserMst_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMIM_UserTypeAccess_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMIM_UserType_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMSA_Areas_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMSA_City_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMSA_CompanyMst_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMSA_Country_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMSA_Logs_HI.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMSA_Organization_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMSA_Roles_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SMSA_States_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_GetCompanies_By_Organization_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_getPAFSummaryByDate_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_GetPAF_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_getPayrollAmountByDate_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_Get_Account_By_Company_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_InsertRFRDetail_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_IsAccount_Benchmark_Dashboard_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_IsBenAccount_Benchmark_Dashboard_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_ReviewsListFor_Dashboard_TR_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sp_ReviewsSiteInfo_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sp_ReviewsSitesList_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_Reviews_Chart_Dashboard_TR_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_Reviews_CompanyWise_Dashboard_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_Reviews_LineChart_Dashboard_TR_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_Reviews_Line_CompanyWise_Dashboard_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_Reviews_Rating_Summary_Dashboard_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_Review_WordCount_Dashboard_HI_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_RptCompanyCreation_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sp_RptEmpInfo_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\sp_RptGetUserActivityLog_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sp_RptRFRId_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sp_RptSalesAccount_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Sp_SifMstDtl_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_WordCount_Desc_CloudChart_Dashboard_HI_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_WordDesc_MonthWise_BarChart_Dashboard_HI_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SP_WordType_Desc_PieChart_Dashboard_HI_Result.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SRCC_GooglePlusReviews_TR.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SRCC_GooglePlus_TR.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SRCC_ReviewStatusTypes_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SRCC_SalesAccount_ST.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Vw_AccountToScrape.cs">
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\WPSModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WPSModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\WPSModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WPSModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\WPSModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WPSModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Utility.cs" />
+    <Compile Include="WPSService.svc.cs">
+      <DependentUpon>WPSService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="IWPSService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Model\WPSModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WPSModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Model\WPSModel.edmx.diagram">
+      <DependentUpon>WPSModel.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\WPSService.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52150</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52150/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

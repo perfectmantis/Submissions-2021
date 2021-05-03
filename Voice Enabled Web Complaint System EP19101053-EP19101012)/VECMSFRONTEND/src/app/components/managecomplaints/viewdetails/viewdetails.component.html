@@ -1,0 +1,79 @@
+<!-- //Complaints Detail Form -->
+<div class="main-cntr">
+
+    <div>
+        <h4 style="padding: 13px;padding-left: 2px;"> Complaint Detail </h4>
+    </div>
+
+    <div class="col-md-12 container table-parent" style="height: 450px;
+    background-color: white;
+    padding-top: 30px;">
+        <table class="table table-striped table-bordered">
+            <tbody>
+                <tr class="table-striped">
+                    <th>Complaint Number</th>
+                    <td>{{complaintNo}}</td>
+                    <th>Complainant Name</th>
+                    <td>{{complainantName}}</td>
+                    <th>Reg Date</th>
+                    <td>{{registrationDate}}</td>
+                </tr>
+
+                <tr>
+                    <th>Category</th>
+                    <td>{{categoryName}}</td>
+                    <th>SubCategory</th>
+                    <td>{{subCategoryName}}</td>
+                    <th>Complaint Type</th>
+                    <td>{{complaintType}}</td>
+                </tr>
+                <tr>
+                    <th>State</th>
+                    <td>{{stateName}}</td>
+                    <th>Nature of Complaint</th>
+                    <td>{{complaintNature}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Complaint Details</th>
+                    <td style="border-right: 0px;" colspan="5">{{complaintWord}}</td>
+                </tr>
+                <tr>
+                    <th>File(if any)</th>
+                    <td colspan="5" (click)="DownloadFile()"><a style="cursor: pointer;font-weight: 500;color: blue;">View File</a></td>
+
+                </tr>
+                <tr *ngIf="complaintRemarks">
+                    <th>Remarks</th>
+                    <td colspan="5" >{{complaintRemarks}}</td>
+
+
+                </tr>
+
+                <tr *ngIf="complaintAssignedTo">
+                    <th>Assigned To</th>
+                    <td colspan="5" >{{complaintAssignedTo}}</td>
+
+
+                </tr>
+                <tr>
+                    <th>Final Status</th>
+                    <td colspan="5" [ngStyle]= "getcolor()">{{complaintStatus}}</td>
+
+
+                </tr>
+                <tr>
+                    <th>Action</th>
+                    <td><button *ngIf="IsTakeActionShow" class="btn btn-info" (click)="openDialog()">Take Action</button></td>
+                    <!-- <td colspan="4"><button class="btn btn-info ">View User Details</button></td> -->
+
+                    <td colspan="4"><button *ngIf="IsAssignShow" class="btn btn-info " (click)="openAssignDialog()">Assign</button></td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<!-- // End -->

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4ea7dd234c6d4eb58726619fd7de649d" Name="Diagram1">
+        <EntityTypeShape EntityType="SurveyManagementModel.Option" Width="1.5" PointX="14.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyManagementModel.OptionType" Width="1.5" PointX="12" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyManagementModel.Question" Width="1.5" PointX="12" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyManagementModel.Questionnaire" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyManagementModel.RespondentAnswer" Width="1.5" PointX="16.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyManagementModel.Section" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyManagementModel.SurveyPage" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyManagementModel.SurveyRespondent" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyManagementModel.UserInfo" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SurveyManagementModel.UserType" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="SurveyManagementModel.FK__Options__OptionT__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyManagementModel.FK__Options__Questio__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyManagementModel.FK__Responden__Optio__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyManagementModel.FK__Question__PageId__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyManagementModel.FK__Questionn__UserI__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyManagementModel.FK__Section__Questio__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyManagementModel.FK__SurveyRes__Quest__267ABA7A" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyManagementModel.FK__Responden__Respo__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyManagementModel.FK__SurveyPag__Secti__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="SurveyManagementModel.FK__UserInfo__UserTy__1273C1CD" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

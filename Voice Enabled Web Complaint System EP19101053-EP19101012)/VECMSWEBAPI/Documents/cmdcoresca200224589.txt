@@ -1,0 +1,1 @@
+Scaffold-DbContext "Server=DESKTOP-5R46NI3; Database=EMRPRO;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models

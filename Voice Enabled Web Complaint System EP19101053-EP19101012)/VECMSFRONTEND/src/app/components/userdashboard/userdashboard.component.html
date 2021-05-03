@@ -1,0 +1,117 @@
+<div class="main-cntr">
+
+
+    <div>
+        <h4 style="padding: 13px;padding-left: 2px;"> {{'Dashboard'}} </h4>
+    </div>
+
+    <!-- <mat-card>
+        <mat-card-content style="height: auto;"> -->
+
+    <div class="col-md-12 row" style="background-color: white;padding-top: 15px;">
+
+
+
+        <div class="col-md-3 ">
+            <div class="card1">
+                <div class="header">
+                    <mat-icon class="icon">subject</mat-icon>
+                    <p style="color: white;
+                        /* font-weight: bolder; */
+                        font-size: 25px;">{{totalComplaint}}</p>
+                    <p style="font-size: 22px;
+                        color: white;
+                        letter-spacing: 1px;">Total Complaint</p>
+                </div>
+            </div>
+
+
+
+            <div class="down">
+                <hr class="underline">
+
+                <p style="text-align: center;
+                        color: white;
+                        margin-top: -8px;">{{currdate | date : 'dd-MM-yyyy'}}</p>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="card2">
+                <div class="header">
+                    <mat-icon class="icon">donut_small</mat-icon>
+                    <p style="color: white;
+                       /* font-weight: bolder; */
+                       font-size: 25px;">{{totalApprovedComplaint}}</p>
+                    <p style="font-size: 22px;
+                       color: white;
+                       letter-spacing: 1px;">Total Completed</p>
+                </div>
+            </div>
+
+
+            <div class="down2">
+                <hr class="underline">
+
+                <p style="text-align: center;
+                       color: white;
+                       margin-top: -8px;">{{currdate | date : 'dd-MM-yyyy'}}</p>
+            </div>
+        </div>
+
+
+
+
+        <div class="col-md-3">
+            <div class="card3">
+                <div class="header">
+                    <mat-icon class="icon">pending</mat-icon>
+                    <p style="color: white;
+                       /* font-weight: bolder; */
+                       font-size: 25px;">{{totalPendingComplaint}}</p>
+                    <p style="font-size: 22px;
+                       color: white;
+                       letter-spacing: 1px;">Total Pending</p>
+                </div>
+            </div>
+
+
+            <div class="down3">
+                <hr class="underline">
+
+                <p style="text-align: center;
+                       color: white;
+                       margin-top: -8px;">{{currdate | date : 'dd-MM-yyyy'}}</p>
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="col-md-3 ">
+            <div class="card4">
+                <div class="header">
+                    <mat-icon class="icon">cancel</mat-icon>
+                    <p style="color: white;
+                       /* font-weight: bolder; */
+                       font-size: 25px;">{{totalRejectedComplaint}}</p>
+                    <p style="font-size: 22px;
+                       color: white;
+                       letter-spacing: 1px;">Total Rejected</p>
+                </div>
+            </div>
+
+
+            <div class="down4">
+                <hr class="underline">
+
+                <p style="text-align: center;
+                       color: white;
+                       margin-top: -8px;">{{currdate | date : 'dd-MM-yyyy'}}</p>
+            </div>
+        </div>
+
+    </div>

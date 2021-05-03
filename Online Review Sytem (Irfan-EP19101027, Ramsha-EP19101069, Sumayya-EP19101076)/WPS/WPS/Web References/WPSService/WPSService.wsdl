@@ -1,0 +1,1427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="WPSService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:52150/WPSService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:52150/WPSService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52150/WPSService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WPSService.Model" />
+      <xsd:import schemaLocation="http://localhost:52150/WPSService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WPSService" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IWPSService_SP_Get_Account_By_Company_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Get_Account_By_Company" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Get_Account_By_Company_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Get_Account_By_CompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_CompanyWise_Dashboard_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_CompanyWise_Dashboard" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_CompanyWise_Dashboard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_CompanyWise_DashboardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_Line_CompanyWise_Dashboard_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_Line_CompanyWise_Dashboard" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_Line_CompanyWise_Dashboard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_Line_CompanyWise_DashboardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Review_WordCount_Dashboard_HI_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Review_WordCount_Dashboard_HI" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Review_WordCount_Dashboard_HI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Review_WordCount_Dashboard_HIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_WordType_Desc_PieChart_Dashboard_HI_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_WordType_Desc_PieChart_Dashboard_HI" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_WordType_Desc_PieChart_Dashboard_HI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_WordType_Desc_PieChart_Dashboard_HIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_WordDesc_MonthWise_BarChart_Dashboard_HI_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_WordDesc_MonthWise_BarChart_Dashboard_HI" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_WordDesc_MonthWise_BarChart_Dashboard_HI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_WordDesc_MonthWise_BarChart_Dashboard_HIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_WordCount_Desc_CloudChart_Dashboard_HI_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_WordCount_Desc_CloudChart_Dashboard_HI" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_WordCount_Desc_CloudChart_Dashboard_HI_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_WordCount_Desc_CloudChart_Dashboard_HIResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_Rating_Summary_Dashboard_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_Rating_Summary_Dashboard" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_Rating_Summary_Dashboard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_Rating_Summary_DashboardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_IsAccount_Benchmark_Dashboard_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_IsAccount_Benchmark_Dashboard" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_IsAccount_Benchmark_Dashboard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_IsAccount_Benchmark_DashboardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_IsBenAccount_Benchmark_Dashboard_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_IsBenAccount_Benchmark_Dashboard" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_IsBenAccount_Benchmark_Dashboard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_IsBenAccount_Benchmark_DashboardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_AddActivityLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddActivityLog" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_AddActivityLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddActivityLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserActivityLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserActivityLog" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserActivityLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserActivityLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserCompanyLog_InputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserCompanyLog" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserCompanyLog_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserCompanyLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserSalesAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserSalesAccount" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserSalesAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserSalesAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserRFID_InputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserRFID" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserRFID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserRFIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserEmpInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserEmpInfo" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_RptUserEmpInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RptUserEmpInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_Sp_SifMstDtl_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sp_SifMstDtl" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_Sp_SifMstDtl_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Sp_SifMstDtlResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllOrganization_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOrganization" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllOrganization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOrganizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetOrganizationById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationById" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetOrganizationById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetOrganizationsByAgentId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationsByAgentId" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetOrganizationsByAgentId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOrganizationsByAgentIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllOrganizationByType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOrganizationByType" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllOrganizationByType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllOrganizationByTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertOrganization_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrganization" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertOrganization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertOrganizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateOrganization_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrganization" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateOrganization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrganizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteOrganization_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrganization" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteOrganization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrganizationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_checkDuplicateCompanyByAgent_InputMessage">
+    <wsdl:part name="parameters" element="tns:checkDuplicateCompanyByAgent" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_checkDuplicateCompanyByAgent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:checkDuplicateCompanyByAgentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllCompanies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompanies" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetCompanyById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyById" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetCompanyById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanyByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllCompaniesByOrgId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompaniesByOrgId" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllCompaniesByOrgId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompaniesByOrgIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllCompaniesBySaleAccountID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompaniesBySaleAccountID" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllCompaniesBySaleAccountID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCompaniesBySaleAccountIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCompany" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCompany" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompany" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllAgents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAgents" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllAgents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAgentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllSubAgents_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSubAgents" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllSubAgents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSubAgentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllSaleAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSaleAccount" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllSaleAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSaleAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAgentById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentById" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAgentById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAgentByAccountCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentByAccountCode" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAgentByAccountCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentByAccountCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllSubAgentsByAgentId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSubAgentsByAgentId" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllSubAgentsByAgentId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllSubAgentsByAgentIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertSalesAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSalesAccount" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertSalesAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertSalesAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateSalesAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSalesAccount" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateSalesAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSalesAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteSalesAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSalesAccount" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteSalesAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSalesAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllActType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActType" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllActType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllActTypeById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActTypeById" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllActTypeById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllActTypeByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertActType_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertActType" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertActType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertActTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateActType_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateActType" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateActType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateActTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteActType_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActType" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteActType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteActTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllComAccounts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllComAccounts" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllComAccounts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllComAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllAccountsName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAccountsName" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllAccountsName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllAccountsNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetBenAccountsName_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBenAccountsName" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetBenAccountsName_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBenAccountsNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllComAccountsById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllComAccountsById" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllComAccountsById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllComAccountsByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertComAccounts_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertComAccounts" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertComAccounts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertComAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateComAccounts_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateComAccounts" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateComAccounts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateComAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteComAccounts_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteComAccounts" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteComAccounts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteComAccountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewAct_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewAct" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewAct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewActResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewActById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewActById" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewActById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewActByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllRvActSiteById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRvActSiteById" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllRvActSiteById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllRvActSiteByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewActSiteById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewActSiteById" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewActSiteById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewActSiteByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertReviewAct_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertReviewAct" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertReviewAct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertReviewActResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateReviewAct_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReviewAct" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateReviewAct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReviewActResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteReviewAct_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteReviewAct" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteReviewAct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteReviewActResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewSites_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewSites" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewSites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewSitesById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewSitesById" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetAllReviewSitesById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReviewSitesByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertReviewSites_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertReviewSites" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_InsertReviewSites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertReviewSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateReviewSites_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReviewSites" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_UpdateReviewSites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateReviewSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteReviewSites_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteReviewSites" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_DeleteReviewSites_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteReviewSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_Sp_ReviewsSiteInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sp_ReviewsSiteInfo" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_Sp_ReviewsSiteInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Sp_ReviewsSiteInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetDashboard_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDashboard" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_GetDashboard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDashboardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_Sp_ReviewsSitesList_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sp_ReviewsSitesList" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_Sp_ReviewsSitesList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Sp_ReviewsSitesListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_ReviewsListFor_Dashboard_TR_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_ReviewsListFor_Dashboard_TR" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_ReviewsListFor_Dashboard_TR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_ReviewsListFor_Dashboard_TRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_Chart_Dashboard_TR_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_Chart_Dashboard_TR" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_Chart_Dashboard_TR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_Chart_Dashboard_TRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_LineChart_Dashboard_TR_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_LineChart_Dashboard_TR" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_Reviews_LineChart_Dashboard_TR_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_Reviews_LineChart_Dashboard_TRResponse" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_GetCompanies_By_Organization_InputMessage">
+    <wsdl:part name="parameters" element="tns:SP_GetCompanies_By_Organization" />
+  </wsdl:message>
+  <wsdl:message name="IWPSService_SP_GetCompanies_By_Organization_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SP_GetCompanies_By_OrganizationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IWPSService">
+    <wsdl:operation name="SP_Get_Account_By_Company">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_Get_Account_By_Company" message="tns:IWPSService_SP_Get_Account_By_Company_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_Get_Account_By_CompanyResponse" message="tns:IWPSService_SP_Get_Account_By_Company_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_CompanyWise_Dashboard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_CompanyWise_Dashboard" message="tns:IWPSService_SP_Reviews_CompanyWise_Dashboard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_CompanyWise_DashboardResponse" message="tns:IWPSService_SP_Reviews_CompanyWise_Dashboard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_Line_CompanyWise_Dashboard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_Line_CompanyWise_Dashboard" message="tns:IWPSService_SP_Reviews_Line_CompanyWise_Dashboard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_Line_CompanyWise_DashboardResponse" message="tns:IWPSService_SP_Reviews_Line_CompanyWise_Dashboard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_Review_WordCount_Dashboard_HI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_Review_WordCount_Dashboard_HI" message="tns:IWPSService_SP_Review_WordCount_Dashboard_HI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_Review_WordCount_Dashboard_HIResponse" message="tns:IWPSService_SP_Review_WordCount_Dashboard_HI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_WordType_Desc_PieChart_Dashboard_HI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_WordType_Desc_PieChart_Dashboard_HI" message="tns:IWPSService_SP_WordType_Desc_PieChart_Dashboard_HI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_WordType_Desc_PieChart_Dashboard_HIResponse" message="tns:IWPSService_SP_WordType_Desc_PieChart_Dashboard_HI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_WordDesc_MonthWise_BarChart_Dashboard_HI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_WordDesc_MonthWise_BarChart_Dashboard_HI" message="tns:IWPSService_SP_WordDesc_MonthWise_BarChart_Dashboard_HI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_WordDesc_MonthWise_BarChart_Dashboard_HIResponse" message="tns:IWPSService_SP_WordDesc_MonthWise_BarChart_Dashboard_HI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_WordCount_Desc_CloudChart_Dashboard_HI">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_WordCount_Desc_CloudChart_Dashboard_HI" message="tns:IWPSService_SP_WordCount_Desc_CloudChart_Dashboard_HI_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_WordCount_Desc_CloudChart_Dashboard_HIResponse" message="tns:IWPSService_SP_WordCount_Desc_CloudChart_Dashboard_HI_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_Rating_Summary_Dashboard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_Rating_Summary_Dashboard" message="tns:IWPSService_SP_Reviews_Rating_Summary_Dashboard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_Rating_Summary_DashboardResponse" message="tns:IWPSService_SP_Reviews_Rating_Summary_Dashboard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_IsAccount_Benchmark_Dashboard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_IsAccount_Benchmark_Dashboard" message="tns:IWPSService_SP_IsAccount_Benchmark_Dashboard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_IsAccount_Benchmark_DashboardResponse" message="tns:IWPSService_SP_IsAccount_Benchmark_Dashboard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_IsBenAccount_Benchmark_Dashboard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_IsBenAccount_Benchmark_Dashboard" message="tns:IWPSService_SP_IsBenAccount_Benchmark_Dashboard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_IsBenAccount_Benchmark_DashboardResponse" message="tns:IWPSService_SP_IsBenAccount_Benchmark_Dashboard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetData" message="tns:IWPSService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetDataResponse" message="tns:IWPSService_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetDataUsingDataContract" message="tns:IWPSService_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetDataUsingDataContractResponse" message="tns:IWPSService_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddActivityLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/AddActivityLog" message="tns:IWPSService_AddActivityLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/AddActivityLogResponse" message="tns:IWPSService_AddActivityLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RptUserActivityLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/RptUserActivityLog" message="tns:IWPSService_RptUserActivityLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/RptUserActivityLogResponse" message="tns:IWPSService_RptUserActivityLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RptUserCompanyLog">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/RptUserCompanyLog" message="tns:IWPSService_RptUserCompanyLog_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/RptUserCompanyLogResponse" message="tns:IWPSService_RptUserCompanyLog_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RptUserSalesAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/RptUserSalesAccount" message="tns:IWPSService_RptUserSalesAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/RptUserSalesAccountResponse" message="tns:IWPSService_RptUserSalesAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RptUserRFID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/RptUserRFID" message="tns:IWPSService_RptUserRFID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/RptUserRFIDResponse" message="tns:IWPSService_RptUserRFID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RptUserEmpInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/RptUserEmpInfo" message="tns:IWPSService_RptUserEmpInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/RptUserEmpInfoResponse" message="tns:IWPSService_RptUserEmpInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sp_SifMstDtl">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/Sp_SifMstDtl" message="tns:IWPSService_Sp_SifMstDtl_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/Sp_SifMstDtlResponse" message="tns:IWPSService_Sp_SifMstDtl_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOrganization">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllOrganization" message="tns:IWPSService_GetAllOrganization_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllOrganizationResponse" message="tns:IWPSService_GetAllOrganization_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetOrganizationById" message="tns:IWPSService_GetOrganizationById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetOrganizationByIdResponse" message="tns:IWPSService_GetOrganizationById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationsByAgentId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetOrganizationsByAgentId" message="tns:IWPSService_GetOrganizationsByAgentId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetOrganizationsByAgentIdResponse" message="tns:IWPSService_GetOrganizationsByAgentId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOrganizationByType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllOrganizationByType" message="tns:IWPSService_GetAllOrganizationByType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllOrganizationByTypeResponse" message="tns:IWPSService_GetAllOrganizationByType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrganization">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/InsertOrganization" message="tns:IWPSService_InsertOrganization_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/InsertOrganizationResponse" message="tns:IWPSService_InsertOrganization_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrganization">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/UpdateOrganization" message="tns:IWPSService_UpdateOrganization_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/UpdateOrganizationResponse" message="tns:IWPSService_UpdateOrganization_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrganization">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/DeleteOrganization" message="tns:IWPSService_DeleteOrganization_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/DeleteOrganizationResponse" message="tns:IWPSService_DeleteOrganization_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="checkDuplicateCompanyByAgent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/checkDuplicateCompanyByAgent" message="tns:IWPSService_checkDuplicateCompanyByAgent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/checkDuplicateCompanyByAgentResponse" message="tns:IWPSService_checkDuplicateCompanyByAgent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompanies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllCompanies" message="tns:IWPSService_GetAllCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllCompaniesResponse" message="tns:IWPSService_GetAllCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetCompanyById" message="tns:IWPSService_GetCompanyById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetCompanyByIdResponse" message="tns:IWPSService_GetCompanyById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompaniesByOrgId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllCompaniesByOrgId" message="tns:IWPSService_GetAllCompaniesByOrgId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllCompaniesByOrgIdResponse" message="tns:IWPSService_GetAllCompaniesByOrgId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompaniesBySaleAccountID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllCompaniesBySaleAccountID" message="tns:IWPSService_GetAllCompaniesBySaleAccountID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllCompaniesBySaleAccountIDResponse" message="tns:IWPSService_GetAllCompaniesBySaleAccountID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/InsertCompany" message="tns:IWPSService_InsertCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/InsertCompanyResponse" message="tns:IWPSService_InsertCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/UpdateCompany" message="tns:IWPSService_UpdateCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/UpdateCompanyResponse" message="tns:IWPSService_UpdateCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/DeleteCompany" message="tns:IWPSService_DeleteCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/DeleteCompanyResponse" message="tns:IWPSService_DeleteCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAgents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllAgents" message="tns:IWPSService_GetAllAgents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllAgentsResponse" message="tns:IWPSService_GetAllAgents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSubAgents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllSubAgents" message="tns:IWPSService_GetAllSubAgents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllSubAgentsResponse" message="tns:IWPSService_GetAllSubAgents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSaleAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllSaleAccount" message="tns:IWPSService_GetAllSaleAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllSaleAccountResponse" message="tns:IWPSService_GetAllSaleAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAgentById" message="tns:IWPSService_GetAgentById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAgentByIdResponse" message="tns:IWPSService_GetAgentById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentByAccountCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAgentByAccountCode" message="tns:IWPSService_GetAgentByAccountCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAgentByAccountCodeResponse" message="tns:IWPSService_GetAgentByAccountCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSubAgentsByAgentId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllSubAgentsByAgentId" message="tns:IWPSService_GetAllSubAgentsByAgentId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllSubAgentsByAgentIdResponse" message="tns:IWPSService_GetAllSubAgentsByAgentId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSalesAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/InsertSalesAccount" message="tns:IWPSService_InsertSalesAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/InsertSalesAccountResponse" message="tns:IWPSService_InsertSalesAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSalesAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/UpdateSalesAccount" message="tns:IWPSService_UpdateSalesAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/UpdateSalesAccountResponse" message="tns:IWPSService_UpdateSalesAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSalesAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/DeleteSalesAccount" message="tns:IWPSService_DeleteSalesAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/DeleteSalesAccountResponse" message="tns:IWPSService_DeleteSalesAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllActType" message="tns:IWPSService_GetAllActType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllActTypeResponse" message="tns:IWPSService_GetAllActType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActTypeById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllActTypeById" message="tns:IWPSService_GetAllActTypeById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllActTypeByIdResponse" message="tns:IWPSService_GetAllActTypeById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertActType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/InsertActType" message="tns:IWPSService_InsertActType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/InsertActTypeResponse" message="tns:IWPSService_InsertActType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/UpdateActType" message="tns:IWPSService_UpdateActType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/UpdateActTypeResponse" message="tns:IWPSService_UpdateActType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/DeleteActType" message="tns:IWPSService_DeleteActType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/DeleteActTypeResponse" message="tns:IWPSService_DeleteActType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllComAccounts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllComAccounts" message="tns:IWPSService_GetAllComAccounts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllComAccountsResponse" message="tns:IWPSService_GetAllComAccounts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountsName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllAccountsName" message="tns:IWPSService_GetAllAccountsName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllAccountsNameResponse" message="tns:IWPSService_GetAllAccountsName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBenAccountsName">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetBenAccountsName" message="tns:IWPSService_GetBenAccountsName_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetBenAccountsNameResponse" message="tns:IWPSService_GetBenAccountsName_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllComAccountsById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllComAccountsById" message="tns:IWPSService_GetAllComAccountsById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllComAccountsByIdResponse" message="tns:IWPSService_GetAllComAccountsById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertComAccounts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/InsertComAccounts" message="tns:IWPSService_InsertComAccounts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/InsertComAccountsResponse" message="tns:IWPSService_InsertComAccounts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateComAccounts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/UpdateComAccounts" message="tns:IWPSService_UpdateComAccounts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/UpdateComAccountsResponse" message="tns:IWPSService_UpdateComAccounts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteComAccounts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/DeleteComAccounts" message="tns:IWPSService_DeleteComAccounts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/DeleteComAccountsResponse" message="tns:IWPSService_DeleteComAccounts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewAct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewAct" message="tns:IWPSService_GetAllReviewAct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewActResponse" message="tns:IWPSService_GetAllReviewAct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewActById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewActById" message="tns:IWPSService_GetAllReviewActById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewActByIdResponse" message="tns:IWPSService_GetAllReviewActById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRvActSiteById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllRvActSiteById" message="tns:IWPSService_GetAllRvActSiteById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllRvActSiteByIdResponse" message="tns:IWPSService_GetAllRvActSiteById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewActSiteById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewActSiteById" message="tns:IWPSService_GetAllReviewActSiteById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewActSiteByIdResponse" message="tns:IWPSService_GetAllReviewActSiteById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertReviewAct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/InsertReviewAct" message="tns:IWPSService_InsertReviewAct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/InsertReviewActResponse" message="tns:IWPSService_InsertReviewAct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReviewAct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/UpdateReviewAct" message="tns:IWPSService_UpdateReviewAct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/UpdateReviewActResponse" message="tns:IWPSService_UpdateReviewAct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReviewAct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/DeleteReviewAct" message="tns:IWPSService_DeleteReviewAct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/DeleteReviewActResponse" message="tns:IWPSService_DeleteReviewAct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewSites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewSites" message="tns:IWPSService_GetAllReviewSites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewSitesResponse" message="tns:IWPSService_GetAllReviewSites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewSitesById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewSitesById" message="tns:IWPSService_GetAllReviewSitesById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetAllReviewSitesByIdResponse" message="tns:IWPSService_GetAllReviewSitesById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertReviewSites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/InsertReviewSites" message="tns:IWPSService_InsertReviewSites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/InsertReviewSitesResponse" message="tns:IWPSService_InsertReviewSites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReviewSites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/UpdateReviewSites" message="tns:IWPSService_UpdateReviewSites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/UpdateReviewSitesResponse" message="tns:IWPSService_UpdateReviewSites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReviewSites">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/DeleteReviewSites" message="tns:IWPSService_DeleteReviewSites_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/DeleteReviewSitesResponse" message="tns:IWPSService_DeleteReviewSites_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sp_ReviewsSiteInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/Sp_ReviewsSiteInfo" message="tns:IWPSService_Sp_ReviewsSiteInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/Sp_ReviewsSiteInfoResponse" message="tns:IWPSService_Sp_ReviewsSiteInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDashboard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/GetDashboard" message="tns:IWPSService_GetDashboard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/GetDashboardResponse" message="tns:IWPSService_GetDashboard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sp_ReviewsSitesList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/Sp_ReviewsSitesList" message="tns:IWPSService_Sp_ReviewsSitesList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/Sp_ReviewsSitesListResponse" message="tns:IWPSService_Sp_ReviewsSitesList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_ReviewsListFor_Dashboard_TR">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_ReviewsListFor_Dashboard_TR" message="tns:IWPSService_SP_ReviewsListFor_Dashboard_TR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_ReviewsListFor_Dashboard_TRResponse" message="tns:IWPSService_SP_ReviewsListFor_Dashboard_TR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_Chart_Dashboard_TR">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_Chart_Dashboard_TR" message="tns:IWPSService_SP_Reviews_Chart_Dashboard_TR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_Chart_Dashboard_TRResponse" message="tns:IWPSService_SP_Reviews_Chart_Dashboard_TR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_LineChart_Dashboard_TR">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_LineChart_Dashboard_TR" message="tns:IWPSService_SP_Reviews_LineChart_Dashboard_TR_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_Reviews_LineChart_Dashboard_TRResponse" message="tns:IWPSService_SP_Reviews_LineChart_Dashboard_TR_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SP_GetCompanies_By_Organization">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWPSService/SP_GetCompanies_By_Organization" message="tns:IWPSService_SP_GetCompanies_By_Organization_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWPSService/SP_GetCompanies_By_OrganizationResponse" message="tns:IWPSService_SP_GetCompanies_By_Organization_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IWPSService" type="tns:IWPSService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SP_Get_Account_By_Company">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_Get_Account_By_Company" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_CompanyWise_Dashboard">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_Reviews_CompanyWise_Dashboard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_Line_CompanyWise_Dashboard">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_Reviews_Line_CompanyWise_Dashboard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_Review_WordCount_Dashboard_HI">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_Review_WordCount_Dashboard_HI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_WordType_Desc_PieChart_Dashboard_HI">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_WordType_Desc_PieChart_Dashboard_HI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_WordDesc_MonthWise_BarChart_Dashboard_HI">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_WordDesc_MonthWise_BarChart_Dashboard_HI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_WordCount_Desc_CloudChart_Dashboard_HI">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_WordCount_Desc_CloudChart_Dashboard_HI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_Rating_Summary_Dashboard">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_Reviews_Rating_Summary_Dashboard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_IsAccount_Benchmark_Dashboard">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_IsAccount_Benchmark_Dashboard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_IsBenAccount_Benchmark_Dashboard">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_IsBenAccount_Benchmark_Dashboard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddActivityLog">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/AddActivityLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RptUserActivityLog">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/RptUserActivityLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RptUserCompanyLog">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/RptUserCompanyLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RptUserSalesAccount">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/RptUserSalesAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RptUserRFID">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/RptUserRFID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RptUserEmpInfo">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/RptUserEmpInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sp_SifMstDtl">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/Sp_SifMstDtl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOrganization">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllOrganization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationById">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetOrganizationById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOrganizationsByAgentId">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetOrganizationsByAgentId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllOrganizationByType">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllOrganizationByType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertOrganization">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/InsertOrganization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrganization">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/UpdateOrganization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrganization">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/DeleteOrganization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkDuplicateCompanyByAgent">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/checkDuplicateCompanyByAgent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompanies">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllCompanies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanyById">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetCompanyById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompaniesByOrgId">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllCompaniesByOrgId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCompaniesBySaleAccountID">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllCompaniesBySaleAccountID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertCompany">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/InsertCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCompany">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/UpdateCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCompany">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/DeleteCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAgents">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllAgents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSubAgents">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllSubAgents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSaleAccount">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllSaleAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentById">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAgentById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentByAccountCode">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAgentByAccountCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllSubAgentsByAgentId">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllSubAgentsByAgentId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSalesAccount">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/InsertSalesAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSalesAccount">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/UpdateSalesAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSalesAccount">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/DeleteSalesAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActType">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllActType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllActTypeById">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllActTypeById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertActType">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/InsertActType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateActType">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/UpdateActType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteActType">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/DeleteActType" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllComAccounts">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllComAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllAccountsName">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllAccountsName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBenAccountsName">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetBenAccountsName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllComAccountsById">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllComAccountsById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertComAccounts">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/InsertComAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateComAccounts">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/UpdateComAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteComAccounts">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/DeleteComAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewAct">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllReviewAct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewActById">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllReviewActById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllRvActSiteById">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllRvActSiteById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewActSiteById">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllReviewActSiteById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertReviewAct">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/InsertReviewAct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReviewAct">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/UpdateReviewAct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReviewAct">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/DeleteReviewAct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewSites">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllReviewSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReviewSitesById">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetAllReviewSitesById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertReviewSites">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/InsertReviewSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateReviewSites">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/UpdateReviewSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteReviewSites">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/DeleteReviewSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sp_ReviewsSiteInfo">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/Sp_ReviewsSiteInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDashboard">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/GetDashboard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sp_ReviewsSitesList">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/Sp_ReviewsSitesList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_ReviewsListFor_Dashboard_TR">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_ReviewsListFor_Dashboard_TR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_Chart_Dashboard_TR">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_Reviews_Chart_Dashboard_TR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_Reviews_LineChart_Dashboard_TR">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_Reviews_LineChart_Dashboard_TR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SP_GetCompanies_By_Organization">
+      <soap:operation soapAction="http://tempuri.org/IWPSService/SP_GetCompanies_By_Organization" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WPSService">
+    <wsdl:port name="BasicHttpBinding_IWPSService" binding="tns:BasicHttpBinding_IWPSService">
+      <soap:address location="http://localhost:52150/WPSService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

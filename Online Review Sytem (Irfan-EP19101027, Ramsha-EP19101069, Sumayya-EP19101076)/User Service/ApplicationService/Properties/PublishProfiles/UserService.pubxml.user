@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>G:\Siraj Finance\Deployement\21-02-2019\UserService</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/ApplicationService.dll">
+      <publishTime>02/21/2019 14:57:48</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>11/03/2015 17:43:42</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>11/03/2015 17:43:42</publishTime>
+    </File>
+    <File Include="Model/UserModel.edmx.diagram">
+      <publishTime>01/02/2019 13:35:14</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>11/16/2018 19:17:46</publishTime>
+    </File>
+    <File Include="User.svc">
+      <publishTime>11/16/2018 19:24:37</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/11/2018 17:03:20</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

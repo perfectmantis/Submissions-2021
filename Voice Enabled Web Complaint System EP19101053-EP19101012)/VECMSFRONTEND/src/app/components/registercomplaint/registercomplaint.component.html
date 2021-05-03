@@ -1,0 +1,136 @@
+<div class="main-cntr">
+
+
+    <div>
+        <h4 style="padding: 13px;padding-left: 2px;"> {{'Register Complaint'}} </h4>
+    </div>
+
+    <mat-card>
+        <mat-card-content style="height:700px;">
+            <form [formGroup]="RegisterComplaint">
+
+
+
+                <mat-form-field class="col-md-6">
+                    <mat-select required placeholder="Category" formControlName="categoryId"
+                        (selectionChange)="GetSubCategoryData($event.value)" type="text">
+                        <mat-option *ngFor="let item of CategoryData" [value]="item.id">{{item.categoryName}}
+
+                        </mat-option>
+
+                    </mat-select>
+                    <mat-error *ngIf="RegisterComplaint.controls['categoryId'].hasError('required')">
+                        This is required
+                        <strong>Field</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6">
+                    <mat-select required placeholder="Sub Category" formControlName="subCategoryId" type="text">
+                        <mat-option *ngFor="let item of SubCategoryData" [value]="item.id">{{item.subCategoryName}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="RegisterComplaint.controls['subCategoryId'].hasError('required')">
+                        This is required
+                        <strong>Field</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <hr>
+
+                <mat-form-field class="col-md-6">
+                    <mat-select required placeholder="Complaint Type" formControlName="complaintTypeId" type="text">
+                        <mat-option *ngFor="let item of ComplaintTypeData" [value]="item.id">{{item.type}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="RegisterComplaint.controls['complaintTypeId'].hasError('required')">
+                        This is required
+                        <strong>Field</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6">
+                    <mat-select required placeholder="State" formControlName="stateId" type="text">
+                        <mat-option *ngFor="let item of StateData" [value]="item.id">{{item.stateName}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="RegisterComplaint.controls['stateId'].hasError('required')">
+                        This is required
+                        <strong>Field</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <hr>
+
+                <div class="row">
+                    <mat-form-field class="col-md-6">
+                        <input required matInput placeholder="Nature of Complaint" formControlName="complaintNature"
+                            type="text">
+                        <mat-error *ngIf="RegisterComplaint.controls['complaintNature'].hasError('required')">
+                            This is required
+                            <strong>Field</strong>
+                        </mat-error>
+                    </mat-form-field>
+
+
+                    <!-- <label>Complaint Related Doc (If any)</label> -->
+                    <div class="col-md-6" style="border: 0.5px solid black;background: #d2691e9e;
+                          color: white;
+                          padding: 17px;">
+                        <input color="primary" type="file" #fileUploader (change)="FileEvent($event)">
+                    </div>
+
+
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-sm-2" style="margin-left: 12px;margin-bottom: 22px;">
+                        <button mat-fab (click)="startButton($event) ">
+                            <mat-icon *ngIf="!recognizing">mic</mat-icon>
+                            <mat-icon *ngIf="recognizing">stop</mat-icon>
+                        </button>
+                    </div>
+
+                    <div class="col-sm-9">
+                        <mat-card *ngIf="notification" class="notification">{{notification}}</mat-card>
+                    </div>
+                </div>
+                <mat-form-field class="col-md-12">
+                    <textarea matInput placeholder="Complaint Details (max 100 words)" formControlName="complaintWord" [(ngModel)]="finalTranscript"
+                        type="text" style="height: 150px;"></textarea>
+                </mat-form-field>
+                
+                <!-- <textarea class="form-control"></textarea> -->
+
+            </form>
+
+            <div class="float-right" style="margin-top: 45px;">
+
+                <button style="margin-right: 5px;width:100px" mat-raised-button color="primary" (click)="Addnew()">
+                    <mat-icon>note_add</mat-icon> New
+                </button>
+                <!-- <button style="margin-right: 5px;width:100px" mat-raised-button color="primary"
+                    (click)="SubmitSubCategory()">
+                    <mat-icon>save</mat-icon> <span *ngIf="RegisterComplaint.get('id').value"> Update</span> <span
+                        *ngIf="!RegisterComplaint.get('id').value">
+                        Save</span>
+                </button> -->
+
+
+
+                <!-- <button style="width:100px;" mat-raised-button type="button" aria-label="Close" color="warn"
+                    (click)="DeleteSubCategoryData()">
+                    <mat-icon>cancel</mat-icon> Delete
+                </button> -->
+
+                <button style="margin-right: 5px;width:100px" mat-raised-button color="primary"
+                    (click)="SubmitRegisterComplaint()">
+                    <mat-icon>save</mat-icon> <span> Submit</span>
+                </button>
+
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+</div>

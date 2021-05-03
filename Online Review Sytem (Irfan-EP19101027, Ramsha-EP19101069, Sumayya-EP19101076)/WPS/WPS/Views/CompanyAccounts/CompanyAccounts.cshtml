@@ -1,0 +1,232 @@
+﻿@model WPS.WPSService.SMIM_ReviewAccounts_ST
+@{
+    ViewBag.Title = "CompanyAccounts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Review Account
+                </div>
+                <form class="form-horizontal" role="form" id="frmReviewType">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Review Account</h3>
+                        </div>
+                        <hr>
+                        <div class="box-content alerts">
+                            <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblerrorMessage" style="float:left !important"></label>
+                            </div>
+                            <div class="alert alert-success" id="divMessage" style="display:none;">
+                                <button type="button" class="close" onclick="closeDiv();">×</button>
+                                <label id="lblMessage" style="float:left !important"></label>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(model => model.ID)
+                        
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Company</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("CompanyID", null, "Select Company",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50" })                            
+                            </div>
+
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Account Type</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("AccountTypeID", null, "Select Account",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50" })
+                            </div>
+                            <div class="col-3"></div>
+                        </div>                       
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">First Name</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.FirstName, new { id = "tbx_FirstName", @class = "form-control", style = "width:95%", placeholder = "First Name" })
+                            </div>                            
+
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Mid Name</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.MiddleName, new { id = "tbx_MidlleName", @class = "form-control", style = "width:95%", placeholder = "Middle Name" })
+                            </div>
+                            <div class="col-3"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Last Name</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.LastName, new { id = "tbx_LastName", @class = "form-control", style = "width:95%", placeholder = "Last Name" })
+                            </div>
+                            
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Mobile</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.TextBoxFor(model => model.PhoneNumber, new { id = "tbx_PhoneNumber", @class = "form-control", style = "width:95%", placeholder = "Phone Number" })
+                            </div>
+                            <div class="col-3"></div>
+                        </div>
+                        
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Review</label>
+                            </div>
+                            <div class="col-3">
+                                @Html.DropDownList("ReviewPullType", null, "Select State",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50" })
+                            </div>
+                        </div>                       
+
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Inactive</label>
+                            </div>
+                            <div class="col-3">
+                                @if (Model != null)
+                                {
+                                    if (Model.Inactive == true)
+                                    {
+                                        @Html.CheckBox("Inactive", new { onchange = "ChkMethodInActive($(this))", @checked = "checked" })
+                                    }
+                                    else
+                                    {
+                                        @Html.CheckBox("Inactive", new { onchange = "ChkMethodInActive($(this))" })
+                                    }
+                                }
+                                else
+                                {
+                                    @Html.CheckBox("Inactive", new { onchange = "ChkMethodInActive(this)" })
+                                }
+                            </div>
+
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Benchmark</label>
+                            </div>
+                            <div class="col-3">
+                                @if (Model != null)
+                                {                                    
+                                    if (Model.IsBenchmarkAccount == true)
+                                    {
+                                        @Html.CheckBox("IsBenchmarkAccount", new { onchange = "ChkMethodIsBenMarks($(this))", @checked = "checked" })
+                                    }
+                                    else
+                                    {
+                                        @Html.CheckBox("IsBenchmarkAccount", new { onchange = "ChkMethodIsBenMarks($(this))" })
+                                    }
+                                }
+                                else
+                                {
+                                    @Html.CheckBox("IsBenchmarkAccount", new { onchange = "ChkMethodIsBenMarks(this)" })
+                                }
+                            </div>
+                            <div class="col-3"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Address</label>
+                            </div>
+                            <div class="col-8">
+                                @Html.TextAreaFor(model => model.Address, new { id = "tbx_Address", @class = "form-control", style = "width:98%", placeholder = "Address" })
+                            </div>
+                            <div class="col-1"></div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">Description</label>
+                            </div>
+                            <div class="col-8">            
+                                @Html.TextAreaFor(model => model.Description, new { id = "tbx_Description", @class = "form-control", style = "width:98%", placeholder = "Description" })
+                            </div>
+                            <div class="col-1"></div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        @*<button type="reset" class="btn btn-primary btn-sm">
+                                <i class="fa fa-ban"></i> Reset
+                            </button>*@
+                        <button type="button" class="btn btn-primary btn-sm" onclick="goBack('');">
+                            <i class="fa fa-dot-circle-o"></i> Back
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="~/Content/vendor/jquery.validate.min.js"></script>
+<script type="text/javascript">
+    $('#frmReviewType').validate({
+        submitHandler: function (form) {
+            $.ajax({
+                url: '@Url.Action("CompanyAccounts", "CompanyAccounts", new { q = Request.QueryString["q"].ToString() })',
+                type: "POST",
+                data: $(form).serialize(),
+                success: function (response) {
+                    if (response.success === true) {
+                        goBack(response.response);
+                    }
+                    else {
+                        $('#lblMessage').text(response.response);
+                        $('#divMessage').show();
+                    }
+                }
+            });
+        }
+    });
+
+    function goBack(message) {
+        window.location = '/CompanyAccounts/CompanyAccountsIndex?q=@Request.QueryString["q"].ToString()&message=' + message;
+    }
+
+    function ChkMethodInActive(checkboxInput) {
+        console.log(checkboxInput.checked);
+        if (checkboxInput.checked) {
+            $('#hdnActive').val(true);
+        } else {
+            $('#hdnActive').val(false);
+        }
+    }
+
+    function ChkMethodIsBenMarks(checkboxInput) {
+        console.log(checkboxInput.checked);
+        if (checkboxInput.checked) {
+            $('#hdnBenAct').val(true);
+        } else {
+            $('#hdnBenAct').val(false);
+        }
+    }
+
+</script>
+

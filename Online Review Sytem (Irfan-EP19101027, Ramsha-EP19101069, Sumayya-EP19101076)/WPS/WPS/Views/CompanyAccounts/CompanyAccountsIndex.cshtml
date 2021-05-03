@@ -1,0 +1,156 @@
+﻿@model IList<WPS.WPSService.SMIM_ReviewAccounts_ST>
+@{
+    ViewBag.Title = "CompanyAccountsIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function fancyitComAct(codeval) {
+        var url = '@Url.Action("CompanyAccounts", "CompanyAccounts", new { q = Request.QueryString["q"].ToString() })&Code=' + codeval + '';
+        window.location = url;
+    }
+
+    function fancyitReview(codeval) {
+        @*var url = '@Url.Action("ReviewAccountSite", "AccountSites", new { q = Request.QueryString["q"].ToString() })&Code=' + codeval + '';*@
+        var url = '@Url.Action("ReviewAccountSite", "ReviewAccountSite", new { q = Request.QueryString["q"].ToString() })&Code=' + codeval + '';
+        window.location = url;
+    }
+
+    function deleteComAct(codeval) {
+        jQuery.ajax({
+            url: '@Url.Action("DeleteCompanyAccounts", "CompanyAccounts", new { q = Request.QueryString["q"].ToString() })',
+            type: "POST",
+            data: { code: codeval },
+            success: function (response) {
+                if (response.success === true) {
+                    var newUrl = '@Url.Action("CompanyAccountsIndex", "CompanyAccounts", new { q = Request.QueryString["q"].ToString() })&message=' + response.response + '';
+                    @*var newUrl = '/CompanyAccounts/CompanyAccountsIndex?q=@Request.QueryString["q"].ToString()&message=' + response.response;*@
+                    window.location = newUrl;
+                } else if (response.success === false) {
+                    $('#lblerrorMessage').html(response.response);
+                    $('#diverrorMessage').show();
+
+                }
+
+            }
+        });
+    }
+
+    function DeleteRecord(ID) {
+        $('#delete').click(function () {
+            deleteComAct(ID);
+        });
+    }
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a href="#"><i class="fas fa-user-circle"></i></a> / Review Accounts
+                </div>
+                <div class="card-body">
+                    <div class="card-title">
+                        <h3 class="text-left title-2">
+                            Review Account(s)
+                            <div class="pull-right">
+                                <button type="button" class="btn btn-primary btn-sm" onclick="fancyitComAct('0')">
+                                    <i class="fa fa-plus"></i> Add ReviewAccount
+                                </button>
+                            </div>
+                        </h3>
+
+                    </div>
+                    <hr>
+                    <div class="box-content alerts">
+                        <div class="alert alert-danger" id="diverrorMessage" style="display:none;">
+                            <button type="button" class="close" onclick="closeDiv();">×</button>
+                            <label id="lblerrorMessage" style="float:left !important"></label>
+                        </div>
+                        <div class="alert alert-success" id="divMessage" style="display:none;">
+                            <button type="button" class="close" onclick="closeDiv();">×</button>
+                            <label id="lblMessage" style="float:left !important"></label>
+                        </div>
+                    </div>
+                    <div class="table-responsive table--no-card m-b-30">
+                        <table class="table table-borderless table-striped table-earning">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Account</th>
+                                    <th>Name</th>
+                                    <th>speciality</th>
+                                    <th>Description</th>
+                                    <th>Review</th>
+                                    <th>Profile</th>
+                                    <th>InActive</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.ToList())
+                                {
+                                    WPS.WPSService.WPSService wps = new WPS.WPSService.WPSService();
+                                    var c = wps.GetAllActTypeById(item.AccountTypeID, true);
+                                    var Fullname = item.FirstName + " " + item.MiddleName + " " + item.LastName;
+                                    var review = item.ReviewPullType == 1 ? "API" : item.ReviewPullType == 2 ? "WEB" : "None";
+                                    var profile = item.ProfilePullType == 1 ? "ABC" : item.ProfilePullType == 2 ? "JKL" : "None";
+                                    <tr>
+                                        <td>@item.ID</td>
+                                        <td>@c.Description</td>
+                                        <td>@Fullname</td>
+                                        <td>@item.Specialty</td>
+                                        <td>@item.Description</td>
+                                        <td>@review</td>
+                                        <td>@profile</td>
+                                        <td>@item.Inactive</td>
+                                        <td>
+                                            <div class="table-data-feature">
+
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" onclick="fancyitComAct('@item.ID')">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </button>
+                                                <button class="item" data-toggle="modal" data-target="#myModal" data-placement="top" title="Delete" onclick="DeleteRecord('@item.ID')">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                                <button class="item" data-toggle="toggle" data-placement="top" title="Review Url" onclick="fancyitReview('@item.ID')">
+                                                    @*<i class="zmdi zmdi-flower-alt mdc-text-grey"></i>*@
+                                                    <i class="zmdi zmdi-link"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    @*<button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fa fa-dot-circle-o"></i> Submit
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm">
+                            <i class="fa fa-ban"></i> Reset
+                        </button>*@
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var msg = '@Request.QueryString["message"]';
+        var newUrl = '@Url.Action("CompanyAccountsIndex", "CompanyAccounts", new { q = Request.QueryString["q"].ToString() })';
+        @*var newUrl = '/CompanyAccounts/CompanyAccountsIndex?q=@Request.QueryString["q"].ToString()';*@
+        if (msg != '' && msg != '0') {
+            $('#lblMessage').html(msg);
+            $('#divMessage').show();
+        }
+        window.history.pushState("", "CompanyAccounts", newUrl);
+    });
+</script>
+

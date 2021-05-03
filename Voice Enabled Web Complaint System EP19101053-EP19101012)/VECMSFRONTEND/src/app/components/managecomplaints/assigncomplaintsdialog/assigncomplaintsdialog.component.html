@@ -1,0 +1,68 @@
+<h2 mat-dialog-title>Assign Complaint</h2>
+<mat-dialog-content style="width: 700px;">
+
+    <div class=" col-md-12"  >
+
+        <form [formGroup]="AssignComplaintForm">
+
+
+            <mat-form-field class="col-md-6">
+                <input required matInput placeholder="Complaint No" formControlName="complaintNo" type="text" readonly>
+
+            </mat-form-field>
+
+            <mat-form-field class="col-md-6">
+                <input required matInput placeholder="Complaint Date" formControlName="complaintDate" type="text" readonly>
+
+            </mat-form-field>
+
+            <mat-form-field class="col-md-12">
+                <input required matInput placeholder="Complaint Nature" formControlName="complaintNature" type="text" readonly>
+
+            </mat-form-field>
+        </form>
+
+
+
+        <div class="col-md-12" style="margin-top: 10px;">
+            <dx-data-grid id="gridContainer" [dataSource]="UserData" [remoteOperations]="false"
+                [allowColumnReordering]="true" [focusedRowEnabled]="true" keyExpr="id" [rowAlternationEnabled]="true"
+                [showBorders]="true" style="width: 100%; height: 350px;" (onRowClick)="SelectedRow($event.data)">
+
+
+
+                <dxo-sorting mode="multiple"></dxo-sorting>
+
+                <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+                <dxo-group-panel [visible]="true"></dxo-group-panel>
+                <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+
+                <dxi-column caption="User Name" dataField="fullName"></dxi-column>
+                <dxi-column caption="Email" dataField="email"></dxi-column>
+                <dxi-column caption="Contact No" dataField="contactNo"></dxi-column>
+
+
+
+            </dx-data-grid>
+        </div>
+
+       
+
+    </div>
+   
+</mat-dialog-content>
+
+<div class="ml-auto float-right" style="margin-top: 8px">
+    <button style="margin-right: 5px;width:100px" mat-raised-button color="warn" (click)="Close()">
+        <mat-icon>clear</mat-icon>
+
+        <span>Close</span>
+    </button>
+    <button style="margin-right: 5px;width:100px" mat-raised-button color="primary"
+        (click)="AssignRegisterComplaint()">
+        <mat-icon>assignment_ind</mat-icon>
+
+        <span>Assign</span>
+    </button>
+</div>

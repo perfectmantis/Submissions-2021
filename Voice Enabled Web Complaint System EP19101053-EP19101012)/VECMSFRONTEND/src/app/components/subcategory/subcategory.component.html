@@ -1,0 +1,80 @@
+<div class="main-cntr">
+
+
+    <div>
+        <h4 style="padding: 13px;padding-left: 2px;"> {{'Sub Category'}} </h4>
+    </div>
+
+    <mat-card>
+        <mat-card-content style="height: 170px;">
+            <form [formGroup]="SubCategory">
+
+
+
+                <mat-form-field class="col-md-6">
+                    <mat-select required placeholder="Category" formControlName="categoryId" type="text">
+                        <mat-option *ngFor="let item of CategoryData" [value]="item.id">{{item.categoryName}}
+
+                        </mat-option>
+
+                    </mat-select>
+                    <mat-error *ngIf="SubCategory.controls['categoryId'].hasError('required')">
+                        This is required
+                        <strong>Field</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="col-md-6">
+                    <input required matInput placeholder="SubCategory" formControlName="subCategoryName" type="text">
+                    <mat-error *ngIf="SubCategory.controls['subCategoryName'].hasError('required')">
+                        This is required
+                        <strong>Field</strong>
+                    </mat-error>
+                </mat-form-field>
+
+
+
+                <div class="float-right" style="margin-top: 10px;">
+
+                    <button style="margin-right: 5px;width:100px" mat-raised-button color="primary" (click)="Addnew()">
+                        <mat-icon>note_add</mat-icon> New
+                    </button>
+                    <button style="margin-right: 5px;width:100px" mat-raised-button color="primary"
+                        (click)="SubmitSubCategory()">
+                        <mat-icon>save</mat-icon> <span *ngIf="SubCategory.get('id').value"> Update</span> <span
+                            *ngIf="!SubCategory.get('id').value">
+                            Save</span>
+                    </button>
+                    <button style="width:100px;" mat-raised-button type="button" aria-label="Close" color="warn"
+                        (click)="DeleteSubCategoryData()">
+                        <mat-icon>cancel</mat-icon> Delete
+                    </button>
+
+                </div>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <div class="col-md-12">
+        <dx-data-grid id="gridContainer" [dataSource]="SubCategoryData" [remoteOperations]="false"
+            [allowColumnReordering]="true" [rowAlternationEnabled]="true" [showBorders]="true"
+            [focusedRowEnabled]="true" keyExpr="id" (onRowClick)="SelectedRow($event.data)"
+            style="height: 450px;width: 100%;">
+
+
+
+            <dxo-sorting mode="multiple"></dxo-sorting>
+
+            <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+            <dxo-group-panel [visible]="true"></dxo-group-panel>
+            <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+
+
+            <dxi-column caption="Category" dataField="categoryName" [width]="300"></dxi-column>
+            <dxi-column caption="SubCategory" dataField="subCategoryName" [width]="300"></dxi-column>
+
+        </dx-data-grid>
+    </div>
+</div>

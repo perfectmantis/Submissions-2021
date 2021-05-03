@@ -1,0 +1,123 @@
+<div class="main-cntr">
+    <div>
+        <h4 style="padding: 13px;padding-left: 2px;"> Profile </h4>
+    </div>
+
+
+    <mat-card >
+
+        <mat-card-content style="height: auto">
+
+            <div class="row col-md-12">
+                <div class="col-md-8">
+                    <form [formGroup]="Profile">
+
+                        <mat-form-field class="col-md-12">
+                            <input required matInput placeholder="Full Name" formControlName="fullName" type=text>
+                            <mat-error *ngIf="Profile.controls['fullName'].hasError('required')">
+                                This is required
+                                <strong>Field</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-12">
+                            <input matInput placeholder="User Email" formControlName="email" type=text>
+                            <mat-error *ngIf="Profile.controls['email'].hasError('required')">
+                                This is required
+                                <strong>Field</strong>
+                            </mat-error>
+                            <mat-error *ngIf="Profile.controls['email'].hasError('email')">
+
+                                Email must be a valid email
+                                <strong>address</strong></mat-error>
+
+                        </mat-form-field>
+
+
+                        <mat-form-field class="col-md-12">
+                            <input matInput placeholder="Contact Number" formControlName="contactNo" type=number>
+
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-12">
+                            <textarea matInput placeholder="Address" formControlName="address" type=text></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-12">
+                            <mat-select required placeholder="State" formControlName="stateId" type="text">
+                                <mat-option *ngFor="let item of StateData" [value]="item.id">{{item.stateName}}
+
+                                </mat-option>
+
+                            </mat-select>
+                            <mat-error *ngIf="Profile.controls['stateId'].hasError('required')">
+                                This is required
+                                <strong>Field</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="col-md-12">
+                            <input required matInput placeholder="Company" formControlName="companyName" type="text">
+                            <mat-error *ngIf="Profile.controls['companyName'].hasError('required')">
+                                This is required
+                                <strong>Field</strong>
+                            </mat-error>
+                        </mat-form-field>
+
+
+                        <mat-form-field class="col-md-12">
+                            <input matInput placeholder="Pin Code" formControlName="pinCode" type="text">
+
+                        </mat-form-field>
+
+                        <mat-form-field *ngIf="IsShow" class="col-md-12">
+                            <input matInput placeholder="Password" formControlName="password" type="password">
+
+                        </mat-form-field>
+
+
+
+
+
+
+
+                    </form>
+                </div>
+
+                <div class="col-md-4 text-center mt-2">
+                    <img [src]="ImageUrl | safe" style="width: 205px;
+                height: 200px;">
+                    <input placeholder="" type="file" hidden #Image accept="image/*"
+                        (change)="FileEvent($event.target.files)"> <br />
+                    <button mat-raised-button color="warn" style="
+                 
+                  margin-top: 10px;" (click)="Image.click()">Upload</button>
+                </div>
+            </div>
+            <div style="margin-top: -10px;
+                text-align: center;">
+
+                <!-- <button style="margin-right: 5px;width:100px" mat-raised-button color="primary"
+                        (click)="Addnew()">
+                        <mat-icon>note_add</mat-icon> New
+                    </button> -->
+                <button style="margin-right: 5px;
+                    width: 250px;
+                    border-radius: 10px;" mat-raised-button color="primary" (click)="SubmitProfile()">
+                    <mat-icon>save</mat-icon>Save<span></span>
+                    <!-- <mat-icon>save</mat-icon> <span *ngIf="Profile.get('id').value"> Update</span> <span
+                            *ngIf="!Profile.get('id').value">
+                             Save</span> -->
+                </button>
+                <!-- <button style="  width:100px;" mat-raised-button type="button" aria-label="Close" color="warn"
+                        (click)="DeleteLabTest()">
+                        <mat-icon>cancel</mat-icon> Delete
+                    </button> -->
+
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+
+
+</div>

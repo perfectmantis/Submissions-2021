@@ -1,0 +1,46 @@
+db.employee.insert(
+[{
+  empname:'Shakir',
+  salary : 15000,
+  department:20
+},
+{
+  empname:'Abid',
+  salary : 25000,
+  department:20
+}])
+
+db.employee.find({}).pretty()
+db.employee.find({$or: [{'empname':'Irfan'},{'salary':{$gt :10000}}]})
+db.employee.find({salary:{$gte : 15000}})
+db.employee.update({department:10},{ $set: {salary:5000}})
+db.employee.remove({empname:'Abid'})
+
+//Projection
+db.employee.find({},{empname:1,salary:1,_id:0})
+db.employee.find({department:20}).limit(1)
+
+///Ye limit ek uthaega lkn jtne skip mtlb chpre h usk bad wla uthaega
+db.employee.find({department:20}).limit(1).skip(1)
+
+
+//Ye descending order m data ko sort krk laega empname par sorting hgi 
+db.employee.find({}).sort({empname:-1})
+
+//Ye index create krega department p asending order m data faster retreival k liye
+db.employee.createIndex({deparment:1})
+
+db.employee.getIndexes()
+
+
+db.employee.aggregate([{$group : {_id : "$by_user", salary : {$sum : "$likes"}}}])
+
+
+
+
+
+
+
+
+
+

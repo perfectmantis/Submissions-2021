@@ -1,0 +1,221 @@
+﻿@model WPS.Models.cDashboard
+@{
+    ViewBag.Title = "ReviewDashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="overview-wrap">
+                <h2 class="title-1">Doctor Reviews Dashboard</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row m-b-20"></div>
+
+    @*<div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="">
+                        Collapsible Group Item #1
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" style="">
+                <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
+                </div>
+            </div>
+        </div>*@
+
+    <div class="card-header">
+        <a href="#"><i class="fas fa-home"></i></a> / <a href="#"><i class="fas fa-user-circle"></i></a> / DEMO CHARTS || ALL REVIEWS
+    </div>
+    <div class="content-box border">
+        <div class="row m-b-20"></div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="cc-payment" class="control-label">Site</label>
+            </div>
+            <div class="col-2">
+                @Html.DropDownList("SiteID", null, "Site Name",
+                                new { id = "ddl_SiteID", @class = "form-control", style = "width: 95%", maxlength = "50" })
+            </div>
+            <div class="col-1">
+                <label for="cc-payment" class="control-label">Account</label>
+            </div>
+            <div class="col-2">
+                @Html.DropDownList("AccountID", null, "Account Name",
+                                new { id = "ddl_AccountID", @class = "form-control", style = "width: 95%", maxlength = "50" })
+            </div>
+            <div class="col-1">
+                <label for="cc-payment" class="control-label">Type</label>
+            </div>
+            <div class="col-2">
+                @Html.DropDownList("AccountType", null, "Account Type",
+                                new { id = "ddl_AccountType", @class = "form-control", style = "width: 95%", maxlength = "50" })
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-primary btn-sm" onclick="getReviewsCharts($('#ddl_SiteID').val(), $('#ddl_AccountID').val(), $('#ddl_AccountType').val(), '')">
+                    <i class="fa fa-search-plus"></i> Search
+                </button>
+                @*<button type="button" class="btn btn-primary btn-sm" onclick="getReviewsSite($('#ddl_SiteID').val(), $('#ddl_AccountID').val(), $('#ddl_AccountType').val(), '')">
+                    <i class="fa fa-search-plus"></i> Search
+                </button>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="row m-b-20"></div>
+    <div class="card-header" style="background-color: #1289ce !important;">
+        <h6 class=".text-info" style="color:white !important;font-weight:500!important;">REVIEW DISTRIBUTION</h6>
+    </div>
+    <div class="row m-b-20"></div>
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4">
+            <canvas id="reviewSummaryChartPie"></canvas>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <div class="table-responsive table--no-card m-b-40">
+                <div id="summary_wrapper" class="dataTables_wrapper no-footer">
+                    <table id="DataTables_Table_0" class="table table-borderless table-striped table-earning">
+                        <thead>
+                            <tr>
+                                <th style="width:3%">Site</th>
+                                <th style="width:3%">Reviews</th>
+                                <th style="width:3%">Avg Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        getReviewsCharts('', '', '', '');
+    });
+
+    function getReviewsCharts(siteID, accountID, accountType) {
+        var SiteID, AccountID, AccountType = "";
+        SiteID = siteID;
+        AccountID = accountID;
+        AccountType = accountType;
+        $.ajax({
+            url: '@Url.Action("ReviewChartList", "ChartsDashboard")?SiteID=' + SiteID + '&AccountID=' + AccountID + '&AccountTypeID=' + AccountType,
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            type: "GET",
+            dataType: "json",
+            success: function (data) {
+                ReviewPieChart(data.reviewsChart.ReviewsChartDashboardTR, 'pie');
+                $('#DataTables_Table_0').DataTable({
+                    processing: true,
+                    paging: false,
+                    sort: true,
+                    bDestroy: true,
+                    bRetreive: true,
+                    bFilter: false,
+                    info: false,
+                    data: data.reviewsChart.ReviewsChartDashboardTR,
+                    columns: [
+
+                    { 'data': 'SiteName' },
+
+                    { 'data': 'ReviewsCount' },
+
+                    {
+                        'data': 'Rating',
+                        render: function (data, type, full) {
+                            var text = "";
+                            for (var i = 0; i < full.Rating; i++) {
+                                text += '<i class="fa fa-star icon-c" aria-hidden="true" data-color="red"></i>';
+                            }
+
+                            var j = 5 - full.Rating;
+                            for (var i = 0; i < j; i++) {
+                                text += '<i class="fa fa-star-o icon-c" aria-hidden="true" data-color="red"></i>';
+                            }
+
+                            return text;
+
+                        }, searchable: false, sortable: false
+
+                    },
+
+                    ],
+                    //dom: 'Blfrtip',
+                    //buttons: [
+                    // 'copy', 'csv', 'excel', 'pdf', 'print'
+                    //],
+                });
+
+            },
+            failure: function (data) {
+                alert("failed:" + data.responseText);
+                console.log(data);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert("error" + data.responseText);
+                console.log(data);
+            } //End of AJAX error function
+        });
+    }
+
+    function ReviewPieChart(dataArray, chartType) {
+        var ctxReviewSummary = document.getElementById('reviewSummaryChartPie').getContext('2d');
+        var colors = ["#F7464A", "#46BFBD", "#FDB45C", "#FEDCBA", "#ABCDEF", "#DDDDDD", "#ABCABC"];
+        var reviewcountarray = [];
+        var labelarray = [];
+        for (var i = 0; i < dataArray.length; i++) {
+            reviewcountarray.push(dataArray[i].ReviewsCount);
+            labelarray.push(dataArray[i].SiteName);
+        }
+        var myPieChart = new Chart(ctxReviewSummary, {
+            type: chartType,
+            animationEnabled: true,
+            title: {
+                text: "Sites Reviews"
+            },
+            data: {
+                labels: labelarray,
+                legendText: dataArray.reviewcountarray,
+                datasets: [{
+                    backgroundColor: colors,
+                    data: reviewcountarray,
+                    //backgroundColor: [
+                    //    'rgb(51, 173, 255)',
+                    //    'rgb(0, 153, 0)'
+                    //],
+                }],
+
+                datapoint: [{ labels: labelarray, y: reviewcountarray, }],
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                labels: labelarray
+            },
+            options: {
+                cutoutPercentage: 10,
+                responsive: true,
+                legend: {
+                    display: true,
+                    position: 'right',
+                }
+            }
+        });
+    }
+
+</script>
+<style>
+    th {
+        white-space: normal !important;
+        color: white !important;
+    }
+</style>

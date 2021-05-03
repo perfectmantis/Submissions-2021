@@ -1,0 +1,94 @@
+<div class="main"
+  style="background-image: url(assets/images/background.jpg); background-repeat: no-repeat; background-size: cover; height: 100vh; text-align: center;">
+
+
+  <div class="container  justify-content-center wrapper-body">
+    <div class="header text-center w-100">
+      <img class="rounded" height="60px" width="50%" src="assets/images/complaint.png" alt="Login">
+    </div>
+
+    <div class="">
+      <form [formGroup]="userregistration" style="padding: 0 14px;">
+        <mat-form-field class="col-md-12" style="padding:0;" appearance="outline">
+
+          <mat-label>User Name</mat-label>
+          <mat-icon matPrefix style="margin-right: 5px;">person</mat-icon>
+          <input matInput required placeholder="Placeholder" type="text" formControlName="fullName">
+
+          <mat-error *ngIf="userregistration.controls['fullName'].hasError('required')">
+            This is required
+            <strong>Field</strong>
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="col-md-12" style="padding:0;" appearance="outline">
+
+          <mat-label>Email</mat-label>
+          <mat-icon matPrefix style="margin-right: 5px;">email</mat-icon>
+          <input matInput required placeholder="Placeholder" type="text" formControlName="email">
+
+          <mat-error *ngIf="userregistration.controls['email'].hasError('required')">
+            This is required
+            <strong>Field</strong>
+          </mat-error>
+          <mat-error *ngIf="userregistration.controls['email'].hasError('email')">
+
+            Email must be a valid email
+            <strong>address</strong></mat-error>
+
+        </mat-form-field>
+
+
+        <mat-form-field class="col-md-12" style="padding:0;" appearance="outline">
+
+          <mat-label>Password</mat-label>
+          <mat-icon matPrefix  style="margin-right: 8px;"(click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <input matInput required placeholder="Placeholder"  [type]="hide ? 'password' : 'text'" formControlName="password">
+
+          <mat-error *ngIf="userregistration.controls['password'].hasError('required')">
+            This is required
+            <strong>Field</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-12" style="padding:0;" appearance="outline">
+
+          <mat-label>Phone Number</mat-label>
+          <mat-icon matPrefix style="margin-right: 5px;">phone</mat-icon>
+          <input matInput required placeholder="Placeholder" type="text" formControlName="contactNo">
+
+
+        </mat-form-field>
+      </form>
+    </div>
+
+
+
+
+    <div style="padding: 0 15px !important;">
+      <button class="btn-block btn-login" mat-raised-button color="primary" (click)="SubmitUser()">
+        <span>
+          <mat-icon matPrefix class="btnregicon">person</mat-icon>
+          <h3 class="btnregister">Register</h3>
+        </span>
+
+      </button>
+    </div>
+
+    <div class="container">
+      <hr style="padding: 0 15px !important;color: #fff; border:1px solid #fff" />
+    </div>
+
+
+    <div style="margin-bottom: -11px;">
+      <p style="color: black;
+      font-weight: bolder;">Already Registered</p>
+    </div>
+    <a class="ml-auto" [routerLink]="['/login']">
+      <strong style="color: #fff; letter-spacing: 1px;">Sign in</strong>
+    </a>
+
+
+  </div>
+</div>

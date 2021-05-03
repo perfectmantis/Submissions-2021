@@ -1,0 +1,123 @@
+﻿@model OSMS.Areas.UserManagement.Models.UserModelClass
+@{
+    ViewBag.Title = "User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header card">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="feather icon-user bg-c-blue"></i>
+                <div class="d-inline">
+                    <h5>User Profile</h5>
+                    <span>This is User Profile section.</span>
+                </div>
+            </div>
+        </div>       
+    </div>
+    <div class="row align-items-end">
+    </div>
+</div>
+<div class="card">
+
+    <div class="card-header">
+
+        @using (Html.BeginForm(new { enctype = "multipart/form-data", id = "frmUser" }))
+        {
+            @*@{
+
+                OSMS.Models.callAPI db = new OSMS.Models.callAPI();
+                long UserID = OSMS.Models.GenricClass.UserId;
+                string URL = "api/UserManagement/User/GetUserById?UserId=";
+                var UserData = db.GetEntityListById<OSMS.Areas.QuestionnaireManagement.Models.SectionModelClass>(URL, UserID);
+            }*@
+            @Html.HiddenFor(x => x.UserId)
+            @Html.HiddenFor(x => x.UserType)
+            @Html.HiddenFor(x => x.LoginPassword)
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">User Name :</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control form-control-success" })
+                </div>
+
+                <label class="col-sm-2 col-form-label">Father Name :</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(x => x.FatherName, new { @class = "form-control form-control-success" })
+                </div>
+            </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Cnic :</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(x => x.Cnic, new { @class = "form-control form-control-success" })
+                        </div>
+                        <label class="col-sm-2 col-form-label">Email Address :</label>
+
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control form-control-success" })
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Department :</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(x => x.Department, new { @class = "form-control form-control-success" })                            
+                        </div>
+                        <label class="col-sm-2 col-form-label">Organization :</label>
+                        <div class="col-sm-4">
+                            @Html.TextBoxFor(x => x.Organization, new { @class = "form-control form-control-success" })
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">User Address :</label>
+                        <div class="col-sm-10">
+                            @Html.TextAreaFor(x => x.UserAddress, new { @class = "form-control form-control-success" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-10"></div>
+                        <div class="col-md-1">
+                            <button type="button" onclick="saveData()" class="btn waves-effect waves-light hor-grd btn-grd-info">Save</button>
+                        </div>
+                        <div class="col-md-0.5">
+                            <button type="button" onclick="Discard(1)" class="btn waves-effect waves-light hor-grd btn-grd-warning ">Cancel</button>
+                        </div>
+                    </div>
+        }
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function saveData() {
+        var frmdata = $('form').serialize();
+        debugger;
+        $.ajax({
+            url: "@Url.Action("Update", "User")",
+            type: "Post",
+            data: frmdata,
+            success: function (response) {
+                console.log(response.data);
+                
+            }
+        });
+    }
+
+    function Discard(UserID) {        
+        debugger;
+        $.ajax({
+            url: "@Url.Action("User", "User")",
+            type: "Get",
+            data: { UserID },
+        success: function (response) {
+            console.log(response.data);
+            alert("All changes will be discarded. This operation can not be undone.");
+            var iUrl = "@Url.Action("User", "User")" + "?UserId=" + UserID;
+            window.location.href = iUrl ;   
+        }
+    });
+    }
+</script>

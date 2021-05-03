@@ -1,0 +1,447 @@
+﻿@model OSMS.Areas.QuestionnaireManagement.Models.QuestionnaireModelClass
+@{
+    ViewBag.Title = "NewQuestionnaire";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .modal-dialog {
+        max-width: 90%; /* New width for default modal */
+        max-height: 800px;
+        height: 600px !important;
+    }
+</style>
+<div class="page-header card">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="feather icon-plus-circle bg-c-blue"></i>
+                <div class="d-inline">
+                    <h5>Add New Questionnaires</h5>
+                    <span>You can add new Questionnaire from here!</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--Questionnaire Start-->
+
+<div class="card">
+
+    <div class="card-header">
+
+        @using (Html.BeginForm(new { enctype = "multipart/form-data", id = "frmQuestionnaire" }))
+        {
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Status</label>
+                <div class="col-sm-4">
+                    @Html.HiddenFor(x => x.QuestionnaireId)
+                    @{OSMS.Models.GenricClass.QuestionnaireId = Model != null ? Model.QuestionnaireId : 0;}
+                    @Html.HiddenFor(x => x.CreatedOn)
+                    @{
+                        if (Model != null)
+                        {
+                            Model.UserId = OSMS.Models.GenricClass.UserId;
+                        }
+                    }
+                    @Html.HiddenFor(x => x.UserId)
+                    @Html.DropDownListFor(x => x.QuestionnaireStatus, new SelectList(new[]
+                                                                    {
+
+                                              new {ID=false,Name="Select"},
+                                              new{ID=true,Name="Active"},
+                                              new{ID=false,Name="Inactive"},
+                                          }, "ID", "Name"), new { @class = "form-control form-control-success" })
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Max Response</label>
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(x => x.MaxResponse, new { @class = "form-control form-control-success" })
+                </div>
+                <label class="col-sm-2 col-form-label">Expiry Date</label>
+
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(x => x.Expiry, new { @class = "form-control form-control-success", @type = "date" })
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.QuestionnaireDesc, new { @class = "form-control form-control-success" })
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-7"></div>
+                <div class="col-md-1">
+                    <button type="button" onclick="saveData()" class="btn waves-effect waves-light hor-grd btn-grd-info" style="margin-left: 13px;">Save</button>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn waves-effect waves-light hor-grd btn-grd-warning ">Cancel</button>
+                </div>
+                <div class="col-md-1">
+                    <button class="btn waves-effect waves-light hor-grd btn-grd-danger ">Delete</button>
+                </div>
+
+                <div class="col-md-1">
+                    <button type="button" onclick="previewQuestionnaire()" class="btn waves-effect waves-light hor-grd btn-grd-info" style="margin-left: 13px;">Preview</button>
+                </div>
+            </div>
+                        }
+
+    </div>
+</div>
+
+<!--Questionnaire End-->
+
+
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-header-text">Sections</h5>
+        <a href="#" data-toggle="modal" data-target="#mySectionModal">
+            <i class="feather icon-plus" style="font-size: 20px;float: right;color: cornflowerblue;"></i>
+        </a>
+        <div id='mySectionModal' class='modal'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="mySectionModalLabel">Section</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Section Name</label>
+                            <div class="col-sm-8">
+                                @Html.Hidden("hidSectionId")
+                                @Html.TextBox("txtSectionName", null, new { @class = "form-control form-control-success" })
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-4 col-form-label">Sequencec #</label>
+                            <div class="col-sm-8">
+                                @Html.TextBox("txtSeqNo", null, new { @class = "form-control form-control-success" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-default" onclick="SaveSection($('#txtSectionName').val(), $('#txtSeqNo').val())">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        @{
+
+            OSMS.Models.callAPI db = new OSMS.Models.callAPI();
+            long QuestionnaireID = Model != null ? Model.QuestionnaireId : 0;
+            string sectionURL = "api/QuestionnaireManagement/Questionnaire/GetAllSectionByQuestionnaireId?QuestionnaireId="; //ttp://localhost:11781/QuestionnaireManagement/Questionnaire/GetAllSectionByQuestionnaireId?QuestionnaireID=7
+            var sectionData = db.GetEntityListById<OSMS.Areas.QuestionnaireManagement.Models.SectionModelClass>(sectionURL, QuestionnaireID);
+        }
+
+        <div class="card-block accordion-block">
+            <div id="accordion" role="tablist" aria-multiselectable="true">
+                @if (sectionData != null)
+                {
+                    foreach (var sectionItem in sectionData)
+                    {
+                        <div class="accordion-panel">
+                            <div class="accordion-heading" role="tab" id="@sectionItem.SectionName">
+                                <h3 class="card-title accordion-title">
+                                    @Html.Hidden("accordionSectionId", sectionItem.SectionId)
+                                    <a class="accordion-msg waves-effect waves-dark scale_active collapsed" data-toggle="collapse" data-parent="#accordion" href="#@sectionItem.SectionName" aria-expanded="false" aria-controls="@sectionItem.SectionId">
+                                        @sectionItem.SectionName
+                                        <i class="feather icon-edit" onclick="EditSection($('#accordionSectionId').val(), $('#txtSectionName').val(), $('#txtSeqNo').val());" style="font-size: 20px;float: right;color: cornflowerblue;"></i>
+                                        <i class="feather icon-trash" onclick="DeleteSection($('#accordionSectionId').val())" style="font-size: 20px;float: right;color: cornflowerblue;"></i>
+                                    </a>
+                                </h3>
+                            </div>
+                            <div id="@sectionItem.SectionName" class="panel-collapse in collapse" role="tabpanel" aria-labelledby="@sectionItem.SectionName" style="">
+                                <div class="accordion-content accordion-desc">
+                                    <!--Section Pages Start-->
+                                    @{
+                                        string pageModalId = "Modal" + sectionItem.SectionId;
+                                        string pageName = "txtPageName" + sectionItem.SectionId;
+                                        string pageSeq = "txtPageSeqNo" + sectionItem.SectionId;
+                                        string PageURL = "api/QuestionnaireManagement/Questionnaire/GetPagesBySectionId?SectionId="; //ttp://localhost:11781/QuestionnaireManagement/Questionnaire/GetAllSectionByQuestionnaireId?QuestionnaireID=7
+                                        var PageData = db.GetEntityListById<OSMS.Areas.QuestionnaireManagement.Models.PageModelClass>(PageURL, sectionItem.SectionId);
+                                    }
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-header-text">Pages - @sectionItem.SectionName</h5>
+                                            <a href="#" data-toggle="modal" data-target="#@pageModalId">
+                                                <i class="feather icon-plus" style="font-size: 20px;float: right;color: cornflowerblue;"></i>
+                                            </a>
+                                            <div id='@pageModalId' class='modal'>
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title" id="myPageModalLabel">Page</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Page Name</label>
+                                                                <div class="col-sm-8">
+                                                                    @Html.Hidden("hidPageId")
+                                                                    @Html.TextBox(pageName, null, new { @class = "form-control form-control-success" })
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-4 col-form-label">Sequence #</label>
+                                                                <div class="col-sm-8">
+                                                                    @Html.TextBox(pageSeq, null, new { @class = "form-control form-control-success" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+
+                                                            <button type="button" class="btn btn-default" onclick="SavePage('@sectionItem.SectionId', $('#@pageName').val(), $('#@pageSeq').val())">Save</button>
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        @if (PageData != null)
+                                        {
+                                            foreach (var PageItem in PageData)
+                                            {
+
+                                                <div class="card-block accordion-block">
+                                                    <div id="accordionpage" role="tablist" aria-multiselectable="true">
+                                                        <div class="accordion-panel">
+                                                            <div class="accordion-heading" role="tab" id="@PageItem.PageId-header">
+                                                                <h3 class="card-title accordion-title">
+                                                                    <a class="accordion-msg waves-effect waves-dark scale_active collapsed" data-toggle="collapse" data-parent="#accordionpage" href="#@sectionItem.SectionId-@PageItem.PageId-Page" aria-expanded="false" aria-controls="@sectionItem.SectionId-@PageItem.PageId-Page">
+                                                                        @PageItem.PageName
+                                                                        <i class="feather icon-edit" style="font-size: 20px;float: right;color: cornflowerblue;"></i>
+                                                                        <i class="feather icon-trash" style="font-size: 20px;float: right;color: cornflowerblue;"></i>
+                                                                    </a>
+
+                                                                </h3>
+                                                            </div>
+                                                            <div id="@sectionItem.SectionId-@PageItem.PageId-Page" class="panel-collapse in" role="tabpanel" aria-labelledby="@PageItem.PageId-header" style="">
+                                                                <div class="accordion-content accordion-desc">
+                                                                    @* Question will start here *@
+                                                                    @{
+                                                                        string questionModalId = "Modal" + PageItem.PageId;
+                                                                        string questionName = "txtPageName" + PageItem.PageId;
+                                                                        string questionSeq = "txtPageSeqNo" + PageItem.PageId;
+
+                                                                        string QuestionURL = "api/QuestionnaireManagement/Questionnaire/GetQuestionsByPageId?PageId="; //ttp://localhost:11781/QuestionnaireManagement/Questionnaire/GetAllSectionByQuestionnaireId?QuestionnaireID=7
+                                                                        var QuestionData = db.GetEntityListById<OSMS.Areas.QuestionnaireManagement.Models.QuestionModelClass>(QuestionURL, PageItem.PageId);
+                                                                    }
+                                                                    <div class="card">
+                                                                        <div class="card-header">
+                                                                            <h5 class="card-header-text">Questions - @PageItem.PageName</h5>
+                                                                            <a href="#" data-toggle="modal" data-target="#@questionModalId">
+                                                                                <i class="feather icon-plus" style="font-size: 20px;float: right;color: cornflowerblue;"></i>
+                                                                            </a>
+                                                                            <div id='@questionModalId' class='modal'>
+                                                                                <div class="modal-dialog">
+                                                                                    <div class="modal-content">
+                                                                                        <div class="modal-header">
+                                                                                            <h4 class="modal-title" id="myQuestionModalLabel">Question</h4>
+                                                                                        </div>
+                                                                                        <div class="modal-body">
+                                                                                            <div class="form-group row">
+                                                                                                <label class="col-sm-4 col-form-label">Question</label>
+                                                                                                <div class="col-sm-8">
+                                                                                                    @Html.Hidden("hidQuestionId")
+                                                                                                    @Html.TextBox(questionName, null, new { @class = "form-control form-control-success" })
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                            <div class="form-group row">
+                                                                                                <label class="col-sm-4 col-form-label">Sequence #</label>
+                                                                                                <div class="col-sm-8">
+                                                                                                    @Html.TextBox(questionSeq, null, new { @class = "form-control form-control-success" })
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+
+                                                                                            <button type="button" class="btn btn-default" onclick="SaveQuestion('@PageItem.PageId', $('#@questionName').val(), $('#@questionSeq').val())">Save</button>
+                                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            @if (QuestionData != null)
+                                                                            {
+                                                                                foreach (var QuestionItem in QuestionData)
+                                                                                {
+                                                                                    <div class="card-block accordion-block">
+                                                                                        <div id="accordionQuestion" role="tablist" aria-multiselectable="true">
+                                                                                            <div class="accordion-panel">
+                                                                                                <div class="accordion-heading" role="tab" id="@QuestionItem.QuestionName">
+                                                                                                    <h3 class="card-title accordion-title">
+                                                                                                        <a class="accordion-msg waves-effect waves-dark scale_active collapsed" data-toggle="collapse" data-parent="#accordionQuestion" href="#@PageItem.PageId-@QuestionItem.QuestionId" aria-expanded="false" aria-controls="@PageItem.PageId-@QuestionItem.QuestionId">
+                                                                                                            Question @QuestionItem.SequenceNumber
+                                                                                                            <i class="feather icon-edit" style="font-size: 20px;float: right;color: cornflowerblue;"></i>
+                                                                                                            <i class="feather icon-trash" style="font-size: 20px;float: right;color: cornflowerblue;"></i>
+                                                                                                        </a>
+                                                                                                        <p>
+                                                                                                            @QuestionItem.QuestionName
+                                                                                                        </p>
+                                                                                                    </h3>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                }
+                                                                            }
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+
+                                        <!--Section Pages End-->
+
+                                                                            }
+
+                                                                        }
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                                                                            }
+                                                                        }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id='myPreviewModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="previewlabel">Preview Questionnaire</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group row">
+                    <iframe id="previewiFrame"></iframe>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).on('ready', function () {
+        $("#accordionpage").accordion();
+    });
+
+    function saveData() {
+        var frmdata = $('form').serialize();
+       
+        debugger;
+        $.ajax({
+            url: "@Url.Action("QuestionnaireInsert", "Questionnaire")",
+            type: "Post",
+            data: frmdata,
+            success: function (response) {
+                console.log(response.data);
+                $('#QuestionnaireId').val(response.data.QuestionnaireId);
+            }
+        });
+    }
+
+
+    function SaveSection(sectionName, SequenceNumber) {
+        var QuestionnaireId = $('#QuestionnaireId').val();
+        debugger;
+        //let _QuestionnaireId = @OSMS.Models.GenricClass.QuestionnaireId;
+        $.ajax({
+            url: "@Url.Action("SectionInsert", "Questionnaire")",
+            type: "Post",
+            data: { sectionName, SequenceNumber, QuestionnaireId },
+            success: function (response) {
+                console.log(response.QuestionnaireID);
+                var QuestionnaireId = response.QuestionnaireID;
+               $('#mySectionModal').modal('toggle');
+                var iUrl = "@Url.Action("NewQuestionnaire", "Questionnaire")" + "?QuestionnaireId=" + QuestionnaireId;
+                window.location.href = iUrl;
+
+            }
+        });
+    }
+
+    function EditSection(sectionId, sectionName, SeqNo) {
+        var QuestionnaireId = $('#QuestionnaireId').val();
+        $('#mySectionModal').modal('toggle');
+    }
+
+    function DeleteSection() {
+        
+        $.ajax({
+            url: "@Url.Action("SectionDelete", "Questionnaire")",
+            type: "Post",
+            data: { sectionId },
+            success: function (response) {
+                console.log(response.result);
+            }
+        });
+
+    }
+
+    function SavePage(sectionId, PageName, SequenceNumber) {
+        var QuestionnaireId = $('#QuestionnaireId').val();
+        $.ajax({
+            url: "@Url.Action("PageInsert", "Questionnaire")",
+            type: "Post",
+            data: { sectionId, PageName, SequenceNumber },
+            success: function (response) {
+               $('#myPageModal').modal('toggle');
+                var iUrl = "@Url.Action("NewQuestionnaire", "Questionnaire")" + "?QuestionnaireId=" + QuestionnaireId;
+                window.location.href = iUrl;
+
+            }
+        });
+    }
+
+    function SaveQuestion(PageId, QuestionName, SequenceNumber) {
+        var QuestionnaireId = $('#QuestionnaireId').val();
+        $.ajax({
+            url: "@Url.Action("QuestionInsert", "Questionnaire")",
+            type: "Post",
+            data: { PageId, QuestionName, SequenceNumber },
+            success: function (response) {
+                $('#myQuestionModal').modal('toggle');
+                var iUrl = "@Url.Action("NewQuestionnaire", "Questionnaire")" + "?QuestionnaireId=" + QuestionnaireId;
+                window.location.href = iUrl;
+
+            }
+        });
+    }
+
+    function previewQuestionnaire() {
+        var QuestionnaireId = $('#QuestionnaireId').val();
+        var iURL = '/QuestionnaireManagement/Questionnaire/PreviewQuestionnaire?QuestionnaireID=' + QuestionnaireId;
+        window.location.href = '/QuestionnaireManagement/Questionnaire/PreviewQuestionnaire?QuestionnaireID=' + QuestionnaireId;
+    }
+</script>

@@ -1,0 +1,71 @@
+<div class="main" style="background-image: url(assets/images/background.jpg); background-repeat: no-repeat; background-size: cover; height: 100vh; text-align: center;" >
+  <div class="container  justify-content-center wrapper-body">
+    
+
+    <div class="header text-center w-100">
+      <img class="rounded" height="60px" width="50%" src="assets/images/complaint.png" alt="Login">
+    </div>
+    
+
+    <div class="">
+      <form [formGroup]="login" style="padding: 0 14px;">
+        <mat-form-field class="col-md-12" style="margin-top: 60px;padding:0;" appearance="outline">
+
+          <mat-label>User Name</mat-label>
+          <mat-icon matPrefix style="margin-right: 5px;">person</mat-icon>
+          <input matInput required placeholder="Placeholder" type="text" formControlName="login">
+
+
+        </mat-form-field>
+
+
+        <mat-form-field class="col-md-12" style="padding:0;" appearance="outline">
+
+          <mat-label>Password</mat-label> 
+        <!-- <mat-icon matPrefix style="margin-right: 5px;">lock</mat-icon> -->
+        <mat-icon matPrefix  style="margin-right: 8px;"(click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <input matInput required placeholder="Placeholder"  [type]="hide ? 'password' : 'text'" formControlName="password">
+
+
+        </mat-form-field>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="mr-auto" style="margin-left:35px;">
+        <mat-checkbox [(ngModel)]="Ischecked" [ngModelOptions]="{standalone: true}"><span style="color: white;">
+            Remember me</span></mat-checkbox>
+
+      </div>
+      <a class="ml-auto" [routerLink]="['/Forget']" style="margin-right: 30px;
+        margin-top: 2px;">
+        <span style="color: #fff;"> Forgot Password?</span>
+      </a>
+
+    </div>
+    <div class="container">
+      <mat-progress-bar *ngIf="IsLogin" aria-valuemax="100" mode="indeterminate" aria-valuemin="0" role="progressbar"
+        aria-valuenow="0"></mat-progress-bar>
+    </div>
+
+    <div style="margin-top: 20px;padding: 0 15px !important;">
+      <button class="btn-block btn-login" mat-raised-button color="primary" (click)="Login()">
+        <h3 style="margin-top: 10px;outline: none; font-size: 20px; font-weight: 600;
+        ">Login</h3>
+      </button>
+    </div>
+
+    <div class="container">
+      <hr style="padding: 0 15px !important;color: #fff; border:1px solid #fff" />
+    </div>
+
+    <div style="margin-bottom: -11px;">
+      <p style="color: black;
+      font-weight: bolder;">Don't have an account yet?</p>
+    </div>
+      <a class="ml-auto" routerLink="/userregistration">
+          <strong style="color: #fff; letter-spacing: 1px;">Create an account</strong>
+      </a>
+
+  </div>
+</div>

@@ -1,0 +1,170 @@
+﻿@model WPS.Models.TempAssignRole
+@{
+    ViewBag.Title = "AssignRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    .ModuleHeader {
+        background: -webkit-linear-gradient(left, #ccc,White );
+        background: -o-linear-gradient(right, #ccc,White);
+        background: -moz-linear-gradient(right, #ccc,White );
+        background: linear-gradient(to right, #ccc,White);
+        padding: 10px;
+    }
+
+    .formHeader {
+        /*background: -webkit-linear-gradient(left, #ccc,White );
+        background: -o-linear-gradient(right, #ccc,White);
+        background: -moz-linear-gradient(right, #ccc,White );
+        background: linear-gradient(to right, #ccc,White);*/
+        padding: 5px;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-header">
+                    <a href="#"><i class="fas fa-home"></i></a> / <a onclick="goBack('');"><i class="fas fa-user-circle"></i></a> / Assign Role
+                </div>
+                <form class="form-horizontal" role="form" id="frmAssignRoles">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h3 class="text-left title-2">Assign Role(s)</h3>
+                        </div>
+                        <hr>
+                        <div class="row form-group">
+                            <div class="col-2"></div>
+                            <div class="col-2">
+                                <label for="cc-payment" class="control-label">User Type</label>
+                            </div>
+                            <div class="col-4">
+                                @Html.DropDownList("UserType", null, "Select User Type",
+                                new { @class = "form-control", style = "width: 95%", maxlength = "50", onchange="getAssignedRoles($(this).val());" })
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-1"></div>
+                            <div class="col-5">Non-assigned Rights</div>
+                            <div class="col-1"></div>
+                            <div class="col-5">Assigned Rights</div>
+                            
+                        </div>
+                            <div class="row form-group">
+                                <div class="col-1"></div>
+                                <div class="col-5">
+                                    @Html.DropDownList("Roles", null, null,
+                                new { @id = "lstBox1", @class = "js-example-basic-multiple", multiple = "multiple", style = "width: 95%; height:300px;", maxlength = "50" })
+                                </div>
+
+                                <div class="col-1" style="padding-top:75px !important;">
+                                    <input type="button" id="btnAllRight" value=">>" style="width:38px" class="btn btn-primary" /><br />
+                                    <input type="button" id="btnRight" value="> " style="width:38px" class="btn btn-primary" /><br />
+                                    <input type="button" id="btnLeft" value="< " style="width:38px" class="btn btn-primary" /><br />
+                                    <input type="button" id="btnAllLeft" value="<<" style="width:38px" class="btn btn-primary" />
+                                </div>
+                                <div class="col-5">
+                                    @Html.DropDownList("AssignedRoles", null, null,
+                                new { @id = "lstBox2", @class = "js-example-basic-multiple", multiple = "multiple", style = "width: 95%;height:300px;", maxlength = "50" })
+                                </div>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    (function () {
+        $('#btnRight').click(function (e) {
+            var selectedOpts = $('#lstBox1 option:selected');
+            if (selectedOpts.length == 0) {
+                alert("Nothing to move.");
+                e.preventDefault();
+            }
+            accessRole($("#UserType").val(), "Y", selectedOpts);
+            //$('#lstBox2').append($(selectedOpts).clone());
+            //$(selectedOpts).remove();
+            e.preventDefault();
+        });
+        $('#btnAllRight').click(function (e) {
+            var selectedOpts = $('#lstBox1 option');
+            if (selectedOpts.length == 0) {
+                alert("Nothing to move.");
+                e.preventDefault();
+            }
+            accessRole($("#UserType").val(), "Y", selectedOpts);
+            //$('#lstBox2').append($(selectedOpts).clone());
+            //$(selectedOpts).remove();
+            e.preventDefault();
+        });
+        $('#btnLeft').click(function (e) {
+            var selectedOpts = $('#lstBox2 option:selected');
+            if (selectedOpts.length == 0) {
+                alert("Nothing to move.");
+                e.preventDefault();
+            }
+            accessRole($("#UserType").val(), "N", selectedOpts);
+            //$('#lstBox1').append($(selectedOpts).clone());
+            //$(selectedOpts).remove();
+            e.preventDefault();
+        });
+        $('#btnAllLeft').click(function (e) {
+            var selectedOpts = $('#lstBox2 option');
+            if (selectedOpts.length == 0) {
+                alert("Nothing to move.");
+                e.preventDefault();
+            }
+            accessRole($("#UserType").val(), "N", selectedOpts);
+            //$('#lstBox1').append($(selectedOpts).clone());
+            //$(selectedOpts).remove();
+            e.preventDefault();
+        });
+    }(jQuery));
+
+    function accessRole(arrUserType, arrAllow, selectedOpts) {
+         var arrchkId = new Array(); var arrDescription = new Array();
+         selectedOpts.each(function () {
+             if ($(this).val() != '0') {
+                 arrchkId.push($(this).val());
+                 arrDescription.push($(this).text());
+             }
+         })
+
+         console.log(arrchkId);
+         console.log(arrDescription);
+        $.ajax({
+            url: '@Url.Action("AssignRoles", "Access", new { q = Request.QueryString["q"].ToString() })',
+            type: "POST",
+            dataType: "json",
+            data: {
+                UserType: arrUserType,
+                Allow: arrAllow,
+                RoleId: arrchkId,
+                Description: arrDescription,
+                Count: selectedOpts.length
+            },
+            traditional: true,
+            success: function (response) {
+                if (response.success == true) {
+                    getAssignedRoles(arrUserType);
+                }
+                else {
+                    alert(response.response);
+                    //$('#lblerrorMessage').text(response.response);
+                    //$('#diverrorMessage').show();
+                }
+            }
+        });
+    }
+
+    function getAssignedRoles(userType) {
+        var url = '@Url.Action("AssignRoles", "Access", new { q = Request.QueryString["q"].ToString() })&UserTypeID=' + userType + '';
+        window.location = url;
+    }
+</script>
+

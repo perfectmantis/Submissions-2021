@@ -1,0 +1,278 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>OSMS | ONLINE SURVEY MANAGEMENT SYSTEM</title>
+    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 10]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Admindek Bootstrap admin template made using Bootstrap 4 and it has huge amount of ready made feature, UI components, pages which completely fulfills any dashboard needs.">
+    <meta name="keywords" content="flat ui, admin Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="colorlib">
+
+    <script type="text/javascript" src="~/scripts/bower_components/jquery/js/jquery.min.js"></script>
+    <!-- Favicon icon -->
+    <link rel="icon" href="~/Content/Images/favicon.ico" type="image/x-icon">
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:500,700" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Css/bootstrap.min.css">
+    <!-- waves.css -->
+    <link rel="stylesheet" href="~/Content/Css/waves.min.css" type="text/css" media="all">
+    <!-- feather icon -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Css/feather.css">
+    <!-- font-awesome-n -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Css/font-awesome-n.min.css">
+    <!-- Chartlist chart css -->
+    <link rel="stylesheet" href="~/Content/Css/chartist.css" type="text/css" media="all">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/Css/widget.css">
+
+</head>
+
+<body themebg-pattern="theme1" data-new-gr-c-s-check-loaded="14.986.0" data-gr-ext-installed="">
+    <form>
+        <!-- [ Pre-loader ] start -->
+        <div class="loader-bg" style="display: none;">
+            <div class="loader-bar"></div>
+        </div>
+        <!-- [ Pre-loader ] end -->
+        <div id="pcoded" class="pcoded iscollapsed" nav-type="st2" theme-layout="vertical" vertical-placement="left" vertical-layout="wide" pcoded-device-type="desktop" vertical-nav-type="expanded" vertical-effect="shrink" vnavigation-view="view1" fream-type="theme1" layout-type="light">
+            <div class="pcoded-overlay-box"></div>
+            <div class="pcoded-container navbar-wrapper">
+                <!-- [ Header ] start -->
+                <nav class="navbar header-navbar pcoded-header iscollapsed" header-theme="themelight1" pcoded-header-position="fixed">
+                    <div class="navbar-wrapper">
+                        <div class="navbar-logo" logo-theme="theme6">
+                            <a href="index.html">
+                                <img class="img-fluid" src="~/Content/Images/logo.png" alt="Logo" style="width: 50px; height: 50px; float: left;">
+                                <div style="margin-right: 25px; margin-top: 15px;">
+                                   Online Survey Management System
+                                </div>
+                            </a>
+                            <a class="mobile-menu" id="mobile-collapse" href="#!">
+                                <i class="feather icon-menu icon-toggle-right"></i>
+                            </a>
+                            <a class="mobile-options waves-effect waves-light">
+                                <i class="feather icon-more-horizontal"></i>
+                            </a>
+                        </div>
+                        <div class="navbar-container container-fluid">
+                            <ul class="nav-left">
+                                <li class="header-search">
+                                    <div class="main-search morphsearch-search">
+                                        <div class="input-group">
+                                            <span class="input-group-prepend search-close">
+                                                <i class="feather icon-x input-group-text"></i>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="Enter Keyword">
+                                            <span class="input-group-append search-btn">
+                                                <i class="feather icon-search input-group-text"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
+                                        <i class="full-screen feather icon-maximize"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav-right">                                
+                                <li class="user-profile header-notification">
+
+                                    <div class="dropdown-primary dropdown">
+                                        <div class="dropdown-toggle" data-toggle="dropdown">
+                                            <span>@OSMS.Models.GenricClass.UserName</span>
+                                            <i class="feather icon-chevron-down"></i>
+                                        </div>
+                                        <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">                                            
+                                            <li>
+                                                <a href="/UserManagement/User/User">
+                                                    <i class="feather icon-user"></i> Profile
+
+                                                </a>
+                                            </li>                                            
+                                            <li>
+                                                <a href="/UserManagement/User/Login">
+                                                    <i class="feather icon-log-out"></i> Logout
+
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>                                               
+                <div class="pcoded-main-container" style="margin-top: 73px;">
+                    <div class="pcoded-wrapper">
+                        <!-- [ navigation menu ] start -->
+                        <nav class="pcoded-navbar" navbar-theme="theme1" active-item-theme="theme1" sub-item-theme="theme2" active-item-style="style0" pcoded-navbar-position="fixed">
+                            <div class="nav-list">
+                                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: 100%; height: 100%;">
+                                    <div class="pcoded-inner-navbar main-menu" style="overflow: hidden; width: 100%; height: 100%;">
+                                        <div class="pcoded-navigation-label" menu-title-theme="theme1">Main Menu</div>
+                                        <ul class="pcoded-item pcoded-left-item" item-border="true" item-border-style="solid" subitem-border="false">
+                                            <li class="pcoded-hasmenu active pcoded-trigger" @*dropdown-icon="style1"*@ subitem-icon="style1">
+                                                <a href="" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                                                    <span class="pcoded-mtext">Dashboard</span>
+                                                </a>                                                                                            </li>
+                                            <li class="pcoded-hasmenu" @*dropdown-icon="style1"*@ subitem-icon="style1">
+                                                <a href="/QuestionnaireManagement/Questionnaire/NewQuestionnaire" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
+                                                    <span class="pcoded-mtext">New Questionnaire</span>
+                                                    </a>                                                
+                                            </li>
+                                            <li class="">
+                                                <a href="/QuestionnaireManagement/Questionnaire/Index" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon">
+                                                        <i class="feather icon-menu"></i>
+                                                    </span>
+
+                                                    <span class="pcoded-mtext">Questionnaire History</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="pcoded-navigation-label" menu-title-theme="theme1">User Management</div>
+                                        <ul class="pcoded-item pcoded-left-item" item-border="true" item-border-style="solid" subitem-border="false">
+                                            <li class="pcoded-hasmenu" @*dropdown-icon="style1"*@ @*subitem-icon="style1"*@>
+                                                <a href="/UserManagement/User/User" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon">
+                                                        <i class="feather icon-box"></i>
+                                                    </span>
+                                                    <span class="pcoded-mtext">View Profile</span>
+                                                </a>                                                
+                                            <li class="pcoded-hasmenu" @*dropdown-icon="style1"*@ subitem-icon="style1">
+                                                <a href="/UserManagement/User/ChangePassword" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon">
+                                                        <i class="feather icon-gitlab"></i>
+                                                    </span>
+                                                    <span class="pcoded-mtext">Change Password</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="pcoded-navigation-label" menu-title-theme="theme1">Admin Section</div>
+                                        <ul class="pcoded-item pcoded-left-item" item-border="true" item-border-style="solid" subitem-border="false">
+                                            <li class="pcoded-hasmenu" @*dropdown-icon="style1"*@ subitem-icon="style1">
+                                                <a href="/UserManagement/UserType/Index" class="waves-effect waves-dark">
+                                                    <span class="pcoded-micon">
+                                                        <i class="feather icon-clipboard"></i>
+                                                    </span>
+                                                    <span class="pcoded-mtext">Add User Type</span>
+                                                </a>                                               
+                                            </li>                                            
+                                            </ul>                                            
+                                            </>                                           
+                                    </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 5px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 174.308px;"></div><div class="slimScrollRail" style="width: 5px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                                </div>
+                            </div>
+                        </nav>
+                        <!-- [ navigation menu ] end -->
+                        <div class="pcoded-content">
+                            <!-- [ breadcrumb ] start -->
+                            <!-- [ breadcrumb ] end -->
+                            <div class="pcoded-inner-content">
+                                <div class="main-body">
+                                    <div class="page-wrapper">
+                                        <div class="page-body">
+                                            <!-- [ page content ] start -->
+                                            <div class="row">
+
+                                                <div class="col-sm-12">
+                                                    <!-- Basic Form Inputs card start -->
+                                                    @RenderBody()
+                                                    <!-- Basic Form Inputs card end -->
+
+                                                </div>
+
+                                            </div>
+                                            <!-- [ page content ] end -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- [ style Customizer ] start -->
+                        <div id="styleSelector">
+                        </div>
+                        <!-- [ style Customizer ] end -->
+                    </div>
+
+                </div>
+            </div>
+        </div>        
+        <!-- Required Jquery -->
+
+        <script type="text/javascript" src="~/scripts/bower_components/jquery-ui/js/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="~/scripts/bower_components/popper.js/js/popper.min.js"></script>
+        <script type="text/javascript" src="~/scripts/bower_components/bootstrap/js/bootstrap.min.js"></script>
+        <!-- waves js -->
+        <script src="~/scripts/assets/pages/waves/js/waves.min.js"></script>
+        <!-- jquery slimscroll js -->
+        <script type="text/javascript" src="~/scripts/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
+        <!-- Float Chart js -->
+        <script src="~/scripts/assets/pages/chart/float/jquery.flot.js"></script>
+        <script src="~/scripts/assets/pages/chart/float/jquery.flot.categories.js"></script>
+        <script src="~/scripts/assets/pages/chart/float/curvedLines.js"></script>
+        <script src="~/scripts/assets/pages/chart/float/jquery.flot.tooltip.min.js"></script>
+        <!-- Chartlist charts -->
+        <script src="~/scripts/bower_components/chartist/js/chartist.js"></script>
+        <script src="~/scripts/DataTables/jquery.dataTables.js"></script>
+        <link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+        <!-- amchart js -->
+        <script src="~/scripts/assets/pages/widget/amchart/amcharts.js"></script>
+        <script src="~/scripts/assets/pages/widget/amchart/serial.js"></script>
+        <script src="~/scripts/assets/pages/widget/amchart/light.js"></script>
+        <!-- Custom js -->
+        <script src="~/scripts/assets/js/pcoded.min.js"></script>
+        <script src="~/scripts/assets/js/vertical/vertical-layout.min.js"></script>
+        <script type="text/javascript" src="~/scripts/assets/pages/dashboard/custom-dashboard.min.js"></script>
+        <script type="text/javascript" src="~/scripts/assets/js/script.min.js"></script>
+        <script>
+            function dtConvFromJSONDateonly(data) {
+                if (data == null) return '-';
+                var r = /\/Date\(([0-9]+)\)\//gi
+                var matches = data.match(r);
+                if (matches == null) return '-';
+                var result = matches.toString().substring(6, 19);
+                var epochMilliseconds = result.replace(
+                /^\/Date\(([0-9]+)([+-][0-9]{4})?\)\/$/,
+                '$1');
+                var b = new Date(parseInt(epochMilliseconds));
+                var c = new Date(b.toString());
+                var curr_date = c.getDate();
+                var curr_month = c.getMonth() + 1;
+                var curr_year = c.getFullYear();
+                var hours = c.getHours();
+                var minutes = c.getMinutes();
+                var sec = c.getSeconds();
+
+                var curr_offset = c.getTimezoneOffset() / 60;
+
+                var d = curr_month.toString() + '/' + curr_date + '/' + curr_year;// + ' ' + hours + ':' + minutes;//+ ':' + sec;
+
+                return d;
+            }
+        </script>
+
+
+        <div class="flotTip" style="display: none; position: absolute; background: rgb(255, 255, 255); z-index: 1040; padding: 0.4em 0.6em; border-radius: 0.5em; font-size: 0.8em; border: 1px solid rgb(17, 17, 17); white-space: nowrap;"></div>
+    </form>
+</body>
+</html>

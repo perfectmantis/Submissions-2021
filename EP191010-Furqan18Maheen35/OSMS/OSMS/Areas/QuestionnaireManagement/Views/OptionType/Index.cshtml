@@ -1,0 +1,118 @@
+﻿@model OSMS.Areas.QuestionnaireManagement.Models.OptionTypeModelClass
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+<div class="page-header card">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <i class="feather icon-plus-circle bg-c-blue"></i>
+                <div class="d-inline">
+                    <h5>Add New Controls</h5>
+                    <span>You can add new controls from here!</span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+
+<div class="card">
+    
+    <div class="card-header">
+        <form>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Control Name</label>
+                    <div class="col-sm-10">
+                       <input type="text" class="form-control form-control-success" id="inputSuccess1">
+                        </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-7"></div>
+                    <div class="col-md-1">
+                        <button onclick="Save()" class="btn waves-effect waves-light hor-grd btn-grd-info" style="margin-left: 13px;">Save</button>
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn waves-effect waves-light hor-grd btn-grd-warning ">Cancel</button>
+                    </div>
+                    <div class="col-md-1">
+                        <button onclick="Delete()" class="btn waves-effect waves-light hor-grd btn-grd-danger ">Delete</button>
+                    </div>
+                </div>
+</form>
+</div>
+</div> 
+<div class="card">
+    <div class="card-header">
+        <h5>List of Controls</h5>
+        <div class="row card-block">
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card card-block user-card">
+                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;">
+                        <ul class="scroll-list wave" style="overflow: hidden; width: auto; height: 300px;">
+                            <li>
+                                <h6>Item1</h6>
+                            </li>
+                            
+                        </ul><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 102.041px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function GetOptions()
+    {
+        $.ajax({
+            url: '@Url.Action("GetOptionType", "OptionType")',
+            type: 'Get',
+            sucess: function (response) {
+
+            }
+        });
+    }
+
+    function Save()
+    {
+        alert("Function hit");
+        $.ajax({
+            url: '@Url.Action("OptionTypeInsert", "OptionType")',
+            type: 'Post',
+            data: $(form).serialize(),
+            success: function(response){
+                if (response.success == true) {
+                    alert("Option type has been saved successfully.");
+                }
+                else {
+
+                }
+            }
+            
+        });
+    }
+
+    function Delete(id)
+    {
+        $.ajax({
+            url: '@Url.Action("OptionTypeDelete", "OptionType")',
+            type: 'Post',
+            data: id,
+            success: function(response) {
+                if (response.success == true) {
+                    alert("Option type has been deleted.")
+                }
+                else {
+                    alert("Delete operation failed.")
+                }
+            }
+                
+        });
+    }
+</script>
