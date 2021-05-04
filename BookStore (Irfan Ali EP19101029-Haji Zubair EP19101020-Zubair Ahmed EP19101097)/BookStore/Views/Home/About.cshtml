@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "About";
+}
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BookStore</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("About Us", "About", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Contact", "Contact", "Home")
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    @Html.ActionLink("Log Out", "Index", "Login")
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<h2>This is About Page</h2>
+
+<h2>
+    Goup members: <br /><br />
+    Haji Zubair EP19101020 <br />
+    Irfan Ali   EP19101029<br />
+    Zubair Ahmed   EP19101097
+
+</h2>
+<div>
+
+    <a href="http://localhost:1867/Home" class="btn btn-primary btn-sm">Back</a>
+</div>

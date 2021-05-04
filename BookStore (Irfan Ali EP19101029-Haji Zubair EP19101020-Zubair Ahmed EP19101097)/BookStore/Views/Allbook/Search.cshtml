@@ -1,0 +1,151 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<script>
+
+    function ConfirmDownload() {
+        return confirm("Sorry! Buy it first");
+    }
+</script>
+
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BookStore</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("About Us", "About", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Contact", "Contact", "Home")
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    @Html.ActionLink("Log Out", "Index", "Login")
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+@*<@*p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<div class="container-fluid">
+    <div class="row">
+        @using (Html.BeginForm("Search", "Allbook", FormMethod.Post))
+        {
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-md-2 control-label">Search</label>
+                    <div class="col-md-6">
+                        <input type="text" name="searchtxt" class="form-control" placeholder="Search your text here" />
+
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search" Search</button>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped table-responsive table-bordered">
+                <tr>
+                    <th>
+                        @Html.ActionLink("Name", "Search", new { Sortorder = ViewBag.Sortorder == null ? "Asc" : (ViewBag.Sortorder == "Asc" ? "Desc" : "Asc"), Sortby = "Name" })
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CoverImagePath)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Author)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Discription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Condition)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PublishYear)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ISBN)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)$
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CoverImagePath)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Author)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Discription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Condition)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PublishYear)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ISBN)
+                        </td>
+                        <td>
+
+                            @Html.ActionLink("Download ", "Download", "Allbook", "", htmlAttributes: new { @class = "btn btn-success", onclick = "return ConfirmDownload()" })|
+                            @Html.ActionLink("Buy ", "Buy", "Allbook", "", htmlAttributes: new { @class = "btn btn-primary" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <div>
+
+        <a href="http://localhost:1867/Home" class="btn btn-primary btn-sm">Back</a>
+    </div>
+
+</div>
+
+

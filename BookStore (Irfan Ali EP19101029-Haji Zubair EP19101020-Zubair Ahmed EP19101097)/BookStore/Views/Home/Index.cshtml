@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<link href="~/content/bootstrap.css" rel="stylesheet" />
+<link href="~/customcontent/homestylesheet.css" rel="stylesheet" />
+<style>
+    img {
+        border: 2px solid gray;
+        border-radius: 25px;
+        width: 400px;
+        height: 200px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BookStore</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("About Us", "About", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Contact", "Contact", "Home")
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    @Html.ActionLink("Log Out", "Index", "Login")
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<img src="~/images/icon.jpg" alt="icon image" />
+<br />
+<br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-6  margin-top-20">
+        <a href="@Url.Action("Index", "Allbook", new { pageNumber = 1 }, null)" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-book"></span> All books</a>
+        <a href="#" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-star-empty"></span> New books</a>
+        <a href="#" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-star-empty"></span> Used books</a>
+    </div>
+    <div class="col-md-6 margin-top-20">
+        <a href="@Url.Action("Search", "Allbook", new { minPrice = 0, maxPrice = 20 }, null)" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-search"></span> Search</a>
+        <a href="@Url.Action("ShowBookByPrice", "Book", new { minPrice = 20, maxPrice = 50 }, null)" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-search"></span> 20$-50$</a>
+        <a href="@Url.Action("ShowBookByPrice", "Book", new { minPrice = 50, maxPrice = int.MaxValue}, null)" class="btn btn-primary btn-lg btn-block"><span class="glyphicon glyphicon-search"></span> > 50$</a>
+    </div>
+</div>
+<div>
+    <p>Search by price range:</p>
+
+</div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>

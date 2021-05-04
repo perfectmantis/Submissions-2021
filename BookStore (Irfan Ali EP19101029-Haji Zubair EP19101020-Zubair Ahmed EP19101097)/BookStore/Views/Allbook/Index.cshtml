@@ -1,0 +1,76 @@
+﻿@model IEnumerable<BookStore.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script>
+
+    function ConfirmDownload() {
+        return confirm("Sorry! Buy it first");
+    }
+</script>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BookStore</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("About Us", "About", "Home")
+                </li>
+                <li>
+                    @Html.ActionLink("Contact", "Contact", "Home")
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    @Html.ActionLink("Log Out", "Index", "Login")
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<h2>Index</h2>
+
+<table class="table table-responsive table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Description</th>
+        <th>Price</th>
+        
+    </tr>
+    @foreach (var item in @Model)
+    {
+    <tr>
+        <td>@item.Id</td>
+        <td>@item.Name</td>
+        <td>@item.Author</td>
+        <td>@item.Discription</td>
+        <td>@item.Price $</td>
+        <td>
+
+            @Html.ActionLink("Download", "Download", "Allbook", "", htmlAttributes: new { @class = "btn btn-success", onclick = "return ConfirmDownload()" })|
+            @Html.ActionLink("Buy ", "Buy", "Allbook", "", htmlAttributes: new { @class = "btn btn-primary" })
+        </td>
+        
+    </tr>
+    }
+</table>
+
+<div>
+
+    <a href="http://localhost:1867/Home" class="btn btn-primary btn-sm">Back</a>
+</div>
+<p>
+
+</p>

@@ -1,0 +1,63 @@
+
+body {
+	background:url('../images/login back Image.jpg') no-repeat 0px 0px;
+	background-size: cover;
+	font-family: 'Open Sans', sans-serif;
+	background-attachment: fixed;
+	background-position: center;
+}
+
+h2 {
+    font-size: 45px;
+    padding-left: 1px;
+    text-shadow: 2px 2px 5px red;
+    color: lightgray;
+}
+
+.formContainer {
+    background-color: rgba(19, 180, 13, 0.4);
+    border: 1px;
+    border-radius: 40px;
+    
+    height: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
+.form-horizontal {
+        padding-top: 70px;
+        padding-left: 30px;
+        margin: 20px;
+    }
+input[type="text"], input[type="password"] {
+    width: 90%;
+    border: 1px solid #7d7d7d;
+    outline: none;
+    font-size: 14px;
+    margin-bottom: 1px;
+    border-radius: 19px;
+}
+
+
+
+    input[type="submit"] {
+        background: #77d420;
+        padding: 13px 0;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+        outline: none;
+        width: 30%;
+        border: none;
+        margin-top: 25px;
+        border-radius: 25px;
+    }
+
+    input[type="submit"]:hover {
+        background: #58ad09;
+    }
+
+#singup{
+   display:inline-block;
+}

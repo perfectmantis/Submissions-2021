@@ -1,0 +1,93 @@
+﻿@model IEnumerable<BookStore.Models.Registration>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">BookStore</a>
+                </div>
+                <ul class="nav navbar-nav">
+
+                    <li>
+                        @Html.ActionLink("Add Book", "Addbook", "Admin")
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("Book List", "BookList", "Admin")
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("Users", "Index", "Users")
+                    </li>
+
+                    <li>
+                        @Html.ActionLink("User Registration", "Index", "Registrations")
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>
+                        @Html.ActionLink("Log Out", "Index", "Login")
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<h2>Welcome To Registration Page</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NIC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelNo)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.TelNo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NIC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelNo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
