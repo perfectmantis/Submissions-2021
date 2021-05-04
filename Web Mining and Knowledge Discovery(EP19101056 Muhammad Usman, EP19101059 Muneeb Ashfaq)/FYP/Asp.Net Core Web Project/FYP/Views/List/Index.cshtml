@@ -1,0 +1,48 @@
+﻿@model IEnumerable<FYP.Models.VirtualList>
+
+        <h1>Booking List</h1>
+        <hr />
+    <div class="row">
+        <form action="" method="get">
+            <input type="text" name="cid" placeholder="Booking ID" />
+            <input type="text" name="destination" placeholder="Destination" />
+            <select name="status">
+                <option value="0">--Status--</option>
+                @foreach(var item in ViewBag.status_combo)
+                {
+                    <option value="@item.id">@item.status</option>
+                }
+            </select>
+            <input type="submit" name="search" value="Search" />
+        </form>
+    </div>
+    @if (Model != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Customer ID</th>
+                    <th>Consignee</th>
+                    <th>Destination</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.parcels.cid</td>
+                    <td>@item.parcels.customer_id</td>
+                    <td>@item.parcels.consignee</td>
+                    <td>@item.parcels.destination</td>
+                    <td>@item.status_lists.status</td>
+                    <td>
+                        <a asp-action="Index" asp-controller="Track" asp-route-id="@item.parcels.cid" target="_blank">Track</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
