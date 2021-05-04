@@ -1,0 +1,204 @@
+﻿
+        /*background color*/
+
+body {
+    overflow-x:hidden;
+    overflow-y:auto;
+    background-color: #D0CECD;
+}
+
+       /*Login div css*/
+#logincss {
+    float: left;
+    padding-right: 10px;
+    height: 30px;
+    width: 100%;
+    text-align: right;
+    padding-top: 7px;
+    background-color: white;
+    margin-left: -2px;
+    margin-top: -12px;
+}
+
+
+ 
+#body01 
+{
+    height: 895px;
+    width: 100%;    
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 150px;
+}
+#carouselExampleIndicators 
+{
+    color: white;
+    width: 1900px;
+    height: 300px;
+    text-align: center;
+   
+}
+
+pre {
+    padding-top: 120px;
+    font-weight: bolder;
+    opacity: 0.6;
+    text-align: left;
+    background-color: white;
+    width: 1150px;
+    height: 500px;
+    margin-left: 420px;
+    border:2px solid white; 
+}
+
+#hdr ul li {
+    margin-left: 40px;
+}
+
+    #hdr ul li a 
+    {
+        font-weight: bold;
+        color: white;
+    }
+        #hdr ul li a:hover
+        {
+            color: blue;
+            font-weight: bold;
+        }
+
+
+.btn1 
+{
+    background-color: forestgreen; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius:50%;
+    opacity:0.7;
+}
+
+.martop
+{
+    margin-top:30px;
+}
+
+.shadows 
+{
+    -webkit-box-shadow: 6px 6px 6px 6px #ccc; 
+    -moz-box-shadow: 6px 6px 6px 6px #ccc; 
+    box-shadow: 2px 2px 6px 6px #ccc; 
+}
+
+h2
+{
+    color:forestgreen;
+    opacity:0.9;
+    display:inline;
+}
+
+h3
+{
+    display:inline;
+   margin-left:60px;
+}
+
+.move
+{
+    margin-top:5px;
+    margin-left:510px;
+}
+
+.btn2
+{
+    width:100px; 
+    margin-top:5px;
+    border-radius:5px;
+    background-color:white;
+    opacity:0.5;
+    height:30px;
+    font-weight:bolder;
+}
+
+.btn3 
+{
+    width: 100px;
+    margin-top: 5px;
+    margin-left:580px;
+    border-radius: 5px;
+    background-color: white;
+    opacity: 0.5;
+    height: 30px;
+    font-weight: bolder;
+}
+
+.btn4 {
+    width: 150px;
+    height:40px;   
+    margin-left: 1580px;
+    margin-top:30px;
+    border-radius: 5px;
+    background-color: white;
+    opacity: 0.5;   
+    font-weight: bolder;
+    
+}
+
+.move1 {
+    margin-top: 5px;
+    margin-left: 615px;
+}
+
+
+.btnN {
+    background-color:orange;
+    opacity:0.4;
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    width: 100px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    border: 2PX solid  orange;
+    text-align: center;
+    vertical-align: middle;
+    overflow: hidden;
+    transition: .6s;
+}
+
+    .btnN:hover {
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+        color:white;
+        opacity:0.9;
+    }
+
+    label
+    {
+        font-weight:bold;
+        color:cornflowerblue;
+    }
+
+.fa-pencil:hover {
+    color: red;
+}
+.fa-trash:hover {
+    color: red;
+}
+.fa-user:hover {
+    color: blue;
+}
+th{
+  
+    color:forestgreen;
+    opacity:0.8;
+}
+
+   

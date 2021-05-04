@@ -1,0 +1,79 @@
+﻿
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>step3</title>
+
+    <script src="~/Script/step3.js"></script>
+    <script src="~/Script/Getdata.js"></script>
+</head>
+<body>
+    <div style="background-color:#F5F5F5; width:100%; height:800px; margin-top:20px; " id="block ">
+        <div>
+            <div class="row" style="margin-left:500px; width:1200px; height:700px; ">
+                <div class="col-sm-8 shadows" style="margin-top:100px; background-color:white; border-radius:20px; ">
+                    <h2>Step 3:</h2>
+                    <h3>Your Occupation information</h3>
+                    <div class="container">
+
+                        <form id="dis">
+                            <div class="row">
+                                <div class="col-sm-6 ">
+                                    <div class="form-group w-75 mt-5">
+                                        <label for="">Have you visited canada</label>
+                                        <select class="form-control" id="" name="visit">
+                                            <option value="'yes">yes</option>
+                                            <option value="'no">No</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group w-75 mt-3">
+                                        <label for="email">Desination</label>
+                                        <input type="text" class="form-control" id="post" placeholder="Enter post name" name="post">
+                                    </div>
+                                    <div class="form-group w-75 mt-4">
+                                        <label for="org">Name of orginasation</label>
+                                        <input type="text" class="form-control" id="org" placeholder="orginisation name" name="org">
+                                    </div>
+                                    <div class="form-group w-75 mt-4">
+                                        <label for="phn">office Phone no.</label>
+                                        <input type="number" class="form-control" id="no" placeholder="Enter Phone no." name="phn">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 " id="ge">
+
+                                    <div class="form-group w-75 mt-3 ml-4">
+                                        <label for="example">Start date</label>
+                                        <input placeholder="Select date" type="date" id="datepicker11" class="form-control">
+                                    </div>
+                                    <div class="form-group w-75 mt-3 ml-4">
+                                        <label for="example">End date</label>
+                                        <input placeholder="Select date" type="date" id="datepicker22" class="form-control">
+                                    </div>
+                                    <div class="form-group w-75 ml-4">
+                                        <label for="country">Country</label>
+                                        <select class="form-control" id="country" name="country">
+                                            <option value="'default">select</option>
+                                        </select>
+                                    </div>
+                                   
+                                  
+                                </div>
+                            </div>
+                            <div id="showw" style="margin-left:-30px; display:none;"><h3>this section is not applicable on student immigration</h3></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="move">
+            <button id="btn8" class="btn2 btn-danger">Previous</button>
+            <button  id="btn9" class="btn3 btn-info">Next</button>
+        </div>
+    </div>
+</body>
+</html>

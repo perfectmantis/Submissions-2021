@@ -1,0 +1,84 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>step4</title>
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="~/Script/step4.js"></script>
+    <script src="~/Script/Step1.js"></script>
+    <script src="~/Script/toastr.min.js"></script>
+    <script src="~/Script/Getdata.js"></script>
+</head>
+<body>
+    <div style="background-color:#F5F5F5; width:100%; height:800px; margin-top:20px; ">
+        <div id="div9">
+            <button id="save1" class="btn4 btnN" onclick="get()">save</button>
+            <button class="btn4 btn-outline-danger" style="margin-top:100px;height:50px; width:180px; margin-left:1565px; border-radius: 5px 25px;">Download Document</button>
+            <div class="row" style="margin-left:500px; width:1200px; height:700px; margin-top:-260px; ">
+                <div class="col-sm-8 shadows" style="margin-top:100px; background-color:white; border-radius:20px; ">
+                    <h2>Step 4:</h2>
+                    <h3>Documents</h3>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <form >
+                                <div class="form-check mt-5 ml-3" >
+                                    <label class="form-check-label" for="check1">
+                                        <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something" >profile image
+                                    </label>
+                                </div>
+                                <div class="form-check mt-5 ml-3">
+                                    <label class="form-check-label" for="check2">
+                                        <input type="checkbox" class="form-check-input" id="check2" name="option2" value="something">Upload resume
+                                    </label>
+                                </div>
+
+                                <div class="form-check mt-5 ml-3">
+                                    <label class="form-check-label" for="check3">
+                                        <input type="checkbox" class="form-check-input" id="check3" name="option3" value="something">University degree
+                                    </label>
+                                </div>
+                                
+                            </form>
+                        </div>
+                        <div class="col-sm-6" id="div8">
+
+                            <div class="mt-5 w-75" id="ab">
+                                <h6>Upload Your profile image</h6>
+                                <div class="custom-file ">
+
+                                    <input type="file" class="custom-file-input" id="customFile" name="filename">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 w-75" id="abc">
+                                <h6>Upload Your Resume</h6>
+                                <div class="custom-file ">
+                                    <input type="file" class="custom-file-input" id="customFile" name="filename">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 w-75" id="abcd">
+                                <h6>University Degree</h6>
+                                <div class="custom-file ">
+                                    <input type="file" class="custom-file-input" id="customFile" name="filename">
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+
+                        </div>                      
+                        @*<button class="btn btn-primary mt-5 w-75" id="save12" style="margin-left:80px;">Save</button>*@            
+                </div>
+            </div>
+        </div>
+        <div class="move">
+            <button id="btn10" class="btn2 btn-danger">Previous</button>
+        </div>
+    </div>
+        </div>
+</body>
+</html>

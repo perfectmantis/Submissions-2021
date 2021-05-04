@@ -1,0 +1,55 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Assessment</title>
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Script/bootstrap.min.js"></script>
+    <script src="~/Script/Apply.js"></script>
+</head>
+<body>
+    <div class="container" id="d1">
+        <div class="row martop mr-0 ml-5" id="d2">
+            <div class="col-sm-2">
+                <button class="btn1" id="bt1">Step 1</button>
+            </div>
+            <div class="col-sm-2" style="width:30px; height:5px;  margin-top:33px; margin-left:-78px; background-color:forestgreen; opacity:0.7;">
+
+            </div>
+            <div class="col-sm-2" style="margin-left:-19px;">
+                <button class="btn1" id="bt2">Step 2</button>
+            </div>
+            <div class="col-sm-2" style="width:30px; height:5px;  margin-top:33px; margin-left:-78px; background-color:forestgreen; opacity:0.7;">
+
+            </div>
+            <div class="col-sm-2" style="margin-left:-19px;">
+                <button class="btn1" id="bt3">Step 3</button>
+            </div>
+            <div class="col-sm-2" style="width:30px; height:5px;  margin-top:33px; margin-left:-78px; background-color:forestgreen; opacity:0.7;">
+
+            </div>
+            <div class="col-sm-2" style="margin-left:-19px;">
+                <button class="btn1" id="bt4">Step 4</button>
+            </div>
+        </div>   
+    </div>
+
+    <div id="partial1" >
+        @Html.Partial("step1");
+    </div>
+    <div id="partial2" style="display:none;">
+        @Html.Partial("step2");
+    </div>
+    <div id="partial3" style="display:none;">
+        @Html.Partial("step3");
+    </div>
+    <div id="partial4" style="display:none;">
+        @Html.Partial("step4");
+    </div>
+
+</body>
+</html>

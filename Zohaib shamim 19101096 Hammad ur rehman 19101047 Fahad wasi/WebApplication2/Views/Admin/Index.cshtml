@@ -1,0 +1,153 @@
+﻿
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>step1</title>
+    <script src="~/Script/step3.js"></script>
+    <script src="~/Script/Step1.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Script/bootstrap.min.js"></script>
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Script/Admin.js"></script>
+    <script src="~/Script/toastr.min.js"></script>
+</head>
+<body>
+
+    <div style="background-color:#D0CECD; width:100%; height:800px; margin-top:20px; " id="goo">
+        <div>
+            <div class="row">
+                <div class="col-sm-2 shadows" style="margin-top:70px; background-color:white; border-radius:20px; margin-left:50px;  height:500px; border:5px solid green; ">
+                    <h3 style="color:forestgreen; opacity:0.7;">Search option</h3><hr />
+                    <div style="margin-top:20px;">
+
+                        <div class="form-group w-100">
+                            <h6 style="display:inline; color:green;opacity:0.5;" class="ml-1">By Type</h6>
+                            <select class="form-control" id="gendr" name="sellist1">
+                                <option value="'default">select</option>
+                                <option>Immigration</option>
+                                <option>Study</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group w-100 mt-3" id="yaheha">
+                            <h6 style="display:inline; color:green;opacity:0.5;" class="ml-1">By Name</h6>
+                            <input id="myInput" type="text" class="form-control" />
+                        </div>
+                        <div class="form-group w-100 mt-3" style="display:inline;">
+                            <h6 style="display:inline; color:green;opacity:0.5;" class="ml-1">By Case Id</h6>
+                            <input type="text" class="form-control" />
+                        </div>
+                        <button type="button" class="btn btn-success mt-3" style="border-radius:14px;">Search</button>
+                        <button type="button" class="btn btn-outline-dark mt-3" style="border-radius:14px; margin-left:145px;">Clear</button>
+                        <div class="custom-control custom-switch mt-4 ml-3">
+                            <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+                            <label class="custom-control-label" for="switch1">Show only Active</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-sm-7 shadows" style="margin-top:70px; background-color:white; border-radius:20px; margin-left:100px;  height:700px;  border:5px solid green;">
+                    <table class="table table-hover" id="mytbl" style="text-align:center;">
+                        <thead style="background-color:rgba(78, 240, 152, 0.1); ">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col"></th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Father Name</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Action</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Download file</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row" id="sno" style="padding-top:50px;"></td>
+                                <td>@*<i class="fa fa-user fa-3x" style="font-size:24px"></i>*@</td>
+                                <td style="text-align:left; " id="nam"></td>
+                                <td id="fnam"></td>
+                                <td></td>
+                                <td>
+                                    @*<i class="fa fa-pencil fa-3x" style="font-size:18px; margin-right:13px;"></i>*@
+                                    @*<i class="fa fa-trash fa-3x" style="font-size:18px" title="Delete"></i>*@
+                                </td>
+                                <td style="padding-left:0px;" id="stat">
+                                    <div style="display:none;">
+                                        <div class="custom-control custom-switch ml-2">
+                                            <input type="checkbox" class="custom-control-input" id="switch12" name="abc">
+                                            <label class="custom-control-label" for="switch12">active</label>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td style="padding-left:30px;"></td>
+                            </tr>
+
+                            @*-------------------------------------End-------------------*@
+                        </tbody>
+                    </table>
+                    <div class="container" style="margin-top:70px; background-color:rgba(78, 240, 152, 0.1)">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*modal start*@
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Edit</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body ml-5">
+                    <label style="margin-right:20px;">Id</label>
+                    <input style="margin-left:90px; width:300px;" type="text" disabled id="one1" /><br />
+                    <label>Name</label>
+                    <input style="margin-left:83px; margin-top:20px; width:300px;" type="text" id="two2" /><br />
+                    <label>Father Name</label>
+                    <input style="margin-left:33px; margin-top:20px; width:300px;" type="text" id="three3" /><br />
+                    <label style="margin-top:30px;">Visa type</label><br />
+                    Intrested in:
+                    <div class="form-check" style="margin-top:20px; margin-left:20px; margin-bottom:50px;" >
+                        <label class="form-check-label" for="radio23" id="lbl1">
+                            <input type="radio" class="form-check-input" id="radio23" name="radio1" value="study" >Study
+                        </label>
+                        <label class="form-check-label ml-5" for="radio2" id="lbl2">
+                            <input type="radio" class="form-check-input" id="radio23" name="radio1" value="Immigration" checked >Immigration
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="ab3" class="btn btn-success" data-dismiss="modal" onclick="editupdate()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
