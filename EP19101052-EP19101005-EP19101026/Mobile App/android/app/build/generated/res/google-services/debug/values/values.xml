@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">320248036388-n8fniv7jhejfjgo04p1kh3m48dlajssk.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://crime-management-system-f3071-default-rtdb.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">320248036388</string>
+    <string name="google_api_key" translatable="false">AIzaSyDUCOrZQBIAQHQQ3QbnTUtI6mEHBV2WlOA</string>
+    <string name="google_app_id" translatable="false">1:320248036388:android:1dc7a55d83f19a381c2cb1</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDUCOrZQBIAQHQQ3QbnTUtI6mEHBV2WlOA</string>
+    <string name="google_storage_bucket" translatable="false">crime-management-system-f3071.appspot.com</string>
+    <string name="project_id" translatable="false">crime-management-system-f3071</string>
+</resources>

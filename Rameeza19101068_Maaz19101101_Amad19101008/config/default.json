@@ -1,0 +1,9 @@
+{
+  
+  "ourMongoURI": "mongodb+srv://admin_user:SW4z0GeWU4gcOxx3@cluster0.viyvt.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "project^#@#$",
+  "cloud_name": "dw2wfsmc2",
+  "api_key": "323312141852284",
+  "api_secret": "448HP-JttLRpyoG9a6FU-_bsfRM"
+  
+}
