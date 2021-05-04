@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+
+<section class="flat-row flat-iconbox">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="title-section">
+					<h2 class="title">
+						Categories
+					</h2>
+				</div>
+			</div>
+		</div>
+		<div id="tableContiner">
+			@{
+                Html.RenderAction("CategoryTable");
+			}
+		</div>
+
+		<hr />
+		<div id="actionContainer">
+
+		</div>
+	</div>
+</section>
+
+
+<script>
+	function focusAction(controlToFocus) {
+		$('html, body').animate({
+			scrollTop: $("#" + controlToFocus).offset().top - 100
+		}, 1000);
+	}
+</script>
